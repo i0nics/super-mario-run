@@ -1,0 +1,36 @@
+*target*
+*.war
+*.ear
+*.class
+
+# Eclipse specific #
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+
+# More Eclipse stuff
+.project
+.classpath
+.metadata
+*.launch
+.externalToolBuilders/
+.factorypath
+.recommenders
+.recommenders/
+.springBeans
+
+# Directories #
+/build/
+target/
+ 
+# OS Files #
+.DS_Store
+
+
+
