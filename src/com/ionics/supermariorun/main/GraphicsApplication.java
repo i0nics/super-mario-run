@@ -1,4 +1,4 @@
-package starter;
+package com.ionics.supermariorun.main;
 
 
 import java.awt.event.KeyEvent;
@@ -31,7 +31,7 @@ public abstract class GraphicsApplication extends GraphicsProgram {
 	 * will simply switch from making one pane that was currently
 	 * active, to making another one that is the active class.
 	 */
-	protected void switchToScreen(GraphicsPane newScreen) {
+	public void switchToScreen(GraphicsPane newScreen) {
 		if(curScreen != null) {
 			curScreen.hideContents();
 		}

@@ -3,16 +3,19 @@ package starter;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 
+import com.ionics.supermariorun.main.GraphicsPane;
+import com.ionics.supermariorun.main.mainSMR;
+
 import acm.graphics.GObject;
 
 public class MenuPane extends GraphicsPane {
-	private MainApplication program; // you will use program to get access to
+	private mainSMR program; // you will use program to get access to
 										// all of the GraphicsProgram calls
 	private GButton rect;
 
-	public MenuPane(MainApplication app) {
+	public MenuPane(mainSMR mainSMR) {
 		super();
-		program = app;
+		program = mainSMR;
 		rect = new GButton("Next", 200, 200, 200, 200);
 		rect.setFillColor(Color.RED);
 	}

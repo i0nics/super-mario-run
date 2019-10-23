@@ -1,4 +1,4 @@
-package starter;
+package com.ionics.supermariorun.main;
 
 
 /* File: GraphicsPane.java
@@ -14,6 +14,8 @@ package starter;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+
+import starter.Interfaceable;
 
 public abstract class GraphicsPane implements Interfaceable {
 	@Override
