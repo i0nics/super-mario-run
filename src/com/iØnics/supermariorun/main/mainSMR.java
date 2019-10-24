@@ -18,7 +18,7 @@ import java.awt.*;
 
 public class mainSMR extends GraphicsApplication{
 	public static final String MUSIC_FOLDER = "sounds";
-	private static final String[] SOUND_FILES = { "r2d2.mp3", "somethinlikethis.mp3" };
+	private static final String[] SOUND_FILES = { "startTrack.mp3" };
 	private StartPane startPane;
 	private MenuPane menu;
 	private int count;
@@ -28,34 +28,25 @@ public class mainSMR extends GraphicsApplication{
 	public static final int WINDOW_WIDTH = 1000;
 	
   
-	public void run() {
-		GImage image = new GImage("start.png",0, 0);
-		add(image);
-
-		GImage mariostart = new GImage("title.png",250, 250);
-		add(mariostart);
-		
+	public void run() {		
 		startPane = new StartPane(this);
 		menu = new MenuPane(this);
 		switchToMenu();
 	}
 	
-
+	public void switchToSome() {
+		playStartSound();
+		switchToScreen(startPane);
+	}
 	
 	public void switchToMenu() {
-		playRandomSound();
+		playStartSound();
 		count++;
 		switchToScreen(menu);
 	}
 
 
-
-	public void switchToSome() {
-		playRandomSound();
-		switchToScreen(startPane);
-	}
-
-	private void playRandomSound() {
+	private void playStartSound() {
 		AudioPlayer audio = AudioPlayer.getInstance();
 		audio.playSound(MUSIC_FOLDER, SOUND_FILES[count % SOUND_FILES.length]);
 	}

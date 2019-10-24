@@ -10,34 +10,34 @@ import starter.GParagraph;
 
 public class StartPane extends GraphicsPane {
 	private mainSMR program; // you will use program to get access to all of the GraphicsProgram calls
-	private GImage img;
-	private GParagraph para;
+	private GImage redStripes;
+	private GImage marioStart;
+
 
 	public StartPane(mainSMR mainSMR) {
 		this.program = mainSMR;
-		img = new GImage("start.png", 100, 100);
-		para = new GParagraph("welcome\nto my\nsecret room!", 150, 300);
-		para.setFont("Arial-24");
+		redStripes = new GImage("redStripes.png",0, 0);
+		marioStart = new GImage("title.png",250, 250);
 	}
 
 
 	@Override
 	public void showContents() {
-		program.add(img);
-		program.add(para);
+		program.add(redStripes);
+		program.add(marioStart);
 	}
 
 	@Override
 	public void hideContents() {
-		program.remove(img);
-		program.remove(para);
+		program.remove(redStripes);
+		program.remove(marioStart);
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		para.setText("you need\nto click\non the eyes\nto go back");
+		//para.setText("you need\nto click\non the eyes\nto go back");
 		GObject obj = program.getElementAt(e.getX(), e.getY());
-		if (obj == img) {
+		if (obj == marioStart) {
 			program.switchToMenu();
 		}
 	}
