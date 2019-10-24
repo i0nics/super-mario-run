@@ -1,4 +1,4 @@
-package com.ionics.supermariorun.main;
+package com.iØnics.supermariorun.main;
 
 
 import java.awt.event.KeyEvent;

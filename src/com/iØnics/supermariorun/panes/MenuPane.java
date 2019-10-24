@@ -1,12 +1,13 @@
-package starter;
+package com.iØnics.supermariorun.panes;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 
-import com.ionics.supermariorun.main.GraphicsPane;
-import com.ionics.supermariorun.main.mainSMR;
+import com.iØnics.supermariorun.main.GraphicsPane;
+import com.iØnics.supermariorun.main.mainSMR;
 
 import acm.graphics.GObject;
+import starter.GButton;
 
 public class MenuPane extends GraphicsPane {
 	private mainSMR program; // you will use program to get access to

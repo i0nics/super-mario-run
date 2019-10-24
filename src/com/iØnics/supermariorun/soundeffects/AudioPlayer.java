@@ -1,4 +1,4 @@
-package com.i0nics.supermariorun.soundeffects;
+package com.iØnics.supermariorun.soundeffects;
 
 
 /*

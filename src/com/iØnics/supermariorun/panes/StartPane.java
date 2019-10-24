@@ -1,23 +1,25 @@
-package starter;
+package com.iØnics.supermariorun.panes;
 import java.awt.event.MouseEvent;
 
-import com.ionics.supermariorun.main.GraphicsPane;
-import com.ionics.supermariorun.main.mainSMR;
+import com.iØnics.supermariorun.main.GraphicsPane;
+import com.iØnics.supermariorun.main.mainSMR;
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;
+import starter.GParagraph;
 
-public class SomePane extends GraphicsPane {
+public class StartPane extends GraphicsPane {
 	private mainSMR program; // you will use program to get access to all of the GraphicsProgram calls
 	private GImage img;
 	private GParagraph para;
 
-	public SomePane(mainSMR mainSMR) {
+	public StartPane(mainSMR mainSMR) {
 		this.program = mainSMR;
-		img = new GImage("robot head.jpg", 100, 100);
+		img = new GImage("start.png", 100, 100);
 		para = new GParagraph("welcome\nto my\nsecret room!", 150, 300);
 		para.setFont("Arial-24");
 	}
+
 
 	@Override
 	public void showContents() {

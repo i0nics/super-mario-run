@@ -1,4 +1,4 @@
-package com.ionics.supermariorun.main;
+package com.iØnics.supermariorun.main;
 import java.awt.Color;
 import java.awt.GraphicsDevice;
 import java.awt.event.ActionEvent;
@@ -7,29 +7,23 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import acm.graphics.*;
 import acm.program.*;
-import starter.MenuPane;
-import starter.SomePane;
 
 import javax.swing.*;
 
-import com.i0nics.supermariorun.soundeffects.AudioPlayer;
+import com.iØnics.supermariorun.panes.MenuPane;
+import com.iØnics.supermariorun.panes.StartPane;
+import com.iØnics.supermariorun.soundeffects.AudioPlayer;
 
 import java.awt.*;
 
 public class mainSMR extends GraphicsApplication{
 	public static final String MUSIC_FOLDER = "sounds";
 	private static final String[] SOUND_FILES = { "r2d2.mp3", "somethinlikethis.mp3" };
-	private SomePane somePane;
+	private StartPane startPane;
 	private MenuPane menu;
 	private int count;
 
-	 
-	private GImage background;
-
     protected static final int FONT_SIZE = 18;
-
-
-
 	public static final int WINDOW_HEIGHT = 1000;
 	public static final int WINDOW_WIDTH = 1000;
 	
@@ -41,7 +35,7 @@ public class mainSMR extends GraphicsApplication{
 		GImage mariostart = new GImage("title.png",250, 250);
 		add(mariostart);
 		
-		somePane = new SomePane(this);
+		startPane = new StartPane(this);
 		menu = new MenuPane(this);
 		switchToMenu();
 	}
@@ -58,7 +52,7 @@ public class mainSMR extends GraphicsApplication{
 
 	public void switchToSome() {
 		playRandomSound();
-		switchToScreen(somePane);
+		switchToScreen(startPane);
 	}
 
 	private void playRandomSound() {
