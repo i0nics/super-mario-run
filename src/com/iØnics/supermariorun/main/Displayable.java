@@ -1,4 +1,4 @@
-package starter;
+package com.iØnics.supermariorun.main;
 
 import java.util.ArrayList;
 

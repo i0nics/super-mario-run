@@ -4,8 +4,6 @@ package com.iØnics.supermariorun.main;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
-import starter.Displayable;
-
 public interface Interfaceable extends Displayable {
 	public void mousePressed(MouseEvent e);
 	public void mouseReleased(MouseEvent e);

@@ -15,7 +15,6 @@ package com.iØnics.supermariorun.main;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
-import starter.Interfaceable;
 
 public abstract class GraphicsPane implements Interfaceable {
 	@Override
