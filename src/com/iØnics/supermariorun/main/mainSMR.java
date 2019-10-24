@@ -18,7 +18,7 @@ import java.awt.*;
 
 public class mainSMR extends GraphicsApplication{
 	public static final String MUSIC_FOLDER = "sounds";
-	private static final String[] SOUND_FILES = { "startTrack.mp3" };
+	private static final String START_TRACK = "startTrack.mp3";
 	private StartPane startPane;
 	private MenuPane menu;
 	private int count;
@@ -31,24 +31,23 @@ public class mainSMR extends GraphicsApplication{
 	public void run() {		
 		startPane = new StartPane(this);
 		menu = new MenuPane(this);
-		switchToMenu();
+		switchToStart();
 	}
 	
-	public void switchToSome() {
+	public void switchToStart() {
 		playStartSound();
 		switchToScreen(startPane);
 	}
 	
 	public void switchToMenu() {
 		playStartSound();
-		count++;
 		switchToScreen(menu);
 	}
 
 
 	private void playStartSound() {
 		AudioPlayer audio = AudioPlayer.getInstance();
-		audio.playSound(MUSIC_FOLDER, SOUND_FILES[count % SOUND_FILES.length]);
+		audio.playSound(MUSIC_FOLDER, START_TRACK, true);
 	}
 	
 
