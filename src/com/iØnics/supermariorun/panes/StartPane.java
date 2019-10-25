@@ -37,6 +37,7 @@ public class StartPane extends GraphicsPane {
 		program.remove(marioStart);
 		program.remove(click);
 	}
+	//comment
 
 	@Override
 	public void mousePressed(MouseEvent e) {
