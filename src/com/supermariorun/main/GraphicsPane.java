@@ -1,4 +1,4 @@
-package com.iØnics.supermariorun.main;
+package com.supermariorun.main;
 
 
 /* File: GraphicsPane.java

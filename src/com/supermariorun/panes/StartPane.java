@@ -1,8 +1,8 @@
-package com.iØnics.supermariorun.panes;
+package com.supermariorun.panes;
 import java.awt.event.MouseEvent;
 
-import com.iØnics.supermariorun.main.GraphicsPane;
-import com.iØnics.supermariorun.main.mainSMR;
+import com.supermariorun.main.GraphicsPane;
+import com.supermariorun.main.mainSMR;
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;

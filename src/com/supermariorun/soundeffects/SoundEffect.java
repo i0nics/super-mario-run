@@ -1,4 +1,4 @@
-package com.iØnics.supermariorun.soundeffects;
+package com.supermariorun.soundeffects;
 import acm.graphics.GLabel;
 
 public class SoundEffect implements Playable{

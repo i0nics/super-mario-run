@@ -1,4 +1,4 @@
-package com.iØnics.supermariorun.soundeffects;
+package com.supermariorun.soundeffects;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;

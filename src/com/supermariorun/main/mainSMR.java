@@ -1,4 +1,4 @@
-package com.iØnics.supermariorun.main;
+package com.supermariorun.main;
 import java.awt.Color;
 import java.awt.GraphicsDevice;
 import java.awt.event.ActionEvent;
@@ -10,9 +10,9 @@ import acm.program.*;
 
 import javax.swing.*;
 
-import com.iØnics.supermariorun.panes.MenuPane;
-import com.iØnics.supermariorun.panes.StartPane;
-import com.iØnics.supermariorun.soundeffects.AudioPlayer;
+import com.supermariorun.panes.MenuPane;
+import com.supermariorun.panes.StartPane;
+import com.supermariorun.soundeffects.AudioPlayer;
 
 import java.awt.*;
 
