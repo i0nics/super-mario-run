@@ -16,12 +16,12 @@ import com.supermariorun.soundeffects.AudioPlayer;
 
 import java.awt.*;
 
-public class mainSMR extends GraphicsApplication{
+public class mainSMR extends GraphicsApplication implements ActionListener{
 	public static final String MUSIC_FOLDER = "sounds";
 	private static final String START_TRACK = "startTrack.mp3";
 	private StartPane startPane;
 	private MenuPane menu;
-	private int count;
+
 
     protected static final int FONT_SIZE = 18;
 	public static final int WINDOW_HEIGHT = 1000;
@@ -44,7 +44,7 @@ public class mainSMR extends GraphicsApplication{
 		switchToScreen(menu);
 	}
 
-
+	
 	private void playStartSound() {
 		AudioPlayer audio = AudioPlayer.getInstance();
 		audio.playSound(MUSIC_FOLDER, START_TRACK, true);
