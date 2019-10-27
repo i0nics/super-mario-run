@@ -11,6 +11,7 @@ import acm.program.*;
 import javax.swing.*;
 
 import com.supermariorun.panes.MenuPane;
+import com.supermariorun.panes.ShopPane;
 import com.supermariorun.panes.StartPane;
 import com.supermariorun.soundeffects.AudioPlayer;
 
@@ -21,6 +22,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private static final String START_TRACK = "startTrack.mp3";
 	private StartPane startPane;
 	private MenuPane menu;
+	private ShopPane shop;
 
 
     protected static final int FONT_SIZE = 18;
@@ -31,6 +33,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	public void run() {		
 		startPane = new StartPane(this);
 		menu = new MenuPane(this);
+		shop = new ShopPane(this);
 		switchToStart();
 	}
 	
@@ -44,6 +47,10 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		switchToScreen(menu);
 	}
 
+	public void switchToShop() {
+		playStartSound();
+		switchToScreen(shop);
+	}
 	
 	private void playStartSound() {
 		AudioPlayer audio = AudioPlayer.getInstance();
