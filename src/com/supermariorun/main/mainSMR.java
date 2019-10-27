@@ -10,9 +10,11 @@ import acm.program.*;
 
 import javax.swing.*;
 
+import com.supermariorun.panes.InstructionsPane;
 import com.supermariorun.panes.MenuPane;
 import com.supermariorun.panes.ShopPane;
 import com.supermariorun.panes.StartPane;
+import com.supermariorun.panes.TourPane;
 import com.supermariorun.soundeffects.AudioPlayer;
 
 import java.awt.*;
@@ -20,10 +22,12 @@ import java.awt.*;
 public class mainSMR extends GraphicsApplication implements ActionListener{
 	public static final String MUSIC_FOLDER = "sounds";
 	private static final String START_TRACK = "startTrack.mp3";
+	private static final String MENU_TRACK = "menuTrack.flac";
 	private StartPane startPane;
 	private MenuPane menu;
 	private ShopPane shop;
-
+	private InstructionsPane instruction;
+	private TourPane tour;
 
     protected static final int FONT_SIZE = 18;
 	public static final int WINDOW_HEIGHT = 1000;
@@ -34,6 +38,8 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		startPane = new StartPane(this);
 		menu = new MenuPane(this);
 		shop = new ShopPane(this);
+		instruction = new InstructionsPane(this);
+		tour = new TourPane(this);
 		switchToStart();
 	}
 	
@@ -48,15 +54,25 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	}
 
 	public void switchToShop() {
-		playStartSound();
+		playMenuSound();
 		switchToScreen(shop);
 	}
 	
+	public void switchToInstruct() {
+		switchToScreen(instruction);
+	}
+	public void switchToTour()
+	{
+		switchToScreen(tour);
+	}
 	private void playStartSound() {
 		AudioPlayer audio = AudioPlayer.getInstance();
 		audio.playSound(MUSIC_FOLDER, START_TRACK, true);
 	}
-	
+	private void playMenuSound() {
+		AudioPlayer audio = AudioPlayer.getInstance();
+		audio.playSound(MUSIC_FOLDER, MENU_TRACK,true);
+	}
 
 	
 	public void init() {
