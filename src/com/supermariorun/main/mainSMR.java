@@ -25,7 +25,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	public static final String MUSIC_FOLDER = "sounds";
 	private static final String START_TRACK = "startTrack.mp3";
 	private static final String SHOP_TRACK = "shopTrack.mp3";
-	AudioPlayer audio = AudioPlayer.getInstance();
+	
 	private StartPane startPane;
 	private MenuPane menu;
 	private ShopPane shop;
@@ -37,8 +37,9 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
     protected static final int FONT_SIZE = 18;
 	public static final int WINDOW_HEIGHT = 1000;
 	public static final int WINDOW_WIDTH = 1000;
+	AudioPlayer audio = AudioPlayer.getInstance();
 	
-  //c
+  
 	public void run() {		
 		startPane = new StartPane(this);
 		menu = new MenuPane(this);
@@ -81,18 +82,19 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		switchToScreen(character);
 	}
 	
-	private void playStartSound() {
+	public void playStartSound() {
 		audio.playSound(MUSIC_FOLDER, START_TRACK, true);
 	}
-	private void playShopSound() {
+	
+	public void playShopSound() {
 		audio.playSound(MUSIC_FOLDER, SHOP_TRACK, true);
 	}
 	
-	private void stopStartSound() {
+	public void stopStartSound() {
 		audio.stopSound(MUSIC_FOLDER, START_TRACK);
 	}
 	
-	private void stopShopSound() {
+	public void stopShopSound() {
 		audio.stopSound(MUSIC_FOLDER, SHOP_TRACK);
 	}
 

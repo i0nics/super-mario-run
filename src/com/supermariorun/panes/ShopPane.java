@@ -42,15 +42,20 @@ public class ShopPane extends GraphicsPane {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		
 		GObject obj = program.getElementAt(e.getX(), e.getY());
+		
 		if (obj == PowerUpButton) {
 			program.switchToPowerUp();
 		}
-		else if(obj == CharacterButton)
-		{
+		
+		else if(obj == CharacterButton) {
 			program.switchToCharacter();
 		}
+		
 		else {
+			program.stopShopSound();
+			program.playStartSound();
 			program.switchToMenu();
 		}
 	}
