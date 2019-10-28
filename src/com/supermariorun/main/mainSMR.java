@@ -24,7 +24,7 @@ import java.awt.*;
 public class mainSMR extends GraphicsApplication implements ActionListener{
 	public static final String MUSIC_FOLDER = "sounds";
 	private static final String START_TRACK = "startTrack.mp3";
-	private static final String MENU_TRACK = "menuTrack.flac";
+	private static final String MENU_TRACK = "menuTrack.mp3";
 	private StartPane startPane;
 	private MenuPane menu;
 	private ShopPane shop;
@@ -58,6 +58,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	}
 
 	public void switchToShop() {
+		playMenuSound();
 		switchToScreen(shop);
 	}
 	
@@ -78,6 +79,10 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private void playStartSound() {
 		AudioPlayer audio = AudioPlayer.getInstance();
 		audio.playSound(MUSIC_FOLDER, START_TRACK, true);
+	}
+	private void playMenuSound() {
+		AudioPlayer audio = AudioPlayer.getInstance();
+		audio.playSound(MUSIC_FOLDER, MENU_TRACK,true);
 	}
 
 	
