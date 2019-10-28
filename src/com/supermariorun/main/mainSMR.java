@@ -54,6 +54,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	}
 	
 	public void switchToMenu() {
+
 		switchToScreen(menu);
 	}
 
@@ -90,11 +91,11 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private void stopStartSound() {
 		audio.stopSound(MUSIC_FOLDER, START_TRACK);
 	}
+	
 	private void stopShopSound() {
 		audio.stopSound(MUSIC_FOLDER, SHOP_TRACK);
 	}
 
-	
 	public void init() {
 		
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
