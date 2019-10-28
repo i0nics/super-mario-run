@@ -12,30 +12,34 @@ import starter.GButton;
 public class TourPane extends GraphicsPane {
 	private mainSMR program; // you will use program to get access to
 										// all of the GraphicsProgram calls
-	private GButton InstructionButton;
-
+	private GButton TourButton;
+	private GButton backButton;
 	public TourPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;
-		InstructionButton = new GButton("Tour", 200, 200, 200, 200);
-		InstructionButton.setFillColor(Color.RED);
+		TourButton = new GButton("Tour", 200, 200, 200, 200);
+		TourButton.setFillColor(Color.RED);
+		backButton = new GButton("Back", 100, 100, 100, 100);
+		backButton.setFillColor(Color.GREEN);
 	}
 
 	@Override
 	public void showContents() {
-		program.add(InstructionButton);
+		program.add(TourButton);
+		program.add(backButton);
 	}
 
 	@Override
 	public void hideContents() {
-		program.remove(InstructionButton);
+		program.remove(TourButton);
+		program.remove(backButton);
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
-		if (obj == InstructionButton) {
-			
+		if (obj == backButton) {
+			program.switchToMenu();
 		}
 	}
 }
