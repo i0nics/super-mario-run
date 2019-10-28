@@ -24,7 +24,8 @@ import java.awt.*;
 public class mainSMR extends GraphicsApplication implements ActionListener{
 	public static final String MUSIC_FOLDER = "sounds";
 	private static final String START_TRACK = "startTrack.mp3";
-	private static final String MENU_TRACK = "menuTrack.mp3";
+	private static final String SHOP_TRACK = "shopTrack.mp3";
+	AudioPlayer audio = AudioPlayer.getInstance();
 	private StartPane startPane;
 	private MenuPane menu;
 	private ShopPane shop;
@@ -53,22 +54,24 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	}
 	
 	public void switchToMenu() {
-		playStartSound();
 		switchToScreen(menu);
 	}
 
 	public void switchToShop() {
-		playMenuSound();
+		stopStartSound();
+		playShopSound();
 		switchToScreen(shop);
 	}
 	
 	public void switchToInstruct() {
 		switchToScreen(instruction);
 	}
+	
 	public void switchToTour()
 	{
 		switchToScreen(tour);
 	}
+
 	public void switchToPowerUp() {
 		switchToScreen(powerUp);
 	}
@@ -76,13 +79,19 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	public void switchToCharacter() {
 		switchToScreen(character);
 	}
+	
 	private void playStartSound() {
-		AudioPlayer audio = AudioPlayer.getInstance();
 		audio.playSound(MUSIC_FOLDER, START_TRACK, true);
 	}
-	private void playMenuSound() {
-		AudioPlayer audio = AudioPlayer.getInstance();
-		audio.playSound(MUSIC_FOLDER, MENU_TRACK,true);
+	private void playShopSound() {
+		audio.playSound(MUSIC_FOLDER, SHOP_TRACK, true);
+	}
+	
+	private void stopStartSound() {
+		audio.stopSound(MUSIC_FOLDER, START_TRACK);
+	}
+	private void stopShopSound() {
+		audio.stopSound(MUSIC_FOLDER, SHOP_TRACK);
 	}
 
 	

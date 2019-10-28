@@ -13,12 +13,12 @@ import acm.graphics.GObject;
 import starter.GParagraph;
 
 public class StartPane extends GraphicsPane implements ActionListener {
-	private mainSMR program; // you will use program to get access to all of the GraphicsProgram calls
+	private mainSMR program; 
 	public static final String IMG_FOLDER = "startScreen/";
 	private GImage redStripes;
 	private GImage marioStart;
 	private GImage click;
-	private int count = 2;
+	private int count = 0;
 	public Timer timer;
 
 
@@ -64,7 +64,6 @@ public class StartPane extends GraphicsPane implements ActionListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		//para.setText("you need\nto click\non the eyes\nto go bagck");
 			program.switchToMenu();
 	}
 }

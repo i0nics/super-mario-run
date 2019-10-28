@@ -10,8 +10,7 @@ import acm.graphics.GObject;
 import starter.GButton;
 
 public class ShopPane extends GraphicsPane {
-	private mainSMR program; // you will use program to get access to
-										// all of the GraphicsProgram calls
+	private mainSMR program; 
 	private GButton PowerUpButton;
 	private GButton CharacterButton;
 	private GButton BackButton;
