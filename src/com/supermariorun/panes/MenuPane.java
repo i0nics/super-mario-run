@@ -32,11 +32,9 @@ public class MenuPane extends GraphicsPane {
 		TourBubble = new GImage(IMG_FOLDER + "TourBubble.png",180,400);
 		instrucPipe = new GImage(IMG_FOLDER + "pipe.png",575,500);
 		InstructBubble = new GImage(IMG_FOLDER + "instrucBubble.png",580,400);
-		menuBackground = new GImage(IMG_FOLDER + "menuBackground.png", 0, 0);
+		menuBackground = new GImage(IMG_FOLDER + "menuBack.jpg", 0, 0);
 		menuBackground.setSize(mainSMR.getWidth(), mainSMR.getHeight());
 		menuMario = new GImage(IMG_FOLDER + "menuMario.png",600,15);
-		
-		
 	}
 
 	@Override
@@ -49,7 +47,6 @@ public class MenuPane extends GraphicsPane {
 		program.add(TourBubble);
 		program.add(InstructBubble);
 		program.add(menuMario);
-		
 	}
 
 	@Override
