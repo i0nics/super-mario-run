@@ -16,10 +16,7 @@ public class InstructionsPane extends GraphicsPane {
 	//private GButton InstructionButton;
 	private GImage background;
 	private GImage InstructionsList;
-
 	private GButton BackButton;
-
-	private GButton backButton;
 
 
 	public InstructionsPane(mainSMR mainSMR) {
@@ -32,25 +29,15 @@ public class InstructionsPane extends GraphicsPane {
 		InstructionsList = new GImage("../media/Instructions.png", 200, 185);
 		BackButton = new GButton("Back", 100, 100, 100, 100);
 		BackButton.setFillColor(Color.GREEN);
-
-		//InstructionButton = new GButton("Instruction", 200, 200, 200, 200);
-		//InstructionButton.setFillColor(Color.RED);
-		background = new GImage("../media/Sky background.jpg", 0, 0);
-		InstructionsList = new GImage("../media/Instructions.png", 200, 200);
-		backButton = new GButton("Back", 100, 100, 100, 100);
-		backButton.setFillColor(Color.GREEN);
-
 	}
-
+	
 	@Override
 	public void showContents() {
 		program.add(background);
 		//program.add(InstructionButton);
 		program.add(InstructionsList);
-
 		program.add(BackButton);
 
-		program.add(backButton);
 
 	}
 
@@ -59,10 +46,8 @@ public class InstructionsPane extends GraphicsPane {
 		//program.remove(InstructionButton);
 		program.remove(InstructionsList);
 		program.remove(background);
-
 		program.remove(BackButton);
 
-		program.remove(backButton);
 
 	}
 
@@ -72,7 +57,7 @@ public class InstructionsPane extends GraphicsPane {
 
 		//if (obj == InstructionButton) {
 
-		if (obj == backButton) {
+		if (obj == BackButton) {
 
 			program.switchToMenu();
 		}
