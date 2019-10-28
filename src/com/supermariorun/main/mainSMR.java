@@ -33,12 +33,13 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private CharacterPane character;
 	private InstructionsPane instruction;
 	private TourPane tour;
-
+//g
     protected static final int FONT_SIZE = 18;
+    
 	public static final int WINDOW_HEIGHT = 650;
 	public static final int WINDOW_WIDTH = 1155;
-	AudioPlayer audio = AudioPlayer.getInstance();
-//d
+	public AudioPlayer audio = AudioPlayer.getInstance();
+
 	public void run() {		
 		startPane = new StartPane(this);
 		menu = new MenuPane(this);
