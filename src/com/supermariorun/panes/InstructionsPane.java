@@ -26,9 +26,10 @@ public class InstructionsPane extends GraphicsPane {
 		//InstructionButton = new GButton("Instruction", 200, 200, 200, 200);
 		//InstructionButton.setFillColor(Color.RED);
 		background = new GImage("../media/Sky background.jpg", 170, 270);
-		InstructionsList = new GImage("../media/Instructions.png", 200, 185);
+		InstructionsList = new GImage("../media/Instructions.png", 650, 350);
 		BackButton = new GButton("Back", 100, 100, 100, 100);
 		BackButton.setFillColor(Color.GREEN);
+		background.setSize(1500, 750);
 	}
 	
 	@Override
