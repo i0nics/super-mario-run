@@ -26,15 +26,16 @@ public class MenuPane extends GraphicsPane {
 	public MenuPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;
-		shopPipe = new GImage(IMG_FOLDER + "pipe.png", 380,500);
+		shopPipe = new GImage(IMG_FOLDER + "pipe.png",mainSMR.getWidth()/3, mainSMR.getHeight()/1.3);
 		ShopBubble = new GImage(IMG_FOLDER + "shopBubble.png",380,400);
 		tourPipe = new GImage(IMG_FOLDER + "pipe.png",175,500);
 		TourBubble = new GImage(IMG_FOLDER + "TourBubble.png",180,400);
-		instrucPipe = new GImage(IMG_FOLDER + "pipe.png",575,500);
+		instrucPipe = new GImage(IMG_FOLDER + "pipe.png",mainSMR.getWidth()/2,mainSMR.getHeight()/1.3);
 		InstructBubble = new GImage(IMG_FOLDER + "instrucBubble.png",580,400);
 		menuBackground = new GImage(IMG_FOLDER + "menuBack.jpg", 0, 0);
 		menuBackground.setSize(mainSMR.getWidth(), mainSMR.getHeight());
 		menuMario = new GImage(IMG_FOLDER + "menuMario.png",600,15);
+		
 	}
 
 	@Override
