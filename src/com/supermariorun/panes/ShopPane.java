@@ -18,11 +18,11 @@ public class ShopPane extends GraphicsPane {
 	public ShopPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;
-		PowerUpButton = new GButton("Power Up", 400, 500, 200, 200);
+		PowerUpButton = new GButton("Power Up", 500, 500, 200, 200);
 		PowerUpButton.setFillColor(Color.BLUE);
-		CharacterButton = new GButton("Character", 300, 500, 200, 200);
+		CharacterButton = new GButton("Character", 200, 500, 200, 200);
 		CharacterButton.setFillColor(Color.RED);
-		BackButton = new GButton("Back", 600, 600, 100, 100);
+		BackButton = new GButton("Back", 100, 100, 100, 100);
 		BackButton.setFillColor(Color.GREEN);
 	}
 
