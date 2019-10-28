@@ -16,6 +16,7 @@ public class InstructionsPane extends GraphicsPane {
 	private GButton InstructionButton;
 	private GImage background;
 	private GImage InstructionsList;
+	private GButton backButton;
 
 	public InstructionsPane(mainSMR mainSMR) {
 		super();
@@ -24,6 +25,8 @@ public class InstructionsPane extends GraphicsPane {
 		InstructionButton.setFillColor(Color.RED);
 		background = new GImage("../media/Sky background.jpg", 0, 0);
 		InstructionsList = new GImage("../media/Instructions.png", 200, 200);
+		backButton = new GButton("Back", 100, 100, 100, 100);
+		backButton.setFillColor(Color.GREEN);
 	}
 
 	@Override
@@ -31,6 +34,7 @@ public class InstructionsPane extends GraphicsPane {
 		program.add(background);
 		program.add(InstructionButton);
 		program.add(InstructionsList);
+		program.add(backButton);
 	}
 
 	@Override
@@ -38,13 +42,14 @@ public class InstructionsPane extends GraphicsPane {
 		program.remove(InstructionButton);
 		program.remove(InstructionsList);
 		program.remove(background);
+		program.remove(backButton);
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
-		if (obj == InstructionButton) {
-			
+		if (obj == backButton) {
+			program.switchToMenu();
 		}
 	}
 }
