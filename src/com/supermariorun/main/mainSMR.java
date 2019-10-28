@@ -12,6 +12,7 @@ import javax.swing.*;
 
 import com.supermariorun.panes.CharacterPane;
 import com.supermariorun.panes.InstructionsPane;
+import com.supermariorun.panes.InventoryPane;
 import com.supermariorun.panes.MenuPane;
 import com.supermariorun.panes.PowerUpPane;
 import com.supermariorun.panes.ShopPane;
@@ -27,13 +28,14 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private static final String SHOP_TRACK = "shopTrack.mp3";
 	
 	private StartPane startPane;
-	private MenuPane menu;
-	private ShopPane shop;
-	private PowerUpPane powerUp;
-	private CharacterPane character;
-	private InstructionsPane instruction;
-	private TourPane tour;
-//g
+	private MenuPane menuPane;
+	private ShopPane shopPane;
+	private PowerUpPane powerUpPane;
+	private CharacterPane characterPane;
+	private InstructionsPane instructionsPane;
+	private InventoryPane inventoryPane;
+	private TourPane tourPane;
+
     protected static final int FONT_SIZE = 18;
     
 	public static final int WINDOW_HEIGHT = 650;
@@ -42,10 +44,12 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 
 	public void run() {		
 		startPane = new StartPane(this);
-		menu = new MenuPane(this);
-		shop = new ShopPane(this);
-		instruction = new InstructionsPane(this);
-		tour = new TourPane(this);
+		menuPane = new MenuPane(this);
+		tourPane = new TourPane(this);
+		shopPane = new ShopPane(this);
+		powerUpPane = new PowerUpPane (this);
+		characterPane = new CharacterPane (this);
+		instructionsPane = new InstructionsPane(this);
 		switchToStart();
 	}
 	
@@ -56,30 +60,30 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	
 	public void switchToMenu() {
 
-		switchToScreen(menu);
+		switchToScreen(menuPane);
 	}
 
 	public void switchToShop() {
 		stopStartSound();
 		playShopSound();
-		switchToScreen(shop);
+		switchToScreen(shopPane);
 	}
 	
-	public void switchToInstruct() {
-		switchToScreen(instruction);
+	public void switchToInstructions() {
+		switchToScreen(instructionsPane);
 	}
 	
 	public void switchToTour()
 	{
-		switchToScreen(tour);
+		switchToScreen(tourPane);
 	}
 
 	public void switchToPowerUp() {
-		switchToScreen(powerUp);
+		switchToScreen(powerUpPane);
 	}
 
 	public void switchToCharacter() {
-		switchToScreen(character);
+		switchToScreen(characterPane);
 	}
 	
 	public void playStartSound() {

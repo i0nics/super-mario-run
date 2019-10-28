@@ -18,7 +18,6 @@ public class MenuPane extends GraphicsPane {
 	private GImage shopPipe;
 	private GImage tourPipe;
 	private GImage instrucPipe;
-	
 	private GImage ShopBubble;
 	private GImage TourBubble;
 	private GImage InstructBubble;
@@ -64,16 +63,18 @@ public class MenuPane extends GraphicsPane {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
+		
 		if (obj == ShopBubble ) {
 			program.switchToShop();
 		}
+		
 		else if(obj == InstructBubble)
 		{
-			program.switchToInstruct();
+			program.switchToInstructions();
 		}
+		
 		else if(obj == TourBubble){
 			program.switchToTour();
 		}
-		
 	}
 }

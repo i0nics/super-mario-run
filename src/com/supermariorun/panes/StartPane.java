@@ -27,7 +27,7 @@ public class StartPane extends GraphicsPane implements ActionListener {
 		timer = new Timer(600, this);
 		redStripes = new GImage(IMG_FOLDER + "redStripes.png",0, 0);
 		redStripes.setSize(mainSMR.getWidth(), mainSMR.getHeight());
-		marioStart = new GImage(IMG_FOLDER + "title.png", mainSMR.getWidth()/3.5, mainSMR.getHeight()/4);
+		marioStart = new GImage(IMG_FOLDER + "title.png", mainSMR.getWidth()/3.5, mainSMR.getHeight()/3.5);
 		click = new GImage(IMG_FOLDER + "click.png", 400, 600);
 		timer.start();
 	}
