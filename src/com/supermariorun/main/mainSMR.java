@@ -10,8 +10,10 @@ import acm.program.*;
 
 import javax.swing.*;
 
+import com.supermariorun.panes.CharacterPane;
 import com.supermariorun.panes.InstructionsPane;
 import com.supermariorun.panes.MenuPane;
+import com.supermariorun.panes.PowerUpPane;
 import com.supermariorun.panes.ShopPane;
 import com.supermariorun.panes.StartPane;
 import com.supermariorun.panes.TourPane;
@@ -26,6 +28,8 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private StartPane startPane;
 	private MenuPane menu;
 	private ShopPane shop;
+	private PowerUpPane powerUp;
+	private CharacterPane character;
 	private InstructionsPane instruction;
 	private TourPane tour;
 
@@ -65,6 +69,13 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	{
 		switchToScreen(tour);
 	}
+	public void switchToPowerUp() {
+		switchToScreen(powerUp);
+	}
+
+	public void switchToCharacter() {
+		switchToScreen(character);
+	}
 	private void playStartSound() {
 		AudioPlayer audio = AudioPlayer.getInstance();
 		audio.playSound(MUSIC_FOLDER, START_TRACK, true);
@@ -90,5 +101,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
         window.setForeground(Color.WHITE);*/
 
 	}
+
+
 	
 }

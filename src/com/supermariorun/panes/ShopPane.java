@@ -12,30 +12,47 @@ import starter.GButton;
 public class ShopPane extends GraphicsPane {
 	private mainSMR program; // you will use program to get access to
 										// all of the GraphicsProgram calls
-	private GButton ShopButton;
+	private GButton PowerUpButton;
+	private GButton CharacterButton;
+	private GButton BackButton;
 
 	public ShopPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;
-		ShopButton = new GButton("Shop", 200, 200, 200, 200);
-		ShopButton.setFillColor(Color.RED);
+		PowerUpButton = new GButton("Power Up", 400, 500, 200, 200);
+		PowerUpButton.setFillColor(Color.BLUE);
+		CharacterButton = new GButton("Character", 300, 500, 200, 200);
+		CharacterButton.setFillColor(Color.RED);
+		BackButton = new GButton("Back", 600, 600, 100, 100);
+		BackButton.setFillColor(Color.GREEN);
 	}
 
 	@Override
 	public void showContents() {
-		program.add(ShopButton);
+		program.add(PowerUpButton);
+		program.add(CharacterButton);
+		program.add(BackButton);
 	}
 
 	@Override
 	public void hideContents() {
-		program.remove(ShopButton);
+		program.remove(PowerUpButton);
+		program.remove(CharacterButton);
+		program.remove(BackButton);
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
-		if (obj == ShopButton) {
-			
+		if (obj == PowerUpButton) {
+			program.switchToPowerUp();
+		}
+		else if(obj == CharacterButton)
+		{
+			program.switchToCharacter();
+		}
+		else {
+			program.switchToMenu();
 		}
 	}
 }
