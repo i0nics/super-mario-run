@@ -10,10 +10,10 @@ import acm.graphics.GObject;
 import starter.GButton;
 
 public class TourPane extends GraphicsPane {
-	private mainSMR program; // you will use program to get access to
-										// all of the GraphicsProgram calls
+	private mainSMR program; 
 	private GButton TourButton;
 	private GButton backButton;
+	
 	public TourPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;

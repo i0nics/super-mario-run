@@ -35,8 +35,8 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private TourPane tour;
 
     protected static final int FONT_SIZE = 18;
-	public static final int WINDOW_HEIGHT = 1000;
-	public static final int WINDOW_WIDTH = 1000;
+	public static final int WINDOW_HEIGHT = 650;
+	public static final int WINDOW_WIDTH = 1155;
 	AudioPlayer audio = AudioPlayer.getInstance();
 	
   
