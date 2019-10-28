@@ -16,49 +16,66 @@ public class MenuPane extends GraphicsPane {
 	private GButton ShopButton;
 	private GButton TourButton;
 	private GButton InstructB;
-	private	GImage marioStart;
 	private GImage menuBackground;
 	private GImage menuMario;
 	private GImage shopPipe;
 	private GImage tourPipe;
 	private GImage instrucPipe;
 	
+	private GImage ShopBubble;
+	private GImage TourBubble;
+	private GImage InstructBubble;
 
 	public MenuPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;
-		tourPipe = new GImage(IMG_FOLDER + "pipe.png", 300,800);
-		ShopButton = new GButton("Shop", 400, 500, 100, 100);
+		shopPipe = new GImage(IMG_FOLDER + "pipe.png", 380,700);
+		ShopButton = new GButton("Shop", 400, 500, 90, 90);
 		ShopButton.setFillColor(Color.BLUE);
-		TourButton = new GButton("Tour", 200, 500, 100, 100);
+		ShopBubble = new GImage(IMG_FOLDER + "shopBubble.png",380,595);
+		TourButton = new GButton("Tour", 200, 500, 90, 90);
 		TourButton.setFillColor(Color.GREEN);
-		InstructB = new GButton("Instructions", 600, 500, 100, 100);
+		tourPipe = new GImage(IMG_FOLDER + "pipe.png",175,700);
+		TourBubble = new GImage(IMG_FOLDER + "TourBubble.png",180,595);
+		InstructB = new GButton("Instructions", 600, 500, 90, 90);
 		InstructB.setFillColor(Color.RED);
-	//	marioStart = new GImage(IMG_FOLDER + "title.png", 250, 55);
+		instrucPipe = new GImage(IMG_FOLDER + "pipe.png",575,700);
+		InstructBubble = new GImage(IMG_FOLDER + "instrucBubble.png",580,595);
 		menuBackground = new GImage(IMG_FOLDER + "menuBackground.png", 0, 0);
 		menuMario = new GImage(IMG_FOLDER + "menuMario.png",600,15);
+		
 		
 	}
 
 	@Override
 	public void showContents() {
+		program.add(shopPipe);
+		program.add(ShopBubble);
 		program.add(tourPipe);
+		program.add(instrucPipe);
 		program.add(menuBackground);
 		program.add(ShopButton);
 		program.add(TourButton);
+		program.add(TourBubble);
 		program.add(InstructB);
-		//program.add(marioStart);
+		program.add(InstructBubble);
 		program.add(menuMario);
+		
 	}
 
 	@Override
 	public void hideContents() {
 		program.remove(ShopButton);
+		program.remove(ShopBubble);
 		program.remove(TourButton);
+		program.remove(TourBubble);
 		program.remove(InstructB);
-	//	program.remove(marioStart);
 		program.remove(menuBackground);
 		program.remove(menuMario);
+		program.remove(tourPipe);
+		program.remove(shopPipe);
+		program.remove(instrucPipe);
+		program.remove(InstructBubble);
 	}
 
 	@Override
@@ -71,8 +88,9 @@ public class MenuPane extends GraphicsPane {
 		{
 			program.switchToInstruct();
 		}
-		else {
+		else if(obj == TourButton){
 			program.switchToTour();
 		}
+		
 	}
 }
