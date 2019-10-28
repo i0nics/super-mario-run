@@ -39,7 +39,6 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	public static final int WINDOW_WIDTH = 1155;
 	AudioPlayer audio = AudioPlayer.getInstance();
 	
-  
 	public void run() {		
 		startPane = new StartPane(this);
 		menu = new MenuPane(this);
