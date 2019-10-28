@@ -26,13 +26,14 @@ public class MenuPane extends GraphicsPane {
 	public MenuPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;
-		shopPipe = new GImage(IMG_FOLDER + "pipe.png", 380,700);
-		ShopBubble = new GImage(IMG_FOLDER + "shopBubble.png",380,595);
-		tourPipe = new GImage(IMG_FOLDER + "pipe.png",175,700);
-		TourBubble = new GImage(IMG_FOLDER + "TourBubble.png",180,595);
-		instrucPipe = new GImage(IMG_FOLDER + "pipe.png",575,700);
-		InstructBubble = new GImage(IMG_FOLDER + "instrucBubble.png",580,595);
+		shopPipe = new GImage(IMG_FOLDER + "pipe.png", 380,500);
+		ShopBubble = new GImage(IMG_FOLDER + "shopBubble.png",380,400);
+		tourPipe = new GImage(IMG_FOLDER + "pipe.png",175,500);
+		TourBubble = new GImage(IMG_FOLDER + "TourBubble.png",180,400);
+		instrucPipe = new GImage(IMG_FOLDER + "pipe.png",575,500);
+		InstructBubble = new GImage(IMG_FOLDER + "instrucBubble.png",580,400);
 		menuBackground = new GImage(IMG_FOLDER + "menuBackground.png", 0, 0);
+		menuBackground.setSize(mainSMR.getWidth(), mainSMR.getHeight());
 		menuMario = new GImage(IMG_FOLDER + "menuMario.png",600,15);
 		
 		
@@ -40,11 +41,11 @@ public class MenuPane extends GraphicsPane {
 
 	@Override
 	public void showContents() {
+		program.add(menuBackground);
 		program.add(shopPipe);
 		program.add(ShopBubble);
 		program.add(tourPipe);
 		program.add(instrucPipe);
-		program.add(menuBackground);
 		program.add(TourBubble);
 		program.add(InstructBubble);
 		program.add(menuMario);
