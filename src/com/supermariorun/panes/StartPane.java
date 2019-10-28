@@ -66,5 +66,6 @@ public class StartPane extends GraphicsPane implements ActionListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 			program.switchToMenu();
+			timer.stop();
 	}
 }
