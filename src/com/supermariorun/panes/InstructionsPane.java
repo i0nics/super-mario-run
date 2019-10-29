@@ -11,9 +11,7 @@ import acm.graphics.GObject;
 import starter.GButton;
 
 public class InstructionsPane extends GraphicsPane {
-	private mainSMR program; // you will use program to get access to
-										// all of the GraphicsProgram calls
-	//private GButton InstructionButton;
+	private mainSMR program; 
 	private GImage background;
 	private GImage InstructionsList;
 	private GButton BackButton;
@@ -25,10 +23,11 @@ public class InstructionsPane extends GraphicsPane {
 
 		//InstructionButton = new GButton("Instruction", 200, 200, 200, 200);
 		//InstructionButton.setFillColor(Color.RED);
-		background = new GImage("../media/Sky background.jpg", 170, 270);
-		InstructionsList = new GImage("../media/Instructions.png", 200, 185);
+		background = new GImage("../media/Sky background.jpg", 0, 0);
+		InstructionsList = new GImage("../media/Instructions.png", 300, 0);
 		BackButton = new GButton("Back", 100, 100, 100, 100);
 		BackButton.setFillColor(Color.GREEN);
+		background.setSize(mainSMR.getWidth(), mainSMR.getHeight());
 	}
 	
 	@Override
@@ -37,8 +36,6 @@ public class InstructionsPane extends GraphicsPane {
 		//program.add(InstructionButton);
 		program.add(InstructionsList);
 		program.add(BackButton);
-
-
 	}
 
 	@Override
@@ -47,8 +44,6 @@ public class InstructionsPane extends GraphicsPane {
 		program.remove(InstructionsList);
 		program.remove(background);
 		program.remove(BackButton);
-
-
 	}
 
 	@Override
@@ -57,7 +52,7 @@ public class InstructionsPane extends GraphicsPane {
 
 
 		if (obj == BackButton) {
-
+			program.playPipeSound();
 			program.switchToMenu();
 		}
 	}
