@@ -24,16 +24,20 @@ public class MenuPane extends GraphicsPane {
 	public MenuPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;
-		shopPipe = new GImage(IMG_FOLDER + "pipe.png",mainSMR.getWidth()/3, mainSMR.getHeight()/1.3);
-		shopPipe.setSize(mainSMR.getWidth()/7, mainSMR.getHeight()/3);
-		ShopBubble = new GImage(IMG_FOLDER + "shopBubble.png", mainSMR.getWidth()/2.9, mainSMR.getHeight()/1.625);
-		tourPipe = new GImage(IMG_FOLDER + "pipe.png",mainSMR.getWidth()/6.57, mainSMR.getHeight()/1.3);
+		tourPipe = new GImage(IMG_FOLDER + "gPipe.png",mainSMR.getWidth()/7, mainSMR.getHeight()/1.3);
+		TourBubble = new GImage(IMG_FOLDER + "TourBubble.png", mainSMR.getWidth()/7, mainSMR.getHeight()/1.625);
 		tourPipe.setSize(mainSMR.getWidth()/7, mainSMR.getHeight()/3);
-		TourBubble = new GImage(IMG_FOLDER + "TourBubble.png",mainSMR.getWidth()/6.388, mainSMR.getHeight()/1.625);
-		instrucPipe = new GImage(IMG_FOLDER + "pipe.png", mainSMR.getWidth()/2, mainSMR.getHeight()/1.3);
+		
+		shopPipe = new GImage(IMG_FOLDER + "pPipe.png",mainSMR.getWidth()/2.3, mainSMR.getHeight()/1.3);
+		ShopBubble = new GImage(IMG_FOLDER + "shopBubble.png", mainSMR.getWidth()/2.3, mainSMR.getHeight()/1.625);
+		shopPipe.setSize(mainSMR.getWidth()/7, mainSMR.getHeight()/3);
+		
+		instrucPipe = new GImage(IMG_FOLDER + "yPipe.png", mainSMR.getWidth()/1.4, mainSMR.getHeight()/1.3);
+		InstructBubble = new GImage(IMG_FOLDER + "instrucBubble.png", mainSMR.getWidth()/1.4, mainSMR.getHeight()/1.625);
 		instrucPipe.setSize(mainSMR.getWidth()/7, mainSMR.getHeight()/3);
-		InstructBubble = new GImage(IMG_FOLDER + "instrucBubble.png",mainSMR.getWidth()/1.98, mainSMR.getHeight()/1.625);
-		menuBackground = new GImage(IMG_FOLDER + "menuBack.jpg", 0, 0);
+		
+		
+		menuBackground = new GImage(IMG_FOLDER + "menuBack.png", 0, 0);
 		menuBackground.setSize(mainSMR.getWidth(), mainSMR.getHeight());
 	}
 
