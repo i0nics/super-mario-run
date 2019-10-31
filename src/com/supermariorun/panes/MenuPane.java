@@ -37,7 +37,7 @@ public class MenuPane extends GraphicsPane {
 		instrucPipe.setSize(mainSMR.getWidth()/7, mainSMR.getHeight()/3);
 		
 		
-		menuBackground = new GImage(IMG_FOLDER + "menuBack.png", 0, 0);
+		menuBackground = new GImage(IMG_FOLDER + "menuBackGround.gif", 0, 0);
 		menuBackground.setSize(mainSMR.getWidth(), mainSMR.getHeight());
 	}
 
