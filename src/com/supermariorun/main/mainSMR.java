@@ -74,6 +74,10 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		switchToScreen(instructionsPane);
 	}
 	
+	public void switchToInventory() {
+		switchToScreen(inventoryPane);
+	}
+	
 	public void switchToTour()
 	{
 		switchToScreen(tourPane);

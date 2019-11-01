@@ -60,6 +60,11 @@ public class ShopPane extends GraphicsPane {
 			program.switchToCharacter();
 		}
 		
+		if (obj == InventoryButton) {
+			program.playPipeSound();
+			program.switchToInventory();
+		}
+		
 		if (obj == BackButton) {
 			program.playPipeSound();
 			program.stopShopSound();
