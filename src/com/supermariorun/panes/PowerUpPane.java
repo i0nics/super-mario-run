@@ -23,7 +23,7 @@ public class PowerUpPane extends GraphicsPane {
 		BackButton.setFillColor(Color.GREEN);
 		MushroomButton = new GButton("Mushroom", 200, 500, 150, 100);
 		MushroomButton.setFillColor(Color.BLUE);
-		FlowerButton = new GButton("Fire Flower", 500, 500, 150, 100);
+		FlowerButton = new GButton("Flower", 500, 500, 150, 100);
 		FlowerButton.setFillColor(Color.RED);
 		StarButton = new GButton("Star", 800, 500, 150, 100);
 		StarButton.setFillColor(Color.YELLOW);
