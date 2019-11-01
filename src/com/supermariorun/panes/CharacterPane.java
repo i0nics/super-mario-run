@@ -10,7 +10,7 @@ import acm.graphics.GObject;
 import starter.GButton;
 
 public class CharacterPane extends GraphicsPane {
-	private mainSMR program; // you will use program to get access to
+	private mainSMR program; 
 	private GButton BackButton;	
 	
 	public CharacterPane(mainSMR mainSMR) {

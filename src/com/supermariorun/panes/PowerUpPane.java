@@ -11,24 +11,29 @@ import starter.GButton;
 
 public class PowerUpPane extends GraphicsPane {
 	private mainSMR program; 
-	private GButton BackButton;	
+	private GButton BackButton;
+	private GButton MushroomButton;
 	
 	public PowerUpPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;
 		BackButton = new GButton("Back", 100, 100, 80, 80);
 		BackButton.setFillColor(Color.GREEN);
+		MushroomButton = new GButton("Mushroom", 700, 500, 150, 100);
+		MushroomButton.setFillColor(Color.BLUE);
 	}
 	@Override
 	public void showContents() {
 		// TODO Auto-generated method stub
 		program.add(BackButton);
+		program.add(MushroomButton);
 	}
 
 	@Override
 	public void hideContents() {
 		// TODO Auto-generated method stub
 		program.remove(BackButton);
+		program.remove(MushroomButton);
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {
