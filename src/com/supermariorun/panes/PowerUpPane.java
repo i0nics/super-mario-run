@@ -21,6 +21,8 @@ public class PowerUpPane extends GraphicsPane {
 		program = mainSMR;
 		BackButton = new GButton("Back", 100, 100, 80, 80);
 		BackButton.setFillColor(Color.GREEN);
+
+		
 		MushroomButton = new GButton("Mushroom", 200, 500, 150, 100);
 		MushroomButton.setFillColor(Color.BLUE);
 		FlowerButton = new GButton("Flower", 500, 500, 150, 100);
