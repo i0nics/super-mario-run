@@ -14,6 +14,7 @@ public class PowerUpPane extends GraphicsPane {
 	private GButton BackButton;
 	private GButton MushroomButton;
 	private GButton StarButton;
+	private GButton FlowerButton;
 	
 	public PowerUpPane(mainSMR mainSMR) {
 		super();
@@ -22,13 +23,16 @@ public class PowerUpPane extends GraphicsPane {
 		BackButton.setFillColor(Color.GREEN);
 		MushroomButton = new GButton("Mushroom", 200, 500, 150, 100);
 		MushroomButton.setFillColor(Color.BLUE);
-		StarButton = new GButton("Star", 700, 500, 150, 100);
+		FlowerButton = new GButton("Fire Flower", 500, 500, 150, 100);
+		FlowerButton.setFillColor(Color.RED);
+		StarButton = new GButton("Star", 800, 500, 150, 100);
 		StarButton.setFillColor(Color.YELLOW);
 	}
 	@Override
 	public void showContents() {
 		program.add(BackButton);
 		program.add(MushroomButton);
+		program.add(FlowerButton);
 		program.add(StarButton);
 	}
 
@@ -36,6 +40,7 @@ public class PowerUpPane extends GraphicsPane {
 	public void hideContents() {
 		program.remove(BackButton);
 		program.remove(MushroomButton);
+		program.remove(FlowerButton);
 		program.remove(StarButton);
 	}
 	@Override
