@@ -14,6 +14,7 @@ public class ShopPane extends GraphicsPane {
 	private GButton PowerUpButton;
 	private GButton CharacterButton;
 	private GButton BackButton;
+	private GButton InventoryButton;
 
 	public ShopPane(mainSMR mainSMR) {
 		super();
@@ -24,6 +25,8 @@ public class ShopPane extends GraphicsPane {
 		CharacterButton.setFillColor(Color.RED);
 		BackButton = new GButton("Back", 100, 100, 80, 80);
 		BackButton.setFillColor(Color.GREEN);
+		InventoryButton = new GButton("Inventory", 800, 100, 100, 100);
+		InventoryButton.setFillColor(Color.YELLOW);
 	}
 
 	@Override
@@ -31,6 +34,7 @@ public class ShopPane extends GraphicsPane {
 		program.add(PowerUpButton);
 		program.add(CharacterButton);
 		program.add(BackButton);
+		program.add(InventoryButton);
 	}
 
 	@Override
@@ -38,6 +42,7 @@ public class ShopPane extends GraphicsPane {
 		program.remove(PowerUpButton);
 		program.remove(CharacterButton);
 		program.remove(BackButton);
+		program.remove(InventoryButton);
 	}
 
 	@Override
@@ -53,6 +58,11 @@ public class ShopPane extends GraphicsPane {
 		if (obj == CharacterButton) {
 			program.playPipeSound();
 			program.switchToCharacter();
+		}
+		
+		if (obj == InventoryButton) {
+			program.playPipeSound();
+			program.switchToInventory();
 		}
 		
 		if (obj == BackButton) {
