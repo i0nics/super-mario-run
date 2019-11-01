@@ -18,6 +18,7 @@ public class PowerUpPane extends GraphicsPane {
 		program = mainSMR;
 		BackButton = new GButton("Back", 100, 100, 80, 80);
 		BackButton.setFillColor(Color.GREEN);
+		
 	}
 	@Override
 	public void showContents() {
