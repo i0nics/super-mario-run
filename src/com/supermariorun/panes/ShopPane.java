@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
 
+import acm.graphics.GImage;
 import acm.graphics.GObject;
 import starter.GButton;
 
@@ -14,6 +15,7 @@ public class ShopPane extends GraphicsPane {
 	private GButton PowerUpButton;
 	private GButton CharacterButton;
 	private GButton BackButton;
+	private GImage BackPie;
 	private GButton InventoryButton;
 
 	public ShopPane(mainSMR mainSMR) {
