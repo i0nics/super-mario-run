@@ -12,6 +12,7 @@ import javax.swing.*;
 
 import com.supermariorun.panes.CharacterPane;
 import com.supermariorun.panes.InstructionsPane;
+import com.supermariorun.panes.InventoryPane;
 import com.supermariorun.panes.MenuPane;
 import com.supermariorun.panes.PowerUpPane;
 import com.supermariorun.panes.ShopPane;
@@ -24,27 +25,35 @@ import java.awt.*;
 public class mainSMR extends GraphicsApplication implements ActionListener{
 	public static final String MUSIC_FOLDER = "sounds";
 	private static final String START_TRACK = "startTrack.mp3";
+	private static final String MENU_TRACK = "menuTrack.mp3";
 	private static final String SHOP_TRACK = "shopTrack.mp3";
+	private static final String TOUR_TRACK = "tourTrack.mp3";
+	private static final String PIPE_EFFECT = "pipeEffect.wav";
 	
 	private StartPane startPane;
-	private MenuPane menu;
-	private ShopPane shop;
-	private PowerUpPane powerUp;
-	private CharacterPane character;
-	private InstructionsPane instruction;
-	private TourPane tour;
+	private MenuPane menuPane;
+	private ShopPane shopPane;
+	private PowerUpPane powerUpPane;
+	private CharacterPane characterPane;
+	private InstructionsPane instructionsPane;
+	private InventoryPane inventoryPane;
+	private TourPane tourPane;
 
     protected static final int FONT_SIZE = 18;
+    
+    public static final int WINDOW_WIDTH = 1155;
 	public static final int WINDOW_HEIGHT = 650;
-	public static final int WINDOW_WIDTH = 1155;
-	AudioPlayer audio = AudioPlayer.getInstance();
+	public AudioPlayer audio = AudioPlayer.getInstance();
 
 	public void run() {		
 		startPane = new StartPane(this);
-		menu = new MenuPane(this);
-		shop = new ShopPane(this);
-		instruction = new InstructionsPane(this);
-		tour = new TourPane(this);
+		menuPane = new MenuPane(this);
+		tourPane = new TourPane(this);
+		shopPane = new ShopPane(this);
+		powerUpPane = new PowerUpPane (this);
+		characterPane = new CharacterPane (this);
+		instructionsPane = new InstructionsPane(this);
+		inventoryPane = new InventoryPane(this);
 		switchToStart();
 	}
 	
@@ -54,65 +63,68 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	}
 	
 	public void switchToMenu() {
-
-		switchToScreen(menu);
+		switchToScreen(menuPane);
 	}
 
 	public void switchToShop() {
-		stopStartSound();
-		playShopSound();
-		switchToScreen(shop);
+		switchToScreen(shopPane);
 	}
 	
-	public void switchToInstruct() {
-		switchToScreen(instruction);
+	public void switchToInstructions() {
+		switchToScreen(instructionsPane);
 	}
 	
 	public void switchToTour()
 	{
-		switchToScreen(tour);
+		switchToScreen(tourPane);
 	}
 
 	public void switchToPowerUp() {
-		switchToScreen(powerUp);
+		switchToScreen(powerUpPane);
 	}
 
 	public void switchToCharacter() {
-		switchToScreen(character);
+		switchToScreen(characterPane);
 	}
 	
 	public void playStartSound() {
 		audio.playSound(MUSIC_FOLDER, START_TRACK, true);
 	}
 	
-	public void playShopSound() {
-		audio.playSound(MUSIC_FOLDER, SHOP_TRACK, true);
-	}
-	
 	public void stopStartSound() {
 		audio.stopSound(MUSIC_FOLDER, START_TRACK);
+	}
+	
+	public void playMenuSound() {
+		audio.playSound(MUSIC_FOLDER, MENU_TRACK, true);
+	}
+	
+	public void stopMenuSound() {
+		audio.stopSound(MUSIC_FOLDER, MENU_TRACK);
+	}
+	
+	public void playShopSound() {
+		audio.playSound(MUSIC_FOLDER, SHOP_TRACK, true);
 	}
 	
 	public void stopShopSound() {
 		audio.stopSound(MUSIC_FOLDER, SHOP_TRACK);
 	}
-
+	
+	public void playTourSound() {
+		audio.playSound(MUSIC_FOLDER, TOUR_TRACK, true);
+	}
+	
+	public void stopTourSound() {
+		audio.stopSound(MUSIC_FOLDER, TOUR_TRACK);
+	}
+	
+	public void playPipeSound() {
+		audio.playSound(MUSIC_FOLDER, PIPE_EFFECT);
+	}
+	
 	public void init() {
-		
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		requestFocus();
-		/*screen = new ScreenManager();
-        DisplayMode displayMode =
-        screen.findFirstCompatibleMode(POSSIBLE_MODES);
-        screen.setFullScreen(displayMode);
-
-        Window window = screen.getFullScreenWindow();
-        window.setFont(new Font("Dialog", Font.PLAIN, FONT_SIZE));
-        window.setBackground(Color.BLACK);
-        window.setForeground(Color.WHITE);*/
-
-	}
-
-
-	
+	}	
 }

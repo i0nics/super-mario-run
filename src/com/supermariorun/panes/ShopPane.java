@@ -46,16 +46,19 @@ public class ShopPane extends GraphicsPane {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
 		if (obj == PowerUpButton) {
+			program.playPipeSound();
 			program.switchToPowerUp();
 		}
 		
-		else if(obj == CharacterButton) {
+		if (obj == CharacterButton) {
+			program.playPipeSound();
 			program.switchToCharacter();
 		}
 		
-		else {
+		if (obj == BackButton) {
+			program.playPipeSound();
 			program.stopShopSound();
-			program.playStartSound();
+			program.playMenuSound();
 			program.switchToMenu();
 		}
 	}

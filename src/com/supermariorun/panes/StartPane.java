@@ -17,55 +17,70 @@ public class StartPane extends GraphicsPane implements ActionListener {
 	public static final String IMG_FOLDER = "startScreen/";
 	private GImage redStripes;
 	private GImage marioStart;
-	private GImage click;
-	private int count = 0;
+	private GImage marioImg;
+	private GImage goombaImg;
+	private GImage lakituImg;
+	private GImage clickImg;
+	private int count = 1;
 	public Timer timer;
 
-
-	public StartPane(mainSMR mainSMR) {
-		this.program = mainSMR;
+	public StartPane(mainSMR main) {
+		this.program = main;
 		timer = new Timer(600, this);
 		redStripes = new GImage(IMG_FOLDER + "redStripes.png",0, 0);
-		redStripes.setSize(mainSMR.getWidth(), mainSMR.getHeight());
-		marioStart = new GImage(IMG_FOLDER + "title.png", mainSMR.getWidth()/4, mainSMR.getHeight()/4);
-		click = new GImage(IMG_FOLDER + "click.png", 350, 600);
+		marioImg = new GImage(IMG_FOLDER + "mario.png", 0, 10);
+		goombaImg = new GImage(IMG_FOLDER + "goomba.png", 140, 395);
+		lakituImg = new GImage(IMG_FOLDER + "lakitu.png", main.getWidth()/1.4, 0);
+		marioStart = new GImage(IMG_FOLDER + "title.png", main.getWidth()/3.36, main.getHeight()/7);
+		clickImg = new GImage(IMG_FOLDER + "click.png", main.getWidth()/2.9, main.getHeight() - 100);
+		redStripes.setSize(main.getWidth(), main.getHeight());
+		goombaImg.setSize(250, 250);
+		lakituImg.setSize(250, 250);
 		timer.start();
 	}
 
 	public void actionPerformed(ActionEvent evt){
 		if (count == 1) {
-			program.add(click);
+		   program.add(clickImg);
 		}
 	
-		if(count == 2){
+		if (count == 2){
 		  timer.stop();
-		  program.remove(click);
+		  program.remove(clickImg);
 		  timer.restart();
 		  count = 1;
 	    }
 	   
-	   else {
+	    else {
 	        count++;
-	   }
+	    }
 	}
 
 	@Override
 	public void showContents() {
 		program.add(redStripes);
 		program.add(marioStart);
+		program.add(marioImg);
+		program.add(goombaImg);
+		program.add(lakituImg);
 	}
 
 	@Override
 	public void hideContents() {
 		program.remove(redStripes);
 		program.remove(marioStart);
-		program.remove(click);
+		program.remove(clickImg);
+		program.remove(marioImg);
+		program.remove(lakituImg);
 	}
 	
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-			program.switchToMenu();
-			timer.stop();
+		timer.stop();
+		program.audio.playSound("sounds", "letsgo.mp3");
+		program.stopStartSound();
+		program.playMenuSound();
+		program.switchToMenu();
 	}
 }
