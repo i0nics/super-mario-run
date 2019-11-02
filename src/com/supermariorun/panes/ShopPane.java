@@ -28,8 +28,8 @@ public class ShopPane extends GraphicsPane {
 		CharacterButton.setFillColor(Color.RED);
 		BackButton = new GButton("Back", 100, 100, 80, 80);
 		BackButton.setFillColor(Color.GREEN);
-		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png",mainSMR.getWidth()/7, mainSMR.getHeight()/1.3);
-		BackPipe.setSize(mainSMR.getWidth()/7, mainSMR.getHeight()/3);
+		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png",mainSMR.getWidth()/55, mainSMR.getHeight()/6.7);
+		BackPipe.setSize(mainSMR.getWidth()/14, mainSMR.getHeight()/8);
 		InventoryButton = new GButton("Inventory", 800, 100, 100, 100);
 		InventoryButton.setFillColor(Color.YELLOW);
 	}
