@@ -17,6 +17,7 @@ public class ShopPane extends GraphicsPane {
 	private GButton CharacterButton;
 	private GButton BackButton;
 	private GImage BackPipe;
+	private GImage background;
 	private GButton InventoryButton;
 
 	public ShopPane(mainSMR mainSMR) {
@@ -30,12 +31,15 @@ public class ShopPane extends GraphicsPane {
 		BackButton.setFillColor(Color.GREEN);
 		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png",mainSMR.getWidth()/55, mainSMR.getHeight()/6.7);
 		BackPipe.setSize(mainSMR.getWidth()/14, mainSMR.getHeight()/8);
+		background = new GImage("../media/shop background.png", 0, 0);
+		background.setSize(mainSMR.getWidth(), mainSMR.getHeight());
 		InventoryButton = new GButton("Inventory", 800, 100, 100, 100);
 		InventoryButton.setFillColor(Color.YELLOW);
 	}
 
 	@Override
 	public void showContents() {
+		program.add(background);
 		program.add(PowerUpButton);
 		program.add(CharacterButton);
 		program.add(BackButton);
@@ -45,6 +49,7 @@ public class ShopPane extends GraphicsPane {
 
 	@Override
 	public void hideContents() {
+		program.remove(background);
 		program.remove(PowerUpButton);
 		program.remove(CharacterButton);
 		program.remove(BackButton);
