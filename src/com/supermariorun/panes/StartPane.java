@@ -48,12 +48,9 @@ public class StartPane extends GraphicsPane implements ActionListener {
 		  timer.stop();
 		  program.remove(clickImg);
 		  timer.restart();
-		  count = 1;
+		  count = 0;
 	    }
-	   
-	    else {
-	        count++;
-	    }
+	    count++;
 	}
 
 	@Override

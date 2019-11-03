@@ -1,29 +1,40 @@
 package com.supermariorun.panes;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+
+import javax.swing.Timer;
+
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
 import acm.graphics.GImage;
 import acm.graphics.GObject;
 
-public class MenuPane extends GraphicsPane {
+public class MenuPane extends GraphicsPane implements ActionListener {
 	private mainSMR program; 
 	public static final String IMG_FOLDER = "menuScreen/";
+	private static double BUBBLE_Y = 0;
 	private GImage menuBackground;
 	private GImage shopPipe;
 	private GImage tourPipe;
 	private GImage guidePipe;
-	private GImage shopBubble;
 	private GImage tourBubble;
+	private GImage shopBubble;
 	private GImage guideBubble;
 	private GImage tourLabel;
 	private GImage shopLabel;
 	private GImage guideLabel;
+	private int count = 1;
+	public Timer bubbleTimer;
+	
 
 	public MenuPane(mainSMR mainSMR) {
 		super();
-		final double mainWidth = mainSMR.getWidth();
-		final double mainHeight = mainSMR.getHeight();
+		this.program = mainSMR;
+		bubbleTimer = new Timer(500, this);
+		final double mainWidth = program.getWidth();
+		final double mainHeight = program.getHeight();
 		final double pipeHeight = mainHeight/3;
 		final double pipeWidth = mainWidth/8;
 		final double bubbleWidth = mainWidth/9;
@@ -33,8 +44,8 @@ public class MenuPane extends GraphicsPane {
 		final double labelY = mainHeight/1.6;
 		final double labelWidth = mainWidth/12;
 		final double labelHeight = mainHeight/12;
+		BUBBLE_Y = bubbleY;
 		
-		program = mainSMR;
 	
 		tourPipe = new GImage(IMG_FOLDER + "gPipe.png", mainWidth/7, pipeY);
 		tourPipe.setSize(pipeWidth, pipeHeight);
@@ -59,6 +70,7 @@ public class MenuPane extends GraphicsPane {
 		
 		menuBackground = new GImage(IMG_FOLDER + "menuBack.gif", 0, 0);
 		menuBackground.setSize(mainWidth, mainHeight);
+		bubbleTimer.start();
 	}
 
 	@Override
@@ -80,6 +92,7 @@ public class MenuPane extends GraphicsPane {
 	public void hideContents() {
 		program.remove(shopBubble);
 		program.remove(tourBubble);
+		program.remove(guideBubble);
 		program.remove(menuBackground);
 		program.remove(tourPipe);
 		program.remove(shopPipe);
@@ -94,23 +107,49 @@ public class MenuPane extends GraphicsPane {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
-		if (obj == shopBubble ) {
+		
+		if(obj == tourPipe || obj == tourBubble || obj == tourBubble) {
+			program.playPipeSound();
+			program.stopMenuSound();
+			program.playTourSound();
+			program.switchToTour();
+		}
+		
+		if (obj == shopPipe || obj == shopBubble || obj == shopLabel) {
 			program.stopMenuSound();
 			program.playPipeSound();
 			program.playShopSound();
 			program.switchToShop();
 		}
 
-		else if(obj == guidePipe) {
+		else if(obj == guidePipe || obj == guideBubble || obj == guidePipe) {
 			program.playPipeSound();
 			program.switchToInstructions();
 		}
 
-		else if(obj == tourBubble) {
-			program.playPipeSound();
-			program.stopMenuSound();
-			program.playTourSound();
-			program.switchToTour();
+	
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (count == 1) {
+			tourBubble.move(0, 10);
+			tourLabel.move(0, 10);
+			shopBubble.move(0, 10);
+			shopLabel.move(0, 10);
+			guideBubble.move(0, 10);
+			guideLabel.move(0, 10);
 		}
+		
+		if (count == 2) {
+			tourBubble.move(0, -10);
+			tourLabel.move(0, -10);
+			shopBubble.move(0, -10);
+			shopLabel.move(0, -10);
+			guideBubble.move(0, -10);
+			guideLabel.move(0, -10);
+			count = 0;
+		}
+		count++;
 	}
 }
