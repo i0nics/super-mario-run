@@ -46,8 +46,8 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 		numTimes = 0;
 		timerT.start();
 		timerT.setInitialDelay(1);
-		mario = new GImage("mario.gif",0,460);
-		mario.setSize(WINDOW_HEIGHT/10, WINDOW_WIDTH/30);
+		mario = new GImage("mario1.gif",0,460);
+		mario.setSize(WINDOW_HEIGHT/15, WINDOW_WIDTH/30);
 	}
 	
 	@Override
