@@ -10,25 +10,33 @@ import acm.graphics.GObject;
 import starter.GButton;
 
 public class CharacterPane extends GraphicsPane {
-	private mainSMR program; // you will use program to get access to
-	private GButton BackButton;	
+	private mainSMR program; 
+	private GButton BackButton;
+	private GButton LuigiButton;
+	private GButton PrincessButton;
 	
 	public CharacterPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;
 		BackButton = new GButton("Back", 100, 100, 80, 80);
 		BackButton.setFillColor(Color.GREEN);
+		PrincessButton = new GButton("Princess", 500, 500, 150, 100);
+		PrincessButton.setFillColor(Color.RED);
+		LuigiButton = new GButton("Luigi", 800, 500, 150, 100);
+		LuigiButton.setFillColor(Color.GREEN);
 	}
 	@Override
 	public void showContents() {
-		// TODO Auto-generated method stub
 		program.add(BackButton);
+		program.add(PrincessButton);
+		program.add(LuigiButton);
 	}
 
 	@Override
 	public void hideContents() {
-		// TODO Auto-generated method stub
 		program.remove(BackButton);
+		program.remove(PrincessButton);
+		program.remove(LuigiButton);
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {

@@ -6,14 +6,18 @@ import java.awt.event.MouseEvent;
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
 
+import acm.graphics.GImage;
 import acm.graphics.GObject;
 import starter.GButton;
 
 public class ShopPane extends GraphicsPane {
 	private mainSMR program; 
+	public static final String IMG_FOLDER = "menuScreen/";
 	private GButton PowerUpButton;
 	private GButton CharacterButton;
 	private GButton BackButton;
+	private GImage BackPipe;
+	private GButton InventoryButton;
 
 	public ShopPane(mainSMR mainSMR) {
 		super();
@@ -24,6 +28,10 @@ public class ShopPane extends GraphicsPane {
 		CharacterButton.setFillColor(Color.RED);
 		BackButton = new GButton("Back", 100, 100, 80, 80);
 		BackButton.setFillColor(Color.GREEN);
+		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png",mainSMR.getWidth()/55, mainSMR.getHeight()/6.7);
+		BackPipe.setSize(mainSMR.getWidth()/14, mainSMR.getHeight()/8);
+		InventoryButton = new GButton("Inventory", 800, 100, 100, 100);
+		InventoryButton.setFillColor(Color.YELLOW);
 	}
 
 	@Override
@@ -31,6 +39,8 @@ public class ShopPane extends GraphicsPane {
 		program.add(PowerUpButton);
 		program.add(CharacterButton);
 		program.add(BackButton);
+		program.add(BackPipe);
+		program.add(InventoryButton);
 	}
 
 	@Override
@@ -38,6 +48,8 @@ public class ShopPane extends GraphicsPane {
 		program.remove(PowerUpButton);
 		program.remove(CharacterButton);
 		program.remove(BackButton);
+		program.remove(BackPipe);
+		program.remove(InventoryButton);
 	}
 
 	@Override
@@ -53,6 +65,11 @@ public class ShopPane extends GraphicsPane {
 		if (obj == CharacterButton) {
 			program.playPipeSound();
 			program.switchToCharacter();
+		}
+		
+		if (obj == InventoryButton) {
+			program.playPipeSound();
+			program.switchToInventory();
 		}
 		
 		if (obj == BackButton) {

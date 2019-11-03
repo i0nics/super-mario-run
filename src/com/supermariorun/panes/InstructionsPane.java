@@ -33,10 +33,14 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 
 		//InstructionButton = new GButton("Instruction", 200, 200, 200, 200);
 		//InstructionButton.setFillColor(Color.RED);
+
 		background = new GImage("../media/Sky background.jpg", 0, 0);
-		InstructionsList = new GImage("../media/Instructions.png", 300, 0);
+		InstructionsList = new GImage("../media/Instructions.png", 300, 50);
 		BackButton = new GButton("Back", 100, 100, 100, 100);
 		BackButton.setFillColor(Color.GREEN);
+		background.setSize(1500, 750);
+		InstructionsList.setSize(750, 500);
+
 		background.setSize(mainSMR.getWidth(), mainSMR.getHeight());
 		timerT = new Timer(50,this);
 		numTimes = 0;

@@ -1,14 +1,10 @@
 package com.supermariorun.panes;
 
-import java.awt.Color;
 import java.awt.event.MouseEvent;
-
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
-
 import acm.graphics.GImage;
 import acm.graphics.GObject;
-import starter.GButton;
 
 public class MenuPane extends GraphicsPane {
 	private mainSMR program; 
@@ -36,8 +32,7 @@ public class MenuPane extends GraphicsPane {
 		InstructBubble = new GImage(IMG_FOLDER + "instrucBubble.png", mainSMR.getWidth()/1.4, mainSMR.getHeight()/1.625);
 		instrucPipe.setSize(mainSMR.getWidth()/7, mainSMR.getHeight()/3);
 		
-		
-		menuBackground = new GImage(IMG_FOLDER + "menuBackGround.gif", 0, 0);
+		menuBackground = new GImage(IMG_FOLDER + "MainMenu.gif", 0, 0);
 		menuBackground.setSize(mainSMR.getWidth(), mainSMR.getHeight());
 	}
 
