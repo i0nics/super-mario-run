@@ -1,7 +1,11 @@
 package com.supermariorun.panes;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+
+import javax.swing.Timer;
 
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
@@ -10,11 +14,17 @@ import acm.graphics.GImage;
 import acm.graphics.GObject;
 import starter.GButton;
 
-public class InstructionsPane extends GraphicsPane {
+public class InstructionsPane extends GraphicsPane implements ActionListener {
 	private mainSMR program; 
 	private GImage background;
 	private GImage InstructionsList;
 	private GButton BackButton;
+	public static final int WINDOW_WIDTH = 1155;
+	public static final int WINDOW_HEIGHT = 650;
+	public static final int MAX_STEPS = 100;
+	private GImage mario;
+	private int numTimes;
+	private Timer timerT;
 
 
 	public InstructionsPane(mainSMR mainSMR) {
@@ -28,11 +38,18 @@ public class InstructionsPane extends GraphicsPane {
 		BackButton = new GButton("Back", 100, 100, 100, 100);
 		BackButton.setFillColor(Color.GREEN);
 		background.setSize(mainSMR.getWidth(), mainSMR.getHeight());
+		timerT = new Timer(50,this);
+		numTimes = 0;
+		timerT.start();
+		timerT.setInitialDelay(1);
+		mario = new GImage("mario.gif",0,460);
+		mario.setSize(WINDOW_HEIGHT/10, WINDOW_WIDTH/30);
 	}
 	
 	@Override
 	public void showContents() {
 		program.add(background);
+		program.add(mario);
 		//program.add(InstructionButton);
 		program.add(InstructionsList);
 		program.add(BackButton);
@@ -42,6 +59,7 @@ public class InstructionsPane extends GraphicsPane {
 	public void hideContents() {
 		//program.remove(InstructionButton);
 		program.remove(InstructionsList);
+		program.remove(mario);
 		program.remove(background);
 		program.remove(BackButton);
 	}
@@ -55,5 +73,15 @@ public class InstructionsPane extends GraphicsPane {
 			program.playPipeSound();
 			program.switchToMenu();
 		}
+	}
+	public void actionPerformed(ActionEvent e)
+	{
+            mario.move(10, 0);
+            if(numTimes == 100)
+            {
+            	timerT.stop();
+            }
+            numTimes++;
+			
 	}
 }
