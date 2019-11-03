@@ -1,15 +1,5 @@
 package com.supermariorun.main;
-import java.awt.Color;
-import java.awt.GraphicsDevice;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import acm.graphics.*;
-import acm.program.*;
-
-import javax.swing.*;
-
 import com.supermariorun.panes.CharacterPane;
 import com.supermariorun.panes.InstructionsPane;
 import com.supermariorun.panes.InventoryPane;
@@ -19,8 +9,6 @@ import com.supermariorun.panes.ShopPane;
 import com.supermariorun.panes.StartPane;
 import com.supermariorun.panes.TourPane;
 import com.supermariorun.soundeffects.AudioPlayer;
-
-import java.awt.*;
 
 public class mainSMR extends GraphicsApplication implements ActionListener{
 	public static final String MUSIC_FOLDER = "sounds";
@@ -43,9 +31,10 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
     
     public static final int WINDOW_WIDTH = 1155;
 	public static final int WINDOW_HEIGHT = 650;
-	public AudioPlayer audio = AudioPlayer.getInstance();
+	public AudioPlayer audio;
 
-	public void run() {		
+	public void run() {	
+		audio = AudioPlayer.getInstance();
 		startPane = new StartPane(this);
 		menuPane = new MenuPane(this);
 		tourPane = new TourPane(this);

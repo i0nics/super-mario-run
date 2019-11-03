@@ -15,7 +15,7 @@ import acm.graphics.GObject;
 import starter.GButton;
 
 public class InstructionsPane extends GraphicsPane implements ActionListener {
-	private mainSMR program; 
+	private mainSMR program;
 	private GImage background;
 	private GImage InstructionsList;
 	private GButton BackButton;
@@ -26,13 +26,12 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 	private int numTimes;
 	private Timer timerT;
 
-
 	public InstructionsPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;
 
-		//InstructionButton = new GButton("Instruction", 200, 200, 200, 200);
-		//InstructionButton.setFillColor(Color.RED);
+		// InstructionButton = new GButton("Instruction", 200, 200, 200, 200);
+		// InstructionButton.setFillColor(Color.RED);
 
 		background = new GImage("../media/Sky background.jpg", 0, 0);
 		InstructionsList = new GImage("../media/Instructions.png", 300, 50);
@@ -42,26 +41,26 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 		InstructionsList.setSize(750, 500);
 
 		background.setSize(mainSMR.getWidth(), mainSMR.getHeight());
-		timerT = new Timer(50,this);
+		timerT = new Timer(50, this);
 		numTimes = 0;
 		timerT.start();
 		timerT.setInitialDelay(1);
-		mario = new GImage("mario1.gif",0,460);
-		mario.setSize(WINDOW_HEIGHT/15, WINDOW_WIDTH/30);
+		mario = new GImage("mario1.gif", 0, 460);
+		mario.setSize(WINDOW_HEIGHT / 15, WINDOW_WIDTH / 30);
 	}
-	
+
 	@Override
 	public void showContents() {
 		program.add(background);
 		program.add(mario);
-		//program.add(InstructionButton);
+		// program.add(InstructionButton);
 		program.add(InstructionsList);
 		program.add(BackButton);
 	}
 
 	@Override
 	public void hideContents() {
-		//program.remove(InstructionButton);
+		// program.remove(InstructionButton);
 		program.remove(InstructionsList);
 		program.remove(mario);
 		program.remove(background);
@@ -72,24 +71,17 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 
-
 		if (obj == BackButton) {
 			program.playPipeSound();
 			program.switchToMenu();
 		}
 	}
-	public void actionPerformed(ActionEvent e)
-	{
-            mario.move(10, 0);
-            if(numTimes == 120)
-            {
-            	timerT.stop();
-            	timerT.restart();
-            	numTimes = 0;
-            	mario.setLocation(0,460);
-            }
-            
-            numTimes++;
-           
+
+	public void actionPerformed(ActionEvent e) {
+		mario.move(10, 0);
+		if (numTimes == 100) {
+			timerT.stop();
+		}
+		numTimes++;
 	}
 }
