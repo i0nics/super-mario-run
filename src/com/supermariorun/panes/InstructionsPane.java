@@ -81,11 +81,15 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 	public void actionPerformed(ActionEvent e)
 	{
             mario.move(10, 0);
-            if(numTimes == 100)
+            if(numTimes == 120)
             {
             	timerT.stop();
+            	timerT.restart();
+            	numTimes = 0;
+            	mario.setLocation(0,460);
             }
+            
             numTimes++;
-			
+           
 	}
 }
