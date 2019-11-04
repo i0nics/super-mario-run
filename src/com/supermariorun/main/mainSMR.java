@@ -14,8 +14,9 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	public static final String MUSIC_FOLDER = "sounds";
 	private static final String START_TRACK = "startTrack.mp3";
 	private static final String MENU_TRACK = "menuTrack.mp3";
-	private static final String SHOP_TRACK = "shopTrack.mp3";
 	private static final String TOUR_TRACK = "tourTrack.mp3";
+	private static final String SHOP_TRACK = "shopTrack.mp3";
+	private static final String GUIDE_TRACK = "guideTrack.mp3";
 	private static final String PIPE_EFFECT = "pipeEffect.wav";
 	
 	private StartPane startPane;
@@ -96,6 +97,14 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		audio.stopSound(MUSIC_FOLDER, MENU_TRACK);
 	}
 	
+	public void playTourSound() {
+		audio.playSound(MUSIC_FOLDER, TOUR_TRACK, true);
+	}
+	
+	public void stopTourSound() {
+		audio.stopSound(MUSIC_FOLDER, TOUR_TRACK);
+	}
+	
 	public void playShopSound() {
 		audio.playSound(MUSIC_FOLDER, SHOP_TRACK, true);
 	}
@@ -104,12 +113,12 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		audio.stopSound(MUSIC_FOLDER, SHOP_TRACK);
 	}
 	
-	public void playTourSound() {
-		audio.playSound(MUSIC_FOLDER, TOUR_TRACK, true);
+	public void playGuideSound() {
+		audio.playSound(MUSIC_FOLDER, GUIDE_TRACK, true);
 	}
 	
-	public void stopTourSound() {
-		audio.stopSound(MUSIC_FOLDER, TOUR_TRACK);
+	public void stopGuideSound() {
+		audio.stopSound(MUSIC_FOLDER, GUIDE_TRACK);
 	}
 	
 	public void playPipeSound() {

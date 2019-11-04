@@ -47,7 +47,7 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 		backImg = new GImage(IMG_FOLDER + "redStripes.png", 0, 0);
 		backImg.setSize(mainWidth, mainHeight);
 		
-		InstructionsList = new GImage(IMG_FOLDER + "guideImg.png", 250, 50);	
+		InstructionsList = new GImage(IMG_FOLDER + "guideLabel.png", 290, 50);	
 		InstructionsList.setSize(750, 500);
 		
 		grassImg = new GImage(IMG_FOLDER + "grassStrip.png", 0, 570);
@@ -56,10 +56,10 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 		bubblePipe = new GImage(IMG_FOLDER + "gPipeR.png", -50, 50);
 		bubblePipe.setSize(pipeWidth, pipeHeight);
 		
-		backLabel = new GImage(IMG_FOLDER + "backLabel.png", 165, 80);
+		backLabel = new GImage(IMG_FOLDER + "backLabel.png", 177, 75);
 		backLabel.setSize(labelWidth, labelHeight);
 		
-		bubbleImg = new GImage(IMG_FOLDER + "bubble.png", 150, 40);
+		bubbleImg = new GImage(IMG_FOLDER + "bubble.png", 162, 35);
 		bubbleImg.setSize(bubbleWidth, bubbleHeight);
 		
 		mTimer = new Timer(50, this);
