@@ -6,12 +6,15 @@ import java.awt.event.MouseEvent;
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
 
+import acm.graphics.GImage;
 import acm.graphics.GObject;
 import starter.GButton;
 
 public class PowerUpPane extends GraphicsPane {
-	private mainSMR program; 
+	private mainSMR program;
+	public static final String IMG_FOLDER = "menuScreen/";
 	private GButton BackButton;
+	private GImage BackPipe;
 	private GButton MushroomButton;
 	private GButton StarButton;
 	private GButton FlowerButton;
@@ -21,7 +24,8 @@ public class PowerUpPane extends GraphicsPane {
 		program = mainSMR;
 		BackButton = new GButton("Back", 100, 100, 80, 80);
 		BackButton.setFillColor(Color.GREEN);
-
+		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png",mainSMR.getWidth()/55, mainSMR.getHeight()/6.7);
+		BackPipe.setSize(mainSMR.getWidth()/14, mainSMR.getHeight()/8);
 		
 		MushroomButton = new GButton("Mushroom", 200, 500, 150, 100);
 		MushroomButton.setFillColor(Color.BLUE);
@@ -33,6 +37,7 @@ public class PowerUpPane extends GraphicsPane {
 	@Override
 	public void showContents() {
 		program.add(BackButton);
+		program.add(BackPipe);
 		program.add(MushroomButton);
 		program.add(FlowerButton);
 		program.add(StarButton);
@@ -41,6 +46,7 @@ public class PowerUpPane extends GraphicsPane {
 	@Override
 	public void hideContents() {
 		program.remove(BackButton);
+		program.remove(BackPipe);
 		program.remove(MushroomButton);
 		program.remove(FlowerButton);
 		program.remove(StarButton);
