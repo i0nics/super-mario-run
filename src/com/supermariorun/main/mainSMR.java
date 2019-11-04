@@ -9,7 +9,7 @@ import com.supermariorun.panes.ShopPane;
 import com.supermariorun.panes.StartPane;
 import com.supermariorun.panes.TourPane;
 import com.supermariorun.soundeffects.AudioPlayer;
-//l
+
 public class mainSMR extends GraphicsApplication implements ActionListener{
 	public static final String MUSIC_FOLDER = "sounds";
 	private static final String START_TRACK = "startTrack.mp3";
