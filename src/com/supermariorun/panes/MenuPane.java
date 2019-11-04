@@ -126,8 +126,6 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 			program.playPipeSound();
 			program.switchToInstructions();
 		}
-
-	
 	}
 
 	@Override
