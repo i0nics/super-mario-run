@@ -13,6 +13,8 @@ import acm.graphics.GObject;
 
 public class MenuPane extends GraphicsPane implements ActionListener {
 	public static final String IMG_FOLDER = "menuScreen/";
+	public Timer bubbleTimer;
+	
 	private mainSMR program; 
 	private GImage menuBackground;
 	private GImage shopPipe;
@@ -25,9 +27,7 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 	private GImage shopLabel;
 	private GImage guideLabel;
 	private int count = 1;
-	public Timer bubbleTimer;
 	
-
 	public MenuPane(mainSMR mainSMR) {
 		super();
 		this.program = mainSMR;
@@ -100,12 +100,12 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		program.remove(guideLabel);
 	}
 	
-
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
 		if(obj == tourPipe || obj == tourBubble || obj == tourLabel) {
+			bubbleTimer.stop();
 			program.playPipeSound();
 			program.stopMenuSound();
 			program.playTourSound();
@@ -113,6 +113,7 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		}
 		
 		if (obj == shopPipe || obj == shopBubble || obj == shopLabel) {
+			bubbleTimer.stop();
 			program.stopMenuSound();
 			program.playPipeSound();
 			program.playShopSound();
@@ -120,6 +121,7 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		}
 
 		else if(obj == guidePipe || obj == guideBubble || obj == guideLabel) {
+			bubbleTimer.stop();
 			program.playPipeSound();
 			program.switchToInstructions();
 		}

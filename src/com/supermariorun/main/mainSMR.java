@@ -19,7 +19,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private static final String PIPE_EFFECT = "pipeEffect.wav";
 	
 	private StartPane startPane;
-	private MenuPane menuPane;
+	public MenuPane menuPane;
 	private ShopPane shopPane;
 	private PowerUpPane powerUpPane;
 	private CharacterPane characterPane;

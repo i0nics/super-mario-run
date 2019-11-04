@@ -43,6 +43,7 @@ public class TourPane extends GraphicsPane {
 			program.switchToTour();
 		}
 		if (obj == backButton) {
+			program.menuPane.bubbleTimer.start();
 			program.playPipeSound();
 			program.stopTourSound();
 			program.playMenuSound();

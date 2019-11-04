@@ -78,6 +78,7 @@ public class ShopPane extends GraphicsPane {
 		}
 		
 		if (obj == BackButton) {
+			program.menuPane.bubbleTimer.start();
 			program.playPipeSound();
 			program.stopShopSound();
 			program.playMenuSound();
