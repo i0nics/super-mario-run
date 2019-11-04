@@ -33,8 +33,8 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 	private int numTimes = 0;
     private int jumpCount = 0;
 	private boolean jumpState = false;
+	private boolean clickState = false;
 	private boolean jumpUpState = false;
-	private boolean jumpDownState = false;
 	public static int x = 0;
     public static int y = 0;
     public static int y2 = 0;
@@ -44,12 +44,7 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 	public static boolean isSpace;
 	public static boolean ypositive;
 	public static boolean ynegative;
-	
-	private float vDelta; // The vertical detla...
-    private float rbDelta; // Rebound delta...
-    private float rbDegDelta; // The amount the rebound is degradation...
-    private int yPos; // The vertical position...
-    private float gDelta; // Gravity, how much the vDelta will be reduced by over time..
+
 	
 	public InstructionsPane(mainSMR mainSMR) {
 		super();
@@ -123,39 +118,40 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 		}
 		
 		else {
-			marioRun.setImage(IMG_FOLDER + "marioJump.png");
-			marioRun.setSize(marioWidth, marioHeight);
-			jumpState = true;
+				marioRun.setImage(IMG_FOLDER + "marioJump.png");
+				marioRun.setSize(marioWidth, marioHeight);
+				program.playJumpSound();
+				jumpState = true;
+		
 		}
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		marioRun.move(10, 0);
+		
 		if (numTimes == 120) {
-			mTimer.stop();
-        	mTimer.restart();
         	numTimes = 0;
         	marioRun.setLocation(0, 500);
 		}
 		
+		if (count == 10) {
+			bubbleImg.move(0, 10);
+			backLabel.move(0, 10);
+		}
+		
+		if (count == 20) {
+			bubbleImg.move(0, -10);
+			backLabel.move(0, -10);
+			count = 0;
+		}
+		
 		if(jumpState == false) {
 			jumpCount = 0;
-			if (count == 10) {
-				bubbleImg.move(0, 10);
-				backLabel.move(0, 10);
-			}
-			
-			if (count == 20) {
-				bubbleImg.move(0, -10);
-				backLabel.move(0, -10);
-				count = 0;
-			}
 		}
 		
 		else {
 			jumpUpState = false;
-			jumpDownState = false;
 			
 			if (jumpCount >=  0 && jumpCount < 5) {
 				jumpUpState = true;
@@ -163,9 +159,8 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 			}
 			
 			if  (jumpCount >= 5 && jumpCount < JUMPint) {
-				jumpDownState = true;
+				//jumpUpState = false;
 				jumpCount++;
-				
 			}
 			
 			if (jumpUpState == true) {
@@ -177,12 +172,11 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 			}
 			
 			if (jumpCount == JUMPint) {
+				clickState = false;
 				jumpState = false;
+				marioRun.setImage(IMG_FOLDER + "mario1.gif");
+				marioRun.setSize(marioWidth, marioHeight);
 			}
-
-			marioRun.setImage(IMG_FOLDER + "mario1.gif");
-			marioRun.setSize(marioWidth, marioHeight);
-		
 		}
 		numTimes++;
 		count++;
