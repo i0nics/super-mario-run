@@ -120,11 +120,10 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 		}
 		
 		else {
-				marioRun.setImage(IMG_FOLDER + "marioJump.png");
-				marioRun.setSize(marioWidth, marioHeight);
-				program.playJumpSound();
-				jumpState = true;
-		
+			marioRun.setImage(IMG_FOLDER + "marioJump.png");
+			marioRun.setSize(marioWidth, marioHeight);
+		    program.playJumpSound();
+			jumpState = true;
 		}
 	}
 	
@@ -152,7 +151,8 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 			jumpCount = 0;
 		}
 		
-		else {
+		if (jumpState == true && clickState == true){
+			clickState = false;
 			jumpUpState = false;
 			
 			if (jumpCount >=  0 && jumpCount < 5) {
