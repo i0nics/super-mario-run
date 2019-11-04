@@ -69,6 +69,7 @@ public class StartPane extends GraphicsPane implements ActionListener {
 		program.remove(clickImg);
 		program.remove(marioImg);
 		program.remove(lakituImg);
+		program.remove(goombaImg);
 	}
 	
 

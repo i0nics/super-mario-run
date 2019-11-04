@@ -17,6 +17,8 @@ public class CharacterPane extends GraphicsPane {
 	private GImage BackPipe;
 	private GButton LuigiButton;
 	private GButton PrincessButton;
+	private GImage LuigiPic;
+	private GImage PrincessPic;
 	
 	public CharacterPane(mainSMR mainSMR) {
 		super();
@@ -29,6 +31,9 @@ public class CharacterPane extends GraphicsPane {
 		PrincessButton.setFillColor(Color.RED);
 		LuigiButton = new GButton("Luigi", 800, 500, 150, 100);
 		LuigiButton.setFillColor(Color.GREEN);
+		LuigiPic = new GImage("../media/Luigi.png", 775, 200 );
+		PrincessPic = new GImage("../media/Princess.png", 475, 200 );
+		PrincessPic.setSize(185, 275);
 	}
 	@Override
 	public void showContents() {
@@ -36,6 +41,8 @@ public class CharacterPane extends GraphicsPane {
 		program.add(BackPipe);
 		program.add(PrincessButton);
 		program.add(LuigiButton);
+		program.add(LuigiPic);
+		program.add(PrincessPic);
 	}
 
 	@Override
@@ -44,6 +51,8 @@ public class CharacterPane extends GraphicsPane {
 		program.remove(BackPipe);
 		program.remove(PrincessButton);
 		program.remove(LuigiButton);
+		program.remove(LuigiPic);
+		program.remove(PrincessPic);
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {
