@@ -56,9 +56,9 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		
 		shopPipe = new GImage(IMG_FOLDER + "pPipe.png", mainWidth/2.33, pipeY);
 		shopPipe.setSize(pipeWidth, pipeHeight);
-		shopBubble = new GImage(IMG_FOLDER + "bubble.png", mainWidth/2.283, bubbleY);
+		shopBubble = new GImage(IMG_FOLDER + "bubble.png", mainWidth/2.283, bubbleY + 10);
 		shopBubble.setSize(bubbleWidth, bubbleHeight);
-		shopLabel = new GImage(IMG_FOLDER + "shopLabel.png", mainWidth/2.21, labelY);
+		shopLabel = new GImage(IMG_FOLDER + "shopLabel.png", mainWidth/2.21, labelY + 10);
 		shopLabel.setSize(labelWidth, labelHeight);
 		
 		guidePipe = new GImage(IMG_FOLDER + "yPipe.png", mainWidth/1.4, pipeY);
@@ -108,7 +108,7 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
-		if(obj == tourPipe || obj == tourBubble || obj == tourBubble) {
+		if(obj == tourPipe || obj == tourBubble || obj == tourLabel) {
 			program.playPipeSound();
 			program.stopMenuSound();
 			program.playTourSound();
@@ -122,7 +122,7 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 			program.switchToShop();
 		}
 
-		else if(obj == guidePipe || obj == guideBubble || obj == guidePipe) {
+		else if(obj == guidePipe || obj == guideBubble || obj == guideLabel) {
 			program.playPipeSound();
 			program.switchToInstructions();
 		}
@@ -133,8 +133,8 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		if (count == 1) {
 			tourBubble.move(0, 10);
 			tourLabel.move(0, 10);
-			shopBubble.move(0, 10);
-			shopLabel.move(0, 10);
+			shopBubble.move(0, -10);
+			shopLabel.move(0, -10);
 			guideBubble.move(0, 10);
 			guideLabel.move(0, 10);
 		}
@@ -142,8 +142,8 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		if (count == 2) {
 			tourBubble.move(0, -10);
 			tourLabel.move(0, -10);
-			shopBubble.move(0, -10);
-			shopLabel.move(0, -10);
+			shopBubble.move(0, +10);
+			shopLabel.move(0, +10);
 			guideBubble.move(0, -10);
 			guideLabel.move(0, -10);
 			count = 0;
