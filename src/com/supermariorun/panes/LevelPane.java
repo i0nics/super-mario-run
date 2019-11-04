@@ -42,10 +42,10 @@ public class LevelPane extends GraphicsPane{
 		
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
-		//if (obj == TourButton) {
+		/*if (obj == TourButton) {
 		//	program.playPipeSound();
 		//	program.switchToLevel();
-		//}
+		}*/
 		
 		if (obj == BackButton) {
 			program.playPipeSound();
