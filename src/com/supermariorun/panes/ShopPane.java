@@ -36,7 +36,7 @@ public class ShopPane extends GraphicsPane {
 		background.setSize(mainSMR.getWidth(), mainSMR.getHeight());
 		InventoryButton = new GButton("Inventory", 800, 100, 100, 100);
 		InventoryButton.setFillColor(Color.YELLOW);
-		toad = new GImage(IMG_FOLDER + "tum.png",200,200);
+		toad = new GImage(IMG_FOLDER + "tum.png",200,100);
 		toad.setSize(mainSMR.getWidth()/2, mainSMR.getHeight()/1.5);
 	}
 
