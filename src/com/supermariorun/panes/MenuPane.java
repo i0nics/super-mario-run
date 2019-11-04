@@ -14,7 +14,6 @@ import acm.graphics.GObject;
 public class MenuPane extends GraphicsPane implements ActionListener {
 	private mainSMR program; 
 	public static final String IMG_FOLDER = "menuScreen/";
-	private static double BUBBLE_Y = 0;
 	private GImage menuBackground;
 	private GImage shopPipe;
 	private GImage tourPipe;
@@ -44,8 +43,6 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		final double labelY = mainHeight/1.6;
 		final double labelWidth = mainWidth/12;
 		final double labelHeight = mainHeight/12;
-		BUBBLE_Y = bubbleY;
-		
 	
 		tourPipe = new GImage(IMG_FOLDER + "gPipe.png", mainWidth/7, pipeY);
 		tourPipe.setSize(pipeWidth, pipeHeight);
