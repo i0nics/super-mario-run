@@ -19,6 +19,7 @@ public class ShopPane extends GraphicsPane {
 	private GImage BackPipe;
 	private GImage background;
 	private GButton InventoryButton;
+	private GImage toad;
 
 	public ShopPane(mainSMR mainSMR) {
 		super();
@@ -31,30 +32,34 @@ public class ShopPane extends GraphicsPane {
 		BackButton.setFillColor(Color.GREEN);
 		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png",mainSMR.getWidth()/55, mainSMR.getHeight()/6.7);
 		BackPipe.setSize(mainSMR.getWidth()/14, mainSMR.getHeight()/8);
-		//background = new GImage("../media/shop background.png", 0, 0);
-		//background.setSize(mainSMR.getWidth(), mainSMR.getHeight());
+		background = new GImage(IMG_FOLDER + "redStripes.png", 0, 0);
+		background.setSize(mainSMR.getWidth(), mainSMR.getHeight());
 		InventoryButton = new GButton("Inventory", 800, 100, 100, 100);
 		InventoryButton.setFillColor(Color.YELLOW);
+		toad = new GImage(IMG_FOLDER + "tum.png",200,200);
+		toad.setSize(mainSMR.getWidth()/2, mainSMR.getHeight()/1.5);
 	}
 
 	@Override
 	public void showContents() {
-		//program.add(background);
+		program.add(background);
 		program.add(PowerUpButton);
 		program.add(CharacterButton);
 		program.add(BackButton);
 		program.add(BackPipe);
 		program.add(InventoryButton);
+		program.add(toad);
 	}
 
 	@Override
 	public void hideContents() {
-		//program.remove(background);
+		program.remove(background);
 		program.remove(PowerUpButton);
 		program.remove(CharacterButton);
 		program.remove(BackButton);
 		program.remove(BackPipe);
 		program.remove(InventoryButton);
+		program.remove(toad);
 	}
 
 	@Override
