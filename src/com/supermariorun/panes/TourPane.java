@@ -76,6 +76,10 @@ public class TourPane extends GraphicsPane implements ActionListener {
 			program.playMenuSound();
 			program.switchToMenu();
 		}
+		//if (obj == TourButton) {
+		//	program.playPipeSound();
+		//	program.switchToLevel();
+		//}
 	}
 	public void actionPerformed(ActionEvent e) {
 		if (count == 1) {
