@@ -19,6 +19,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private static final String GUIDE_TRACK = "guideTrack.mp3";
 	private static final String PIPE_EFFECT = "pipeEffect.wav";
 	private static final String JUMP_EFFECT = "jump.wav";
+	private static final String LEVEL_EFFECT = "sm64_here_we_go.wav";
 	
 	private StartPane startPane;
 	public MenuPane menuPane;
@@ -128,6 +129,9 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	
 	public void playJumpSound() {
 		audio.playSound(MUSIC_FOLDER, JUMP_EFFECT);
+	}
+	public void playLevelSound() {
+		audio.playSound(MUSIC_FOLDER, LEVEL_EFFECT);
 	}
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
