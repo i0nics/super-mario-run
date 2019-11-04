@@ -15,13 +15,14 @@ import acm.graphics.GObject;
 import starter.GButton;
 
 public class InstructionsPane extends GraphicsPane implements ActionListener {
+	public static final String IMG_FOLDER = "guidePane/";
+	public static final int WINDOW_WIDTH = 1155;
+	public static final int WINDOW_HEIGHT = 650;
+	public static final int MAX_STEPS = 100;
 	private mainSMR program;
 	private GImage background;
 	private GImage InstructionsList;
 	private GButton BackButton;
-	public static final int WINDOW_WIDTH = 1155;
-	public static final int WINDOW_HEIGHT = 650;
-	public static final int MAX_STEPS = 100;
 	private GImage mario;
 	private int numTimes;
 	private Timer timerT;
@@ -29,12 +30,8 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 	public InstructionsPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;
-
-		// InstructionButton = new GButton("Instruction", 200, 200, 200, 200);
-		// InstructionButton.setFillColor(Color.RED);
-
-		background = new GImage("../media/Instructions Background.jpg", 0, 0);
-		InstructionsList = new GImage("../media/Instructions.png", 300, 50);
+		background = new GImage(IMG_FOLDER + "redStripes.png", 300, 50);
+		InstructionsList = new GImage(IMG_FOLDER + "redStripes.png", 300, 50);
 		BackButton = new GButton("Back", 100, 100, 100, 100);
 		BackButton.setFillColor(Color.GREEN);
 		background.setSize(1500, 750);
@@ -53,14 +50,12 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 	public void showContents() {
 		program.add(background);
 		program.add(mario);
-		// program.add(InstructionButton);
 		program.add(InstructionsList);
 		program.add(BackButton);
 	}
 
 	@Override
 	public void hideContents() {
-		// program.remove(InstructionButton);
 		program.remove(InstructionsList);
 		program.remove(mario);
 		program.remove(background);

@@ -12,8 +12,8 @@ import acm.graphics.GImage;
 import acm.graphics.GObject;
 
 public class MenuPane extends GraphicsPane implements ActionListener {
-	private mainSMR program; 
 	public static final String IMG_FOLDER = "menuScreen/";
+	private mainSMR program; 
 	private GImage menuBackground;
 	private GImage shopPipe;
 	private GImage tourPipe;
