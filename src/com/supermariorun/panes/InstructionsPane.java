@@ -29,10 +29,6 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 	public InstructionsPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;
-
-		// InstructionButton = new GButton("Instruction", 200, 200, 200, 200);
-		// InstructionButton.setFillColor(Color.RED);
-
 		background = new GImage("../media/Instructions Background.jpg", 0, 0);
 		InstructionsList = new GImage("../media/Instructions.png", 300, 50);
 		BackButton = new GButton("Back", 100, 100, 100, 100);
@@ -53,14 +49,12 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 	public void showContents() {
 		program.add(background);
 		program.add(mario);
-		// program.add(InstructionButton);
 		program.add(InstructionsList);
 		program.add(BackButton);
 	}
 
 	@Override
 	public void hideContents() {
-		// program.remove(InstructionButton);
 		program.remove(InstructionsList);
 		program.remove(mario);
 		program.remove(background);
