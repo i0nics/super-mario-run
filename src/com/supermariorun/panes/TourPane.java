@@ -1,53 +1,93 @@
 package com.supermariorun.panes;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+
+import javax.swing.Timer;
 
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
 
+import acm.graphics.GImage;
 import acm.graphics.GObject;
 import starter.GButton;
 
-public class TourPane extends GraphicsPane {
+public class TourPane extends GraphicsPane implements ActionListener {
 	private mainSMR program; 
-	private GButton TourButton;
-	private GButton backButton;
+	private GImage backLabel;
+	private GImage backBubble;
+	private GImage backPipe;
+	private GImage TBackground;
+	private int count = 1;
+	public Timer bTimer;
 	
 	public TourPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;
-		TourButton = new GButton("Tour", 200, 200, 200, 200);
-		TourButton.setFillColor(Color.RED);
-		backButton = new GButton("Back", 100, 100, 100, 100);
-		backButton.setFillColor(Color.GREEN);
+		bTimer = new Timer(500, this);
+		final double mainWidth = program.getWidth();
+		final double mainHeight = program.getHeight();
+		final double pipeWidth = mainWidth/6;
+		final double pipeHeight = mainHeight/6;
+		final double bubbleWidth = mainWidth/9;
+		final double bubbleHeight = mainHeight/5;
+		final double labelWidth = mainWidth/12;
+		final double labelHeight = mainHeight/12;
+		backPipe = new GImage("gPipeR.png", -50, 50);
+		backPipe.setSize(pipeWidth, pipeHeight);
+		
+		backLabel = new GImage("backLabel.png", 177, 75);
+		backLabel.setSize(labelWidth, labelHeight);
+		
+		backBubble = new GImage("bubble.png", 162, 35);
+		backBubble.setSize(bubbleWidth, bubbleHeight);
+		
+		TBackground = new GImage("tBackground.png",0,0);
+		TBackground.setSize(mainWidth, mainHeight);
+		bTimer.start();
 	}
 
 	@Override
 	public void showContents() {
-		program.add(TourButton);
-		program.add(backButton);
+		program.add(TBackground);
+		program.add(backLabel);
+		program.add(backBubble);
+		program.add(backPipe);
 	}
 
 	@Override
 	public void hideContents() {
-		program.remove(TourButton);
-		program.remove(backButton);
+		program.remove(TBackground);
+		program.remove(backLabel);
+		program.remove(backBubble);
+		program.remove(backPipe);
+		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
-		if (obj == TourButton) {
-			program.playPipeSound();
-			program.switchToTour();
-		}
-		if (obj == backButton) {
+		if (obj == backLabel || obj ==  backBubble || obj == backPipe) {
 			program.menuPane.bubbleTimer.start();
 			program.playPipeSound();
 			program.stopTourSound();
 			program.playMenuSound();
 			program.switchToMenu();
 		}
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (count == 1) {
+			backBubble.move(10, 0);
+			backLabel.move(10, 0);
+		}
+		
+		if (count == 2) {
+			backBubble.move(-10, 0);
+			backLabel.move(-10,0);
+			count = 0;
+		}
+		count++;
 	}
 }
