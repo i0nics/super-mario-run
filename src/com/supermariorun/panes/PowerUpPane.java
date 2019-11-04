@@ -27,8 +27,8 @@ public class PowerUpPane extends GraphicsPane {
 		program = mainSMR;
 		BackButton = new GButton("Back", 100, 100, 80, 80);
 		BackButton.setFillColor(Color.GREEN);
-		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png",mainSMR.getWidth()/55, mainSMR.getHeight()/6.7);
-		BackPipe.setSize(mainSMR.getWidth()/14, mainSMR.getHeight()/8);
+		//BackPipe = new GImage(IMG_FOLDER + "gPipeR.png",mainSMR.getWidth()/55, mainSMR.getHeight()/6.7);
+		//BackPipe.setSize(mainSMR.getWidth()/14, mainSMR.getHeight()/8);
 		MushroomButton = new GButton("Mushroom", 200, 500, 150, 100);
 		MushroomButton.setFillColor(Color.BLUE);
 		Mushroom = new GImage("../media/Power Ups/Mushroom.png",mainSMR.getWidth()/7, mainSMR.getHeight()/3);
@@ -42,7 +42,7 @@ public class PowerUpPane extends GraphicsPane {
 	@Override
 	public void showContents() {
 		program.add(BackButton);
-		program.add(BackPipe);
+		//program.add(BackPipe);
 		program.add(MushroomButton);
 		program.add(Mushroom);
 		program.add(FlowerButton);
@@ -54,7 +54,7 @@ public class PowerUpPane extends GraphicsPane {
 	@Override
 	public void hideContents() {
 		program.remove(BackButton);
-		program.remove(BackPipe);
+		//program.remove(BackPipe);
 		program.remove(MushroomButton);
 		program.remove(Mushroom);
 		program.remove(FlowerButton);
