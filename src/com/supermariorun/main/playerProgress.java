@@ -33,20 +33,40 @@ public class playerProgress {
 		return isPrincessUnlocked;
 	}
 	
-	public static void addCoin() {
+	public static void incrementCoins() {
 		numCoins++;
 	}
 	
-	public static void addNumSuperMushrooms() {
+	public static void incrementCoinsRush() {
+		numCoins =+ 2;
+	}
+	
+	public static void incrementNumSuperMushrooms() {
 		numSuperMushrooms++;
 	}
 	
-	public static void setNumSuperStars() {
+	public static void incrementNumSuperStars() {
 		numSuperStars++;
 	}
 	
-	public static void setNumCoinRush() {
+	public static void incrementNumCoinRush() {
 		numCoinRush++;
+	}
+	
+	public static void decreaseCoins (int coins) {
+		numCoins -= coins;
+	}
+	
+	public static void decrementSuperMushrooms() {
+		numSuperMushrooms--;
+	}
+	
+	public static void decrementNumSuperStars() {
+		numSuperStars--;
+	}
+	
+	public static void decrementNumCoinRush() {
+		numCoinRush--;
 	}
 	
 	public static void setLuigiUnlocked() {
