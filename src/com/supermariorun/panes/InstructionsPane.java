@@ -38,6 +38,10 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 	public static int x = 0;
     public static int y = 0;
     public static int y2 = 0;
+    final double mainWidth;
+	final double mainHeight;
+	double moveMarioX;
+	double moveMarioY;
 
 	public static boolean isLeft;
     public static boolean isRight;
@@ -49,8 +53,8 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 	public InstructionsPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;
-		final double mainWidth = program.getWidth();
-		final double mainHeight = program.getHeight();
+	    mainWidth = program.getWidth();
+		mainHeight = program.getHeight();
 		final double pipeWidth = mainWidth/6;
 		final double pipeHeight = mainHeight/6;
 		final double bubbleWidth = mainWidth/9;
@@ -124,6 +128,7 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 			marioRun.setSize(marioWidth, marioHeight);
 		    program.playJumpSound();
 			jumpState = true;
+			clickState = true;
 		}
 	}
 	
@@ -131,7 +136,7 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		marioRun.move(10, 0);
 		
-		if (numTimes == 120) {
+		if (marioRun.getX() >= mainWidth) {
         	numTimes = 0;
         	marioRun.setLocation(0, 500);
 		}
@@ -151,7 +156,7 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 			jumpCount = 0;
 		}
 		
-		if (jumpState == true && clickState == true){
+		if (jumpState == true ){
 			clickState = false;
 			jumpUpState = false;
 			
@@ -166,11 +171,11 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 			}
 			
 			if (jumpUpState == true) {
-				marioRun.move(10, -50);
+				marioRun.move(15, -15);
 			}
 			
 			if (jumpUpState == false) {
-				marioRun.move(10, 50);
+				marioRun.move(15, 15);
 			}
 			
 			if (jumpCount == JUMPint) {
@@ -182,6 +187,5 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 		}
 		numTimes++;
 		count++;
-		
 	}		
 }
