@@ -68,7 +68,6 @@ public class PowerUpPane extends GraphicsPane {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
 		if (obj == BackButton) {
-
 			program.switchToShop();
 		}
 	}

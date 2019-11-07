@@ -1,14 +1,26 @@
 package com.supermariorun.main;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Collection;
+
 public class playerProgress {
+	private mainSMR program;
 	private static int numCoins = 100;
 	private static int numSuperMushrooms = 0;
 	private static int numSuperStars = 0;
 	private static int numCoinRush = 0;
-	//private static ArrayList <boolean >level = false;
+	List<Boolean> levels = new ArrayList<Boolean>(4);
 	private static boolean isLuigiUnlocked = false;
 	private static boolean isPrincessUnlocked = false;
 	
+	public playerProgress(mainSMR mainSMR) {
+		
+		for (boolean iterate : levels) {
+			iterate = false;
+		}
+	}
 	public static int getNumCoins() {
 		return numCoins;
 	}
@@ -76,5 +88,4 @@ public class playerProgress {
 	public static void setPrincessUnlocked() {
 		playerProgress.isPrincessUnlocked = true;
 	}
-
 }

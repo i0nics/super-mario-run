@@ -29,6 +29,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private InstructionsPane instructionsPane;
 	private InventoryPane inventoryPane;
 	private TourPane tourPane;
+	private playerProgress progress;
 
     protected static final int FONT_SIZE = 18;
     
@@ -38,6 +39,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 
 	public void run() {	
 		audio = AudioPlayer.getInstance();
+		progress = new playerProgress (this);
 		startPane = new StartPane(this);
 		menuPane = new MenuPane(this);
 		tourPane = new TourPane(this);
