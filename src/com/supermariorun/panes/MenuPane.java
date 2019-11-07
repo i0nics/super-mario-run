@@ -122,6 +122,7 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 
 		else if(obj == guidePipe || obj == guideBubble || obj == guideLabel) {
 			bubbleTimer.stop();
+			program.guidePane.mTimer.start();
 			program.stopMenuSound();
 			program.playGuideSound();
 			program.playPipeSound();

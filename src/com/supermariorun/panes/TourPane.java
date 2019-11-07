@@ -20,10 +20,14 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private GImage backLabel;
 	private GImage backBubble;
 	private GImage backPipe;
-	private GImage TBackground;
+	private GImage tourBackground;
+	private GImage lvlOne;
+	private GImage lvlStrip;
 	private int count = 1;
 	public Timer bTimer;
+	
 	public TourPane(mainSMR mainSMR) {
+		
 		super();
 		program = mainSMR;
 		bTimer = new Timer(500, this);
@@ -35,35 +39,47 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		final double bubbleHeight = mainHeight/5;
 		final double labelWidth = mainWidth/12;
 		final double labelHeight = mainHeight/12;
-		backPipe = new GImage("gPipeR.png", -50, 500);
+		backPipe = new GImage("gPipeR.png", -50, 30);
 		backPipe.setSize(pipeWidth, pipeHeight);
 		
-		backLabel = new GImage("backLabel.png", 177, 520);
+		backLabel = new GImage("backLabel.png", 177, 60);
 		backLabel.setSize(labelWidth, labelHeight);
 		
-		backBubble = new GImage("bubble.png", 162, 480);
+		backBubble = new GImage("bubble.png", 162, 20);
 		backBubble.setSize(bubbleWidth, bubbleHeight);
 		
-		TBackground = new GImage(IMG_FOLDER + "tBackground.jpg",0,0);
-		TBackground.setSize(mainWidth, mainHeight);
+		tourBackground = new GImage(IMG_FOLDER + "tourBack.png", 0, 0);
+		tourBackground.setSize(mainWidth, mainHeight);
+		
+		lvlStrip = new GImage(IMG_FOLDER + "strip.png", 220 , 410);
+		lvlStrip.setSize(mainWidth - 350, 30);
+			
+		lvlOne = new GImage(IMG_FOLDER + "lvlOne.png", 170, 330);
+		lvlOne.setSize(mainWidth/6, mainHeight/4 + 20);
+		
+		
 		bTimer.start();
 	}
 
 	@Override
 	public void showContents() {
-		program.add(TBackground);
+		program.add(tourBackground);
 		program.add(backLabel);
 		program.add(backBubble);
 		program.add(backPipe);
+		program.add(lvlStrip);
+		program.add(lvlOne);
+		
 	}
 
 	@Override
 	public void hideContents() {
-		program.remove(TBackground);
+		program.remove(tourBackground);
 		program.remove(backLabel);
 		program.remove(backBubble);
 		program.remove(backPipe);
-		
+		program.remove(lvlStrip);
+		program.remove(lvlOne);
 	}
 
 	@Override
@@ -76,10 +92,6 @@ public class TourPane extends GraphicsPane implements ActionListener {
 			program.playMenuSound();
 			program.switchToMenu();
 		}
-		//if (obj == TourButton) {
-		//	program.playPipeSound();
-		//	program.switchToLevel();
-		//}
 	}
 	
 	

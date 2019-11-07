@@ -6,21 +6,21 @@ import java.util.List;
 import java.util.Collection;
 
 public class playerProgress {
-	private mainSMR program;
+	private static int lvl = 0;
 	private static int numCoins = 100;
 	private static int numSuperMushrooms = 0;
 	private static int numSuperStars = 0;
 	private static int numCoinRush = 0;
-	List<Boolean> levels = new ArrayList<Boolean>(4);
 	private static boolean isLuigiUnlocked = false;
 	private static boolean isPrincessUnlocked = false;
+	List<Boolean> levels = new ArrayList<Boolean>(3);
 	
-	public playerProgress(mainSMR mainSMR) {
-		
+	public playerProgress() {
 		for (boolean iterate : levels) {
 			iterate = false;
 		}
 	}
+	
 	public static int getNumCoins() {
 		return numCoins;
 	}
@@ -65,7 +65,7 @@ public class playerProgress {
 		numCoinRush++;
 	}
 	
-	public static void decreaseCoins (int coins) {
+	public static void decreaseCoins(int coins) {
 		numCoins -= coins;
 	}
 	
@@ -87,5 +87,14 @@ public class playerProgress {
 	
 	public static void setPrincessUnlocked() {
 		playerProgress.isPrincessUnlocked = true;
+	}
+	
+	public boolean isLvlUnlocked(int lvl) {
+		return levels.get(lvl);
+	}
+	
+	public void unlockLevel() {
+		levels.set(lvl, true);
+		lvl++;
 	}
 }
