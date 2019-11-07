@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-import java.sql.Array;
 
 import javax.swing.Timer;
 
@@ -24,7 +23,6 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private GImage TBackground;
 	private int count = 1;
 	public Timer bTimer;
-	public Array array[][];
 	public TourPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;
@@ -49,18 +47,6 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		TBackground = new GImage(IMG_FOLDER + "tBackground.jpg",0,0);
 		TBackground.setSize(mainWidth, mainHeight);
 		bTimer.start();
-		for(int y=0;y<16;y++){
-		    for(int x=0;x<999;x++){
-		        board[x][y] = "?";
-		    }
-		}
-		for (int r = 0; r<16;r++){
-		    String line = "";
-		    for (int c = 0; c <999;c++){
-		        line+="["+board[c][r]+"]";
-		    }
-		    System.out.println(line);
-		}
 	}
 
 	@Override
