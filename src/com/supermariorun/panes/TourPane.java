@@ -21,13 +21,16 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private GImage backBubble;
 	private GImage backPipe;
 	private GImage tourBackground;
-	private GImage lvlOne;
 	private GImage lvlStrip;
+	private GImage worldOne;
+	private GImage lockLvlTwo;
+	private GImage lockLvlThree;
+	private GImage lockLvlFour;
+	private GImage lvlOne;
 	private int count = 1;
 	public Timer bTimer;
 	
 	public TourPane(mainSMR mainSMR) {
-		
 		super();
 		program = mainSMR;
 		bTimer = new Timer(500, this);
@@ -39,6 +42,9 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		final double bubbleHeight = mainHeight/5;
 		final double labelWidth = mainWidth/12;
 		final double labelHeight = mainHeight/12;
+		final double qBlockWidth = mainWidth/7.2 - 20;
+		final double qBlockHeight = mainHeight/4.409;
+		
 		backPipe = new GImage("gPipeR.png", -50, 30);
 		backPipe.setSize(pipeWidth, pipeHeight);
 		
@@ -53,11 +59,22 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		
 		lvlStrip = new GImage(IMG_FOLDER + "strip.png", 220 , 410);
 		lvlStrip.setSize(mainWidth - 350, 30);
+		
+		worldOne = new GImage(IMG_FOLDER + "worldOne.png", 0, 350);
+	    worldOne.setSize(150, 150);
 			
-		lvlOne = new GImage(IMG_FOLDER + "lvlOne.png", 170, 330);
-		lvlOne.setSize(mainWidth/6, mainHeight/4 + 20);
-		
-		
+		lvlOne = new GImage(IMG_FOLDER + "lvlOne.png", 170, 325);
+		lvlOne.setSize(mainWidth/7 + 10, mainHeight/4.209 );
+	    
+	    lockLvlTwo = new GImage(IMG_FOLDER + "?Block.png", 430, 330);
+	    lockLvlTwo.setSize(qBlockWidth, qBlockHeight);
+	    
+	    lockLvlThree = new GImage(IMG_FOLDER + "?Block.png", 700, 330);
+	    lockLvlThree.setSize(qBlockWidth, qBlockHeight);
+	    
+	    lockLvlFour= new GImage(IMG_FOLDER + "?Block.png", 940, 330);
+	    lockLvlFour.setSize(qBlockWidth, qBlockHeight);
+	    
 		bTimer.start();
 	}
 
@@ -68,8 +85,11 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		program.add(backBubble);
 		program.add(backPipe);
 		program.add(lvlStrip);
+		program.add(worldOne);
 		program.add(lvlOne);
-		
+		program.add(lockLvlTwo);
+		program.add(lockLvlThree);
+		program.add(lockLvlFour);
 	}
 
 	@Override
@@ -79,7 +99,11 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		program.remove(backBubble);
 		program.remove(backPipe);
 		program.remove(lvlStrip);
+		program.remove(worldOne);
 		program.remove(lvlOne);
+		program.remove(lockLvlTwo);
+		program.remove(lockLvlThree);
+		program.remove(lockLvlFour);
 	}
 
 	@Override
