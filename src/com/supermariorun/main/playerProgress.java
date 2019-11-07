@@ -11,9 +11,9 @@ public class playerProgress {
 	private static int numSuperMushrooms = 0;
 	private static int numSuperStars = 0;
 	private static int numCoinRush = 0;
-	List<Boolean> levels = new ArrayList<Boolean>(3);
 	private static boolean isLuigiUnlocked = false;
 	private static boolean isPrincessUnlocked = false;
+	List<Boolean> levels = new ArrayList<Boolean>(3);
 	
 	public playerProgress() {
 		for (boolean iterate : levels) {
