@@ -44,7 +44,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		backBubble = new GImage("bubble.png", 162, 480);
 		backBubble.setSize(bubbleWidth, bubbleHeight);
 		
-		TBackground = new GImage(IMG_FOLDER + "tBackground.jpg",0,0);
+		TBackground = new GImage(IMG_FOLDER + "tourBack.png", 0, 0);
 		TBackground.setSize(mainWidth, mainHeight);
 		bTimer.start();
 	}

@@ -26,27 +26,26 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private ShopPane shopPane;
 	private PowerUpPane powerUpPane;
 	private CharacterPane characterPane;
-	private InstructionsPane instructionsPane;
+	public InstructionsPane guidePane;
 	private InventoryPane inventoryPane;
 	private TourPane tourPane;
 	private playerProgress progress;
 
     protected static final int FONT_SIZE = 18;
-    
     public static final int WINDOW_WIDTH = 1155;
 	public static final int WINDOW_HEIGHT = 650;
 	public AudioPlayer audio;
 
 	public void run() {	
 		audio = AudioPlayer.getInstance();
-		progress = new playerProgress (this);
+		progress = new playerProgress();
 		startPane = new StartPane(this);
 		menuPane = new MenuPane(this);
 		tourPane = new TourPane(this);
 		shopPane = new ShopPane(this);
 		powerUpPane = new PowerUpPane (this);
 		characterPane = new CharacterPane (this);
-		instructionsPane = new InstructionsPane(this);
+		guidePane = new InstructionsPane(this);
 		inventoryPane = new InventoryPane(this);
 		switchToStart();
 	}
@@ -65,7 +64,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	}
 	
 	public void switchToInstructions() {
-		switchToScreen(instructionsPane);
+		switchToScreen(guidePane);
 	}
 	
 	public void switchToInventory() {
@@ -140,5 +139,9 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		requestFocus();
-	}	
+	}
+
+	public playerProgress getProgress() {
+		return progress;
+	}
 }

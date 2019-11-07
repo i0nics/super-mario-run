@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Collection;
 
 public class playerProgress {
-	private mainSMR program;
 	private static int numCoins = 100;
 	private static int numSuperMushrooms = 0;
 	private static int numSuperStars = 0;
@@ -15,8 +14,8 @@ public class playerProgress {
 	private static boolean isLuigiUnlocked = false;
 	private static boolean isPrincessUnlocked = false;
 	
-	public playerProgress(mainSMR mainSMR) {
-		
+	public playerProgress() {
+
 		for (boolean iterate : levels) {
 			iterate = false;
 		}
@@ -65,7 +64,7 @@ public class playerProgress {
 		numCoinRush++;
 	}
 	
-	public static void decreaseCoins (int coins) {
+	public static void decreaseCoins(int coins) {
 		numCoins -= coins;
 	}
 	

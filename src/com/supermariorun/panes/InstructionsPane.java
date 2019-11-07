@@ -26,7 +26,7 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 	private GImage marioRun;
 	private GImage grassImg;
 	private GImage bubblePipe;
-	private Timer mTimer;
+	public Timer mTimer;
 	private double marioWidth;
 	private double marioHeight;
 	private int count = 1;
@@ -42,13 +42,6 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 	final double mainHeight;
 	double moveMarioX;
 	double moveMarioY;
-
-	public static boolean isLeft;
-    public static boolean isRight;
-	public static boolean isSpace;
-	public static boolean ypositive;
-	public static boolean ynegative;
-
 	
 	public InstructionsPane(mainSMR mainSMR) {
 		super();
@@ -86,7 +79,7 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 		bubbleImg.setSize(bubbleWidth, bubbleHeight);
 		
 		mTimer = new Timer(50, this);
-		mTimer.start();
+		mTimer.restart();
 	}
 	
 	@Override
@@ -119,6 +112,7 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 			program.playPipeSound();
 			program.stopGuideSound();
 			program.playMenuSound();
+			mTimer.stop();
 			program.menuPane.bubbleTimer.start();
 			program.switchToMenu();
 		}
