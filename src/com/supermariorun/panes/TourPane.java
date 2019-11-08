@@ -116,8 +116,14 @@ public class TourPane extends GraphicsPane implements ActionListener {
 			program.stopTourSound();
 			program.playMenuSound();
 			program.switchToMenu();
+			System.out.println("mouse presssed");
+		}else if(obj == lockLvlTwo)
+			{		
+				lockLvlTwo.move(10,0);
+				System.out.println("mouse presssed");
+			}
 		}
-	}
+	
 	
 	
 	public void actionPerformed(ActionEvent e) {
