@@ -27,6 +27,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private GImage lockLvlThree;
 	private GImage lockLvlFour;
 	private GImage lvlOne;
+	private double currX;
 	private int count = 1;
 	public Timer bTimer;
 	
