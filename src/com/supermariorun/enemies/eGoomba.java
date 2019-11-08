@@ -5,29 +5,29 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.Timer;
-
+import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
-
 import acm.graphics.GImage;
-import acm.graphics.GObject;
-import acm.graphics.GRect;
 import acm.program.GraphicsProgram;
 
 public class eGoomba extends GraphicsProgram implements ActionListener {
 	private mainSMR program;
-	final double mainWidth = program.getWidth();
-	final double mainHeight = program.getHeight();
+	double mainWidth ;
+	double mainHeight;
+	public static final String IMG_FOLDER = "enemies/";
 	private GImage goomba;
 	private GImage Pipe1;
 	private GImage Pipe2;
-	private GObject getObj;
 	private Timer timer;
 	private boolean moveRight;
+	private boolean isGoombaDead;
 
-
-	// private ArrayList<GImage> Pipe;
-	public void run() {
-		goomba = new GImage("media/goomba.png", 200, 500);
+	public void goomba(mainSMR mainSMR) {
+		program = mainSMR;
+		mainWidth = program.getWidth();
+		mainHeight = program.getHeight();
+		
+		goomba = new GImage(IMG_FOLDER + "goomba.png", 200, 500);
 		goomba.setSize(mainWidth/ 4, mainHeight/ 3);
 		timer = new Timer(30, this);
 		add(goomba);
@@ -70,6 +70,12 @@ public class eGoomba extends GraphicsProgram implements ActionListener {
 		
 		else {
 			goomba.move(-10, 0);
+		}
+	}
+	public void goombaDead() {
+		if(isGoombaDead = true)
+		{
+			
 		}
 	}
 
