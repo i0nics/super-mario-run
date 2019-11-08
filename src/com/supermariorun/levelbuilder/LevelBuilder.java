@@ -29,7 +29,7 @@ public class LevelBuilder {
 	}
 	
 	public ArrayList <LevelObject> getObjectsOnBoard() {
-		vehList = board.getVehiclesOnBoard();
+		vehList = board.getObjectOnBoard();
 		return vehList;
 	}
 	

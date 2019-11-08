@@ -35,7 +35,7 @@ public class Board {
 		return null;
 	}
 
-	public ArrayList <LevelObject> getObjectsOnBoard() {
+	public ArrayList <LevelObject> getObjectOnBoard() {
 		return lvlObjList;
 	}
 
