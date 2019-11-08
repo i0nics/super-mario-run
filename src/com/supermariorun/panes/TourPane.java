@@ -27,14 +27,16 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private GImage lockLvlThree;
 	private GImage lockLvlFour;
 	private GImage lvlOne;
-	private double currX;
+	private GObject wiggleObj;
+	private boolean isWiggle;
+	private int wCount = 1;
 	private int count = 1;
 	public Timer bTimer;
 	
 	public TourPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;
-		bTimer = new Timer(500, this);
+		bTimer = new Timer(100, this);
 		final double mainWidth = program.getWidth();
 		final double mainHeight = program.getHeight();
 		final double pipeWidth = mainWidth/6;
@@ -116,15 +118,16 @@ public class TourPane extends GraphicsPane implements ActionListener {
 			program.stopTourSound();
 			program.playMenuSound();
 			program.switchToMenu();
-			System.out.println("mouse presssed");
-		}else if(obj == lockLvlTwo)
-			{		
-				lockLvlTwo.move(10,0);
-				System.out.println("mouse presssed");
-			}
 		}
-	
-	
+		
+		if (isWiggle == false) {
+		if(obj == lockLvlTwo || obj == lockLvlThree || obj == lockLvlFour){	
+				wiggleObj = obj;
+				wiggleObj.move(10, 0);
+				isWiggle = true;
+		}
+		}
+	}
 	
 	public void actionPerformed(ActionEvent e) {
 		if (count == 1) {
@@ -132,11 +135,30 @@ public class TourPane extends GraphicsPane implements ActionListener {
 			backLabel.move(10, 0);
 		}
 		
-		if (count == 2) {
+		if (count == 6) {
 			backBubble.move(-10, 0);
 			backLabel.move(-10,0);
 			count = 0;
 		}
+		
+		if (isWiggle == true) {
+			if (wCount % 2 != 0) {
+				wiggleObj.move(-20, 0);
+			}
+			
+			else {
+				wiggleObj.move(20, 0);
+			}
+			wCount++;
+		}
+	
+		if (wCount == 6) {
+			wiggleObj.move(-10, 0);
+			wCount = 0;
+			isWiggle = false;
+		}
+		
+		
 		count++;
 	}
 }
