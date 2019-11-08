@@ -27,6 +27,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private GImage lockLvlThree;
 	private GImage lockLvlFour;
 	private GImage lvlOne;
+	private double currX;
 	private int count = 1;
 	public Timer bTimer;
 	
@@ -42,7 +43,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		final double bubbleHeight = mainHeight/5;
 		final double labelWidth = mainWidth/12;
 		final double labelHeight = mainHeight/12;
-		final double qBlockWidth = mainWidth/7.2 - 20;
+		final double qBlockWidth = mainWidth/7.2 - 10;
 		final double qBlockHeight = mainHeight/4.409;
 		
 		backPipe = new GImage("gPipeR.png", -50, 30);
@@ -63,16 +64,16 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		worldOne = new GImage(IMG_FOLDER + "worldOne.png", 0, 350);
 	    worldOne.setSize(150, 150);
 			
-		lvlOne = new GImage(IMG_FOLDER + "lvlOne.png", 170, 325);
+		lvlOne = new GImage(IMG_FOLDER + "lvlOne.png", 170, 345);
 		lvlOne.setSize(mainWidth/7 + 10, mainHeight/4.209 );
 	    
-	    lockLvlTwo = new GImage(IMG_FOLDER + "?Block.png", 430, 330);
+	    lockLvlTwo = new GImage(IMG_FOLDER + "?Block.png", 430, 350);
 	    lockLvlTwo.setSize(qBlockWidth, qBlockHeight);
 	    
-	    lockLvlThree = new GImage(IMG_FOLDER + "?Block.png", 700, 330);
+	    lockLvlThree = new GImage(IMG_FOLDER + "?Block.png", 670, 350);
 	    lockLvlThree.setSize(qBlockWidth, qBlockHeight);
 	    
-	    lockLvlFour= new GImage(IMG_FOLDER + "?Block.png", 940, 330);
+	    lockLvlFour= new GImage(IMG_FOLDER + "?Block.png", 910, 350);
 	    lockLvlFour.setSize(qBlockWidth, qBlockHeight);
 	    
 		bTimer.start();
