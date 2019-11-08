@@ -29,7 +29,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private GImage lvlOne;
 	private GObject wiggleObj;
 	private boolean isWiggle;
-	private int wCount = 1;
+	private int wCount = 0;
 	private int count = 1;
 	public Timer bTimer;
 	
@@ -120,12 +120,10 @@ public class TourPane extends GraphicsPane implements ActionListener {
 			program.switchToMenu();
 		}
 		
-		if (isWiggle == false) {
-		if(obj == lockLvlTwo || obj == lockLvlThree || obj == lockLvlFour){	
+		if(isWiggle == false && (obj == lockLvlTwo || obj == lockLvlThree || obj == lockLvlFour)){	
 				wiggleObj = obj;
 				wiggleObj.move(10, 0);
 				isWiggle = true;
-		}
 		}
 	}
 	
@@ -135,18 +133,18 @@ public class TourPane extends GraphicsPane implements ActionListener {
 			backLabel.move(10, 0);
 		}
 		
-		if (count == 6) {
+		if (count == 8) {
 			backBubble.move(-10, 0);
 			backLabel.move(-10,0);
 			count = 0;
 		}
 		
 		if (isWiggle == true) {
-			if (wCount % 2 != 0) {
+			if (wCount % 2 != 0) { //odd
 				wiggleObj.move(-20, 0);
 			}
 			
-			else {
+			else { //even
 				wiggleObj.move(20, 0);
 			}
 			wCount++;
