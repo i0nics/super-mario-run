@@ -27,7 +27,6 @@ public class Board {
 		return false;
 	}
 
-
 	public LevelObject getObject(Space s) {
 
 		if (grid[s.getRow()][s.getCol()] != null) {
@@ -36,7 +35,7 @@ public class Board {
 		return null;
 	}
 
-	public ArrayList <LevelObject> getVehiclesOnBoard() {
+	public ArrayList <LevelObject> getObjectsOnBoard() {
 		return lvlObjList;
 	}
 
