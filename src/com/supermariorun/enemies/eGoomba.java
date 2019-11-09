@@ -23,6 +23,7 @@ public class eGoomba extends GraphicsPane implements ActionListener {
 	private Timer timer;
 	private boolean moveRight;
 	private boolean isGoombaDead;
+	
 
 	public void goomba(mainSMR mainSMR) {
 		program = mainSMR;
