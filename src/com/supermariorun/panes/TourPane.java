@@ -69,13 +69,13 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		lvlOne = new GImage(IMG_FOLDER + "lvlOne.png", 170, 345);
 		lvlOne.setSize(mainWidth/7 + 10, mainHeight/4.209 );
 	    
-	    lockLvlTwo = new GImage(IMG_FOLDER + "?Block.png", 430, 350);
+	    lockLvlTwo = new GImage(IMG_FOLDER + "qBlock.png", 430, 350);
 	    lockLvlTwo.setSize(qBlockWidth, qBlockHeight);
 	    
-	    lockLvlThree = new GImage(IMG_FOLDER + "?Block.png", 670, 350);
+	    lockLvlThree = new GImage(IMG_FOLDER + "qBlock.png", 670, 350);
 	    lockLvlThree.setSize(qBlockWidth, qBlockHeight);
 	    
-	    lockLvlFour= new GImage(IMG_FOLDER + "?Block.png", 910, 350);
+	    lockLvlFour= new GImage(IMG_FOLDER + "qBlock.png", 910, 350);
 	    lockLvlFour.setSize(qBlockWidth, qBlockHeight);
 	    
 		bTimer.start();
