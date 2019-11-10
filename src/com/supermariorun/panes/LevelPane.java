@@ -56,6 +56,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public void Pause() {
 		program.stopLvlOneTrack();
 		timer.stop();
+		
 
 	}
 	
