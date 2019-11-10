@@ -8,7 +8,7 @@ public class cMario {
 	
 	
 	public cMario() {
-		Mario = new GImage (IMG_FOLDER + "stand.png", 50, 450);
+		Mario = new GImage (IMG_FOLDER + "stand.png", 50, 490);
 		//Mario.setSize(arg0, arg1);
 		
 	}

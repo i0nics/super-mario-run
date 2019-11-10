@@ -22,13 +22,6 @@ import starter.GButton;
 public class LevelPane extends GraphicsPane implements ActionListener{
 	private mainSMR program;
 	private GImage Background;
-	private ArrayList <GImage> Environment;
-	private ArrayList <GImage> GrassStrips;
-	private ArrayList <GImage> Blocks;
-	private ArrayList <GImage> qBlocks;
-	private cMario Mario;
-	private ILevel level;
-	private Timer timer;
 	private GImage pauseButton;
 	private GImage pauseBubble;
 	private GImage retryButton;
@@ -36,8 +29,15 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private GImage pausePane;
 	private GImage quitButton;
 	private GImage gBackground;
+	private ArrayList <GImage> Environment;
+	private ArrayList <GImage> GrassStrips;
+	private ArrayList <GImage> Blocks;
+	private ArrayList <GImage> qBlocks;
+	private cMario Mario;
+	private ILevel level;
+	private Timer timer;
 	private int spaceWidth = 1150/30;
-	private int spaceHeight = 650/17;
+	private int spaceHeight = 650/18;
 	public static final int MS = 90; //110
 	public static final String IMG_FOLDER = "LevelPane/";
 
@@ -68,8 +68,8 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		gBackground = new GImage(IMG_FOLDER + "pauseBack.png", 0, 0);
 		gBackground.setSize(mainWidth,mainHeight);
 		
-		resumeButton = new GImage(IMG_FOLDER + "continueButton.png", 465, 500);
-		resumeButton.setSize(150,100);
+		resumeButton = new GImage(IMG_FOLDER + "continueButton.png", 450, 500);
+		resumeButton.setSize(190,100);
 		
 		retryButton = new GImage(IMG_FOLDER + "retryButton.png", 415, 387);
 		retryButton.setSize(280, 50);
@@ -144,7 +144,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		for (GImage e: Environment) {
 			program.add(e);
 		}
-		//drawGridLines();
+		drawGridLines();
 	}
 
 	@Override
