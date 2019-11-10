@@ -53,7 +53,5 @@ public class LevelOne implements ILevel{
 		return Environment;
 	}
 
-	
-	
 
 }
