@@ -91,6 +91,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
+		Mario.jump();
 		
 	}
 
