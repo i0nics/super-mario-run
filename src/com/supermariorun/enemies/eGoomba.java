@@ -80,7 +80,6 @@ public class eGoomba extends GraphicsPane implements ActionListener {
 	public void goombaDead() {
 		if(isGoombaDead = true)
 		{
-			
 		}
 	}
 	@Override

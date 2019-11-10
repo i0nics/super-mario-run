@@ -132,7 +132,7 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 		
 		if (marioRun.getX() >= mainWidth) {
         	numTimes = 0;
-        	marioRun.setLocation(0, 500);
+        	marioRun.setLocation(-20, 500);
 		}
 		
 		if (count == 10) {
