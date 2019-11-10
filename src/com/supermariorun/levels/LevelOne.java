@@ -13,7 +13,7 @@ public class LevelOne implements ILevel{
 	private ArrayList <GImage> Blocks;
 	private ArrayList <GImage> qBlocks;
 	private ArrayList <GImage> Environment;
-	//private HashMap <String,  ArrayList <GImage>;
+	//private HashMap <String,  ArrayList <GImage>  ;
 	
 	public LevelOne() {
 		Environment = new ArrayList <GImage> ();
