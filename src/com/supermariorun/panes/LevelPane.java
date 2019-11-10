@@ -60,7 +60,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		quitButton.setSize(250,50);
 		gBackground = new GImage(IMG_FOLDER + "pauseBack.png",0,0);
 		gBackground.setSize(mainWidth,mainHeight);
-		resume = new GImage(IMG_FOLDER + "continueButton.png",450,600);
+		resume = new GImage(IMG_FOLDER + "continueButton.png",465,500);
 		resume.setSize(150,100);
 		DrawLevel();
 		
@@ -153,6 +153,14 @@ GObject obj = program.getElementAt(e.getX(), e.getY());
 		{
 			program.playTourSound();
 			program.switchToTour();
+		}
+		if(obj == resume)
+		{
+			Play();
+			program.remove(gBackground);
+			program.remove(pausePane);
+			program.remove(quitButton);
+			program.remove(resume);
 		}
 	}
 
