@@ -15,6 +15,7 @@ import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
 
 import acm.graphics.GImage;
+import acm.graphics.GLine;
 import acm.graphics.GObject;
 import starter.GButton;
 
@@ -46,6 +47,19 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		Background = level.getBackground();
 	}
 	
+	private void drawGridLines() {
+
+		/*for (int i = 1; i < 1000; i++) {
+			GLine line = new GLine(i * 64, 0, i * 64, program.HEIGHT);
+			program.add(line);
+		}
+
+		for (int i = 1; i < 18; i++) {
+			GLine line = new GLine(0, i * spaceHeight(), PROGRAM_WIDTH, i * spaceHeight());
+			program.add(line);
+		}*/
+	}
+	
 
 	public void Play() {
 		timer.start();
@@ -56,7 +70,6 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public void Pause() {
 		program.stopLvlOneTrack();
 		timer.stop();
-		
 
 	}
 	

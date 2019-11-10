@@ -9,6 +9,7 @@ public class cMario {
 	
 	public cMario() {
 		Mario = new GImage (IMG_FOLDER + "stand.png", 50, 400);
+		
 	}
 	
 	public void run() {
