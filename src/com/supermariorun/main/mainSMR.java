@@ -31,7 +31,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private InventoryPane inventoryPane;
 	private TourPane tourPane;
 	private playerProgress progress;
-	private LevelPane levelPane;
+	public LevelPane levelPane;
 
     protected static final int FONT_SIZE = 18;
     public static final int WINDOW_WIDTH = 1155;

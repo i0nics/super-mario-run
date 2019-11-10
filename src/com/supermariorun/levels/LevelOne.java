@@ -12,7 +12,6 @@ public class LevelOne implements ILevel{
 	public LevelOne() {
 		Background = new GImage (IMG_FOLDER + "Background.png", 0 ,0);
 		Pipes = new ArrayList <GImage> ();
-		Background.move(-100, 0);
 	
 	}
 	
