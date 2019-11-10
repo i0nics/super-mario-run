@@ -112,12 +112,19 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
+		
 		if (obj == backLabel || obj ==  backBubble || obj == backPipe) {
 			program.menuPane.bubbleTimer.start();
 			program.playPipeSound();
 			program.stopTourSound();
 			program.playMenuSound();
 			program.switchToMenu();
+		}
+		
+		if (obj == lvlOne) {
+			program.playPipeSound();
+			program.stopTourSound();
+			program.switchToLevel(1);
 		}
 		
 		if(isWiggle == false && (obj == lockLvlTwo || obj == lockLvlThree || obj == lockLvlFour)){	

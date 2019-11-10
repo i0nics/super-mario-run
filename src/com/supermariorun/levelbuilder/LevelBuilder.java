@@ -1,4 +1,4 @@
-	package com.supermariorun.levelbuilder;
+package com.supermariorun.levelbuilder;
 
 import java.util.ArrayList;
 

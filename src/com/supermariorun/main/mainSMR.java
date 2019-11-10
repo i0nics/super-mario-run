@@ -3,6 +3,7 @@ import java.awt.event.ActionListener;
 import com.supermariorun.panes.CharacterPane;
 import com.supermariorun.panes.InstructionsPane;
 import com.supermariorun.panes.InventoryPane;
+import com.supermariorun.panes.LevelPane;
 import com.supermariorun.panes.MenuPane;
 import com.supermariorun.panes.PowerUpPane;
 import com.supermariorun.panes.ShopPane;
@@ -19,7 +20,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private static final String GUIDE_TRACK = "guideTrack.mp3";
 	private static final String PIPE_EFFECT = "pipeEffect.wav";
 	private static final String JUMP_EFFECT = "jump.wav";
-	private static final String LEVEL_EFFECT = "sm64_here_we_go.wav";
+	private static final String LVL1_TRACK = "LevelOne.mp3";
 	
 	private StartPane startPane;
 	public MenuPane menuPane;
@@ -30,6 +31,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private InventoryPane inventoryPane;
 	private TourPane tourPane;
 	private playerProgress progress;
+	private LevelPane levelPane;
 
     protected static final int FONT_SIZE = 18;
     public static final int WINDOW_WIDTH = 1155;
@@ -58,6 +60,11 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	public void switchToMenu() {
 		switchToScreen(menuPane);
 	}
+	
+	public void switchToLevel(int levelNum) {
+		levelPane = new LevelPane (this, levelNum);
+		switchToScreen(levelPane);
+	}
 
 	public void switchToShop() {
 		switchToScreen(shopPane);
@@ -71,8 +78,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		switchToScreen(inventoryPane);
 	}
 	
-	public void switchToTour()
-	{
+	public void switchToTour() {
 		switchToScreen(tourPane);
 	}
 
@@ -132,8 +138,12 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		audio.playSound(MUSIC_FOLDER, JUMP_EFFECT);
 	}
 	
-	public void playLevelSound() {
-		audio.playSound(MUSIC_FOLDER, LEVEL_EFFECT);
+	public void playLvlOneTrack() {
+		audio.playSound(MUSIC_FOLDER, LVL1_TRACK, true);
+	}
+	
+	public void stopLvlOneTrack() {
+		audio.stopSound(MUSIC_FOLDER, LVL1_TRACK);
 	}
 	
 	public void init() {
