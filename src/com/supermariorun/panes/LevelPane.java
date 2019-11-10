@@ -62,6 +62,8 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		gBackground.setSize(mainWidth,mainHeight);
 		resume = new GImage(IMG_FOLDER + "continueButton.png",465,500);
 		resume.setSize(150,100);
+		retryButton = new GImage(IMG_FOLDER + "retryButton.png",415,387);
+		retryButton.setSize(280, 50);
 		DrawLevel();
 		
 	}
@@ -146,6 +148,7 @@ GObject obj = program.getElementAt(e.getX(), e.getY());
 			program.add(pausePane);	
 			program.add(quitButton);
 			program.add(resume);
+			program.add(retryButton);
 			
 		}
 		
@@ -161,6 +164,16 @@ GObject obj = program.getElementAt(e.getX(), e.getY());
 			program.remove(pausePane);
 			program.remove(quitButton);
 			program.remove(resume);
+			program.remove(retryButton);
+		}
+		if(obj == retryButton)
+		{
+			Reset();
+			program.remove(gBackground);
+			program.remove(pausePane);
+			program.remove(quitButton);
+			program.remove(resume);
+			program.remove(retryButton);
 		}
 	}
 
