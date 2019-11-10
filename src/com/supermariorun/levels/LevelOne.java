@@ -13,7 +13,6 @@ public class LevelOne implements ILevel{
 	private ArrayList <GImage> Blocks;
 	private ArrayList <GImage> qBlocks;
 	private ArrayList <GImage> Environment;
-	//private HashMap <String,  ArrayList <GImage>  ;
 	
 	public LevelOne() {
 		Environment = new ArrayList <GImage> ();
@@ -38,6 +37,7 @@ public class LevelOne implements ILevel{
 			Environment.add(a);
 		}
 	}
+	
 	@Override
 	public GImage getBackground() {
 		return Background;

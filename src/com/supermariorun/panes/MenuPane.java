@@ -14,7 +14,6 @@ import acm.graphics.GObject;
 public class MenuPane extends GraphicsPane implements ActionListener {
 	public static final String IMG_FOLDER = "menuScreen/";
 	public Timer bubbleTimer;
-	
 	private mainSMR program; 
 	private GImage menuBackground;
 	private GImage shopPipe;

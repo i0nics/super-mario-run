@@ -32,7 +32,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private GImage pauseButton;
 	private GImage pauseBubble;
 	private GImage retryButton;
-	private GImage resume;
+	private GImage resumeButton;
 	private GImage pausePane;
 	private GImage quitButton;
 	private GImage gBackground;
@@ -60,8 +60,8 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		quitButton.setSize(250,50);
 		gBackground = new GImage(IMG_FOLDER + "pauseBack.png",0,0);
 		gBackground.setSize(mainWidth,mainHeight);
-		resume = new GImage(IMG_FOLDER + "continueButton.png",465,500);
-		resume.setSize(150,100);
+		resumeButton = new GImage(IMG_FOLDER + "continueButton.png",465,500);
+		resumeButton.setSize(150,100);
 		retryButton = new GImage(IMG_FOLDER + "retryButton.png",415,387);
 		retryButton.setSize(280, 50);
 		DrawLevel();
@@ -88,17 +88,17 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 
 	public void Play() {
 		timer.start();
-		program.playLvlOneTrack();
 		moveEnvironment();
+		program.playLvlOneTrack();
 	}
 	
 	public void Pause() {
-		program.stopLvlOneTrack();
 		timer.stop();
-
+		program.playPauseSound();
+		program.pauseLvlOneTrack();
 	}
 	
-	public void Reset() {
+	public void Restart() {
 		timer.restart();
 		Background.setLocation(0, 0);
 	}
@@ -133,51 +133,45 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		program.remove(pauseButton);
 		program.remove(pauseBubble);
 		program.remove(quitButton);
-
 	}
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
 		Mario.jump();
-GObject obj = program.getElementAt(e.getX(), e.getY());
+		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
-		if(obj == pauseButton || obj == pauseBubble)
-		{
+		if(obj == pauseButton || obj == pauseBubble) {
 			Pause();
+			
 			program.add(gBackground);
 			program.add(pausePane);	
 			program.add(quitButton);
-			program.add(resume);
+			program.add(resumeButton);
 			program.add(retryButton);
-			
 		}
 		
-		if(obj == quitButton)
-		{
+		if(obj == resumeButton)	{
+			Play();
+			program.playResumeSound();
+			program.remove(gBackground);
+			program.remove(pausePane);
+			program.remove(quitButton);
+			program.remove(resumeButton);
+			program.remove(retryButton);
+		}
+		
+		if(obj == retryButton){
+			Restart();
+			program.remove(gBackground);
+			program.remove(pausePane);
+			program.remove(quitButton);
+			program.remove(resumeButton);
+			program.remove(retryButton);
+		}
+		
+		if(obj == quitButton)	{
 			program.playTourSound();
 			program.switchToTour();
 		}
-		if(obj == resume)
-		{
-			Play();
-			program.remove(gBackground);
-			program.remove(pausePane);
-			program.remove(quitButton);
-			program.remove(resume);
-			program.remove(retryButton);
-		}
-		if(obj == retryButton)
-		{
-			Reset();
-			program.remove(gBackground);
-			program.remove(pausePane);
-			program.remove(quitButton);
-			program.remove(resume);
-			program.remove(retryButton);
-		}
 	}
-
-		
-	}
-
-
+}
