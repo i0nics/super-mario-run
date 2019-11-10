@@ -45,13 +45,15 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public LevelPane(mainSMR mainSMR, int levelNum) {
 		super();
 		this.program = mainSMR;
+		
 		final double mainWidth = program.getWidth();
 		final double mainHeight = program.getHeight();
+		
 		program = mainSMR;
 		timer = new Timer (MS, this);
 		level = new LevelOne();
-		Environment = level.getEnvironment();
 		Mario = new cMario();
+		Environment = level.getEnvironment();
 		
 		pauseBubble = new GImage(IMG_FOLDER + "bubble.png",30, 10);
 		pauseBubble.setSize(100, 100);
@@ -157,7 +159,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
-		Mario.jump();
+		
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
 		if(obj == pauseButton || obj == pauseBubble) {
@@ -167,30 +169,36 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.add(quitButton);
 			program.add(resumeButton);
 			program.add(retryButton);
+			
+			if(obj == resumeButton)	{
+				Play();
+				program.playResumeSound();
+				program.remove(gBackground);
+				program.remove(pausePane);
+				program.remove(quitButton);
+				program.remove(resumeButton);
+				program.remove(retryButton);
+			}
+			
+			if(obj == retryButton){
+				Restart();
+				program.remove(gBackground);
+				program.remove(pausePane);
+				program.remove(quitButton);
+				program.remove(resumeButton);
+				program.remove(retryButton);
+			}
+			
+			if(obj == quitButton)	{
+				program.playTourSound();
+				program.switchToTour();
+			}
 		}
 		
-		if(obj == resumeButton)	{
-			Play();
-			program.playResumeSound();
-			program.remove(gBackground);
-			program.remove(pausePane);
-			program.remove(quitButton);
-			program.remove(resumeButton);
-			program.remove(retryButton);
+		else {
+			Mario.jump();
 		}
 		
-		if(obj == retryButton){
-			Restart();
-			program.remove(gBackground);
-			program.remove(pausePane);
-			program.remove(quitButton);
-			program.remove(resumeButton);
-			program.remove(retryButton);
-		}
 		
-		if(obj == quitButton)	{
-			program.playTourSound();
-			program.switchToTour();
-		}
 	}
 }

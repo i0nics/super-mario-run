@@ -21,8 +21,8 @@ public class LevelOne implements ILevel{
 		qBlocks = new ArrayList <GImage> ();
 		Pipes = new ArrayList <GImage> ();
 		Background = new GImage (IMG_FOLDER + "Background.png", 0, 0);
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStrip.png", 0, 583));
-		//for (GImage g : GrassStrips) { g.setSize(1900, );}
+		GrassStrips.add(new GImage(IMG_FOLDER + "grassStrip.png", 0, 577));
+		for (GImage g : GrassStrips) { g.setSize(1900, 73);}
 		
 		setUpEnvironment();
 	
