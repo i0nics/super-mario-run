@@ -32,14 +32,19 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private GImage pauseButton;
 	private GImage pauseBubble;
 	private GImage retryButton;
+	private GImage resume;
 	private GImage pausePane;
 	private GImage quitButton;
+	private GImage gBackground;
 	public static final int MS = 200;
 	public static final String IMG_FOLDER = "LevelPane/";
 
 
 	public LevelPane(mainSMR mainSMR, int levelNum) {
 		super();
+		this.program = mainSMR;
+		final double mainWidth = program.getWidth();
+		final double mainHeight = program.getHeight();
 		program = mainSMR;
 		timer = new Timer (MS, this);
 		level = new LevelOne();
@@ -49,9 +54,16 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		pauseBubble.setSize(100, 100);
 		pauseButton = new GImage(IMG_FOLDER + "pause.png", 55,27);
 		pauseButton.setSize(50,70);
-		pausePane = new GImage(IMG_FOLDER + "pausePane.png", 400,200);
+		pausePane = new GImage(IMG_FOLDER + "pausePane.png", 400,100);
 		pausePane.setSize(300, 400);
+		quitButton = new GImage(IMG_FOLDER + "quitButton.png", 428,437);
+		quitButton.setSize(250,50);
+		gBackground = new GImage(IMG_FOLDER + "pauseBack.png",0,0);
+		gBackground.setSize(mainWidth,mainHeight);
+		resume = new GImage(IMG_FOLDER + "continueButton.png",450,600);
+		resume.setSize(150,100);
 		DrawLevel();
+		
 	}
 	
 	public void DrawLevel() {
@@ -105,6 +117,8 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		program.add(Mario.getMario());
 		program.add(pauseButton);
 		program.add(pauseBubble);
+		
+
 
 		for (GImage e: Environment) {
 			program.add(e);
@@ -116,6 +130,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		program.remove(level.getBackground());
 		program.remove(pauseButton);
 		program.remove(pauseBubble);
+		program.remove(quitButton);
 
 	}
 	
@@ -127,10 +142,18 @@ GObject obj = program.getElementAt(e.getX(), e.getY());
 		if(obj == pauseButton || obj == pauseBubble)
 		{
 			Pause();
-			program.add(pausePane);			
+			program.add(gBackground);
+			program.add(pausePane);	
+			program.add(quitButton);
+			program.add(resume);
 			
 		}
 		
+		if(obj == quitButton)
+		{
+			program.playTourSound();
+			program.switchToTour();
+		}
 	}
 
 		
