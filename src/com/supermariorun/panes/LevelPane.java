@@ -29,6 +29,11 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private cMario Mario;
 	private ILevel level;
 	private Timer timer;
+	private GImage pauseButton;
+	private GImage pauseBubble;
+	private GImage retryButton;
+	private GImage pausePane;
+	private GImage quitButton;
 	public static final int MS = 200;
 	public static final String IMG_FOLDER = "LevelPane/";
 
@@ -40,6 +45,12 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		level = new LevelOne();
 		Environment = level.getEnvironment();
 		Mario = new cMario();
+		pauseBubble = new GImage(IMG_FOLDER + "bubble.png",30,10);
+		pauseBubble.setSize(100, 100);
+		pauseButton = new GImage(IMG_FOLDER + "pause.png", 55,27);
+		pauseButton.setSize(50,70);
+		pausePane = new GImage(IMG_FOLDER + "pausePane.png", 400,200);
+		pausePane.setSize(300, 400);
 		DrawLevel();
 	}
 	
@@ -92,7 +103,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		Play();
 		program.add(Background);
 		program.add(Mario.getMario());
-		
+		program.add(pauseButton);
+		program.add(pauseBubble);
+
 		for (GImage e: Environment) {
 			program.add(e);
 		}
@@ -100,14 +113,27 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 
 	@Override
 	public void hideContents() {
-		program.add(level.getBackground());
+		program.remove(level.getBackground());
+		program.remove(pauseButton);
+		program.remove(pauseBubble);
+
 	}
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
 		Mario.jump();
+GObject obj = program.getElementAt(e.getX(), e.getY());
+		
+		if(obj == pauseButton || obj == pauseBubble)
+		{
+			Pause();
+			program.add(pausePane);			
+			
+		}
+		
+	}
+
 		
 	}
 
 
-}
