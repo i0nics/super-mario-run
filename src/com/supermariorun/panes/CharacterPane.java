@@ -9,6 +9,7 @@ import javax.swing.Timer;
 
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
+import com.supermariorun.main.playerProgress;
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;
@@ -27,6 +28,8 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 	private GImage backLabel;
 	private int count;
 	public Timer bubbleTimer;
+	private static int PrincessCost = 100;
+	private static int luigiCost = 109;
 	
 	public CharacterPane(mainSMR mainSMR) {
 		super();
@@ -90,6 +93,10 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 
 			program.switchToShop();
 		}
+		if(obj == LuigiButton)
+		{
+			transaction();
+		}
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -109,5 +116,26 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			count = 0;
 		}
 		count++;
+		
+	}
+	public void transaction() {
+		playerProgress.getNumCoins();
+		if(playerProgress.getNumCoins() >= luigiCost)
+		{
+			System.out.println("Purchase comfirmed");
+		}
+		else if (playerProgress.getNumCoins() < luigiCost)
+		{
+			System.out.println("not enough money");
+		}
+		if(playerProgress.getNumCoins() >= PrincessCost)
+		{
+			System.out.println("Purchase comfirmed");
+		}
+		else if (playerProgress.getNumCoins() < PrincessCost)
+		{
+			System.out.println("not enough money");
+		}
+		
 	}
 }
