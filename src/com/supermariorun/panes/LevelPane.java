@@ -41,9 +41,12 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private Timer timer;
 	private int spaceWidth = 1150/30;
 	private int spaceHeight = 650/18;
-	public static final int MS = 10; //70
+	public static final int MS = 70;
 	public static final String IMG_FOLDER = "LevelPane/";
 
+	public boolean jumpState;
+	public boolean jumpUpState;
+	private GObject leftFoot;
 
 	public LevelPane(mainSMR mainSMR, int levelNum) {
 		super();
@@ -55,8 +58,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		program = mainSMR;
 		timer = new Timer (MS, this);
 		level = new LevelOne();
-		Mario = new cMario();
 		Environment = level.getEnvironment();
+		Mario = new cMario(mainSMR);
+		
 		
 		pauseBubble = new GImage(IMG_FOLDER + "bubble.png",30, 10);
 		pauseBubble.setSize(100, 100);
@@ -131,6 +135,34 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		moveEnvironment();
 		isGameOver();
+		/*
+		leftFoot = getElementAt(Mario.getX(), Mario.getY());
+		jumpUpState = false;
+			
+		if (jumpCount >=  0 && jumpCount < 10) {
+			jumpUpState = true;
+			jumpCount++;
+		}
+			
+		if  (jumpCount >= 10) {
+			jumpUpState = false;
+			jumpCount = 0;
+		}
+		
+		if (jumpUpState == true) {		
+			Mario.move(0, -1);
+		}
+			
+		if (jumpUpState == false) {
+			Mario.move(0, 1);				
+			for (GImage obj : Environment) {
+				if (leftFoot == obj) {
+					Mario.setLocation(obj.getX(), obj.getY());
+					Mario.run();
+					timer.stop();
+				}
+			}
+		}*/
 	}
 
 	@Override
@@ -197,7 +229,13 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		}
 		
 		else {
-			Mario.jump();
+			if (Mario.jumpState == false) {
+				Mario.jump();
+			}
 		}
+	}
+	
+	public ArrayList<GImage> getEnvironment() {
+		return Environment;
 	}
 }

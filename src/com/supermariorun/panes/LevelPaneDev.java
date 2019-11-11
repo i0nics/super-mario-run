@@ -63,7 +63,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 		program = mainSMR;
 		timer = new Timer (MS, this);
 		level = new LevelOne();
-		Mario = new cMario();
+		Mario = new cMario(program);
 		Environment = level.getEnvironment();
 		
 		pauseBubble = new GImage(IMG_FOLDER + "bubble.png",30, 10);
@@ -184,7 +184,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 			mouseX +=40;
 	    }
 	    
-	    if (obj == moveRight) {      //DEV
+	    else if (obj == moveRight) {      //DEV
 	    	Background.move(40, 0);
 			for (GImage move : Environment) {   //DEV
 				move.move(40, 0);
@@ -228,7 +228,5 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 		else {
 			Mario.jump();
 		}
-		
-		
 	}
 }

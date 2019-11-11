@@ -97,21 +97,25 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 
 		coinCount = new GLabel("Coins: " + progress.getNumCoins());
 		coinCount.setFont(lABEL_FONT);
+		coinCount.setColor(Color.WHITE);
 		coinCount.setLocation(400, 100);
-
-		bubbleTimer.start();
 
 		buyLabelm = new GImage(IMG_FOLDER + "buyLabel.png",210,485);
 		buyLabelm.setSize(labelWidth*1.5, labelHeight*1.5);
+		
 		buyLabelf = new GImage(IMG_FOLDER + "buyLabel.png",510,485);
 		buyLabelf.setSize(labelWidth*1.5, labelHeight*1.5);
+		
 		buyLabels = new GImage(IMG_FOLDER + "buyLabel.png",810,485);
 		buyLabels.setSize(labelWidth*1.5, labelHeight*1.5);
+		
 		background = new GImage(IMG_FOLDER + "background1.png",0,0);
 		background.setSize(mainWidth,mainHeight);
+		
 		backBubble = new GImage("bubble.png", 162, 20);
 		backBubble.setSize(bubbleWidth, bubbleHeight);
 		
+		bubbleTimer.start();
 	}
 
 	@Override

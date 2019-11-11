@@ -2,22 +2,31 @@ package com.supermariorun.characters;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.Timer;
 
-import acm.graphics.GImage;
+import com.supermariorun.main.mainSMR;
 
-public class cMario implements ActionListener {
+import acm.graphics.GImage;
+import acm.graphics.GObject;
+import acm.program.GraphicsProgram;
+
+public class cMario extends GraphicsProgram implements ActionListener {
+	private mainSMR program;
 	private GImage Mario;
+	private GObject leftFoot;
 	public static final String IMG_FOLDER = "character/";
+	private ArrayList <GImage> Environment;
 	private Timer timer;
 	public boolean jumpState;
 	public boolean jumpUpState;
 	private int jumpCount = 0;
 	
 	
-	public cMario() {
-		timer = new Timer (500, this);
+	public cMario(mainSMR mainSMR) {
+		program = mainSMR;
+		timer = new Timer (25, this);
 		Mario = new GImage (IMG_FOLDER + "stand.png", 100, 520);
 		Mario.setSize(64, 64);
 		
@@ -36,7 +45,6 @@ public class cMario implements ActionListener {
 	public void jump() {
 		Mario.setImage(IMG_FOLDER + "jump.gif");
 		Mario.setSize(64, 64);
-		jumpState = true;
 	}
 	
 	public GImage getMario(){
@@ -46,38 +54,5 @@ public class cMario implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		/*if(jumpState == false) {
-			jumpCount = 0;
-		}
-		
-		if (jumpState == true ){
-			jumpUpState = false;
-			
-			if (jumpCount >=  0 && jumpCount < 5) {
-				jumpUpState = true;
-				jumpCount++;
-			}
-			
-			if  (jumpCount >= 5 && jumpCount < JUMPint) {
-				//jumpUpState = false;
-				jumpCount++;
-			}
-			
-			if (jumpUpState == true) {
-				marioRun.move(0, -15);
-			}
-			
-			if (jumpUpState == false) {
-				marioRun.move(0, 15);
-			}
-			
-			if (jumpCount == JUMPint) {
-				clickState = false;
-				jumpState = false;
-				run();
-			}
-		}
-		numTimes++;
-*/
 	}
 }
