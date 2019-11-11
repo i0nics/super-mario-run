@@ -56,24 +56,24 @@ public class InventoryPane extends GraphicsPane implements ActionListener{
 
 	@Override
 	public void showContents() {
-		program.add(BackButton);
-		program.add(BackPipe);
-		program.add(backLabel);
 		program.add(background);
 		program.add(Mushroom);
 		program.add(Flower);
 		program.add(Star);
+		program.add(BackButton);
+		program.add(BackPipe);
+		program.add(backLabel);
 	}
 
 	@Override
 	public void hideContents() {
-		program.remove(BackButton);
-		program.remove(BackPipe);
-		program.remove(backLabel);
 		program.remove(background);
 		program.remove(Mushroom);
 		program.remove(Flower);
 		program.remove(Star);
+		program.remove(BackButton);
+		program.remove(BackPipe);
+		program.remove(backLabel);
 	}
 	
 	@Override
