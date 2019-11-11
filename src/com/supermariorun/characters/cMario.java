@@ -36,8 +36,7 @@ public class cMario implements ActionListener {
 	public void jump() {
 		Mario.setImage(IMG_FOLDER + "jump.gif");
 		Mario.setSize(64, 64);
-		isJump = true;
-		
+		jumpState = true;
 	}
 	
 	public GImage getMario(){
@@ -79,6 +78,6 @@ public class cMario implements ActionListener {
 			}
 		}
 		numTimes++;
-
-	}*/
+*/
+	}
 }

@@ -169,30 +169,30 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.add(quitButton);
 			program.add(resumeButton);
 			program.add(retryButton);
-			
-			if(obj == resumeButton)	{
-				Play();
-				program.playResumeSound();
-				program.remove(gBackground);
-				program.remove(pausePane);
-				program.remove(quitButton);
-				program.remove(resumeButton);
-				program.remove(retryButton);
-			}
-			
-			if(obj == retryButton){
-				Restart();
-				program.remove(gBackground);
-				program.remove(pausePane);
-				program.remove(quitButton);
-				program.remove(resumeButton);
-				program.remove(retryButton);
-			}
-			
-			if(obj == quitButton)	{
-				program.playTourSound();
-				program.switchToTour();
-			}
+		}
+		
+		if(obj == resumeButton)	{
+			Play();
+			program.playResumeSound();
+			program.remove(gBackground);
+			program.remove(pausePane);
+			program.remove(quitButton);
+			program.remove(resumeButton);
+			program.remove(retryButton);
+		}
+		
+		if(obj == retryButton){
+			Restart();
+			program.remove(gBackground);
+			program.remove(pausePane);
+			program.remove(quitButton);
+			program.remove(resumeButton);
+			program.remove(retryButton);
+		}
+		
+		if(obj == quitButton)	{
+			program.playTourSound();
+			program.switchToTour();
 		}
 		
 		else {
