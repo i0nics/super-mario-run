@@ -1,7 +1,6 @@
 package com.supermariorun.panes;
 
 import java.awt.Color;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -17,7 +16,6 @@ import acm.graphics.GLabel;
 import acm.graphics.GObject;
 import starter.GButton;
 
-
 public class PowerUpPane extends GraphicsPane implements ActionListener {
 	private mainSMR program;
 	public static final String IMG_FOLDER = "powerUpPane/";
@@ -25,7 +23,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 	private playerProgress progress;
 	private GImage BackButton;
 	private GImage BackPipe;
-	private GImage backBubble;
 	private GImage MushroomButton;
 	private GImage Mushroom;
 	private GImage StarButton;
@@ -100,21 +97,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		coinCount.setColor(Color.WHITE);
 		coinCount.setLocation(400, 100);
 
-		buyLabelm = new GImage(IMG_FOLDER + "buyLabel.png",210,485);
-		buyLabelm.setSize(labelWidth*1.5, labelHeight*1.5);
-		
-		buyLabelf = new GImage(IMG_FOLDER + "buyLabel.png",510,485);
-		buyLabelf.setSize(labelWidth*1.5, labelHeight*1.5);
-		
-		buyLabels = new GImage(IMG_FOLDER + "buyLabel.png",810,485);
-		buyLabels.setSize(labelWidth*1.5, labelHeight*1.5);
-		
-		background = new GImage(IMG_FOLDER + "background1.png",0,0);
-		background.setSize(mainWidth,mainHeight);
-		
-		backBubble = new GImage("bubble.png", 162, 20);
-		backBubble.setSize(bubbleWidth, bubbleHeight);
-		
 		bubbleTimer.start();
 	}
 
@@ -159,12 +141,8 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 	public void mousePressed(MouseEvent e) {
 
 		GObject obj = program.getElementAt(e.getX(), e.getY());
-		
-		if (obj == BackButton || obj == backLabel || obj == BackPipe ) {
-			program.playPipeSound();
 
 		if (obj == BackButton || obj == backLabel) {
-
 			program.switchToShop();
 		}
 
@@ -180,7 +158,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			flowerTransaction();
 		}
 	}
-	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (count == 1) {
@@ -213,11 +191,9 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		progress.getNumCoins();
 
 		if (progress.getNumCoins() >= starCost) {
-			progress.isStarPurchased();
 			progress.decreaseCoins(starCost);
 			System.out.println("Purchase comfirmed");
 			System.out.println(progress.getNumCoins());
-			System.out.println("Star Purchased ");
 			coinCount.setLabel("Coins: " + progress.getNumCoins());
 		}
 
@@ -229,11 +205,10 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 	}
 
 	public void mushroomTransaction() {
+
 		if (progress.getNumCoins() >= mushroomCost) {
-			progress.isMushroomPurchased();
 			progress.decreaseCoins(mushroomCost);
 			System.out.println("Purchase comfirmed");
-			System.out.println("Mushroom Purchased");
 			System.out.println(progress.getNumCoins());
 			coinCount.setLabel("Coins: " + progress.getNumCoins());
 		}
@@ -248,7 +223,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 	public void flowerTransaction() {
 
 		if (progress.getNumCoins() >= flowerCost) {
-			progress.isFlowerPurchased();
 			progress.decreaseCoins(flowerCost);
 			System.out.println("Purchase comfirmed");
 			System.out.println(progress.getNumCoins());
@@ -262,4 +236,3 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		}
 	}
 }
-
