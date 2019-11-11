@@ -30,6 +30,8 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private GImage pausePane;
 	private GImage quitButton;
 	private GImage gBackground;
+	private GImage levelClear;
+	private GImage next;
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> GrassStrips;
 	private ArrayList <GImage> Blocks;
@@ -77,6 +79,13 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		retryButton = new GImage(IMG_FOLDER + "retryButton.png", 415, 387);
 		retryButton.setSize(280, 50);
 		
+		levelClear = new GImage(IMG_FOLDER + "courseClear.png",420,350);
+		levelClear.setSize(400, 100);
+		
+		next = new GImage(IMG_FOLDER + "continueButton.png",550,475);
+		next.setSize(200, 120);
+		DrawLevel();
+
 		DrawLevel();
 	}
 	
@@ -112,6 +121,10 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public void isGameOver() {
 		if (Background.getX() == -4840) { //4840
 			timer.stop();
+			program.add(gBackground);
+			program.add(levelClear);
+			program.add(next);
+
 		}
 	}
 	
@@ -178,6 +191,10 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		else if(obj == quitButton) {
 			program.playTourSound();
 			program.switchToTour();
+		}
+		if(obj == next)
+		{
+			program.switchTo1EndPane();
 		}
 		
 		else {

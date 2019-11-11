@@ -11,6 +11,7 @@ import com.supermariorun.panes.ShopPane;
 import com.supermariorun.panes.StartPane;
 import com.supermariorun.panes.TourPane;
 import com.supermariorun.soundeffects.AudioPlayer;
+import com.supermariorun.panes.EndPane;
 
 public class mainSMR extends GraphicsApplication implements ActionListener{
 	public static final String MUSIC_FOLDER = "sounds";
@@ -36,6 +37,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private playerProgress progress;
 	public LevelPane levelPane;
 	public LevelPaneDev levelPaneDev;
+	private EndPane EndPane;
 	
     protected static final int FONT_SIZE = 18;
     public static final int WINDOW_WIDTH = 1155;
@@ -53,6 +55,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		characterPane = new CharacterPane (this);
 		guidePane = new InstructionsPane(this);
 		inventoryPane = new InventoryPane(this);
+		EndPane = new EndPane(this);
 		switchToStart();
 	}
 	
@@ -98,7 +101,9 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	public void switchToCharacter() {
 		switchToScreen(characterPane);
 	}
-	
+	public void switchTo1EndPane() {
+		switchToScreen(EndPane);
+	}
 	public void playStartSound() {
 		audio.playSound(MUSIC_FOLDER, START_TRACK, true);
 	}
