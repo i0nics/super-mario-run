@@ -20,6 +20,10 @@ public class InventoryPane extends GraphicsPane implements ActionListener{
 	private GImage BackButton;
 	private GImage BackPipe;
 	private GImage backLabel;
+	private GImage background;
+	private GImage Mushroom;
+	private GImage Star;
+	private GImage Flower;
 	private int count;
 	public Timer bubbleTimer;
 
@@ -42,6 +46,11 @@ public class InventoryPane extends GraphicsPane implements ActionListener{
 		BackPipe.setSize(pipeWidth, pipeHeight);
 		backLabel = new GImage(IMG_FOLDER + "backLabel.png",170, 75);
 		backLabel.setSize(labelWidth*1.2, labelHeight*1.2);
+		background = new GImage(IMG_FOLDER + "Inventory Slots.png", 0, 0);
+		background.setSize(mainSMR.getWidth(), mainSMR.getHeight());
+		Mushroom = new GImage(IMG_FOLDER + "Mushroom.png", mainSMR.getWidth()/7, mainSMR.getHeight()/6);
+		Flower = new GImage(IMG_FOLDER + "Flower.png",mainSMR.getWidth()/2.5, mainSMR.getHeight()/6);
+		Star = new GImage(IMG_FOLDER + "Star.png", mainSMR.getWidth()/1.52, mainSMR.getHeight()/6);
 		bubbleTimer.start();
 	}
 
@@ -50,6 +59,10 @@ public class InventoryPane extends GraphicsPane implements ActionListener{
 		program.add(BackButton);
 		program.add(BackPipe);
 		program.add(backLabel);
+		program.add(background);
+		program.add(Mushroom);
+		program.add(Flower);
+		program.add(Star);
 	}
 
 	@Override
@@ -57,6 +70,10 @@ public class InventoryPane extends GraphicsPane implements ActionListener{
 		program.remove(BackButton);
 		program.remove(BackPipe);
 		program.remove(backLabel);
+		program.remove(background);
+		program.remove(Mushroom);
+		program.remove(Flower);
+		program.remove(Star);
 	}
 	
 	@Override
