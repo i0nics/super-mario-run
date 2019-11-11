@@ -160,7 +160,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public void mousePressed(MouseEvent e) {
 		
 		GObject obj = program.getElementAt(e.getX(), e.getY());
-		
+		int x=e.getX();
+	    int y=e.getY();
+	    System.out.println(x+","+y);
 		if(obj == pauseButton || obj == pauseBubble) {
 			Pause();
 			program.add(gBackground);
