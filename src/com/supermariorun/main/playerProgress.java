@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Collection;
 
 public class playerProgress {
-	private static int lvl = 0;
+	private  int lvl = 0;
 	private static int numCoins = 100;
 	private static int numSuperMushrooms = 0;
 	private static int numSuperStars = 0;
@@ -21,27 +21,27 @@ public class playerProgress {
 		}
 	}
 	
-	public static int getNumCoins() {
+	public  int getNumCoins() {
 		return numCoins;
 	}
 	
-	public static int getNumSuperMushrooms() {
+	public  int getNumSuperMushrooms() {
 		return numSuperMushrooms;
 	}
 	
-	public static int getNumSuperStars() {
+	public int getNumSuperStars() {
 		return numSuperStars;
 	}
 	
-	public static int getNumCoinRush() {
+	public  int getNumCoinRush() {
 		return numCoinRush;
 	}
 	
-	public static boolean isLuigiUnlocked() {
+	public boolean isLuigiUnlocked() {
 		return isLuigiUnlocked;
 	}
 	
-	public static boolean isPrincessUnlocked() {
+	public  boolean isPrincessUnlocked() {
 		return isPrincessUnlocked;
 	}
 	
@@ -53,39 +53,39 @@ public class playerProgress {
 		numCoins =+ 2;
 	}
 	
-	public static void incrementNumSuperMushrooms() {
+	public  void incrementNumSuperMushrooms() {
 		numSuperMushrooms++;
 	}
 	
-	public static void incrementNumSuperStars() {
+	public  void incrementNumSuperStars() {
 		numSuperStars++;
 	}
 	
-	public static void incrementNumCoinRush() {
+	public  void incrementNumCoinRush() {
 		numCoinRush++;
 	}
 	
-	public static void decreaseCoins(int coins) {
+	public void decreaseCoins(int coins) {
 		numCoins -= coins;
 	}
 	
-	public static void decrementSuperMushrooms() {
+	public void decrementSuperMushrooms() {
 		numSuperMushrooms--;
 	}
 	
-	public static void decrementNumSuperStars() {
+	public void decrementNumSuperStars() {
 		numSuperStars--;
 	}
 	
-	public static void decrementNumCoinRush() {
+	public  void decrementNumCoinRush() {
 		numCoinRush--;
 	}
 	
-	public static void setLuigiUnlocked() {
+	public void setLuigiUnlocked() {
 		playerProgress.isLuigiUnlocked = true;
 	}
 	
-	public static void setPrincessUnlocked() {
+	public  void setPrincessUnlocked() {
 		playerProgress.isPrincessUnlocked = true;
 	}
 	
