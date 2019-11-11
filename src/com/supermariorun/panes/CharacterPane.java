@@ -28,8 +28,8 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 	private GImage backLabel;
 	private int count;
 	public Timer bubbleTimer;
-	private static int PrincessCost = 100;
-	private static int luigiCost = 109;
+	private static int PrincessCost = 110;
+	private static int luigiCost = 110;
 	
 	public CharacterPane(mainSMR mainSMR) {
 		super();
@@ -95,11 +95,11 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		}
 		if(obj == LuigiButton)
 		{
-			transaction();
+			Luigitransaction();
 		}
 		if(obj == PrincessButton)
 		{
-			transaction();
+			PrincessTransaction();
 		}
 	}
 	@Override
@@ -122,7 +122,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		count++;
 		
 	}
-	public void transaction() {
+	public void Luigitransaction() {
 		playerProgress.getNumCoins();
 		if(playerProgress.getNumCoins() >= luigiCost)
 		{
@@ -132,6 +132,8 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		{
 			System.out.println("not enough money");
 		}
+	}
+	public void PrincessTransaction() {
 		if(playerProgress.getNumCoins() >= PrincessCost)
 		{
 			System.out.println("Purchase comfirmed");
@@ -140,6 +142,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		{
 			System.out.println("not enough money");
 		}
+	}
 		
 	}
-}
+

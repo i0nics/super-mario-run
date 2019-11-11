@@ -96,6 +96,17 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		if (obj == BackButton) {
 			program.switchToShop();
 		}
+		if(obj == MushroomButton)
+		{
+			mushroomTransaction();
+		}
+		if(obj == StarButton)
+		{
+			starTransaction();
+		}
+		if(obj == FlowerButton) {
+			flowerTransaction();
+		}
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -115,7 +126,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		count++;
 		
 	}
-	public void transaction() {
+	public void starTransaction() {
 		playerProgress.getNumCoins();
 		if(playerProgress.getNumCoins() >= starCost)
 		{
@@ -125,6 +136,8 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		{
 			System.out.println("not enough money");
 		}
+	}
+	public void mushroomTransaction() {
 		if(playerProgress.getNumCoins() >= mushroomCost)
 		{
 			System.out.println("Purchase comfirmed");
@@ -133,6 +146,8 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		{
 			System.out.println("not enough money");
 		}
+	}
+	public void flowerTransaction() {
 		if(playerProgress.getNumCoins() >= flowerCost) {
 			System.out.println("Purchase comfirmed");
 		}
@@ -140,9 +155,9 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		{
 			System.out.println("not enough money");
 		}
-			
+	}	
 		
 		
 	}
-}
+
 
