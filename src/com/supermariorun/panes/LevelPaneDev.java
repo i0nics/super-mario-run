@@ -42,6 +42,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 	private ArrayList <GImage> GrassStrips;
 	private ArrayList <GImage> Blocks;
 	private ArrayList <GImage> qBlocks;
+	private GLabel collison;
 	private cMario Mario;
 	private ILevel level;
 	private Timer timer;
@@ -49,6 +50,11 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 	private int spaceHeight = 650/18;
 	public static final int MS = 100; //110
 	public static final String IMG_FOLDER = "LevelPane/";
+	
+	public boolean jumpState = true; //edit
+	public boolean jumpUpState;
+	private int jumpCount;
+	private GObject leftFoot;
 
 
 	public LevelPaneDev(mainSMR mainSMR, int levelNum) {
@@ -57,6 +63,8 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 		
 		final double mainWidth = program.getWidth();
 		final double mainHeight = program.getHeight();
+		
+		collison = new GLabel ("collison test", 500, 80);
 		
 		CoordLabel = new GLabel ("label ", 500, 40);
 		CoordLabel.setColor(Color.red);
@@ -95,7 +103,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 		
 		retryButton = new GImage(IMG_FOLDER + "retryButton.png", 415, 387);
 		retryButton.setSize(280, 50);
-		
+	
 		DrawLevel();
 	}
 	
@@ -151,6 +159,19 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		isGameOver();
+		
+		leftFoot = program.getElementAt(Mario.getMario().getX() + 20, Mario.getMario().getY() + 100);
+		
+		for (GImage obj : Environment) {
+			if (leftFoot == obj) {
+				Mario.getMario().setLocation(obj.getX(), obj.getY());
+				collison.setLabel("collided");
+				jumpState = false;
+				Mario.run();
+			}
+			
+		}
+	
 	}
 
 	@Override
@@ -170,6 +191,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 		program.add(dragCoord);
 		program.add(moveLeft);
 		program.add(moveRight);
+		program.add(collison);
 	}
 
 	@Override
@@ -191,7 +213,6 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 		lastX = e.getX();
 		lastY = e.getY();
 		obj = program.getElementAt(e.getX(), e.getY());
-		
 		
 	    CoordLabel.setLabel("X: " + (e.getX() + mouseX) + " Y: " + e.getY()); //DEV
 	    

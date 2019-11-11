@@ -27,7 +27,7 @@ public class cMario extends GraphicsProgram implements ActionListener {
 	public cMario(mainSMR mainSMR) {
 		program = mainSMR;
 		timer = new Timer (25, this);
-		Mario = new GImage (IMG_FOLDER + "stand.png", 100, 520);
+		Mario = new GImage (IMG_FOLDER + "stand.png", 100, 520); //520
 		Mario.setSize(64, 64);
 		
 	}
