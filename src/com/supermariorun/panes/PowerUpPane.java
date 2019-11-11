@@ -143,6 +143,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 
 		if (obj == BackButton || obj == backLabel) {
+			program.playPipeSound();
 			program.switchToShop();
 		}
 

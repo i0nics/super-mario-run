@@ -126,7 +126,6 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		
 		if (obj == BackButton || obj == backLabel || obj == BackPipe) {
 			program.playPipeSound();
-
 			program.switchToShop();
 		}
 		
