@@ -46,6 +46,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 
 	public boolean jumpState;
 	public boolean jumpUpState;
+	private int jumpCount;
 	private GObject leftFoot;
 
 	public LevelPane(mainSMR mainSMR, int levelNum) {
@@ -135,31 +136,33 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		moveEnvironment();
 		isGameOver();
-		/*
-		leftFoot = getElementAt(Mario.getX(), Mario.getY());
-		jumpUpState = false;
-			
-		if (jumpCount >=  0 && jumpCount < 10) {
-			jumpUpState = true;
-			jumpCount++;
-		}
-			
-		if  (jumpCount >= 10) {
+	/*
+		if (jumpState == true) {
+			leftFoot = getElementAt(Mario.getX() + 20, Mario.getY() + 75);
 			jumpUpState = false;
-			jumpCount = 0;
-		}
+				
+			if (jumpCount >=  0 && jumpCount < 50) {
+				jumpUpState = true;
+				jumpCount++;
+			}
+				
+			if  (jumpCount > 50) {
+				jumpUpState = false;
+				jumpCount = 0;
+			}
 		
-		if (jumpUpState == true) {		
-			Mario.move(0, -1);
-		}
-			
-		if (jumpUpState == false) {
-			Mario.move(0, 1);				
-			for (GImage obj : Environment) {
-				if (leftFoot == obj) {
-					Mario.setLocation(obj.getX(), obj.getY());
-					Mario.run();
-					timer.stop();
+			if (jumpUpState == true) {		
+				Mario.getMario().move(0, -5);
+			}
+				
+			if (jumpUpState == false) {
+				Mario.getMario().move(0, 5);				
+				for (GImage obj : Environment) {
+					if (leftFoot instanceof GImage) {
+						Mario.getMario().setLocation(obj.getX(), obj.getY());
+						jumpState = false;
+						Mario.run();
+					}
 				}
 			}
 		}*/
@@ -230,6 +233,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		
 		else {
 			if (Mario.jumpState == false) {
+				jumpState = true;
 				Mario.jump();
 			}
 		}
