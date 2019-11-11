@@ -21,15 +21,14 @@ public class LevelOne implements ILevel{
 		qBlocks = new ArrayList <GImage> ();
 		Pipes = new ArrayList <GImage> ();
 		Background = new GImage (IMG_FOLDER + "Background.png", 0, 0);
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStrip.png", 0, 577));
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png", 2065, 577));
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",3300, 577));
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShorter.png", 3300, 550));
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShorter.png", 3300, 517));
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png", 4550, 577));
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",815,550));
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",815,517));
-		
+		GrassStrips.add(new GImage(IMG_FOLDER + "grassStrip.png", 0, 585));
+		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png", 2065, 585));
+		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",3300, 585));
+		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShorter.png", 3300, 558));
+		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShorter.png", 3300, 525));
+		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png", 4550, 585));
+		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",815,558));
+		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",815,525));
 		//for (GImage g : GrassStrips) { g.setSize(1900, 73);}
 		
 		setUpEnvironment();

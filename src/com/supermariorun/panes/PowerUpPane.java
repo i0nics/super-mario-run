@@ -9,6 +9,7 @@ import javax.swing.Timer;
 
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
+import com.supermariorun.main.playerProgress;
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;
@@ -28,6 +29,9 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 	private GImage backLabel;
 	private int count;
 	public Timer bubbleTimer;
+	private static int flowerCost = 50;
+	private static int mushroomCost = 50;
+	private static int starCost = 50;
 	
 	public PowerUpPane(mainSMR mainSMR) {
 		super();
@@ -109,6 +113,35 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			count = 0;
 		}
 		count++;
+		
+	}
+	public void transaction() {
+		playerProgress.getNumCoins();
+		if(playerProgress.getNumCoins() >= starCost)
+		{
+			System.out.println("Purchase comfirmed");
+		}
+		else if (playerProgress.getNumCoins() < starCost)
+		{
+			System.out.println("not enough money");
+		}
+		if(playerProgress.getNumCoins() >= mushroomCost)
+		{
+			System.out.println("Purchase comfirmed");
+		}
+		else if (playerProgress.getNumCoins() < mushroomCost)
+		{
+			System.out.println("not enough money");
+		}
+		if(playerProgress.getNumCoins() >= flowerCost) {
+			System.out.println("Purchase comfirmed");
+		}
+		else if(playerProgress.getNumCoins() < flowerCost)
+		{
+			System.out.println("not enough money");
+		}
+			
+		
 		
 	}
 }
