@@ -22,13 +22,6 @@ public class EndPane extends GraphicsPane implements ActionListener {
 	private GImage background;
 	private GLabel coinCount;
 	
-	
-	
-	
-	
-	
-	
-
 	public EndPane(mainSMR mainSMR) {
 		super();
 		this.program = mainSMR;
@@ -36,20 +29,17 @@ public class EndPane extends GraphicsPane implements ActionListener {
 		final double mainHeight = program.getHeight();
 		background = new GImage(IMG_FOLDER + "tourBack.png", 0, 0);
 		background.setSize(mainWidth, mainHeight);
-		next = new GImage(IMG_FOLDER + "continueButton.png",500,500);
+		next = new GImage(IMG_FOLDER + "continueButton.png", 450, 500);
 		next.setSize(200, 120);
-		
 	}
 	
-	
-	
-	
+
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
-		if(obj == next)
-		{
+		if(obj == next) {
 			program.playTourSound();
+			program.playPipeSound();
 			program.switchToTour();
 		}
 		

@@ -29,7 +29,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private GImage resumeButton;
 	private GImage pausePane;
 	private GImage quitButton;
-	private GImage gBackground;
+	private GImage greyBack;
 	private GImage levelClear;
 	private GImage continueButton;
 	private ArrayList <GImage> Environment;
@@ -41,7 +41,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private Timer timer;
 	private int spaceWidth = 1150/30;
 	private int spaceHeight = 650/18;
-	public static final int MS = 10; //110
+	public static final int MS = 10; //70
 	public static final String IMG_FOLDER = "LevelPane/";
 
 
@@ -70,8 +70,8 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		quitButton = new GImage(IMG_FOLDER + "quitButton.png", 428, 437);
 		quitButton.setSize(250,50);
 		
-		gBackground = new GImage(IMG_FOLDER + "pauseBack.png", 0, 0);
-		gBackground.setSize(mainWidth, mainHeight);
+		greyBack = new GImage(IMG_FOLDER + "pauseBack.png", 0, 0);
+		greyBack.setSize(mainWidth, mainHeight);
 		
 		resumeButton = new GImage(IMG_FOLDER + "continueButton.png", 450, 500);
 		resumeButton.setSize(190,100);
@@ -79,12 +79,11 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		retryButton = new GImage(IMG_FOLDER + "retryButton.png", 415, 387);
 		retryButton.setSize(280, 50);
 		
-		levelClear = new GImage(IMG_FOLDER + "courseClear.png",420,350);
-		levelClear.setSize(400, 100);
+		levelClear = new GImage(IMG_FOLDER + "courseClear.png", 380, 260);
+		levelClear.setSize(400, 150);
 		
-		continueButton = new GImage(IMG_FOLDER + "continueButton.png",550,475);
+		continueButton = new GImage(IMG_FOLDER + "continueButton.png", 460, 425);
 		continueButton.setSize(200, 120);
-		DrawLevel();
 
 		DrawLevel();
 	}
@@ -122,7 +121,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		if (Background.getX() == -4840) { //4840
 			timer.stop();
 			Mario.stand();
-			program.add(gBackground);
+			program.add(greyBack);
 			program.add(levelClear);
 			program.add(continueButton);
 		}
@@ -162,7 +161,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	    
 		if(obj == pauseButton || obj == pauseBubble) {
 			Pause();
-			program.add(gBackground);
+			program.add(greyBack);
 			program.add(pausePane);	
 			program.add(quitButton);
 			program.add(resumeButton);
@@ -172,7 +171,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		else if(obj == resumeButton) {
 			Play();
 			program.playResumeSound();
-			program.remove(gBackground);
+			program.remove(greyBack);
 			program.remove(pausePane);
 			program.remove(quitButton);
 			program.remove(resumeButton);
@@ -181,7 +180,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		
 		else if(obj == retryButton){
 			Restart();
-			program.remove(gBackground);
+			program.remove(greyBack);
 			program.remove(pausePane);
 			program.remove(quitButton);
 			program.remove(resumeButton);
