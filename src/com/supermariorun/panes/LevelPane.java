@@ -80,9 +80,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		retryButton.setSize(280, 50);
 		
 		levelClear = new GImage(IMG_FOLDER + "courseClear.png",420,350);
-		levelClear.setSize(400, 100);
+		levelClear.setSize(400, 200);
 		
-		next = new GImage(IMG_FOLDER + "continueButton.png",550,475);
+		next = new GImage(IMG_FOLDER + "continueButton.png",500,475);
 		next.setSize(200, 120);
 		DrawLevel();
 
