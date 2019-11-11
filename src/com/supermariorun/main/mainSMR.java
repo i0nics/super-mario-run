@@ -4,6 +4,7 @@ import com.supermariorun.panes.CharacterPane;
 import com.supermariorun.panes.InstructionsPane;
 import com.supermariorun.panes.InventoryPane;
 import com.supermariorun.panes.LevelPane;
+import com.supermariorun.panes.LevelPaneDev;
 import com.supermariorun.panes.MenuPane;
 import com.supermariorun.panes.PowerUpPane;
 import com.supermariorun.panes.ShopPane;
@@ -34,6 +35,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private TourPane tourPane;
 	private playerProgress progress;
 	public LevelPane levelPane;
+	public LevelPaneDev levelPaneDev;
 	
     protected static final int FONT_SIZE = 18;
     public static final int WINDOW_WIDTH = 1155;
@@ -66,6 +68,11 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	public void switchToLevel(int levelNum) {
 		levelPane = new LevelPane (this, levelNum);
 		switchToScreen(levelPane);
+	}
+	
+	public void switchToLevelDev(int levelNum) {
+		levelPaneDev = new LevelPaneDev (this, levelNum);
+		switchToScreen(levelPaneDev);
 	}
 
 	public void switchToShop() {
