@@ -134,7 +134,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		}
 		else if (playerProgress.getNumCoins() < starCost)
 		{
-			System.out.println("not enough money");
+			System.out.println("not enough money!");
 		}
 	}
 	public void mushroomTransaction() {
