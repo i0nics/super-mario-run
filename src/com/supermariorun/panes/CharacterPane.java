@@ -97,6 +97,10 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		{
 			transaction();
 		}
+		if(obj == PrincessButton)
+		{
+			transaction();
+		}
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
