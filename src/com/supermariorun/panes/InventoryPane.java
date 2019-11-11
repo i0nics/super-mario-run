@@ -16,8 +16,8 @@ import starter.GButton;
 
 public class InventoryPane extends GraphicsPane implements ActionListener{
 	private mainSMR program; 
-	public static final String IMG_FOLDER = "inverntoryPane/";
-	private GButton BackButton;
+	public static final String IMG_FOLDER = "inventoryPane/";
+	private GImage BackButton;
 	private GImage BackPipe;
 	private GImage backLabel;
 	private int count;
@@ -36,20 +36,27 @@ public class InventoryPane extends GraphicsPane implements ActionListener{
 		final double labelHeight = mainHeight/12;
 		
 		bubbleTimer = new Timer(500, this);
-		BackButton = new GButton("Back", 100, 100, 80, 80);
-		BackButton.setFillColor(Color.GREEN);
+		BackButton = new GImage(IMG_FOLDER + "bubble.png", 152, 30);
+		BackButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
+		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png", -50, 50);
+		BackPipe.setSize(pipeWidth, pipeHeight);
+		backLabel = new GImage(IMG_FOLDER + "backLabel.png",170, 75);
+		backLabel.setSize(labelWidth*1.2, labelHeight*1.2);
+		bubbleTimer.start();
 	}
 
 	@Override
 	public void showContents() {
-		// TODO Auto-generated method stub
 		program.add(BackButton);
+		program.add(BackPipe);
+		program.add(backLabel);
 	}
 
 	@Override
 	public void hideContents() {
-		// TODO Auto-generated method stub
 		program.remove(BackButton);
+		program.remove(BackPipe);
+		program.remove(backLabel);
 	}
 	
 	@Override
