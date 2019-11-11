@@ -160,16 +160,25 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 			}
 			
 			if  (jumpCount >= 5 && jumpCount < JUMPint) {
-				//jumpUpState = false;
 				jumpCount++;
 			}
 			
 			if (jumpUpState == true) {
 				marioRun.move(15, -15);
+
+				if (marioRun.getX() >= mainWidth) {
+		        	numTimes = 0;
+		        	marioRun.setLocation(-20, 500);
+				}
 			}
 			
 			if (jumpUpState == false) {
 				marioRun.move(15, 15);
+
+				if (marioRun.getX() >= mainWidth) {
+		        	numTimes = 0;
+		        	marioRun.setLocation(-20, 500);
+				}
 			}
 			
 			if (jumpCount == JUMPint) {

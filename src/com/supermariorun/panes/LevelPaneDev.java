@@ -33,7 +33,11 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 	private GLabel CoordLabel;
 	private GButton moveLeft;
 	private GButton moveRight;
+	private GObject obj;
+	private GLabel dragCoord;
 	private int mouseX = 0;
+	private int lastX;
+	private int lastY;
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> GrassStrips;
 	private ArrayList <GImage> Blocks;
@@ -57,6 +61,11 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 		CoordLabel = new GLabel ("label ", 500, 40);
 		CoordLabel.setColor(Color.red);
 		CoordLabel.setFont("Arial-40");
+		
+		dragCoord = new GLabel ("drag obj", 800, 40);
+		dragCoord.setColor(Color.red);
+		dragCoord.setFont("Arial-40");
+		
 		moveLeft = new GButton ("left",  300, 40, 100, 100);
 		moveRight = new GButton ("right",  400, 40, 100, 100);
 		
@@ -157,6 +166,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 		drawGridLines();
 		
 		program.add(CoordLabel); //DEV
+		program.add(dragCoord);
 		program.add(moveLeft);
 		program.add(moveRight);
 	}
@@ -167,13 +177,21 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 		program.remove(pauseButton);
 		program.remove(pauseBubble);
 		program.remove(quitButton);
+		
+		program.remove(CoordLabel); //DEV
+		program.remove(dragCoord);
+		program.remove(moveLeft);
+		program.remove(moveRight);
 	}
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
 		
-		GObject obj = program.getElementAt(e.getX(), e.getY());
-	
+		lastX = e.getX();
+		lastY = e.getY();
+		obj = program.getElementAt(e.getX(), e.getY());
+		
+		
 	    CoordLabel.setLabel("X: " + (e.getX() + mouseX) + " Y: " + e.getY()); //DEV
 	    
 	    if (obj == moveLeft) {
@@ -228,5 +246,21 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 		else {
 			Mario.jump();
 		}
+	}
+	
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		if (obj != null) {
+			obj.move(e.getX() - lastX, e.getY() - lastY);
+			lastX = e.getX();
+			lastY = e.getY();
+			dragCoord.setLabel("X: " + (obj.getX() + mouseX) + " Y: " + obj.getY());
+		}
+	}
+	
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		obj = null;
 	}
 }
