@@ -140,7 +140,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 			backLabel.move(10, 0);
 		}
 		
-		if (count == 8) {
+		if (count == 10) {
 			backBubble.move(-10, 0);
 			backLabel.move(-10,0);
 			count = 0;

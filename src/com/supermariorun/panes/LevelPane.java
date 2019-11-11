@@ -15,6 +15,7 @@ import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
 
 import acm.graphics.GImage;
+import acm.graphics.GLabel;
 import acm.graphics.GLine;
 import acm.graphics.GObject;
 import starter.GButton;
@@ -29,6 +30,10 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private GImage pausePane;
 	private GImage quitButton;
 	private GImage gBackground;
+	private GLabel CoordLabel;
+	private GButton moveLeft;
+	private GButton moveRight;
+	private int mouseX = 0;
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> GrassStrips;
 	private ArrayList <GImage> Blocks;
@@ -48,6 +53,12 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		
 		final double mainWidth = program.getWidth();
 		final double mainHeight = program.getHeight();
+		
+		CoordLabel = new GLabel ("label ", 500, 40);
+		CoordLabel.setColor(Color.red);
+		CoordLabel.setFont("Arial-40");
+		moveLeft = new GButton ("left",  300, 40, 100, 100);
+		moveRight = new GButton ("right",  400, 40, 100, 100);
 		
 		program = mainSMR;
 		timer = new Timer (MS, this);
@@ -83,7 +94,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		Background = level.getBackground();
 	}
 	
-	private void drawGridLines() {
+	private void drawGridLines() { //DEV
 
 		for (int i = 1; i < 1000; i++) {
 			GLine line = new GLine(i * spaceWidth, 0, i * spaceWidth, program.getHeight());
@@ -100,7 +111,6 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public void Play() {
 		timer.start();
 		Mario.run();
-		moveEnvironment();
 		program.playLvlOneTrack();
 	}
 	
@@ -130,7 +140,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		moveEnvironment();
+		//moveEnvironment();
 		isGameOver();
 	}
 
@@ -146,6 +156,10 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.add(e);
 		}
 		drawGridLines();
+		
+		program.add(CoordLabel); //DEV
+		program.add(moveLeft);
+		program.add(moveRight);
 	}
 
 	@Override
@@ -160,9 +174,25 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public void mousePressed(MouseEvent e) {
 		
 		GObject obj = program.getElementAt(e.getX(), e.getY());
-		int x=e.getX();
-	    int y=e.getY();
-	    System.out.println(x+","+y);
+	
+	    CoordLabel.setLabel("X: " + (e.getX() + mouseX) + " Y: " + e.getY()); //DEV
+	    
+	    if (obj == moveLeft) {
+	    	Background.move(-40, 0);
+			for (GImage move : Environment) {   //DEV
+				move.move(-40, 0);
+			}
+			mouseX +=40;
+	    }
+	    
+	    if (obj == moveRight) {      //DEV
+	    	Background.move(40, 0);
+			for (GImage move : Environment) {   //DEV
+				move.move(40, 0);
+			}
+			mouseX -=40; //DEV
+	    }
+	    
 		if(obj == pauseButton || obj == pauseBubble) {
 			Pause();
 			program.add(gBackground);
