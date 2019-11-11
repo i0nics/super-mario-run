@@ -81,8 +81,8 @@ package com.supermariorun.panes;
 
  		GObject obj = program.getElementAt(e.getX(), e.getY());
 
- 		if (obj == BackButton || obj == backLabel) {
-
+ 		if (obj == BackButton || obj == backLabel || obj == BackPipe) {
+ 			program.playPipeSound();
  			program.switchToShop();
  		}
  	}
