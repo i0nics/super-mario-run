@@ -101,9 +101,11 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	public void switchToCharacter() {
 		switchToScreen(characterPane);
 	}
-	public void switchTo1EndPane() {
+	
+	public void switchToEndPane() {
 		switchToScreen(EndPane);
 	}
+	
 	public void playStartSound() {
 		audio.playSound(MUSIC_FOLDER, START_TRACK, true);
 	}

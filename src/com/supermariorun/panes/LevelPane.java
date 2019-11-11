@@ -31,7 +31,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private GImage quitButton;
 	private GImage gBackground;
 	private GImage levelClear;
-	private GImage next;
+	private GImage continueButton;
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> GrassStrips;
 	private ArrayList <GImage> Blocks;
@@ -41,7 +41,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private Timer timer;
 	private int spaceWidth = 1150/30;
 	private int spaceHeight = 650/18;
-	public static final int MS = 70; //110
+	public static final int MS = 10; //110
 	public static final String IMG_FOLDER = "LevelPane/";
 
 
@@ -80,10 +80,10 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		retryButton.setSize(280, 50);
 		
 		levelClear = new GImage(IMG_FOLDER + "courseClear.png",420,350);
-		levelClear.setSize(400, 200);
+		levelClear.setSize(400, 100);
 		
-		next = new GImage(IMG_FOLDER + "continueButton.png",500,475);
-		next.setSize(200, 120);
+		continueButton = new GImage(IMG_FOLDER + "continueButton.png",550,475);
+		continueButton.setSize(200, 120);
 		DrawLevel();
 
 		DrawLevel();
@@ -121,10 +121,10 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public void isGameOver() {
 		if (Background.getX() == -4840) { //4840
 			timer.stop();
+			Mario.stand();
 			program.add(gBackground);
 			program.add(levelClear);
-			program.add(next);
-
+			program.add(continueButton);
 		}
 	}
 	
@@ -169,7 +169,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.add(retryButton);
 		}
 		
-		else if(obj == resumeButton)	{
+		else if(obj == resumeButton) {
 			Play();
 			program.playResumeSound();
 			program.remove(gBackground);
@@ -192,9 +192,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.playTourSound();
 			program.switchToTour();
 		}
-		if(obj == next)
-		{
-			program.switchTo1EndPane();
+		
+		else if(obj == continueButton) {
+			program.switchToEndPane();
 		}
 		
 		else {
