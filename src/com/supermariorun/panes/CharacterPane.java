@@ -19,6 +19,7 @@ import starter.GButton;
 public class CharacterPane extends GraphicsPane implements ActionListener{
 	private mainSMR program;
 	public static final String IMG_FOLDER = "characterPane/";
+	public static final String lABEL_FONT = "Arial-Bold-22";
 	private GImage BackButton;
 	private GImage BackPipe;
 	private GImage LuigiButton;
@@ -66,10 +67,9 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		buyLabel.setSize(labelWidth*1.5, labelHeight*1.5);
 		buyLabel2 = new GImage(IMG_FOLDER + "buyLabel.png",700,490);
 		buyLabel2.setSize(labelWidth*1.5, labelHeight*1.5);
-		/*coinCount =  new GLabel("Coins: " + playerProgress.getNumCoins());
-		coinCount.setLocation(300, 100);
+		coinCount =  new GLabel("Coins: " + playerProgress.getNumCoins());
+		coinCount.setLocation(400, 100);
 		coinCount.setFont(lABEL_FONT);
-		*/
 		bubbleTimer.start();
 	}
 	@Override
@@ -84,6 +84,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		program.add(backLabel);
 		program.add(buyLabel);
 		program.add(buyLabel2);
+		program.add(coinCount);
 	
 	}
 
@@ -99,6 +100,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		program.remove(backLabel);
 		program.remove(buyLabel);
 		program.remove(buyLabel2);
+		program.remove(coinCount);
 		
 	}
 	@Override
@@ -109,6 +111,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		if (obj == BackButton || obj == backLabel || obj == BackPipe) {
 
 			program.switchToShop();
+			
 		}
 		if(obj == LuigiButton || obj == buyLabel2)
 		{
@@ -150,10 +153,12 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			System.out.println("Purchase comfirmed");
 			System.out.println(playerProgress.getNumCoins());
 			System.out.println("Luigi Unlocked");
+			coinCount.setLabel("Coins: " + playerProgress.getNumCoins());
 		}
 		else if (playerProgress.getNumCoins() < luigiCost)
 		{
 			System.out.println("not enough money");
+			coinCount.setLabel("Coins: " + playerProgress.getNumCoins());
 		}
 	}
 	public void PrincessTransaction() {
@@ -164,11 +169,13 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			System.out.println("Purchase comfirmed!");
 			System.out.println("Princess Unlocked");
 			System.out.println(playerProgress.getNumCoins());
+			coinCount.setLabel("Coins: " + playerProgress.getNumCoins());
 		}
 		else if (playerProgress.getNumCoins() < PrincessCost)
 		{
 			System.out.println("not enough money");
 			System.out.println(playerProgress.getNumCoins());
+			coinCount.setLabel("Coins: " + playerProgress.getNumCoins());
 		}
 	}
 		

@@ -81,7 +81,7 @@ public class InventoryPane extends GraphicsPane implements ActionListener{
 		
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
-		if (obj == BackButton) {
+		if (obj == BackButton || obj == backLabel) {
 
 			program.switchToShop();
 		}

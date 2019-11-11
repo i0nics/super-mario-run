@@ -12,12 +12,14 @@ import com.supermariorun.main.mainSMR;
 import com.supermariorun.main.playerProgress;
 
 import acm.graphics.GImage;
+import acm.graphics.GLabel;
 import acm.graphics.GObject;
 import starter.GButton;
 
 public class PowerUpPane extends GraphicsPane implements ActionListener {
 	private mainSMR program;
 	public static final String IMG_FOLDER = "powerUpPane/";
+	public static final String lABEL_FONT = "Arial-Bold-22";
 	private GImage BackButton;
 	private GImage BackPipe;
 	private GImage MushroomButton;
@@ -33,6 +35,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 	private GImage buyLabelf;
 	private GImage buyLabels;
 	private GImage background;
+	private GLabel coinCount;
 	private static int flowerCost = 50;
 	private static int mushroomCost = 50;
 	private static int starCost = 50;
@@ -74,7 +77,9 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		buyLabels.setSize(labelWidth*1.5, labelHeight*1.5);
 		background = new GImage(IMG_FOLDER + "background1.png",0,0);
 		background.setSize(mainWidth,mainHeight);
-		
+		coinCount = new GLabel("Coins: " + playerProgress.getNumCoins());
+		coinCount.setFont(lABEL_FONT);
+		coinCount.setLocation(400,100);
 	}
 	@Override
 	public void showContents() {
@@ -91,6 +96,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		program.add(buyLabelm);
 		program.add(buyLabelf);
 		program.add(buyLabels);
+		program.add(coinCount);
 	}
 
 	@Override
@@ -108,6 +114,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		program.remove(buyLabelm);
 		program.remove(buyLabelf);
 		program.remove(buyLabels);
+		program.remove(coinCount);
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {
@@ -165,12 +172,15 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			playerProgress.decreaseCoins(starCost);
 			System.out.println("Purchase comfirmed");
 			System.out.println(playerProgress.getNumCoins());
+			coinCount.setLabel("Coins: " + playerProgress.getNumCoins());
+			
 			
 		}
 		else if (playerProgress.getNumCoins() < starCost)
 		{
 			System.out.println("not enough money!");
 			System.out.println(playerProgress.getNumCoins());
+			coinCount.setLabel("Coins: " + playerProgress.getNumCoins());
 		}
 	}
 	public void mushroomTransaction() {
@@ -179,11 +189,13 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			playerProgress.decreaseCoins(mushroomCost);
 			System.out.println("Purchase comfirmed");
 			System.out.println(playerProgress.getNumCoins());
+			coinCount.setLabel("Coins: " + playerProgress.getNumCoins());
 		}
 		else if (playerProgress.getNumCoins() < mushroomCost)
 		{
 			System.out.println("not enough money");
 			System.out.println(playerProgress.getNumCoins());
+			coinCount.setLabel("Coins: " + playerProgress.getNumCoins());
 		}
 	}
 	public void flowerTransaction() {
@@ -192,11 +204,13 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			playerProgress.decreaseCoins(flowerCost);
 			System.out.println("Purchase comfirmed");
 			System.out.println(playerProgress.getNumCoins());
+			coinCount.setLabel("Coins: " + playerProgress.getNumCoins());
 		}
 		else if(playerProgress.getNumCoins() < flowerCost)
 		{
 			System.out.println("not enough money");
 			System.out.println(playerProgress.getNumCoins());
+			coinCount.setLabel("Coins: " + playerProgress.getNumCoins());
 		}
 	}	
 		
