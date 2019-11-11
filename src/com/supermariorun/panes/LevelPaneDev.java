@@ -43,7 +43,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 	private Timer timer;
 	private int spaceWidth = 1150/30;
 	private int spaceHeight = 650/18;
-	public static final int MS = 90; //110
+	public static final int MS = 100; //110
 	public static final String IMG_FOLDER = "LevelPane/";
 
 
@@ -192,7 +192,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 			mouseX -=40; //DEV
 	    }
 	    
-		if(obj == pauseButton || obj == pauseBubble) {
+	    else if(obj == pauseButton || obj == pauseBubble) {
 			Pause();
 			program.add(gBackground);
 			program.add(pausePane);	
@@ -201,7 +201,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 			program.add(retryButton);
 		}
 		
-		if(obj == resumeButton)	{
+	    else if(obj == resumeButton)	{
 			Play();
 			program.playResumeSound();
 			program.remove(gBackground);
@@ -211,7 +211,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 			program.remove(retryButton);
 		}
 		
-		if(obj == retryButton){
+	    else if(obj == retryButton){
 			Restart();
 			program.remove(gBackground);
 			program.remove(pausePane);
@@ -220,7 +220,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 			program.remove(retryButton);
 		}
 		
-		if(obj == quitButton)	{
+	    else if(obj == quitButton)	{
 			program.playTourSound();
 			program.switchToTour();
 		}

@@ -39,7 +39,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private Timer timer;
 	private int spaceWidth = 1150/30;
 	private int spaceHeight = 650/18;
-	public static final int MS = 90; //110
+	public static final int MS = 70; //110
 	public static final String IMG_FOLDER = "LevelPane/";
 
 
@@ -69,7 +69,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		quitButton.setSize(250,50);
 		
 		gBackground = new GImage(IMG_FOLDER + "pauseBack.png", 0, 0);
-		gBackground.setSize(mainWidth,mainHeight);
+		gBackground.setSize(mainWidth, mainHeight);
 		
 		resumeButton = new GImage(IMG_FOLDER + "continueButton.png", 450, 500);
 		resumeButton.setSize(190,100);
@@ -98,6 +98,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	}
 	
 	public void Restart() {
+		program.stopLvlOneTrack();
 		program.switchToLevel(1);
 	}
 	
@@ -109,7 +110,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	}
 	
 	public void isGameOver() {
-		if (Background.getX() == -4840) {
+		if (Background.getX() == -4840) { //4840
 			timer.stop();
 		}
 	}
@@ -155,7 +156,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.add(retryButton);
 		}
 		
-		if(obj == resumeButton)	{
+		else if(obj == resumeButton)	{
 			Play();
 			program.playResumeSound();
 			program.remove(gBackground);
@@ -165,7 +166,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.remove(retryButton);
 		}
 		
-		if(obj == retryButton){
+		else if(obj == retryButton){
 			Restart();
 			program.remove(gBackground);
 			program.remove(pausePane);
@@ -174,7 +175,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.remove(retryButton);
 		}
 		
-		if(obj == quitButton)	{
+		else if(obj == quitButton) {
 			program.playTourSound();
 			program.switchToTour();
 		}
@@ -182,6 +183,5 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		else {
 			Mario.jump();
 		}
-		
 	}
 }
