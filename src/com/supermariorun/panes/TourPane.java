@@ -31,7 +31,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private GButton DevMode;
 	private boolean isWiggle;
 	private int wCount = 0;
-	private int count = 1;
+	private int count = 0;
 	public Timer bTimer;
 	
 	public TourPane(mainSMR mainSMR) {
@@ -152,9 +152,12 @@ public class TourPane extends GraphicsPane implements ActionListener {
 			backLabel.move(10, 0);
 		}
 		
-		if (count == 10) {
+		if (count == 6) {
 			backBubble.move(-10, 0);
-			backLabel.move(-10,0);
+			backLabel.move(-10, 0);
+		}
+		
+		if (count == 12) {
 			count = 0;
 		}
 		
@@ -175,7 +178,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 			isWiggle = false;
 		}
 		
-		
+	
 		count++;
 	}
 }
