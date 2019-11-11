@@ -162,30 +162,41 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		playerProgress.getNumCoins();
 		if(playerProgress.getNumCoins() >= starCost)
 		{
+			playerProgress.decreaseCoins(starCost);
 			System.out.println("Purchase comfirmed");
+			System.out.println(playerProgress.getNumCoins());
+			
 		}
 		else if (playerProgress.getNumCoins() < starCost)
 		{
 			System.out.println("not enough money!");
+			System.out.println(playerProgress.getNumCoins());
 		}
 	}
 	public void mushroomTransaction() {
 		if(playerProgress.getNumCoins() >= mushroomCost)
 		{
+			playerProgress.decreaseCoins(mushroomCost);
 			System.out.println("Purchase comfirmed");
+			System.out.println(playerProgress.getNumCoins());
 		}
 		else if (playerProgress.getNumCoins() < mushroomCost)
 		{
 			System.out.println("not enough money");
+			System.out.println(playerProgress.getNumCoins());
 		}
 	}
 	public void flowerTransaction() {
-		if(playerProgress.getNumCoins() >= flowerCost) {
+		if(playerProgress.getNumCoins() >= flowerCost)
+		{
+			playerProgress.decreaseCoins(flowerCost);
 			System.out.println("Purchase comfirmed");
+			System.out.println(playerProgress.getNumCoins());
 		}
 		else if(playerProgress.getNumCoins() < flowerCost)
 		{
 			System.out.println("not enough money");
+			System.out.println(playerProgress.getNumCoins());
 		}
 	}	
 		
