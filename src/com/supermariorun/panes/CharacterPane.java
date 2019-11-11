@@ -26,11 +26,13 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 	private GImage PrincessPic;
 	private GImage background;
 	private GImage backLabel;
+	private int numcoins = playerProgress.getNumCoins();
 	private int count;
 	public Timer bubbleTimer;
 	private static int PrincessCost = 110;
-	private static int luigiCost = 110;
-	
+	private static int luigiCost = 50;
+	private GImage buyLabel;
+	private GImage buyLabel2;
 	public CharacterPane(mainSMR mainSMR) {
 		super();
 		this.program = mainSMR;
@@ -44,7 +46,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		final double labelHeight = mainHeight/12;
 		
 		bubbleTimer = new Timer(500, this);
-		LuigiButton = new GImage(IMG_FOLDER + "bubble.png",675,450);
+		LuigiButton = new GImage(IMG_FOLDER + "bubble.png",690,450);
 		LuigiButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
 		LuigiPic = new GImage(IMG_FOLDER + "Luigi.png", 675, 200);
 		PrincessPic = new GImage(IMG_FOLDER + "Princess.png", 325, 200);
@@ -59,6 +61,10 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		background.setSize(mainWidth, mainHeight);
 		backLabel = new GImage(IMG_FOLDER + "backLabel.png",170, 75);
 		backLabel.setSize(labelWidth*1.2, labelHeight*1.2);
+		buyLabel = new GImage(IMG_FOLDER + "buyLabel.png",340,490);
+		buyLabel.setSize(labelWidth*1.5, labelHeight*1.5);
+		buyLabel2 = new GImage(IMG_FOLDER + "buyLabel.png",700,490);
+		buyLabel2.setSize(labelWidth*1.5, labelHeight*1.5);
 		bubbleTimer.start();
 	}
 	@Override
@@ -71,6 +77,8 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		program.add(LuigiButton);
 		program.add(PrincessButton);
 		program.add(backLabel);
+		program.add(buyLabel);
+		program.add(buyLabel2);
 	}
 
 	@Override
@@ -83,6 +91,8 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		program.remove(LuigiButton);
 		program.remove(PrincessButton);
 		program.remove(backLabel);
+		program.remove(buyLabel);
+		program.remove(buyLabel2);
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {
@@ -93,11 +103,11 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 
 			program.switchToShop();
 		}
-		if(obj == LuigiButton)
+		if(obj == LuigiButton || obj == buyLabel2)
 		{
 			Luigitransaction();
 		}
-		if(obj == PrincessButton)
+		if(obj == PrincessButton || obj == buyLabel)
 		{
 			PrincessTransaction();
 		}
@@ -109,6 +119,8 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			LuigiButton.move(0, 10);
 			backLabel.move(0, 10);
 			BackButton.move(0, 10);
+			buyLabel.move(0, 10);
+			buyLabel2.move(0,10);
 		}
 		
 		if (count == 2) {
@@ -116,7 +128,8 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			LuigiButton.move(0, -10);
 			backLabel.move(0, -10);
 			BackButton.move(0, -10);
-			
+			buyLabel.move(0, -10);
+			buyLabel2.move(0,-10);
 			count = 0;
 		}
 		count++;
@@ -126,7 +139,10 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		playerProgress.getNumCoins();
 		if(playerProgress.getNumCoins() >= luigiCost)
 		{
+			 numcoins = numcoins - luigiCost;
 			System.out.println("Purchase comfirmed");
+			System.out.println(numcoins);
+			
 		}
 		else if (playerProgress.getNumCoins() < luigiCost)
 		{
@@ -136,11 +152,13 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 	public void PrincessTransaction() {
 		if(playerProgress.getNumCoins() >= PrincessCost)
 		{
+			numcoins = numcoins - PrincessCost;
 			System.out.println("Purchase comfirmed");
 		}
 		else if (playerProgress.getNumCoins() < PrincessCost)
 		{
 			System.out.println("not enough money");
+			System.out.println(numcoins);
 		}
 	}
 		
