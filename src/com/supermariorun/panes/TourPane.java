@@ -28,6 +28,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private GImage lockLvlFour;
 	private GImage lvlOne;
 	private GObject wiggleObj;
+	private GButton DevMode;
 	private boolean isWiggle;
 	private int wCount = 0;
 	private int count = 1;
@@ -47,6 +48,9 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		final double labelHeight = mainHeight/12;
 		final double qBlockWidth = mainWidth/7.2 - 10;
 		final double qBlockHeight = mainHeight/4.409;
+		
+		DevMode = new GButton ("Developer Mode", 500, 550, 100, 100);
+		DevMode.setFillColor(Color.BLUE);
 		
 		backPipe = new GImage("gPipeR.png", -50, 30);
 		backPipe.setSize(pipeWidth, pipeHeight);
@@ -90,6 +94,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		program.add(lockLvlTwo);
 		program.add(lockLvlThree);
 		program.add(lockLvlFour);
+		program.add(DevMode);
 	}
 
 	@Override
@@ -103,6 +108,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		program.remove(lockLvlTwo);
 		program.remove(lockLvlThree);
 		program.remove(lockLvlFour);
+		program.remove(DevMode);
 	}
 
 	@Override
@@ -123,6 +129,12 @@ public class TourPane extends GraphicsPane implements ActionListener {
 			program.switchToLevel(1);
 		}
 		
+		if (obj == DevMode) {
+			program.playPipeSound();
+			program.stopTourSound();
+			program.switchToLevelDev(1);
+		}
+		
 		if(isWiggle == false && (obj == lockLvlTwo || obj == lockLvlThree || obj == lockLvlFour)){	
 				wiggleObj = obj;
 				wiggleObj.move(10, 0);
@@ -136,7 +148,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 			backLabel.move(10, 0);
 		}
 		
-		if (count == 8) {
+		if (count == 10) {
 			backBubble.move(-10, 0);
 			backLabel.move(-10,0);
 			count = 0;
