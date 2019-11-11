@@ -153,7 +153,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		if(playerProgress.getNumCoins() >= PrincessCost)
 		{
 			numcoins = numcoins - PrincessCost;
-			System.out.println("Purchase comfirmed");
+			System.out.println("Purchase comfirmed!");
 		}
 		else if (playerProgress.getNumCoins() < PrincessCost)
 		{
