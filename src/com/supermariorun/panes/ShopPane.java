@@ -10,7 +10,6 @@ import com.supermariorun.main.mainSMR;
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;
-import starter.GButton;
 
 public class ShopPane extends GraphicsPane implements ActionListener {
 	private mainSMR program; 
