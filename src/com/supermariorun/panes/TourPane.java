@@ -18,8 +18,8 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	public static final String IMG_FOLDER = "tourPane/";
 	private mainSMR program; 
 	private GImage backLabel;
-	private GImage backBubble;
 	private GImage backPipe;
+	private GImage backBubble;
 	private GImage tourBackground;
 	private GImage lvlStrip;
 	private GImage worldOne;
@@ -54,8 +54,6 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		backLabel = new GImage("backLabel.png", 177, 60);
 		backLabel.setSize(labelWidth, labelHeight);
 		
-		backBubble = new GImage("bubble.png", 162, 20);
-		backBubble.setSize(bubbleWidth, bubbleHeight);
 		
 		tourBackground = new GImage(IMG_FOLDER + "tourBack.png", 0, 0);
 		tourBackground.setSize(mainWidth, mainHeight);
@@ -85,7 +83,6 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	public void showContents() {
 		program.add(tourBackground);
 		program.add(backLabel);
-		program.add(backBubble);
 		program.add(backPipe);
 		program.add(lvlStrip);
 		program.add(worldOne);
@@ -99,7 +96,6 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	public void hideContents() {
 		program.remove(tourBackground);
 		program.remove(backLabel);
-		program.remove(backBubble);
 		program.remove(backPipe);
 		program.remove(lvlStrip);
 		program.remove(worldOne);
@@ -113,7 +109,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
-		if (obj == backLabel || obj ==  backBubble || obj == backPipe) {
+		if (obj == backLabel || obj == backPipe) {
 			program.menuPane.bubbleTimer.start();
 			program.playPipeSound();
 			program.stopTourSound();

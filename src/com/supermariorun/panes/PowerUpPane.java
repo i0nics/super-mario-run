@@ -1,6 +1,7 @@
 package com.supermariorun.panes;
 
 import java.awt.Color;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -15,11 +16,13 @@ import acm.graphics.GImage;
 import acm.graphics.GObject;
 import starter.GButton;
 
+
 public class PowerUpPane extends GraphicsPane implements ActionListener {
 	private mainSMR program;
 	public static final String IMG_FOLDER = "powerUpPane/";
 	private GImage BackButton;
 	private GImage BackPipe;
+	private GImage backBubble;
 	private GImage MushroomButton;
 	private GImage Mushroom;
 	private GImage StarButton;
@@ -74,6 +77,8 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		buyLabels.setSize(labelWidth*1.5, labelHeight*1.5);
 		background = new GImage(IMG_FOLDER + "background1.png",0,0);
 		background.setSize(mainWidth,mainHeight);
+		backBubble = new GImage("bubble.png", 162, 20);
+		backBubble.setSize(bubbleWidth, bubbleHeight);
 		
 	}
 	@Override
@@ -114,7 +119,8 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
-		if (obj == BackButton || obj == backLabel) {
+		if (obj == BackButton || obj == backLabel || obj == BackPipe ) {
+			program.playPipeSound();
 			program.switchToShop();
 		}
 		if(obj == MushroomButton || obj == buyLabelm)
@@ -202,5 +208,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		
 		
 	}
+
 
 

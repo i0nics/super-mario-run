@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-
+import javax.swing.*;
+import java.util.*;
+import java.awt.*;
 import javax.swing.Timer;
 
 import com.supermariorun.main.GraphicsPane;
@@ -20,6 +22,7 @@ public class InventoryPane extends GraphicsPane implements ActionListener{
 	private GImage BackButton;
 	private GImage BackPipe;
 	private GImage backLabel;
+	private GImage backBubble;
 	private GImage background;
 	private GImage Mushroom;
 	private GImage Star;
@@ -51,7 +54,28 @@ public class InventoryPane extends GraphicsPane implements ActionListener{
 		Mushroom = new GImage(IMG_FOLDER + "Mushroom.png", mainSMR.getWidth()/7, mainSMR.getHeight()/1.8);
 		Flower = new GImage(IMG_FOLDER + "Flower.png",mainSMR.getWidth()/2.5, mainSMR.getHeight()/1.8);
 		Star = new GImage(IMG_FOLDER + "Star.png", mainSMR.getWidth()/1.52, mainSMR.getHeight()/1.8);
+		backBubble = new GImage("bubble.png", 162, 20);
+		backBubble.setSize(bubbleWidth, bubbleHeight);
 		bubbleTimer.start();
+	}
+	public class GUI extends JFrame {
+		
+		public GUI() {
+			this.setTitle("Inventory");
+			this.setSize(1100,625);
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setVisible(true);
+			this.setResizable(false);
+			
+			Board board = new Board();
+			this.setContentPane(board);
+		}
+		public class Board extends JPanel {
+			public void paintComponent (Graphics g) {
+				g.setColor(Color.LIGHT_GRAY);
+				g.fillRect(0, 0, 1094, 619);
+			}
+		}
 	}
 
 	@Override
@@ -81,8 +105,8 @@ public class InventoryPane extends GraphicsPane implements ActionListener{
 		
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
-		if (obj == BackButton) {
-
+		if (obj == BackButton || obj == backLabel || obj == BackPipe) {
+			program.playPipeSound();
 			program.switchToShop();
 		}
 	}

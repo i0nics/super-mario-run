@@ -107,7 +107,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
 		if (obj == BackButton || obj == backLabel || obj == BackPipe) {
-
+			program.playPipeSound();
 			program.switchToShop();
 		}
 		if(obj == LuigiButton || obj == buyLabel2)
