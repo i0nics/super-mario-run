@@ -81,7 +81,7 @@ package com.supermariorun.panes;
 
  		GObject obj = program.getElementAt(e.getX(), e.getY());
 
- 		if (obj == BackButton) {
+ 		if (obj == BackButton || obj == backLabel) {
 
  			program.switchToShop();
  		}
