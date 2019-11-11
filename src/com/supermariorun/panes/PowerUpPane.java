@@ -20,15 +20,19 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 	public static final String IMG_FOLDER = "powerUpPane/";
 	private GImage BackButton;
 	private GImage BackPipe;
-	private GButton MushroomButton;
+	private GImage MushroomButton;
 	private GImage Mushroom;
-	private GButton StarButton;
+	private GImage StarButton;
 	private GImage Star;
-	private GButton FlowerButton;
+	private GImage FlowerButton;
 	private GImage Flower;
 	private GImage backLabel;
 	private int count;
 	public Timer bubbleTimer;
+	private GImage buyLabelm;
+	private GImage buyLabelf;
+	private GImage buyLabels;
+	private GImage background;
 	private static int flowerCost = 50;
 	private static int mushroomCost = 50;
 	private static int starCost = 50;
@@ -50,21 +54,31 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		BackButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
 		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png", -50, 50);
 		BackPipe.setSize(pipeWidth, pipeHeight);
-		MushroomButton = new GButton("Mushroom", 200, 500, 150, 100);
-		MushroomButton.setFillColor(Color.BLUE);
+		MushroomButton = new GImage(IMG_FOLDER + "bubble.png", 200, 450);
+		MushroomButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
 		Mushroom = new GImage(IMG_FOLDER + "Mushroom.png", mainSMR.getWidth()/7, mainSMR.getHeight()/3);
-		FlowerButton = new GButton("Flower", 500, 500, 150, 100);
-		FlowerButton.setFillColor(Color.RED);
+		FlowerButton = new GImage(IMG_FOLDER + "bubble.png", 500, 450);
+		FlowerButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
 		Flower = new GImage(IMG_FOLDER + "Flower.png",mainSMR.getWidth()/2.5, mainSMR.getHeight()/3);		
-		StarButton = new GButton("Star", 800, 500, 150, 100);
-		StarButton.setFillColor(Color.YELLOW);
+		StarButton = new GImage(IMG_FOLDER + "bubble.png", 800, 450);
+		StarButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
 		Star = new GImage(IMG_FOLDER + "Star.png", mainSMR.getWidth()/1.52, mainSMR.getHeight()/3);
 		backLabel = new GImage(IMG_FOLDER + "backLabel.png",170, 75);
 		backLabel.setSize(labelWidth*1.2, labelHeight*1.2);
 		bubbleTimer.start();
+		buyLabelm = new GImage(IMG_FOLDER + "buyLabel.png",210,485);
+		buyLabelm.setSize(labelWidth*1.5, labelHeight*1.5);
+		buyLabelf = new GImage(IMG_FOLDER + "buyLabel.png",510,485);
+		buyLabelf.setSize(labelWidth*1.5, labelHeight*1.5);
+		buyLabels = new GImage(IMG_FOLDER + "buyLabel.png",810,485);
+		buyLabels.setSize(labelWidth*1.5, labelHeight*1.5);
+		background = new GImage(IMG_FOLDER + "background1.png",0,0);
+		background.setSize(mainWidth,mainHeight);
+		
 	}
 	@Override
 	public void showContents() {
+		program.add(background);
 		program.add(BackButton);
 		program.add(BackPipe);
 		program.add(MushroomButton);
@@ -74,10 +88,14 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		program.add(StarButton);
 		program.add(Star);
 		program.add(backLabel);
+		program.add(buyLabelm);
+		program.add(buyLabelf);
+		program.add(buyLabels);
 	}
 
 	@Override
 	public void hideContents() {
+		program.remove(background);
 		program.remove(BackButton);
 		program.remove(BackPipe);
 		program.remove(MushroomButton);
@@ -87,24 +105,27 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		program.remove(StarButton);
 		program.remove(Star);
 		program.remove(backLabel);
+		program.remove(buyLabelm);
+		program.remove(buyLabelf);
+		program.remove(buyLabels);
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {
 		
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
-		if (obj == BackButton) {
+		if (obj == BackButton || obj == backLabel) {
 			program.switchToShop();
 		}
-		if(obj == MushroomButton)
+		if(obj == MushroomButton || obj == buyLabelm)
 		{
 			mushroomTransaction();
 		}
-		if(obj == StarButton)
+		if(obj == StarButton || obj == buyLabels)
 		{
 			starTransaction();
 		}
-		if(obj == FlowerButton) {
+		if(obj == FlowerButton || obj == buyLabelf) {
 			flowerTransaction();
 		}
 	}
@@ -114,13 +135,24 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			
 			backLabel.move(0, 10);
 			BackButton.move(0, 10);
+			buyLabelm.move(0, 10);
+			buyLabelf.move(0, 10);
+			buyLabels.move(0, 10);
+			MushroomButton.move(0, 10);
+			FlowerButton.move(0, 10);
+			StarButton.move(0, 10);
 		}
 		
 		if (count == 2) {
 			
 			backLabel.move(0, -10);
 			BackButton.move(0, -10);
-			
+			buyLabelm.move(0, -10);
+			buyLabelf.move(0, -10);
+			buyLabels.move(0, -10);
+			MushroomButton.move(0, -10);
+			FlowerButton.move(0, -10);
+			StarButton.move(0, -10);
 			count = 0;
 		}
 		count++;
