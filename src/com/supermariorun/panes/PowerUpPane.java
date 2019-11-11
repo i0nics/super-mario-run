@@ -1,7 +1,11 @@
 package com.supermariorun.panes;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+
+import javax.swing.Timer;
 
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
@@ -10,7 +14,7 @@ import acm.graphics.GImage;
 import acm.graphics.GObject;
 import starter.GButton;
 
-public class PowerUpPane extends GraphicsPane {
+public class PowerUpPane extends GraphicsPane implements ActionListener {
 	private mainSMR program;
 	public static final String IMG_FOLDER = "powerUpPane/";
 	private GButton BackButton;
@@ -21,10 +25,23 @@ public class PowerUpPane extends GraphicsPane {
 	private GImage Star;
 	private GButton FlowerButton;
 	private GImage Flower;
+	private GImage backLabel;
+	private int count;
+	public Timer bubbleTimer;
 	
 	public PowerUpPane(mainSMR mainSMR) {
 		super();
-		program = mainSMR;
+		this.program = mainSMR;
+		final double mainWidth = program.getWidth();
+		final double mainHeight = program.getHeight();
+		final double pipeWidth = mainWidth/6;
+		final double pipeHeight = mainHeight/6;
+		final double bubbleWidth = mainWidth/9;
+		final double bubbleHeight = mainHeight/5;
+		final double labelWidth = mainWidth/12;
+		final double labelHeight = mainHeight/12;
+		
+		bubbleTimer = new Timer(500, this);
 		BackButton = new GButton("Back", 100, 100, 80, 80);
 		BackButton.setFillColor(Color.GREEN);
 		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png",mainSMR.getWidth()/55, mainSMR.getHeight()/6.7);
@@ -70,6 +87,24 @@ public class PowerUpPane extends GraphicsPane {
 		if (obj == BackButton) {
 			program.switchToShop();
 		}
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (count == 1) {
+			
+			backLabel.move(0, 10);
+			BackButton.move(0, 10);
+		}
+		
+		if (count == 2) {
+			
+			backLabel.move(0, -10);
+			BackButton.move(0, -10);
+			
+			count = 0;
+		}
+		count++;
+		
 	}
 }
 
