@@ -21,6 +21,9 @@ public class InventoryPane extends GraphicsPane implements ActionListener{
 	private GImage BackPipe;
 	private GImage backLabel;
 	private GImage background;
+	private GImage Mushroom;
+	private GImage Star;
+	private GImage Flower;
 	private int count;
 	public Timer bubbleTimer;
 
@@ -45,6 +48,7 @@ public class InventoryPane extends GraphicsPane implements ActionListener{
 		backLabel.setSize(labelWidth*1.2, labelHeight*1.2);
 		background = new GImage(IMG_FOLDER + "Inventory Slots.png", 0, 0);
 		background.setSize(mainSMR.getWidth(), mainSMR.getHeight());
+		
 		bubbleTimer.start();
 	}
 
