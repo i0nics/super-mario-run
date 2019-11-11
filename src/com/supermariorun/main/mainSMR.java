@@ -25,6 +25,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private static final String PAUSE_EFFECT = "pause.mp3";
 	private static final String RESUME_EFFECT = "resume.mp3";
 	private static final String LVL1_TRACK = "LevelOne.mp3";
+	private static final String COURSECLEARED_EFFECT = "courseCleared.mp3";
 	
 	private StartPane startPane;
 	public MenuPane menuPane;
@@ -177,6 +178,10 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		requestFocus();
+	}
+	
+	public void playCourseClearedTrack() {
+		audio.playSound(MUSIC_FOLDER, COURSECLEARED_EFFECT);
 	}
 
 	public playerProgress getProgress() {

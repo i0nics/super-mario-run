@@ -143,6 +143,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener{
 	
 	public void isGameOver() {
 		if (Background.getX() == -4840) {
+			program.stopLvlOneTrack();
 			timer.stop();
 		}
 	}

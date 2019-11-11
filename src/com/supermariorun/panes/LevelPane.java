@@ -129,6 +129,8 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.add(greyBack);
 			program.add(levelClear);
 			program.add(continueButton);
+			program.stopLvlOneTrack();
+			program.playCourseClearedTrack();
 		}
 	}
 	
@@ -223,11 +225,14 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		}
 		
 		else if(obj == quitButton) {
+			program.stopLvlOneTrack();
 			program.playTourSound();
 			program.switchToTour();
 		}
 		
 		else if(obj == continueButton) {
+			program.stopLvlOneTrack();
+			program.playPipeSound();
 			program.switchToEndPane();
 		}
 		
