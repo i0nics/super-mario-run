@@ -112,8 +112,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	}
 	
 	public void Restart() {
-		timer.restart();
-		Background.setLocation(0, 0);
+		program.switchToLevel(1);
 	}
 	
 	public void moveEnvironment() {
