@@ -40,31 +40,42 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 		final double bubbleHeight = mainHeight/5;
 		final double labelWidth = mainWidth/12;
 		final double labelHeight = mainHeight/12;
-		
-		
+			
 		bubbleTimer = new Timer(500, this);
+		
 		PowerUpButton = new GImage("bubble.png", 770, 200);
 		PowerUpButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
+	
 		CharacterButton = new GImage("bubble.png", 270, 200);
 		CharacterButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
+	
 		BackButton = new GImage(IMG_FOLDER + "bubble.png", 152, 30);
 		BackButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
+	
 		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png", -50, 50);
 		BackPipe.setSize(pipeWidth, pipeHeight);
+	
 		background = new GImage(IMG_FOLDER + "redStripes.png", 0, 0);
 		background.setSize(mainSMR.getWidth(), mainSMR.getHeight());
+		
 		InventoryButton = new GImage("bubble.png", 975, 30);
 		InventoryButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
-		toad = new GImage(IMG_FOLDER + "tum.png",300,100);
-		toad.setSize(mainSMR.getWidth()/2, mainSMR.getHeight()/1.2);
+		
+		toad = new GImage(IMG_FOLDER + "tum.png",380, 257);
+		toad.setSize(400, 450);
+		
 		backLabel = new GImage(IMG_FOLDER + "backLabel.png", 170, 75);
-		backLabel.setSize(labelWidth*1.2, labelHeight*1.2);
-		inventoryLabel = new GImage(IMG_FOLDER + "inventoryButton.png",992,75);
-		inventoryLabel.setSize(labelWidth*1.2, labelHeight*1.2);
-		characterLabel = new GImage(IMG_FOLDER + "charactersButton.png",290,245);
-		characterLabel.setSize(labelWidth*1.2, labelHeight*1.2);
-		powerLabel = new GImage(IMG_FOLDER + "powerUpsButton.png",790,245);
-		powerLabel.setSize(labelWidth*1.2, labelHeight*1.2);
+		backLabel.setSize(labelWidth * 1.2, labelHeight*1.2);
+		
+		inventoryLabel = new GImage(IMG_FOLDER + "inventoryButton.png", 980, 75);
+		inventoryLabel.setSize(labelWidth*1.5, labelHeight*1.2);
+		
+		characterLabel = new GImage(IMG_FOLDER + "charactersButton.png", 274, 245);
+		characterLabel.setSize(labelWidth*1.5, labelHeight*1.2);
+		
+		powerLabel = new GImage(IMG_FOLDER + "powerUpsButton.png", 774, 245);
+		powerLabel.setSize(labelWidth*1.5, labelHeight*1.2);
+		
 		bubbleTimer.start();
 	}
 
@@ -76,11 +87,11 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 		program.add(BackButton);
 		program.add(BackPipe);
 		program.add(InventoryButton);
-		program.add(toad);
 		program.add(backLabel);
 		program.add(inventoryLabel);
 		program.add(characterLabel);
 		program.add(powerLabel);
+		program.add(toad);
 	}
 
 	@Override
