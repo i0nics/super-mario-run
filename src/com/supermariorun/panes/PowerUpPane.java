@@ -17,7 +17,7 @@ import starter.GButton;
 public class PowerUpPane extends GraphicsPane implements ActionListener {
 	private mainSMR program;
 	public static final String IMG_FOLDER = "powerUpPane/";
-	private GButton BackButton;
+	private GImage BackButton;
 	private GImage BackPipe;
 	private GButton MushroomButton;
 	private GImage Mushroom;
@@ -42,10 +42,10 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		final double labelHeight = mainHeight/12;
 		
 		bubbleTimer = new Timer(500, this);
-		BackButton = new GButton("Back", 100, 100, 80, 80);
-		BackButton.setFillColor(Color.GREEN);
-		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png",mainSMR.getWidth()/55, mainSMR.getHeight()/6.7);
-		BackPipe.setSize(mainSMR.getWidth()/14, mainSMR.getHeight()/8);
+		BackButton = new GImage(IMG_FOLDER + "bubble.png", 152, 30);
+		BackButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
+		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png", -50, 50);
+		BackPipe.setSize(pipeWidth, pipeHeight);
 		MushroomButton = new GButton("Mushroom", 200, 500, 150, 100);
 		MushroomButton.setFillColor(Color.BLUE);
 		Mushroom = new GImage(IMG_FOLDER + "Mushroom.png", mainSMR.getWidth()/7, mainSMR.getHeight()/3);
@@ -55,6 +55,9 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		StarButton = new GButton("Star", 800, 500, 150, 100);
 		StarButton.setFillColor(Color.YELLOW);
 		Star = new GImage(IMG_FOLDER + "Star.png", mainSMR.getWidth()/1.52, mainSMR.getHeight()/3);
+		backLabel = new GImage(IMG_FOLDER + "backLabel.png",170, 75);
+		backLabel.setSize(labelWidth*1.2, labelHeight*1.2);
+		bubbleTimer.start();
 	}
 	@Override
 	public void showContents() {
@@ -66,6 +69,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		program.add(Flower);
 		program.add(StarButton);
 		program.add(Star);
+		program.add(backLabel);
 	}
 
 	@Override
@@ -78,6 +82,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		program.remove(Flower);
 		program.remove(StarButton);
 		program.remove(Star);
+		program.remove(backLabel);
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {
