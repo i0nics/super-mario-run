@@ -138,7 +138,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		moveEnvironment();
 		isGameOver();
-		leftFoot = program.getElementAt(Mario.getMario().getX() + 20, Mario.getMario().getY() + 100);
+		leftFoot = program.getElementAt(Mario.getMario().getX() + 20, Mario.getMario().getY() + 90);
 		if (jumpState == true) {
 			
 			jumpUpState = false;
@@ -160,7 +160,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 				Mario.getMario().move(0, 20);				
 				for (GImage obj : Environment) {
 					if (leftFoot == obj) {
-						Mario.getMario().setLocation(obj.getX(), obj.getY() - 60);
+						
 						jumpState = false;
 						Mario.run();
 					}
@@ -238,6 +238,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		else {
 			if (Mario.jumpState == false) {
 				jumpState = true;
+				jumpCount = 0;
 				Mario.jump();
 			}
 		}
