@@ -143,12 +143,12 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			
 			jumpUpState = false;
 				
-			if (jumpCount >=  0 && jumpCount < 10) {
+			if (jumpCount >=  0 && jumpCount < 6) {
 				jumpUpState = true;
 				jumpCount++;
 			}
 				
-			if  (jumpCount > 10) {
+			if  (jumpCount > 6) {
 				jumpUpState = false;
 			}
 		
