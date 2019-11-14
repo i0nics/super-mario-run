@@ -32,14 +32,17 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private GImage greyBack;
 	private GImage levelClear;
 	private GImage continueButton;
+	
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> GrassStrips;
 	private ArrayList <GImage> Blocks;
 	private ArrayList <GImage> qBlocks;
+	
 	public boolean jumpState;
 	private cMario Mario;
 	private ILevel level;
 	private Timer timer;
+	
 	private int spaceWidth = 1150/30;
 	private int spaceHeight = 650/18;
 	public static final int MS = 70;
