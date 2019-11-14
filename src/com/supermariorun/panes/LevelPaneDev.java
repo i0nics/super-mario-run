@@ -43,7 +43,6 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 	private ArrayList<GImage> Blocks;
 	private ArrayList<GImage> qBlocks;
 	private GLabel collison;
-	private cMario Mario;
 	private ILevel level;
 	private Timer timer;
 	private int spaceWidth = 1150 / 30;
@@ -79,7 +78,6 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 		program = mainSMR;
 		timer = new Timer(MS, this);
 		level = new LevelOne();
-		Mario = new cMario(program);
 		Environment = level.getEnvironment();
 
 		pauseBubble = new GImage(IMG_FOLDER + "bubble.png", 30, 10);
@@ -125,13 +123,11 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 
 	public void Play() {
 		timer.start();
-		Mario.run();
 		program.playLvlOneTrack();
 	}
 
 	public void Pause() {
 		timer.stop();
-		Mario.stand();
 		program.playPauseSound();
 		program.pauseLvlOneTrack();
 	}
@@ -158,25 +154,12 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		isGameOver();
 
-		leftFoot = program.getElementAt(Mario.getMario().getX() + 20, Mario.getMario().getY() + 100);
-		if (jumpState == true) {
-			for (GImage obj : Environment) {
-				if (leftFoot == obj) {
-					Mario.getMario().setLocation(obj.getX(), obj.getY());
-					collison.setLabel("collided");
-					jumpState = false;
-					Mario.run();
-				}
-			}
-		}
-
 	}
 
 	@Override
 	public void showContents() {
 		Play();
 		program.add(Background);
-		program.add(Mario.getMario());
 		program.add(pauseButton);
 		program.add(pauseBubble);
 
@@ -263,9 +246,6 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 			program.switchToTour();
 		}
 
-		else {
-			Mario.jump();
-		}
 	}
 
 	@Override

@@ -20,7 +20,6 @@ public class cMario extends GraphicsProgram implements ActionListener {
 	private GObject leftFoot;
 	public static final String IMG_FOLDER = "character/";
 	private ArrayList <GImage> Environment;
-	//private Timer timer;
 	public boolean jumpUpState;
 	private int jumpCount = 0;
 	
@@ -28,7 +27,6 @@ public class cMario extends GraphicsProgram implements ActionListener {
 	public cMario(mainSMR mainSMR, LevelPane levelPane) {
 		program = mainSMR;
 		this.levelPane = levelPane;
-		//timer = new Timer (70, this);
 		Mario = new GImage (IMG_FOLDER + "stand.png", 100, 520); 
 		Mario.setSize(64, 64);
 		Environment = levelPane.getEnvironment();
