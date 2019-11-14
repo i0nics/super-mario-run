@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.Timer;
 
 import com.supermariorun.main.mainSMR;
+import com.supermariorun.panes.LevelPane;
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;
@@ -14,22 +15,23 @@ import acm.program.GraphicsProgram;
 
 public class cMario extends GraphicsProgram implements ActionListener {
 	private mainSMR program;
+	private LevelPane levelPane;
 	private GImage Mario;
 	private GObject leftFoot;
 	public static final String IMG_FOLDER = "character/";
 	private ArrayList <GImage> Environment;
-	private Timer timer;
-	public boolean jumpState;
+	//private Timer timer;
 	public boolean jumpUpState;
 	private int jumpCount = 0;
 	
 	
-	public cMario(mainSMR mainSMR) {
+	public cMario(mainSMR mainSMR, LevelPane levelPane) {
 		program = mainSMR;
-		timer = new Timer (25, this);
-		Mario = new GImage (IMG_FOLDER + "stand.png", 100, 520); //520
+		this.levelPane = levelPane;
+		//timer = new Timer (70, this);
+		Mario = new GImage (IMG_FOLDER + "stand.png", 100, 520); 
 		Mario.setSize(64, 64);
-		
+		Environment = levelPane.getEnvironment();
 	}
 	
 	public void stand() {
@@ -45,14 +47,41 @@ public class cMario extends GraphicsProgram implements ActionListener {
 	public void jump() {
 		Mario.setImage(IMG_FOLDER + "jump.gif");
 		Mario.setSize(64, 64);
+		leftFoot = program.getElementAt(Mario.getX() + 20, Mario.getY() + 90);
+		
+		jumpUpState = false;
+			
+		if (jumpCount >=  0 && jumpCount < 6) {
+			jumpUpState = true;
+			setJumpCount(jumpCount + 1);
+		}
+			
+		if  (jumpCount > 6) {
+			jumpUpState = false;
+		}
+	
+		if (jumpUpState == true) {		
+			Mario.move(0, -20);
+		}
+			
+		if (jumpUpState == false) {
+			Mario.move(0, 20);				
+			for (GImage obj : Environment) {
+				if (leftFoot == obj) {
+					
+					levelPane.jumpState = false;
+					run();
+				}
+			}
+		}
 	}
 	
 	public GImage getMario(){
 		return Mario;
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		
+	public void setJumpCount(int jumpCount) {
+		this.jumpCount = jumpCount;
 	}
+		
 }

@@ -36,8 +36,8 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private InventoryPane inventoryPane;
 	private TourPane tourPane;
 	private playerProgress progress;
-	public LevelPane levelPane;
-	public LevelPaneDev levelPaneDev;
+	private LevelPane levelPane;
+	private LevelPaneDev levelPaneDev;
 	private EndPane EndPane;
 	
     protected static final int FONT_SIZE = 18;
@@ -175,13 +175,13 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		audio.stopSound(MUSIC_FOLDER, LVL1_TRACK);
 	}
 	
+	public void playCourseClearedTrack() {
+		audio.playSound(MUSIC_FOLDER, COURSECLEARED_EFFECT);
+	}
+	
 	public void init() {
 		setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		requestFocus();
-	}
-	
-	public void playCourseClearedTrack() {
-		audio.playSound(MUSIC_FOLDER, COURSECLEARED_EFFECT);
 	}
 
 	public playerProgress getProgress() {

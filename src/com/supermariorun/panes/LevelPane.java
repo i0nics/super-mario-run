@@ -36,6 +36,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private ArrayList <GImage> GrassStrips;
 	private ArrayList <GImage> Blocks;
 	private ArrayList <GImage> qBlocks;
+	public boolean jumpState;
 	private cMario Mario;
 	private ILevel level;
 	private Timer timer;
@@ -43,11 +44,6 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private int spaceHeight = 650/18;
 	public static final int MS = 70;
 	public static final String IMG_FOLDER = "LevelPane/";
-
-	public boolean jumpState; 
-	public boolean jumpUpState;
-	private int jumpCount;
-	private GObject leftFoot;
 
 	public LevelPane(mainSMR mainSMR, int levelNum) {
 		super();
@@ -60,8 +56,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		timer = new Timer (MS, this);
 		level = new LevelOne();
 		Environment = level.getEnvironment();
-		Mario = new cMario(mainSMR);
-		
+		Mario = new cMario(mainSMR, this);
 		
 		pauseBubble = new GImage(IMG_FOLDER + "bubble.png",30, 10);
 		pauseBubble.setSize(100, 100);
@@ -138,34 +133,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		moveEnvironment();
 		isGameOver();
-		leftFoot = program.getElementAt(Mario.getMario().getX() + 20, Mario.getMario().getY() + 90);
+	
 		if (jumpState == true) {
-			
-			jumpUpState = false;
-				
-			if (jumpCount >=  0 && jumpCount < 6) {
-				jumpUpState = true;
-				jumpCount++;
-			}
-				
-			if  (jumpCount > 6) {
-				jumpUpState = false;
-			}
-		
-			if (jumpUpState == true) {		
-				Mario.getMario().move(0, -20);
-			}
-				
-			if (jumpUpState == false) {
-				Mario.getMario().move(0, 20);				
-				for (GImage obj : Environment) {
-					if (leftFoot == obj) {
-						
-						jumpState = false;
-						Mario.run();
-					}
-				}
-			}
+			Mario.jump();
 		}
 	}
 
@@ -236,9 +206,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		}
 		
 		else {
-			if (Mario.jumpState == false) {
+			if (!jumpState) {
 				jumpState = true;
-				jumpCount = 0;
+				Mario.setJumpCount(0);
 				Mario.jump();
 			}
 		}

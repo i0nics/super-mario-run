@@ -30,10 +30,8 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 	private double marioWidth;
 	private double marioHeight;
 	private int count = 1;
-	private int numTimes = 0;
     private int jumpCount = 0;
 	private boolean jumpState = false;
-	private boolean clickState = false;
 	private boolean jumpUpState = false;
 	public static int x = 0;
     public static int y = 0;
@@ -79,7 +77,7 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 		bubbleImg.setSize(bubbleWidth, bubbleHeight);
 		
 		mTimer = new Timer(50, this);
-		mTimer.restart();
+		mTimer.start();
 	}
 	
 	@Override
@@ -122,17 +120,18 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 			marioRun.setSize(marioWidth, marioHeight);
 		    program.playJumpSound();
 			jumpState = true;
-			clickState = true;
 		}
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		marioRun.move(10, 0);
 		
 		if (marioRun.getX() >= mainWidth) {
-        	numTimes = 0;
         	marioRun.setLocation(-20, 500);
+		}
+		
+		else {
+			marioRun.move(10, 0);
 		}
 		
 		if (count == 10) {
@@ -151,7 +150,6 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 		}
 		
 		if (jumpState == true ){
-			clickState = false;
 			jumpUpState = false;
 			
 			if (jumpCount >=  0 && jumpCount < 5) {
@@ -167,7 +165,6 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 				marioRun.move(15, -15);
 
 				if (marioRun.getX() >= mainWidth) {
-		        	numTimes = 0;
 		        	marioRun.setLocation(-20, 500);
 				}
 			}
@@ -176,19 +173,16 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 				marioRun.move(15, 15);
 
 				if (marioRun.getX() >= mainWidth) {
-		        	numTimes = 0;
 		        	marioRun.setLocation(-20, 500);
 				}
 			}
 			
 			if (jumpCount == JUMPint) {
-				clickState = false;
 				jumpState = false;
 				marioRun.setImage(IMG_FOLDER + "mario1.gif");
 				marioRun.setSize(marioWidth, marioHeight);
 			}
 		}
-		numTimes++;
 		count++;
 	}		
 }
