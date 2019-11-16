@@ -58,11 +58,11 @@ public class cMario extends GraphicsProgram implements ActionListener {
 			jumpUpState = false;
 		}
 	
-		if (jumpUpState == true) {		
+		if (jumpUpState) {		
 			Mario.move(0, -20);
 		}
 			
-		if (jumpUpState == false) {
+		if (!jumpUpState) {
 			Mario.move(0, 20);				
 			for (GImage obj : Environment) {
 				if (leftFoot == obj) {

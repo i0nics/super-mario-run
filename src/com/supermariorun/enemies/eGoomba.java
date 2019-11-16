@@ -22,7 +22,6 @@ public class eGoomba extends GraphicsPane implements ActionListener {
 
 	public static final String IMG_FOLDER = "enemies/";
 	private GImage goomba;
-	private Timer timer;
 	private boolean moveRight;
 	private boolean isGoombaDead;
 	private ArrayList <GImage> Environment;

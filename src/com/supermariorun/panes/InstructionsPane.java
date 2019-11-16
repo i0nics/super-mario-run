@@ -145,11 +145,11 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 			count = 0;
 		}
 		
-		if(jumpState == false) {
+		if(!jumpState) {
 			jumpCount = 0;
 		}
 		
-		if (jumpState == true ){
+		if (jumpState){
 			jumpUpState = false;
 			
 			if (jumpCount >=  0 && jumpCount < 5) {
@@ -162,19 +162,18 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 			}
 			
 			if (jumpUpState == true) {
-				marioRun.move(15, -15);
 
 				if (marioRun.getX() >= mainWidth) {
 		        	marioRun.setLocation(-20, 500);
 				}
+				marioRun.move(15, -15);
 			}
 			
 			if (jumpUpState == false) {
-				marioRun.move(15, 15);
-
 				if (marioRun.getX() >= mainWidth) {
 		        	marioRun.setLocation(-20, 500);
 				}
+				marioRun.move(15, 15);
 			}
 			
 			if (jumpCount == JUMPint) {
