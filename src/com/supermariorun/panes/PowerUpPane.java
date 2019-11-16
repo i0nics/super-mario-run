@@ -27,8 +27,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 	private GImage Mushroom;
 	private GImage StarButton;
 	private GImage Star;
-	private GImage FlowerButton;
-	private GImage Flower;
 	private GImage backLabel;
 	private int count;
 	public Timer bubbleTimer;
@@ -67,11 +65,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 
 		Mushroom = new GImage(IMG_FOLDER + "Mushroom.png", mainSMR.getWidth() / 7, mainSMR.getHeight() / 3);
 
-		FlowerButton = new GImage(IMG_FOLDER + "bubble.png", 500, 450);
-		FlowerButton.setSize(bubbleWidth * 1.2, bubbleHeight * 1.2);
-
-		Flower = new GImage(IMG_FOLDER + "Flower.png", mainSMR.getWidth() / 2.5, mainSMR.getHeight() / 3);
-
 		StarButton = new GImage(IMG_FOLDER + "bubble.png", 800, 450);
 		StarButton.setSize(bubbleWidth * 1.2, bubbleHeight * 1.2);
 
@@ -108,8 +101,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		program.add(BackPipe);
 		program.add(MushroomButton);
 		program.add(Mushroom);
-		program.add(FlowerButton);
-		program.add(Flower);
 		program.add(StarButton);
 		program.add(Star);
 		program.add(backLabel);
@@ -126,8 +117,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		program.remove(BackPipe);
 		program.remove(MushroomButton);
 		program.remove(Mushroom);
-		program.remove(FlowerButton);
-		program.remove(Flower);
 		program.remove(StarButton);
 		program.remove(Star);
 		program.remove(backLabel);
@@ -154,10 +143,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		if (obj == StarButton || obj == buyLabels) {
 			starTransaction();
 		}
-
-		if (obj == FlowerButton || obj == buyLabelf) {
-			flowerTransaction();
-		}
 	}
 
 	@Override
@@ -169,7 +154,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			buyLabelf.move(0, 10);
 			buyLabels.move(0, 10);
 			MushroomButton.move(0, 10);
-			FlowerButton.move(0, 10);
 			StarButton.move(0, 10);
 		}
 
@@ -180,7 +164,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			buyLabelf.move(0, -10);
 			buyLabels.move(0, -10);
 			MushroomButton.move(0, -10);
-			FlowerButton.move(0, -10);
 			StarButton.move(0, -10);
 			count = 0;
 		}
@@ -209,22 +192,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 
 		if (progress.getNumCoins() >= mushroomCost) {
 			progress.decreaseCoins(mushroomCost);
-			System.out.println("Purchase comfirmed");
-			System.out.println(progress.getNumCoins());
-			coinCount.setLabel("Coins: " + progress.getNumCoins());
-		}
-
-		else {
-			System.out.println("not enough money");
-			System.out.println(progress.getNumCoins());
-			coinCount.setLabel("Coins: " + progress.getNumCoins());
-		}
-	}
-
-	public void flowerTransaction() {
-
-		if (progress.getNumCoins() >= flowerCost) {
-			progress.decreaseCoins(flowerCost);
 			System.out.println("Purchase comfirmed");
 			System.out.println(progress.getNumCoins());
 			coinCount.setLabel("Coins: " + progress.getNumCoins());

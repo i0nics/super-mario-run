@@ -12,12 +12,14 @@ import com.supermariorun.panes.LevelPane;
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;
+import acm.graphics.GRectangle;
 import acm.program.GraphicsProgram;
 
 public class eGoomba extends GraphicsPane implements ActionListener {
 	private mainSMR program;
 	double mainWidth ;
 	double mainHeight;
+
 	public static final String IMG_FOLDER = "enemies/";
 	private GImage goomba;
 	private Timer timer;
@@ -34,10 +36,6 @@ public class eGoomba extends GraphicsPane implements ActionListener {
 		goomba = new GImage(IMG_FOLDER + "goomba.png", 200, 500);
 		goomba.setSize(mainWidth/4, mainHeight/3);
 		Environment = levelPane.getEnvironment();
-		
-		
-		goomba.move(10, 0);
-
 	}
 
 

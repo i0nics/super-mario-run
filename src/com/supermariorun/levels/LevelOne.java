@@ -29,7 +29,6 @@ public class LevelOne implements ILevel{
 		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png", 4550, 585));
 		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",815,558));
 		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",815,525));
-		//for (GImage g : GrassStrips) { g.setSize(1900, 73);}
 		
 		setUpEnvironment();
 	
