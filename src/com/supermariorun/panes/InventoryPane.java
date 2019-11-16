@@ -9,8 +9,9 @@ package com.supermariorun.panes;
 
  import com.supermariorun.main.GraphicsPane;
  import com.supermariorun.main.mainSMR;
+import com.supermariorun.main.playerProgress;
 
- import acm.graphics.GImage;
+import acm.graphics.GImage;
  import acm.graphics.GObject;
  import starter.GButton;
 
@@ -24,6 +25,8 @@ package com.supermariorun.panes;
  	private GImage Mushroom;
  	private GImage Star;
  	private GImage Flower;
+ 	private GImage luigiPic;
+ 	private GImage princessPic;
  	private int count;
  	public Timer bubbleTimer;
 
@@ -51,18 +54,20 @@ package com.supermariorun.panes;
  		Mushroom = new GImage(IMG_FOLDER + "Mushroom.png", mainSMR.getWidth()/7, mainSMR.getHeight()/1.8);
  		Flower = new GImage(IMG_FOLDER + "Flower.png",mainSMR.getWidth()/2.5, mainSMR.getHeight()/1.8);
  		Star = new GImage(IMG_FOLDER + "Star.png", mainSMR.getWidth()/1.52, mainSMR.getHeight()/1.8);
+ 		luigiPic = new GImage(IMG_FOLDER + "Luigi.png", 675, 200);
+ 		princessPic = new GImage(IMG_FOLDER + "Princess.png", 325, 200);
+		princessPic.setSize(185, 250);
  		bubbleTimer.start();
  	}
 
  	@Override
  	public void showContents() {
  		program.add(background);
- 		program.add(Mushroom);
- 		program.add(Flower);
- 		program.add(Star);
  		program.add(BackButton);
  		program.add(BackPipe);
  		program.add(backLabel);
+ 		characterBought();
+ 		powerUpbought();
  	}
 
  	@Override
@@ -104,5 +109,33 @@ package com.supermariorun.panes;
  		}
  		count++;
 
+ 	}
+ 	
+ 	
+ 	public void characterBought()
+ 	{
+ 		if(playerProgress.isLuigiUnlocked())
+ 		{
+ 			program.add(luigiPic);
+ 		}
+ 		if(playerProgress.isPrincessUnlocked())
+ 		{
+ 			program.add(princessPic);
+ 		}
+ 	}
+ 	public void powerUpbought()
+ 	{
+ 		if(playerProgress.isFlowerPurchased())
+ 		{
+ 			program.add(Flower);
+ 		}
+ 		if(playerProgress.isStarPurchased())
+ 		{
+ 			program.add(Star);
+ 		}
+ 		if(playerProgress.isMushroomPurchased())
+ 		{
+ 			program.add(Mushroom);
+ 		}
  	}
  }
