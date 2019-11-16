@@ -49,7 +49,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 	private int spaceHeight = 650 / 18;
 	public static final int MS = 100; // 110
 	public static final String IMG_FOLDER = "LevelPane/";
-	private Character Mario;
+	private Character Character;
 
 	public boolean jumpState = true; // edit
 	public boolean jumpUpState;
@@ -65,7 +65,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 
 		collison = new GLabel("collison test", 500, 80);
 
-		Mario = new Character(mainSMR, this);
+		Character = new Character(mainSMR, this);
 		
 		CoordLabel = new GLabel("label ", 500, 40);
 		CoordLabel.setColor(Color.red);
@@ -165,7 +165,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 		program.add(Background);
 		program.add(pauseButton);
 		program.add(pauseBubble);
-		program.add(Mario.getMario());
+		program.add(Character.getCharacter());
 
 		for (GImage e : Environment) {
 			program.add(e);

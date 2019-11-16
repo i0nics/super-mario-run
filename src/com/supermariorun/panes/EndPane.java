@@ -48,14 +48,11 @@ public class EndPane extends GraphicsPane {
 	public void showContents() {
 		program.add(background);
 		program.add(next);
-		
 	}
 
 	@Override
 	public void hideContents() {
 		program.remove(background);
 		program.remove(next);
-		
 	}
-
 }

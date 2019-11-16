@@ -15,57 +15,54 @@ import acm.graphics.GImage;
 import acm.graphics.GLabel;
 import acm.graphics.GObject;
 
-public class LosePane extends GraphicsPane implements ActionListener {
+public class LosePane extends GraphicsPane {
 	private mainSMR program; 
 	public static final String IMG_FOLDER = "losePane/";
-	private GImage next;
+	private GImage quitButton;
+	private GImage retryButton;
 	private GImage background;
-	private GLabel coinCount;
 	
 	public LosePane(mainSMR mainSMR) {
 		super();
 		this.program = mainSMR;
 		final double mainWidth = program.getWidth();
 		final double mainHeight = program.getHeight();
-		background = new GImage(IMG_FOLDER + ".png", 0, 0);
+		background = new GImage(IMG_FOLDER + "gameOver.jpg", 0, 0);
 		background.setSize(mainWidth, mainHeight);
-		next = new GImage(IMG_FOLDER + "continueButton.png", 450, 500);
-		next.setSize(200, 120);
+		quitButton = new GImage(IMG_FOLDER + "quit.png", 450, 500);
+		quitButton.setSize(200, 120);
+		retryButton = new GImage(IMG_FOLDER + "retry.png", 600, 500);
+		retryButton.setSize(200, 120);
 	}
 	
-
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
-		if(obj == next) {
+		if(obj == quitButton) {
+			program.stopLvlOneTrack();
 			program.playTourSound();
 			program.playPipeSound();
 			program.switchToTour();
 		}
 		
-	}
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-		
+		if(obj == retryButton) {
+			program.stopLvlOneTrack();
+			program.playPipeSound();
+			program.switchToLevel(1);
+		}
 	}
 
 	@Override
 	public void showContents() {
-		// TODO Auto-generated method stub
 		program.add(background);
-		program.add(next);
-		
+		program.add(quitButton);
+		program.add(retryButton);
 	}
 
 	@Override
 	public void hideContents() {
-		// TODO Auto-generated method stub
 		program.remove(background);
-		program.remove(next);
-		
+		program.remove(quitButton);
+		program.remove(retryButton);
 	}
-
 }

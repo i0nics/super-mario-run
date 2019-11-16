@@ -5,6 +5,7 @@ import com.supermariorun.panes.InstructionsPane;
 import com.supermariorun.panes.InventoryPane;
 import com.supermariorun.panes.LevelPane;
 import com.supermariorun.panes.LevelPaneDev;
+import com.supermariorun.panes.LosePane;
 import com.supermariorun.panes.MenuPane;
 import com.supermariorun.panes.PowerUpPane;
 import com.supermariorun.panes.ShopPane;
@@ -38,6 +39,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private playerProgress progress;
 	private LevelPane levelPane;
 	private LevelPaneDev levelPaneDev;
+	private LosePane losePane;
 	private EndPane EndPane;
 	
     protected static final int FONT_SIZE = 18;
@@ -57,6 +59,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		guidePane = new InstructionsPane(this);
 		inventoryPane = new InventoryPane(this);
 		EndPane = new EndPane(this);
+		losePane = new LosePane(this);
 		switchToStart();
 	}
 	
@@ -105,6 +108,10 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	
 	public void switchToEndPane() {
 		switchToScreen(EndPane);
+	}
+	
+	public void switchToLosePane() {
+		switchToScreen(losePane);
 	}
 	
 	public void playStartSound() {

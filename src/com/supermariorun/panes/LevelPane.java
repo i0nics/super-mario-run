@@ -40,7 +40,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 	public boolean jumpState;
 	public boolean isPause = false;
-	private Character Mario;
+	private Character Character;
 	private ILevel level;
 	private Timer timer;
 	
@@ -60,7 +60,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		timer = new Timer (MS, this);
 		level = new LevelOne();
 		Environment = level.getEnvironment();
-		Mario = new Character(mainSMR, this);
+		Character = new Character(mainSMR, this);
 		
 		pauseBubble = new GImage(IMG_FOLDER + "bubble.png",30, 10);
 		pauseBubble.setSize(100, 100);
@@ -98,13 +98,13 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 	public void Play() {
 		timer.start();
-		Mario.run();
+		Character.run();
 		program.playLvlOneTrack();
 	}
 	
 	public void Pause() {
 	    timer.stop();
-		Mario.stand();
+		Character.stand();
 		program.playPauseSound();
 		program.pauseLvlOneTrack();
 	}
@@ -124,12 +124,18 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public void isGameOver() {
 		if (Background.getX() == -4840) { //4840
 			timer.stop();
-			Mario.stand();
+			Character.stand();
 			program.add(greyBack);
 			program.add(levelClear);
 			program.add(continueButton);
 			program.stopLvlOneTrack();
 			program.playCourseClearedTrack();
+		}
+		
+		if (Character.getCharacter().getY() > 650) {
+			timer.stop();
+			program.stopLvlOneTrack();
+			program.switchToLosePane();
 		}
 	}
 	
@@ -139,7 +145,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		isGameOver();
 	
 		if (jumpState == true) {
-			Mario.jump();
+			Character.jump();
 		}
 	}
 
@@ -147,7 +153,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public void showContents() {
 		Play();
 		program.add(Background);
-		program.add(Mario.getMario());
+		program.add(Character.getCharacter());
 		program.add(pauseButton);
 		program.add(pauseBubble);
 
@@ -159,7 +165,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	@Override
 	public void hideContents() {
 		program.remove(Background);
-		program.remove(Mario.getMario());
+		program.remove(Character.getCharacter());
 		program.remove(pauseButton);
 		program.remove(pauseBubble);
 		program.remove(quitButton);
@@ -219,8 +225,8 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		else {
 			if (!jumpState && !isPause) {
 				jumpState = true;
-				Mario.setJumpCount(0);
-				Mario.jump();
+				Character.setJumpCount(0);
+				Character.jump();
 			}
 		}
 	}
