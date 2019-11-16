@@ -39,6 +39,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private ArrayList <GImage> qBlocks;
 	
 	public boolean jumpState;
+	public boolean isPause = false;
 	private Character Mario;
 	private ILevel level;
 	private Timer timer;
@@ -102,7 +103,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	}
 	
 	public void Pause() {
-		timer.stop();
+	    timer.stop();
 		Mario.stand();
 		program.playPauseSound();
 		program.pauseLvlOneTrack();
@@ -175,6 +176,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	    
 		if(obj == pauseButton || obj == pauseBubble) {
 			Pause();
+			isPause = true;
 			program.add(greyBack);
 			program.add(pausePane);	
 			program.add(quitButton);
@@ -184,6 +186,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		
 		else if(obj == resumeButton) {
 			Play();
+			isPause = false;
 			program.playResumeSound();
 			program.remove(greyBack);
 			program.remove(pausePane);
@@ -214,7 +217,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		}
 		
 		else {
-			if (!jumpState) {
+			if (!jumpState && !isPause) {
 				jumpState = true;
 				Mario.setJumpCount(0);
 				Mario.jump();

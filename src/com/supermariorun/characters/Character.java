@@ -35,14 +35,17 @@ public class Character extends GraphicsProgram implements ActionListener {
 		Environment = levelPane.getEnvironment();
 	}
 	
-	public Character(mainSMR mainSMR, LevelPaneDev levelPane) {
+
+	
+	public Character(mainSMR mainSMR, LevelPaneDev levelPaneDev) {
 		program = mainSMR;
-		this.levelPaneDev = levelPane;
+		this.levelPaneDev = levelPaneDev;
 		Mario = new GImage (IMG_FOLDER + "stand.png", 100, 520); 
 		Mario.setSize(64, 64);
-		Environment = levelPaneDev.getEnvironment();
 	}
-	
+
+
+
 	public void stand() {
 		Mario.setImage(IMG_FOLDER + "stand.png");
 		Mario.setSize(64, 64);

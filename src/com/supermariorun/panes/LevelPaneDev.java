@@ -49,8 +49,12 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 	private int spaceHeight = 650 / 18;
 	public static final int MS = 100; // 110
 	public static final String IMG_FOLDER = "LevelPane/";
-
 	private Character Mario;
+
+	public boolean jumpState = true; // edit
+	public boolean jumpUpState;
+	private int jumpCount;
+	private GObject leftFoot;
 
 	public LevelPaneDev(mainSMR mainSMR, int levelNum) {
 		super();
@@ -61,6 +65,8 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 
 		collison = new GLabel("collison test", 500, 80);
 
+		Mario = new Character(mainSMR, this);
+		
 		CoordLabel = new GLabel("label ", 500, 40);
 		CoordLabel.setColor(Color.red);
 		CoordLabel.setFont("Arial-40");
@@ -69,8 +75,6 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 		dragCoord.setColor(Color.red);
 		dragCoord.setFont("Arial-40");
 
-		Mario = new Character(mainSMR, this);
-		
 		moveLeft = new GButton("left", 300, 40, 100, 100);
 		moveRight = new GButton("right", 400, 40, 100, 100);
 
@@ -161,6 +165,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 		program.add(Background);
 		program.add(pauseButton);
 		program.add(pauseBubble);
+		program.add(Mario.getMario());
 
 		for (GImage e : Environment) {
 			program.add(e);
@@ -176,15 +181,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 
 	@Override
 	public void hideContents() {
-		program.remove(level.getBackground());
-		program.remove(pauseButton);
-		program.remove(pauseBubble);
-		program.remove(quitButton);
-
-		program.remove(CoordLabel); // DEV
-		program.remove(dragCoord);
-		program.remove(moveLeft);
-		program.remove(moveRight);
+		program.removeAll();
 	}
 
 	@Override
@@ -260,9 +257,5 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		obj = null;
-	}
-
-	public ArrayList<GImage> getEnvironment() {
-		return Environment;
 	}
 }

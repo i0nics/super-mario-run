@@ -15,19 +15,19 @@ import acm.graphics.GImage;
 import acm.graphics.GLabel;
 import acm.graphics.GObject;
 
-public class EndPane extends GraphicsPane {
+public class LosePane extends GraphicsPane implements ActionListener {
 	private mainSMR program; 
-	public static final String IMG_FOLDER = "endPane/";
+	public static final String IMG_FOLDER = "losePane/";
 	private GImage next;
 	private GImage background;
 	private GLabel coinCount;
 	
-	public EndPane(mainSMR mainSMR) {
+	public LosePane(mainSMR mainSMR) {
 		super();
 		this.program = mainSMR;
 		final double mainWidth = program.getWidth();
 		final double mainHeight = program.getHeight();
-		background = new GImage(IMG_FOLDER + "tourBack.png", 0, 0);
+		background = new GImage(IMG_FOLDER + ".png", 0, 0);
 		background.setSize(mainWidth, mainHeight);
 		next = new GImage(IMG_FOLDER + "continueButton.png", 450, 500);
 		next.setSize(200, 120);
@@ -42,10 +42,19 @@ public class EndPane extends GraphicsPane {
 			program.playPipeSound();
 			program.switchToTour();
 		}
+		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+		
 	}
 
 	@Override
 	public void showContents() {
+		// TODO Auto-generated method stub
 		program.add(background);
 		program.add(next);
 		
@@ -53,6 +62,7 @@ public class EndPane extends GraphicsPane {
 
 	@Override
 	public void hideContents() {
+		// TODO Auto-generated method stub
 		program.remove(background);
 		program.remove(next);
 		
