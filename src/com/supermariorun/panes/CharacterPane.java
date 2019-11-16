@@ -86,8 +86,9 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		coinCount.setLocation(400, 100);
 		coinCount.setFont(lABEL_FONT);
 		
-		coin = new GImage(IMG_FOLDER + "coin.gif", 200,100);
-		coin.setSize(50, 50);
+		coin = new GImage(IMG_FOLDER + "coin.gif", 320,50);
+		coin.setSize(100, 100);
+		
 		bubbleTimer.start();
 	}
 	

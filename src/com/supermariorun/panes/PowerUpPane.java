@@ -29,6 +29,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 	private GImage Star;
 	private GImage backLabel;
 	private int count;
+	private GImage coin;
 	public Timer bubbleTimer;
 	private GImage buyLabelm;
 	private GImage buyLabelf;
@@ -88,6 +89,9 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		coinCount.setColor(Color.WHITE);
 		coinCount.setLocation(400, 100);
 
+		coin = new GImage(IMG_FOLDER + "coin.gif", 320,50);
+		coin.setSize(100, 100);
+		
 		bubbleTimer.start();
 	}
 
@@ -105,6 +109,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		program.add(buyLabelm);
 		program.add(buyLabels);
 		program.add(coinCount);
+		program.add(coin);
 	}
 
 	@Override
@@ -120,6 +125,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		program.remove(buyLabelm);
 		program.remove(buyLabels);
 		program.remove(coinCount);
+		program.remove(coin);
 	}
 
 	@Override
