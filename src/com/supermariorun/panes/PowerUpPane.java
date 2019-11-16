@@ -147,7 +147,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			backLabel.move(0, 10);
 			BackButton.move(0, 10);
 			buyLabelm.move(0, 10);
-			buyLabelf.move(0, 10);
 			buyLabels.move(0, 10);
 			MushroomButton.move(0, 10);
 			StarButton.move(0, 10);
@@ -157,7 +156,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			backLabel.move(0, -10);
 			BackButton.move(0, -10);
 			buyLabelm.move(0, -10);
-			buyLabelf.move(0, -10);
 			buyLabels.move(0, -10);
 			MushroomButton.move(0, -10);
 			StarButton.move(0, -10);
