@@ -175,6 +175,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		progress.getNumCoins();
 
 		if (progress.getNumCoins() >= starCost) {
+			progress.setStarPurchased();
 			progress.decreaseCoins(starCost);
 			System.out.println("Purchase comfirmed");
 			System.out.println(progress.getNumCoins());
@@ -191,6 +192,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 	public void mushroomTransaction() {
 
 		if (progress.getNumCoins() >= mushroomCost) {
+			progress.setMushroomPurchased();
 			progress.decreaseCoins(mushroomCost);
 			System.out.println("Purchase comfirmed");
 			System.out.println(progress.getNumCoins());

@@ -15,7 +15,7 @@ public class playerProgress {
 	private static boolean isPrincessUnlocked = false;
 	private static boolean isStarPurchased = false;
 	private static boolean isFlowerPurchased = false;
-	private static boolean isMushroomPurchased = true;
+	private static boolean isMushroomPurchased = false;
 	
 	List<Boolean> levels = new ArrayList<Boolean>(3);
 	
@@ -25,39 +25,39 @@ public class playerProgress {
 		}
 	}
 	
-	public  int getNumCoins() {
+	public static int getNumCoins() {
 		return numCoins;
 	}
 	
-	public  int getNumSuperMushrooms() {
+	public static int getNumSuperMushrooms() {
 		return numSuperMushrooms;
 	}
 	
-	public int getNumSuperStars() {
+	public static int getNumSuperStars() {
 		return numSuperStars;
 	}
 	
-	public  int getNumCoinRush() {
+	public static int getNumCoinRush() {
 		return numCoinRush;
 	}
 	
-	public boolean isLuigiUnlocked() {
+	public static boolean isLuigiUnlocked() {
 		return isLuigiUnlocked;
 	}
 	
-	public  boolean isPrincessUnlocked() {
+	public static boolean isPrincessUnlocked() {
 		return isPrincessUnlocked;
 	}
 	
-	public boolean isStarPurchased() {
+	public static boolean isStarPurchased() {
 		return isStarPurchased;
 	}
 	
-	public boolean isFlowerPurchased() {
+	public static boolean isFlowerPurchased() {
 		return isFlowerPurchased;
 	}
 	
-	public boolean isMushroomPurchased() {
+	public static boolean isMushroomPurchased() {
 		return isMushroomPurchased;
 	}
 	public static void incrementCoins() {
