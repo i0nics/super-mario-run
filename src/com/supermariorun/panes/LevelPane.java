@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.Timer;
 
-import com.supermariorun.characters.cMario;
+import com.supermariorun.characters.Character;
 import com.supermariorun.levels.ILevel;
 import com.supermariorun.levels.LevelOne;
 import com.supermariorun.main.GraphicsPane;
@@ -39,7 +39,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private ArrayList <GImage> qBlocks;
 	
 	public boolean jumpState;
-	private cMario Mario;
+	private Character Mario;
 	private ILevel level;
 	private Timer timer;
 	
@@ -59,7 +59,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		timer = new Timer (MS, this);
 		level = new LevelOne();
 		Environment = level.getEnvironment();
-		Mario = new cMario(mainSMR, this);
+		Mario = new Character(mainSMR, this);
 		
 		pauseBubble = new GImage(IMG_FOLDER + "bubble.png",30, 10);
 		pauseBubble.setSize(100, 100);
@@ -157,10 +157,15 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 
 	@Override
 	public void hideContents() {
-		program.remove(level.getBackground());
+		program.remove(Background);
+		program.remove(Mario.getMario());
 		program.remove(pauseButton);
 		program.remove(pauseBubble);
 		program.remove(quitButton);
+		
+		for (GImage e: Environment) {
+			program.remove(e);
+		}
 	}
 	
 	@Override

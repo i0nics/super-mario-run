@@ -41,7 +41,6 @@ public class eGoomba extends GraphicsPane implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 	
 		checkCollision();
-	
 
 	}
 

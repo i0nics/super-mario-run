@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.Timer;
 
-import com.supermariorun.characters.cMario;
+import com.supermariorun.characters.Character;
 import com.supermariorun.levels.ILevel;
 import com.supermariorun.levels.LevelOne;
 import com.supermariorun.main.GraphicsPane;
@@ -50,10 +50,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 	public static final int MS = 100; // 110
 	public static final String IMG_FOLDER = "LevelPane/";
 
-	public boolean jumpState = true; // edit
-	public boolean jumpUpState;
-	private int jumpCount;
-	private GObject leftFoot;
+	private Character Mario;
 
 	public LevelPaneDev(mainSMR mainSMR, int levelNum) {
 		super();
@@ -72,6 +69,8 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 		dragCoord.setColor(Color.red);
 		dragCoord.setFont("Arial-40");
 
+		Mario = new Character(mainSMR, this);
+		
 		moveLeft = new GButton("left", 300, 40, 100, 100);
 		moveRight = new GButton("right", 400, 40, 100, 100);
 
@@ -261,5 +260,9 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		obj = null;
+	}
+
+	public ArrayList<GImage> getEnvironment() {
+		return Environment;
 	}
 }

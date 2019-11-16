@@ -1,6 +1,6 @@
 package com.supermariorun.levels;
 import java.util.ArrayList;
-import com.supermariorun.characters.cMario;
+import com.supermariorun.characters.Character;
 import acm.graphics.GImage;
 import javafx.scene.layout.Background;
 
@@ -21,14 +21,14 @@ public class LevelOne implements ILevel{
 		qBlocks = new ArrayList <GImage> ();
 		Pipes = new ArrayList <GImage> ();
 		Background = new GImage (IMG_FOLDER + "Background.png", 0, 0);
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStrip.png", 0, 578));
+		GrassStrips.add(new GImage(IMG_FOLDER + "grassStrip.png", -2, 578));
 		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png", 2065, 578));
 		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",3300, 578));
 		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShorter.png", 3300, 558));
 		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShorter.png", 3300, 525));
 		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png", 4550, 585));
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",815,558));
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",815,525));
+		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",814, 541));
+		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",814, 505));
 		
 		setUpEnvironment();
 	
@@ -38,9 +38,11 @@ public class LevelOne implements ILevel{
 		for (GImage a : GrassStrips) {
 			Environment.add(a);
 		}
+		
 		for (GImage a : Blocks) {
 			Environment.add(a);
 		}
+		
 		for (GImage a : qBlocks) {
 			Environment.add(a);
 		}
