@@ -76,8 +76,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		buyLabelm = new GImage(IMG_FOLDER + "buyLabel.png", 210, 485);
 		buyLabelm.setSize(labelWidth * 1.5, labelHeight * 1.5);
 
-		buyLabelf = new GImage(IMG_FOLDER + "buyLabel.png", 510, 485);
-		buyLabelf.setSize(labelWidth * 1.5, labelHeight * 1.5);
 
 		buyLabels = new GImage(IMG_FOLDER + "buyLabel.png", 810, 485);
 		buyLabels.setSize(labelWidth * 1.5, labelHeight * 1.5);
@@ -105,7 +103,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		program.add(Star);
 		program.add(backLabel);
 		program.add(buyLabelm);
-		program.add(buyLabelf);
 		program.add(buyLabels);
 		program.add(coinCount);
 	}
@@ -121,7 +118,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		program.remove(Star);
 		program.remove(backLabel);
 		program.remove(buyLabelm);
-		program.remove(buyLabelf);
 		program.remove(buyLabels);
 		program.remove(coinCount);
 	}
