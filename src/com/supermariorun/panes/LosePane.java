@@ -29,9 +29,9 @@ public class LosePane extends GraphicsPane {
 		final double mainHeight = program.getHeight();
 		background = new GImage(IMG_FOLDER + "gameOver.jpg", 0, 0);
 		background.setSize(mainWidth, mainHeight);
-		quitButton = new GImage(IMG_FOLDER + "quit.png", 450, 500);
-		quitButton.setSize(200, 120);
-		retryButton = new GImage(IMG_FOLDER + "retry.png", 600, 500);
+		quitButton = new GImage(IMG_FOLDER + "quit.png", 450, 200);
+		quitButton.setSize(200, 60);
+		retryButton = new GImage(IMG_FOLDER + "retry.png", 450, 250);
 		retryButton.setSize(200, 120);
 	}
 	
