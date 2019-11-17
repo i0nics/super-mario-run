@@ -37,7 +37,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private ArrayList <GImage> GrassStrips;
 	private ArrayList <GImage> Blocks;
 	private ArrayList <GImage> qBlocks;
-	
+	private ArrayList <GImage> coins;	
 	public boolean jumpState;
 	public boolean isPause = false;
 	private Character Character;

@@ -13,13 +13,15 @@ public class LevelOne implements ILevel{
 	private ArrayList <GImage> Blocks;
 	private ArrayList <GImage> qBlocks;
 	private ArrayList <GImage> Environment;
-	
+	private ArrayList <GImage> coins;
+	private GImage coin;
 	public LevelOne() {
 		Environment = new ArrayList <GImage> ();
 		GrassStrips = new ArrayList <GImage> ();
 		Blocks = new ArrayList <GImage> ();
 		qBlocks = new ArrayList <GImage> ();
 		Pipes = new ArrayList <GImage> ();
+		coins = new ArrayList <GImage> ();
 		
 		
 		Background = new GImage (IMG_FOLDER + "Background.png", 0, 0);
@@ -59,7 +61,48 @@ public class LevelOne implements ILevel{
 		Blocks.add(new GImage(IMG_FOLDER + "brick.png", 4239,360));
 		Blocks.add(new GImage(IMG_FOLDER + "brick.png", 4259,360));
 		Blocks.add(new GImage(IMG_FOLDER + "brick.png", 4279,360));
+		Blocks.add(new GImage(IMG_FOLDER + "brick.png", 4299,360));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",1033,470));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",1085,440));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",1140,470));
 		
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",350,535));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",400,535));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",450,535));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",500,535));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",1706,470));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",1750,470));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",1780,470));
+		
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",1810,470));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",1865,425));
+		
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",2260,535));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",2300,505));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",2370,535));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",2560,535));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",2625,505));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",2671,535));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",3891,390));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",3921,390));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",3951,390));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",4051,355));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",4081,355));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",4111,355));
+		
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",4241,325));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",4291,325));
+		
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",2671,535));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",2671,535));
+		
+		
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",4660,540));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",4690,540));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",4720,540));
+		coins.add(new GImage(IMG_FOLDER + "coin.gif",4760,540));
+		for (GImage g : coins) { g.setSize(35,35);}
+	
 		
 		setUpEnvironment();
 	
@@ -78,6 +121,10 @@ public class LevelOne implements ILevel{
 		}
 		
 		for (GImage a : qBlocks) {
+			Environment.add(a);
+		}
+		for(GImage a : coins)
+		{
 			Environment.add(a);
 		}
 	}
