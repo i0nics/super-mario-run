@@ -20,6 +20,8 @@ public class LevelOne implements ILevel{
 		Blocks = new ArrayList <GImage> ();
 		qBlocks = new ArrayList <GImage> ();
 		Pipes = new ArrayList <GImage> ();
+		
+		
 		Background = new GImage (IMG_FOLDER + "Background.png", 0, 0);
 		GrassStrips.add(new GImage(IMG_FOLDER + "grassStrip.png", -2, 578));
 		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png", 2065, 578));
@@ -30,11 +32,43 @@ public class LevelOne implements ILevel{
 		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",814, 541));
 		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",814, 505));
 		
+		Pipes.add(new GImage(IMG_FOLDER + "pipe.png",1063, 470));
+
+		Pipes.add(new GImage(IMG_FOLDER + "pipe.png",1855, 453));
+
+		Pipes.add(new GImage(IMG_FOLDER + "pipe.png",2293, 540));
+
+		Pipes.add(new GImage(IMG_FOLDER + "pipe.png",2598, 540));
+		
+		Pipes.add(new GImage(IMG_FOLDER + "pipe.png",3736, 490));
+		
+		Blocks.add(new GImage(IMG_FOLDER + "brick.png", 2905,454));
+		Blocks.add(new GImage(IMG_FOLDER + "brick.png", 3016,454));
+		
+		Blocks.add(new GImage(IMG_FOLDER + "brick.png", 3867,420));
+		Blocks.add(new GImage(IMG_FOLDER + "brick.png", 3892,420));
+		Blocks.add(new GImage(IMG_FOLDER + "brick.png", 3920,420));
+		Blocks.add(new GImage(IMG_FOLDER + "brick.png", 3948,420));
+		
+		Blocks.add(new GImage(IMG_FOLDER + "brick.png", 4055,390));
+		Blocks.add(new GImage(IMG_FOLDER + "brick.png", 4083,390));
+		Blocks.add(new GImage(IMG_FOLDER + "brick.png", 4111,390));
+		Blocks.add(new GImage(IMG_FOLDER + "brick.png", 4139,390));
+		
+		Blocks.add(new GImage(IMG_FOLDER + "brick.png", 4219,360));
+		Blocks.add(new GImage(IMG_FOLDER + "brick.png", 4239,360));
+		Blocks.add(new GImage(IMG_FOLDER + "brick.png", 4259,360));
+		Blocks.add(new GImage(IMG_FOLDER + "brick.png", 4279,360));
+		
+		
 		setUpEnvironment();
 	
 	}
 	
 	public void setUpEnvironment() {
+		for(GImage a : Pipes) {
+			Environment.add(a);
+		}
 		for (GImage a : GrassStrips) {
 			Environment.add(a);
 		}
