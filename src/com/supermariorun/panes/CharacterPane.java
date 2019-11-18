@@ -137,18 +137,6 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			program.switchToShop();
 		}
 		
-		if(!progress.isYoshiUnlocked() && (obj == yoshiBubble || obj == yoshiLabel)) {
-			YoshiTransaction();
-			yoshiLabel.setImage(IMG_FOLDER + "equipButton.png");
-			yoshiLabel.setSize(labelWidth*1.3, labelHeight*1.3);
-		}
-		
-		if(!progress.isPrincessUnlocked() && (obj == princessBubble || obj == princessLabel)) {
-			PrincessTransaction();
-			princessLabel.setImage(IMG_FOLDER + "equipButton.png");
-			princessLabel.setSize(labelWidth*1.3, labelHeight*1.3);
-		}
-		
 		if(progress.isYoshiUnlocked() && (obj == yoshiBubble || obj == yoshiLabel)) {
 			if (progress.isPrincessUnlocked()) {
 				princessLabel.setImage(IMG_FOLDER + "equipButton.png");
@@ -168,6 +156,18 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			
 			princessLabel.setSize(labelWidth*1.3, labelHeight*1.3);
 			progress.setCurrentCharacter("Princess");
+		}
+		
+		if(!progress.isYoshiUnlocked() && (obj == yoshiBubble || obj == yoshiLabel)) {
+			YoshiTransaction();
+			yoshiLabel.setImage(IMG_FOLDER + "equipButton.png");
+			yoshiLabel.setSize(labelWidth*1.3, labelHeight*1.3);
+		}
+		
+		if(!progress.isPrincessUnlocked() && (obj == princessBubble || obj == princessLabel)) {
+			PrincessTransaction();
+			princessLabel.setImage(IMG_FOLDER + "equipButton.png");
+			princessLabel.setSize(labelWidth*1.3, labelHeight*1.3);
 		}
 		
 	}
