@@ -32,7 +32,6 @@ public class LevelOne implements ILevel{
 		scanLevel = new ScanLevel();
 		levelMap = scanLevel.runScan("level/levelOne.txt");
 		
-		
 		Background = new GImage (IMG_FOLDER + "Background.png", 0, 0);
 		
 		GrassStrips.add(new GImage(IMG_FOLDER + "grassStrip.png", -2, 578));
@@ -58,7 +57,6 @@ public class LevelOne implements ILevel{
 		}
 
 		for (GImage g : coins) { g.setSize(35, 35);}
-
 		
 		setUpEnvironment();
 	
