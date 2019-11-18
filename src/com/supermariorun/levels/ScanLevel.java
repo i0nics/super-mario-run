@@ -20,18 +20,21 @@ public class ScanLevel {
 		String obj, x, y;
 		int loop;
 		levelMap = new HashMap<String, ArrayList<Pair<Integer, Integer>>> ();
-		listCoord = new ArrayList<Pair<Integer, Integer>>();
+		
 		
 		while (readFile.hasNextLine()) {
 			
 			obj = readFile.next();
 			loop = Integer.valueOf(readFile.next());
-		
+			listCoord = new ArrayList<Pair<Integer, Integer>>();
+			
 			for (int i = 0; i < loop; i++) {
 				x = readFile.next();
 				y = readFile.next();
 				listCoord.add(new Pair <Integer, Integer> (Integer.valueOf(x), Integer.valueOf(y)));
 			}
+			
+			levelMap.put(obj, listCoord);
 		}
 		readFile.close();
 		return levelMap;

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import javax.swing.Timer;
@@ -55,7 +56,7 @@ public class LevelPaneDev extends GraphicsPane {
 	private int jumpCount;
 	private GObject leftFoot;
 
-	public LevelPaneDev(mainSMR mainSMR, int levelNum) {
+	public LevelPaneDev(mainSMR mainSMR, int levelNum) throws FileNotFoundException {
 		super();
 		this.program = mainSMR;
 
@@ -132,7 +133,7 @@ public class LevelPaneDev extends GraphicsPane {
 		program.pauseLvlOneTrack();
 	}
 
-	public void Restart() {
+	public void Restart() throws FileNotFoundException {
 		program.switchToLevel(1);
 	}
 
@@ -220,7 +221,11 @@ public class LevelPaneDev extends GraphicsPane {
 		}
 
 		else if (obj == retryButton) {
-			Restart();
+			try {
+				Restart();
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			}
 			program.remove(gBackground);
 			program.remove(pausePane);
 			program.remove(quitButton);

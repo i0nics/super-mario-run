@@ -1,5 +1,7 @@
 package com.supermariorun.main;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+
 import com.supermariorun.panes.CharacterPane;
 import com.supermariorun.panes.InstructionsPane;
 import com.supermariorun.panes.InventoryPane;
@@ -73,13 +75,13 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		switchToScreen(menuPane);
 	}
 	
-	public void switchToLevel(int levelNum) {
+	public void switchToLevel(int levelNum) throws FileNotFoundException {
 		levelPane = null;
 		levelPane = new LevelPane (this, levelNum);
 		switchToScreen(levelPane);
 	}
 	
-	public void switchToLevelDev(int levelNum) {
+	public void switchToLevelDev(int levelNum) throws FileNotFoundException {
 		levelPaneDev = new LevelPaneDev (this, levelNum);
 		switchToScreen(levelPaneDev);
 	}

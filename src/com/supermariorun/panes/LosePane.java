@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
 
 import javax.swing.Timer;
 
@@ -48,7 +49,11 @@ public class LosePane extends GraphicsPane {
 		if(obj == retryButton) {
 			program.stopLvlOneTrack();
 			program.playPipeSound();
-			program.switchToLevel(1);
+			try {
+				program.switchToLevel(1);
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 

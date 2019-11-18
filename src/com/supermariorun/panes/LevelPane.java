@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -51,7 +52,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public static final int MS = 70;
 	public static final String IMG_FOLDER = "LevelPane/";
 
-	public LevelPane(mainSMR mainSMR, int levelNum) {
+	public LevelPane(mainSMR mainSMR, int levelNum) throws FileNotFoundException {
 		super();
 		this.program = mainSMR;
 		
@@ -113,7 +114,11 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 	public void Restart() {
 		program.stopLvlOneTrack();
-		program.switchToLevel(1);
+		try {
+			program.switchToLevel(1);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void moveEnvironment() {

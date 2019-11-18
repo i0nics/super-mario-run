@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
 
 import javax.swing.Timer;
 
@@ -130,13 +131,21 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		if (obj == lvlOne) {
 			program.playPipeSound();
 			program.stopTourSound();
-			program.switchToLevel(1);
+			try {
+				program.switchToLevel(1);
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			}
 		}
 		
 		if (obj == DevMode) {
 			program.playPipeSound();
 			program.stopTourSound();
-			program.switchToLevelDev(1);
+			try {
+				program.switchToLevelDev(1);
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			}
 		}
 		
 		if(isWiggle == false && (obj == lockLvlTwo || obj == lockLvlThree || obj == lockLvlFour)){	
