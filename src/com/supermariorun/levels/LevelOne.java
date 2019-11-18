@@ -33,7 +33,7 @@ public class LevelOne implements ILevel{
 		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png", 4550, 585));
 		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",814, 541));
 		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",814, 505));
-		
+	
 		Pipes.add(new GImage(IMG_FOLDER + "pipe.png",1063, 470));
 
 		Pipes.add(new GImage(IMG_FOLDER + "pipe.png",1855, 453));
@@ -102,7 +102,7 @@ public class LevelOne implements ILevel{
 		coins.add(new GImage(IMG_FOLDER + "coin.gif",4720,540));
 		coins.add(new GImage(IMG_FOLDER + "coin.gif",4760,540));
 		for (GImage g : coins) { g.setSize(35,35);}
-	
+
 		
 		setUpEnvironment();
 	
