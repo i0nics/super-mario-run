@@ -25,7 +25,7 @@ import acm.graphics.GImage;
  	private GImage Mushroom;
  	private GImage Star;
  	private GImage Flower;
- 	private GImage luigiPic;
+ 	private GImage yoshiPic;
  	private GImage princessPic;
  	private int count;
  	public Timer bubbleTimer;
@@ -62,8 +62,8 @@ import acm.graphics.GImage;
  		
  		Star = new GImage(IMG_FOLDER + "Star.png", mainSMR.getWidth()/1.52, mainSMR.getHeight()/1.8);
  		
- 		luigiPic = new GImage(IMG_FOLDER + "Luigi.png", 675, 200);
- 		
+ 		yoshiPic = new GImage(IMG_FOLDER + "yoshiPic.png", 675, 200);
+ 		yoshiPic.setSize(185, 250);
  		princessPic = new GImage(IMG_FOLDER + "Princess.png", 325, 200);
 		princessPic.setSize(185, 250);
  	}
@@ -122,7 +122,7 @@ import acm.graphics.GImage;
  	
  	public void characterBought() {
  		if (program.getProgress().isYoshiUnlocked()) {
- 			program.add(luigiPic);
+ 			program.add(yoshiPic);
  		}
  		
  		if (program.getProgress().isPrincessUnlocked()) {

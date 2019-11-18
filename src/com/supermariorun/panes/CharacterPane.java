@@ -25,10 +25,14 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 	private GImage BackPipe;
 	private GImage yoshiBubble;
 	private GImage princessBubble;
-	private GImage LuigiPic;
+	private GImage yoshiPic;
 	private GImage PrincessPic;
 	private GImage background;
 	private GImage backLabel;
+	private GImage marioPic;
+	private GImage marioBubble;
+	private GImage marioLabel;
+	
 	private int count;
 	private GImage coin;
 	public Timer bubbleTimer;
@@ -55,15 +59,16 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		
 		bubbleTimer = new Timer(500, this);
 	
-		yoshiBubble = new GImage(IMG_FOLDER + "bubble.png",690,450);
+		yoshiBubble = new GImage(IMG_FOLDER + "bubble.png",550,450);
 		yoshiBubble.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
 		
-		LuigiPic = new GImage(IMG_FOLDER + "Luigi.png", 675, 200);
+		yoshiPic = new GImage(IMG_FOLDER + "yoshiPic.png", 535, 200);
+		yoshiPic.setSize(185, 250);
 		
-		PrincessPic = new GImage(IMG_FOLDER + "Princess.png", 325, 200);
+		PrincessPic = new GImage(IMG_FOLDER + "Princess.png", 225, 200);
 		PrincessPic.setSize(185, 250);
 		
-		princessBubble = new GImage(IMG_FOLDER + "bubble.png",335,450);
+		princessBubble = new GImage(IMG_FOLDER + "bubble.png",235,450);
 		princessBubble.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
 		
 		BackButton = new GImage(IMG_FOLDER + "bubble.png", 152, 30);
@@ -78,12 +83,21 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		backLabel = new GImage(IMG_FOLDER + "backLabel.png",170, 75);
 		backLabel.setSize(labelWidth*1.2, labelHeight*1.2);
 		
-		princessLabel = new GImage(IMG_FOLDER + "buyLabel.png",340,490);
+		princessLabel = new GImage(IMG_FOLDER + "buyLabel.png",240,490);
 		princessLabel.setSize(labelWidth*1.5, labelHeight*1.5);
 		
-		yoshiLabel = new GImage(IMG_FOLDER + "buyLabel.png",700, 490);
+		yoshiLabel = new GImage(IMG_FOLDER + "buyLabel.png",560, 490);
 		yoshiLabel.setSize(labelWidth * 1.5, labelHeight * 1.5);
 		
+		marioPic = new GImage(IMG_FOLDER + "mario.png", 835,200);
+		marioPic.setSize(185, 250);
+		
+		marioBubble = new GImage(IMG_FOLDER + "bubble.png", 845,450);
+		marioBubble.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
+		
+		marioLabel = new GImage(IMG_FOLDER + "equippedButton.png", 865,495);
+		marioLabel.setSize(labelWidth*1.2, labelHeight*1.2);
+	
 		coinCount = new GLabel("Coins: " + progress.getNumCoins());
 		coinCount.setLocation(400, 100);
 		coinCount.setFont(lABEL_FONT);
@@ -99,7 +113,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		program.add(background);
 		program.add(BackButton);
 		program.add(BackPipe);
-		program.add(LuigiPic);
+		program.add(yoshiPic);
 		program.add(PrincessPic);
 		program.add(yoshiBubble);
 		program.add(princessBubble);
@@ -108,6 +122,9 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		program.add(yoshiLabel);
 		program.add(coinCount);
 		program.add(coin);
+		program.add(marioPic);
+		program.add(marioBubble);
+		program.add(marioLabel);
 	}
 
 	@Override
@@ -116,7 +133,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		program.remove(background);
 		program.remove(BackButton);
 		program.remove(BackPipe);
-		program.remove(LuigiPic);
+		program.remove(yoshiPic);
 		program.remove(PrincessPic);
 		program.remove(yoshiBubble);
 		program.remove(princessBubble);
@@ -125,6 +142,9 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		program.remove(yoshiLabel);
 		program.remove(coinCount);
 		program.remove(coin);
+		program.remove(marioPic);
+		program.remove(marioBubble);
+		program.remove(marioLabel);
 	}
 	
 	@Override
@@ -145,6 +165,8 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			yoshiLabel.setImage(IMG_FOLDER + "equippedButton.png");
 			yoshiLabel.setSize(labelWidth*1.3, labelHeight*1.3);
 			progress.setCurrentCharacter("Yoshi");
+			marioLabel.setImage(IMG_FOLDER + "equipButton.png");
+			marioLabel.setSize(labelWidth*1.3, labelHeight*1.3);
 		}
 		
 		if(progress.isPrincessUnlocked() && (obj == princessBubble || obj == princessLabel)) {
@@ -153,9 +175,10 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 				yoshiLabel.setSize(labelWidth*1.3, labelHeight*1.3);
 			}
 			princessLabel.setImage(IMG_FOLDER + "equippedButton.png");
-			
 			princessLabel.setSize(labelWidth*1.3, labelHeight*1.3);
 			progress.setCurrentCharacter("Princess");
+			marioLabel.setImage(IMG_FOLDER + "equipButton.png");
+			marioLabel.setSize(labelWidth*1.3, labelHeight*1.3);
 		}
 		
 		if(!progress.isYoshiUnlocked() && (obj == yoshiBubble || obj == yoshiLabel)) {
@@ -169,7 +192,21 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			princessLabel.setImage(IMG_FOLDER + "equipButton.png");
 			princessLabel.setSize(labelWidth*1.3, labelHeight*1.3);
 		}
+		if(obj == marioBubble || obj == marioLabel)
+		{
+			if (progress.isPrincessUnlocked()) {
+				princessLabel.setImage(IMG_FOLDER + "equipButton.png");
+				princessLabel.setSize(labelWidth*1.3, labelHeight*1.3);
+			}
+			if (progress.isYoshiUnlocked()) {
+			yoshiLabel.setImage(IMG_FOLDER + "equipButton.png");
+			yoshiLabel.setSize(labelWidth*1.3, labelHeight*1.3);
+			}
+			progress.setCurrentCharacter("mario");
+			marioLabel.setImage(IMG_FOLDER + "equippedButton.png");
+			marioLabel.setSize(labelWidth*1.3, labelHeight*1.3);
 		
+		}
 	}
 	
 	@Override
@@ -181,6 +218,8 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			BackButton.move(0, 10);
 			princessLabel.move(0, 10);
 			yoshiLabel.move(0,10);
+			marioBubble.move(0,10);
+			marioLabel.move(0, 10);
 		}
 		
 		if (count == 2) {
@@ -190,6 +229,8 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			BackButton.move(0, -10);
 			princessLabel.move(0, -10);
 			yoshiLabel.move(0,-10);
+			marioBubble.move(0, -10);
+			marioLabel.move(0,-10);
 			count = 0;
 		}
 		count++;
