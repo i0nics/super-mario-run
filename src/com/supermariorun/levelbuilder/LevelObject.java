@@ -12,11 +12,11 @@ public class LevelObject {
 		this.col = col;
 	}
 		
-	public void setVehicleType(LevelObjectType type) {
+	public void setObjectType(LevelObjectType type) {
 		this.type = type;
 	}
 	
-	public LevelObjectType getVehicleType() {
+	public LevelObjectType getObjectType() {
 		return type;
 	}
 		

@@ -175,6 +175,14 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		}
 	}
 	
+	public void hideResume() {
+		program.remove(greyBack);
+		program.remove(pausePane);
+		program.remove(quitButton);
+		program.remove(resumeButton);
+		program.remove(retryButton);
+		
+	}
 	@Override
 	public void mousePressed(MouseEvent e) {
 		
@@ -194,31 +202,25 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			Play();
 			isPause = false;
 			program.playResumeSound();
-			program.remove(greyBack);
-			program.remove(pausePane);
-			program.remove(quitButton);
-			program.remove(resumeButton);
-			program.remove(retryButton);
+			hideResume();
 		}
 		
 		else if(obj == retryButton){
 			Restart();
-			program.remove(greyBack);
-			program.remove(pausePane);
-			program.remove(quitButton);
-			program.remove(resumeButton);
-			program.remove(retryButton);
+			hideResume();
 		}
 		
 		else if(obj == quitButton) {
 			program.stopLvlOneTrack();
 			program.playTourSound();
+			hideResume();
 			program.switchToTour();
 		}
 		
 		else if(obj == continueButton) {
 			program.stopLvlOneTrack();
 			program.playPipeSound();
+			hideResume();
 			program.switchToEndPane();
 		}
 		
