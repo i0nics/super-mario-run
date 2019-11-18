@@ -23,24 +23,20 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 	public static final String lABEL_FONT = "Arial-Bold-22";
 	private GImage BackButton;
 	private GImage BackPipe;
-	private GImage LuigiButton;
-	private GImage PrincessButton;
+	private GImage yoshiBubble;
+	private GImage princessBubble;
 	private GImage LuigiPic;
 	private GImage PrincessPic;
 	private GImage background;
 	private GImage backLabel;
 	private int count;
 	private GImage coin;
-	private GImage equippedButtonL;
 	public Timer bubbleTimer;
 	private static int PrincessCost = 50;
-	private static int luigiCost = 50;
-	private GImage buyLabel;
-	private GImage buyLabel2;
+	private static int yoshiCost = 50;
+	private GImage princessLabel;
+	private GImage yoshiLabel;
 	private GLabel coinCount;
-	private GImage equipButtonL;
-	private GImage equipButtonP;
-	private GImage equippedButtonP;
 	final double labelWidth;
 	final double labelHeight;
 	
@@ -59,16 +55,16 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		
 		bubbleTimer = new Timer(500, this);
 	
-		LuigiButton = new GImage(IMG_FOLDER + "bubble.png",690,450);
-		LuigiButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
+		yoshiBubble = new GImage(IMG_FOLDER + "bubble.png",690,450);
+		yoshiBubble.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
 		
 		LuigiPic = new GImage(IMG_FOLDER + "Luigi.png", 675, 200);
 		
 		PrincessPic = new GImage(IMG_FOLDER + "Princess.png", 325, 200);
 		PrincessPic.setSize(185, 250);
 		
-		PrincessButton = new GImage(IMG_FOLDER + "bubble.png",335,450);
-		PrincessButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
+		princessBubble = new GImage(IMG_FOLDER + "bubble.png",335,450);
+		princessBubble.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
 		
 		BackButton = new GImage(IMG_FOLDER + "bubble.png", 152, 30);
 		BackButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
@@ -82,11 +78,11 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		backLabel = new GImage(IMG_FOLDER + "backLabel.png",170, 75);
 		backLabel.setSize(labelWidth*1.2, labelHeight*1.2);
 		
-		buyLabel = new GImage(IMG_FOLDER + "buyLabel.png",340,490);
-		buyLabel.setSize(labelWidth*1.5, labelHeight*1.5);
+		princessLabel = new GImage(IMG_FOLDER + "buyLabel.png",340,490);
+		princessLabel.setSize(labelWidth*1.5, labelHeight*1.5);
 		
-		buyLabel2 = new GImage(IMG_FOLDER + "buyLabel.png",700,490);
-		buyLabel2.setSize(labelWidth*1.5, labelHeight*1.5);
+		yoshiLabel = new GImage(IMG_FOLDER + "buyLabel.png",700, 490);
+		yoshiLabel.setSize(labelWidth * 1.5, labelHeight * 1.5);
 		
 		coinCount = new GLabel("Coins: " + progress.getNumCoins());
 		coinCount.setLocation(400, 100);
@@ -94,15 +90,6 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		
 		coin = new GImage(IMG_FOLDER + "coin.gif", 320,50);
 		coin.setSize(100, 100);
-		
-		equipButtonL =  new GImage(IMG_FOLDER + "equipButton.png",710,490);
-		equipButtonL.setSize(labelWidth*1.3, labelHeight*1.3);
-
-		
-		equipButtonP =  new GImage(IMG_FOLDER + "equipButton.png",350,490);
-	
-		
-	
 	}
 	
 	@Override
@@ -114,11 +101,11 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		program.add(BackPipe);
 		program.add(LuigiPic);
 		program.add(PrincessPic);
-		program.add(LuigiButton);
-		program.add(PrincessButton);
+		program.add(yoshiBubble);
+		program.add(princessBubble);
 		program.add(backLabel);
-		program.add(buyLabel);
-		program.add(buyLabel2);
+		program.add(princessLabel);
+		program.add(yoshiLabel);
 		program.add(coinCount);
 		program.add(coin);
 	}
@@ -131,11 +118,11 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		program.remove(BackPipe);
 		program.remove(LuigiPic);
 		program.remove(PrincessPic);
-		program.remove(LuigiButton);
-		program.remove(PrincessButton);
+		program.remove(yoshiBubble);
+		program.remove(princessBubble);
 		program.remove(backLabel);
-		program.remove(buyLabel);
-		program.remove(buyLabel2);
+		program.remove(princessLabel);
+		program.remove(yoshiLabel);
 		program.remove(coinCount);
 		program.remove(coin);
 	}
@@ -150,33 +137,37 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			program.switchToShop();
 		}
 		
-		if(program.getProgress().isLuigiUnlocked() && (obj == LuigiButton || obj == buyLabel2)) {
-			Luigitransaction();
-			equipButtonL.setImage("equipButton.png");
-			
+		if(!progress.isYoshiUnlocked() && (obj == yoshiBubble || obj == yoshiLabel)) {
+			YoshiTransaction();
+			yoshiLabel.setImage(IMG_FOLDER + "equipButton.png");
+			yoshiLabel.setSize(labelWidth*1.3, labelHeight*1.3);
 		}
 		
-		if(program.getProgress().isPrincessUnlocked() && (obj == PrincessButton || obj == buyLabel)) {
+		if(!progress.isPrincessUnlocked() && (obj == princessBubble || obj == princessLabel)) {
 			PrincessTransaction();
-			program.remove(buyLabel);
-			program.add(equipButtonP);
+			princessLabel.setImage(IMG_FOLDER + "equipButton.png");
+			princessLabel.setSize(labelWidth*1.3, labelHeight*1.3);
 		}
 		
-		if(obj == equipButtonL) {
-			equipButtonP.setImage("equipButton.png");
-			equipButtonL.setImage("equippedButton.png");
-			equipButtonP.setSize(labelWidth*1.3, labelHeight*1.3);
-			equipButtonL.setSize(labelWidth*1.3, labelHeight*1.3);
-			playerProgress.setCurrentCharacter("luigi");
+		if(progress.isYoshiUnlocked() && (obj == yoshiBubble || obj == yoshiLabel)) {
+			if (progress.isPrincessUnlocked()) {
+				princessLabel.setImage(IMG_FOLDER + "equipButton.png");
+				princessLabel.setSize(labelWidth*1.3, labelHeight*1.3);
+			}
+			yoshiLabel.setImage(IMG_FOLDER + "equippedButton.png");
+			yoshiLabel.setSize(labelWidth*1.3, labelHeight*1.3);
+			progress.setCurrentCharacter("Yoshi");
 		}
 		
-		if(obj == equipButtonP) {
-			equipButtonL.setImage("equipButton.png");
-			equipButtonP.setImage("equippedButton.png");
-			equipButtonP.setSize(labelWidth*1.3, labelHeight*1.3);
-			equipButtonL.setSize(labelWidth*1.3, labelHeight*1.3);
-			playerProgress.setCurrentCharacter("Princess");
+		if(progress.isPrincessUnlocked() && (obj == princessBubble || obj == princessLabel)) {
+			if (progress.isYoshiUnlocked()) {
+				yoshiLabel.setImage(IMG_FOLDER + "equipButton.png");
+				yoshiLabel.setSize(labelWidth*1.3, labelHeight*1.3);
+			}
+			princessLabel.setImage(IMG_FOLDER + "equippedButton.png");
 			
+			princessLabel.setSize(labelWidth*1.3, labelHeight*1.3);
+			progress.setCurrentCharacter("Princess");
 		}
 		
 	}
@@ -184,47 +175,38 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (count == 1) {
-			PrincessButton.move(0, 10);
-			LuigiButton.move(0, 10);
+			princessBubble.move(0, 10);
+			yoshiBubble.move(0, 10);
 			backLabel.move(0, 10);
 			BackButton.move(0, 10);
-			buyLabel.move(0, 10);
-			buyLabel2.move(0,10);
-			equipButtonL.move(0, 10);
-			equippedButtonL.move(0, 10);
-			equipButtonP.move(0, 10);
-			equippedButtonP.move(0, 10);
-			
+			princessLabel.move(0, 10);
+			yoshiLabel.move(0,10);
 		}
 		
 		if (count == 2) {
-			PrincessButton.move(0, -10);
-			LuigiButton.move(0, -10);
+			princessBubble.move(0, -10);
+			yoshiBubble.move(0, -10);
 			backLabel.move(0, -10);
 			BackButton.move(0, -10);
-			buyLabel.move(0, -10);
-			buyLabel2.move(0,-10);
-			equipButtonL.move(0,-10);
-			equippedButtonL.move(0, -10);
-			equipButtonP.move(0,-10);
-			equippedButtonP.move(0, -10);
+			princessLabel.move(0, -10);
+			yoshiLabel.move(0,-10);
 			count = 0;
 		}
 		count++;
 	}
 	
-	public void Luigitransaction() {
+	public void YoshiTransaction() {
 		progress.getNumCoins();
-		if(progress.getNumCoins() >= luigiCost) {
-			progress.setLuigiUnlocked();
-			progress.decreaseCoins(luigiCost);
+		if(progress.getNumCoins() >= yoshiCost) {
+			progress.setYoshiUnlocked();
+			progress.decreaseCoins(yoshiCost);
 			System.out.println("Purchase comfirmed");
 			System.out.println(progress.getNumCoins());
-			System.out.println("Luigi Unlocked");
+			System.out.println("Yoshi Unlocked");
 			coinCount.setLabel("Coins: " + progress.getNumCoins());
 		}
 		
-		else if (progress.getNumCoins() < luigiCost) {
+		else if (progress.getNumCoins() < yoshiCost) {
 			System.out.println("not enough money");
 			coinCount.setLabel("Coins: " + progress.getNumCoins());
 		}

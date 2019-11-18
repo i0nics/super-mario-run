@@ -121,7 +121,7 @@ import acm.graphics.GImage;
  	}
  	
  	public void characterBought() {
- 		if (program.getProgress().isLuigiUnlocked()) {
+ 		if (program.getProgress().isYoshiUnlocked()) {
  			program.add(luigiPic);
  		}
  		

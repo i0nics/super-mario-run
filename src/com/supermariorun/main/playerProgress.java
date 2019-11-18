@@ -12,7 +12,7 @@ public class playerProgress {
 	private static int numSuperStars = 0;
 	private static int numCoinRush = 0;
 	private static String currentCharacter = "mario";
-	private static boolean isLuigiUnlocked = false;
+	private static boolean isYoshiUnlocked = false;
 	private static boolean isPrincessUnlocked = false;
 	private static boolean isStarPurchased = false;
 	private static boolean isFlowerPurchased = false;
@@ -42,8 +42,8 @@ public class playerProgress {
 		return numCoinRush;
 	}
 	
-	public boolean isLuigiUnlocked() {
-		return isLuigiUnlocked;
+	public boolean isYoshiUnlocked() {
+		return isYoshiUnlocked;
 	}
 	
 	public  boolean isPrincessUnlocked() {
@@ -97,24 +97,24 @@ public class playerProgress {
 		numCoinRush--;
 	}
 	
-	public void setLuigiUnlocked() {
-		playerProgress.isLuigiUnlocked = true;
+	public void setYoshiUnlocked() {
+		isYoshiUnlocked = true;
 	}
 	
 	public void setPrincessUnlocked() {
-		playerProgress.isPrincessUnlocked = true;
+		isPrincessUnlocked = true;
 	}
 	
 	public void setStarPurchased() {
-		playerProgress.isStarPurchased = true;
+		isStarPurchased = true;
 	}
 	
 	public void setFlowerPurchased() {
-		playerProgress.isFlowerPurchased = true;
+		isFlowerPurchased = true;
 	}
 	
 	public void setMushroomPurchased() {
-		playerProgress.isMushroomPurchased = true;
+		isMushroomPurchased = true;
 	}
 	
 	public boolean isLvlUnlocked(int lvl) {
@@ -125,7 +125,7 @@ public class playerProgress {
 		return currentCharacter;
 	}
 	
-	public static void setCurrentCharacter(String charac) {
+	public void setCurrentCharacter(String charac) {
 		currentCharacter = charac;
 	}
 	
