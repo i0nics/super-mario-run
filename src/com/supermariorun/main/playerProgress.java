@@ -25,7 +25,7 @@ public class playerProgress {
 		}
 	}
 	
-	public static int getNumCoins() {
+	public int getNumCoins() {
 		return numCoins;
 	}
 	

@@ -28,7 +28,6 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 	private int count = 1;
 	private Timer bubbleTimer;
 	
-	
 	public ShopPane(mainSMR mainSMR) {
 		super();
 		this.program = mainSMR;

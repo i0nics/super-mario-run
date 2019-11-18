@@ -25,6 +25,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private static final String JUMP_EFFECT = "jump.wav";
 	private static final String PAUSE_EFFECT = "pause.mp3";
 	private static final String RESUME_EFFECT = "resume.mp3";
+	private static final String COIN_EFFECT = "coin.wav";
 	private static final String LVL1_TRACK = "LevelOne.mp3";
 	private static final String COURSECLEARED_EFFECT = "courseCleared.mp3";
 	
@@ -73,6 +74,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	}
 	
 	public void switchToLevel(int levelNum) {
+		levelPane = null;
 		levelPane = new LevelPane (this, levelNum);
 		switchToScreen(levelPane);
 	}
@@ -180,6 +182,10 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	
 	public void stopLvlOneTrack() {
 		audio.stopSound(MUSIC_FOLDER, LVL1_TRACK);
+	}
+	
+	public void playCoinEffect() {
+		audio.playSound(MUSIC_FOLDER, COIN_EFFECT);
 	}
 	
 	public void playCourseClearedTrack() {

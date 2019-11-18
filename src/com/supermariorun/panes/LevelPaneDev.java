@@ -124,7 +124,6 @@ public class LevelPaneDev extends GraphicsPane {
 	}
 
 	public void Play() {
-		
 		program.playLvlOneTrack();
 	}
 

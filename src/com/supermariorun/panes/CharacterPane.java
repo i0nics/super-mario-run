@@ -31,7 +31,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 	private GImage backLabel;
 	private int count;
 	private GImage coin;
-	public Timer bubbleTimer;
+	private Timer bubbleTimer;
 	private static int PrincessCost = 110;
 	private static int luigiCost = 50;
 	private GImage buyLabel;
@@ -88,12 +88,11 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		
 		coin = new GImage(IMG_FOLDER + "coin.gif", 320,50);
 		coin.setSize(100, 100);
-		
-		bubbleTimer.start();
 	}
 	
 	@Override
 	public void showContents() {
+		bubbleTimer.start();
 		coinCount.setLabel("Coins: " + progress.getNumCoins());
 		program.add(background);
 		program.add(BackButton);
@@ -111,6 +110,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 
 	@Override
 	public void hideContents() {
+		bubbleTimer.stop();
 		program.remove(background);
 		program.remove(BackButton);
 		program.remove(BackPipe);

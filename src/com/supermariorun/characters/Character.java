@@ -34,7 +34,6 @@ public class Character extends GraphicsProgram implements ActionListener {
 		characImg.setSize(64, 64);
 		Environment = levelPane.getEnvironment();
 	}
-	
 
 	
 	public Character(mainSMR mainSMR, LevelPaneDev levelPaneDev) {
@@ -43,7 +42,6 @@ public class Character extends GraphicsProgram implements ActionListener {
 		characImg = new GImage (IMG_FOLDER + "stand.png", 100, 520); 
 		characImg.setSize(64, 64);
 	}
-
 
 
 	public void stand() {
