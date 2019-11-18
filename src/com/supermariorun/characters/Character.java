@@ -18,22 +18,22 @@ public class Character extends GraphicsProgram implements ActionListener {
 	private mainSMR program;
 	private LevelPane levelPane;
 	private LevelPaneDev levelPaneDev;
-	private GImage mario;
-	private GImage princess;
-	private GImage luigi;
+	private GImage characImg;
 	private GObject leftFoot;
 	private GObject rightFoot;
 	public static final String IMG_FOLDER = "character/";
 	private ArrayList <GImage> Environment;
 	public boolean jumpUpState;
+	private String character = "mario";
 	private int jumpCount = 0;
 	
 	
-	public Character(mainSMR mainSMR, LevelPane levelPane, String character) {
+	public Character(mainSMR mainSMR, LevelPane levelPane) {
 		program = mainSMR;
 		this.levelPane = levelPane;
-		mario = new GImage (IMG_FOLDER + "marioStand.png", 100, 520); 
-		mario.setSize(64, 64);
+		character = program.getProgress().getCurrentCharacter();
+		characImg = new GImage (IMG_FOLDER + character + "Stand.png", 100, 520); 
+		characImg.setSize(64, 64);
 		Environment = levelPane.getEnvironment();
 	}
 	
@@ -42,27 +42,28 @@ public class Character extends GraphicsProgram implements ActionListener {
 	public Character(mainSMR mainSMR, LevelPaneDev levelPaneDev) {
 		program = mainSMR;
 		this.levelPaneDev = levelPaneDev;
-		mario = new GImage (IMG_FOLDER + "marioStand.png", 100, 520); 
-		mario.setSize(64, 64);
+		characImg = new GImage (IMG_FOLDER + "marioStand.png", 100, 520); 
+		characImg.setSize(64, 64);
 	}
 
 
 
 	public void stand() {
-		mario.setImage(IMG_FOLDER + "marioStand.png");
-		mario.setSize(64, 64);
+		
+		characImg.setImage(IMG_FOLDER + character + "Stand.png");
+		characImg.setSize(64, 64);
 	}
 
 	public void run() {
-		mario.setImage(IMG_FOLDER + "marioRun.gif");
-		mario.setSize(64, 64);
+		characImg.setImage(IMG_FOLDER + character + "Run.gif");
+		characImg.setSize(64, 64);
 	}
 	
 	public void jump() {
-		mario.setImage(IMG_FOLDER + "marioJump.gif");
-		mario.setSize(64, 64);
-		leftFoot = program.getElementAt(mario.getX() + 20, mario.getY() + 80);
-		rightFoot = program.getElementAt(mario.getX() + 30, mario.getY() + 80);
+		characImg.setImage(IMG_FOLDER + character + "Jump.gif");
+		characImg.setSize(64, 64);
+		leftFoot = program.getElementAt(characImg.getX() + 20, characImg.getY() + 80);
+		rightFoot = program.getElementAt(characImg.getX() + 30, characImg.getY() + 80);
 		
 		jumpUpState = false;
 			
@@ -76,11 +77,11 @@ public class Character extends GraphicsProgram implements ActionListener {
 		}
 	
 		if (jumpUpState) {		
-			mario.move(0, -20);
+			characImg.move(0, -20);
 		}
 			
 		if (!jumpUpState) {
-			mario.move(0, 20);				
+			characImg.move(0, 20);				
 			for (GImage obj : Environment) {
 				if (leftFoot == obj && rightFoot == obj) {
 					
@@ -92,7 +93,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	}
 	
 	public GImage getCharacter(){
-		return mario;
+		return characImg;
 	}
 
 	public void setJumpCount(int jumpCount) {
