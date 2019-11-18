@@ -121,22 +121,22 @@ import acm.graphics.GImage;
  	}
  	
  	public void characterBought() {
- 		if (playerProgress.isLuigiUnlocked()) {
+ 		if (program.getProgress().isLuigiUnlocked()) {
  			program.add(luigiPic);
  		}
  		
- 		if (playerProgress.isPrincessUnlocked()) {
+ 		if (program.getProgress().isPrincessUnlocked()) {
  			program.add(princessPic);
  		}
  	}
  	
  	public void powerUpbought()	{
  		
- 		if(playerProgress.isStarPurchased()){
+ 		if(program.getProgress().isStarPurchased()){
  			program.add(Star);
  		}
  		
- 		if(playerProgress.isMushroomPurchased()) {
+ 		if(program.getProgress().isMushroomPurchased()) {
  			program.add(Mushroom);
  		}
  	}

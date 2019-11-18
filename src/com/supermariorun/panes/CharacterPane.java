@@ -41,6 +41,8 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 	private GImage equipButtonL;
 	private GImage equipButtonP;
 	private GImage equippedButtonP;
+	final double labelWidth;
+	final double labelHeight;
 	
 	public CharacterPane(mainSMR mainSMR) {
 		super();
@@ -52,8 +54,8 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		final double pipeHeight = mainHeight/6;
 		final double bubbleWidth = mainWidth/9;
 		final double bubbleHeight = mainHeight/5;
-		final double labelWidth = mainWidth/12;
-		final double labelHeight = mainHeight/12;
+		labelWidth = mainWidth/12;
+		labelHeight = mainHeight/12;
 		
 		bubbleTimer = new Timer(500, this);
 	
@@ -95,21 +97,17 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		
 		equipButtonL =  new GImage(IMG_FOLDER + "equipButton.png",710,490);
 		equipButtonL.setSize(labelWidth*1.3, labelHeight*1.3);
-		
-		equippedButtonL = new GImage(IMG_FOLDER + "equippedButton.png",710,490);
-		equippedButtonL.setSize(labelWidth*1.3, labelHeight*1.3);
+
 		
 		equipButtonP =  new GImage(IMG_FOLDER + "equipButton.png",350,490);
-		equipButtonP.setSize(labelWidth*1.3, labelHeight*1.3);
+	
 		
-		equippedButtonP = new GImage(IMG_FOLDER + "equippedButton.png",350,490);
-		equippedButtonP.setSize(labelWidth*1.3, labelHeight*1.3);
-		
-		bubbleTimer.start();
+	
 	}
 	
 	@Override
 	public void showContents() {
+		bubbleTimer.start();
 		coinCount.setLabel("Coins: " + progress.getNumCoins());
 		program.add(background);
 		program.add(BackButton);
@@ -127,6 +125,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 
 	@Override
 	public void hideContents() {
+		bubbleTimer.stop();
 		program.remove(background);
 		program.remove(BackButton);
 		program.remove(BackPipe);
@@ -151,29 +150,33 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			program.switchToShop();
 		}
 		
-		if(obj == LuigiButton || obj == buyLabel2) {
+		if(program.getProgress().isLuigiUnlocked() && (obj == LuigiButton || obj == buyLabel2)) {
 			Luigitransaction();
-			program.remove(buyLabel2);
-			program.add(equipButtonL);
+			equipButtonL.setImage("equipButton.png");
 			
 		}
 		
-		if(obj == PrincessButton || obj == buyLabel) {
+		if(program.getProgress().isPrincessUnlocked() && (obj == PrincessButton || obj == buyLabel)) {
 			PrincessTransaction();
 			program.remove(buyLabel);
 			program.add(equipButtonP);
 		}
-		if(obj == equipButtonL)
-		{
+		
+		if(obj == equipButtonL) {
+			equipButtonP.setImage("equipButton.png");
+			equipButtonL.setImage("equippedButton.png");
+			equipButtonP.setSize(labelWidth*1.3, labelHeight*1.3);
+			equipButtonL.setSize(labelWidth*1.3, labelHeight*1.3);
 			playerProgress.setCurrentCharacter("luigi");
-			program.remove(equipButtonL);
-			program.add(equippedButtonL);
 		}
-		if(obj == equipButtonP)
-		{
+		
+		if(obj == equipButtonP) {
+			equipButtonL.setImage("equipButton.png");
+			equipButtonP.setImage("equippedButton.png");
+			equipButtonP.setSize(labelWidth*1.3, labelHeight*1.3);
+			equipButtonL.setSize(labelWidth*1.3, labelHeight*1.3);
 			playerProgress.setCurrentCharacter("Princess");
-			program.remove(equipButtonP);
-			program.add(equippedButtonP);
+			
 		}
 		
 	}

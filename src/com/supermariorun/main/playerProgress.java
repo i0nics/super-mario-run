@@ -38,27 +38,27 @@ public class playerProgress {
 		return numSuperStars;
 	}
 	
-	public static int getNumCoinRush() {
+	public int getNumCoinRush() {
 		return numCoinRush;
 	}
 	
-	public static boolean isLuigiUnlocked() {
+	public boolean isLuigiUnlocked() {
 		return isLuigiUnlocked;
 	}
 	
-	public static boolean isPrincessUnlocked() {
+	public  boolean isPrincessUnlocked() {
 		return isPrincessUnlocked;
 	}
 	
-	public static boolean isStarPurchased() {
+	public boolean isStarPurchased() {
 		return isStarPurchased;
 	}
 	
-	public static boolean isFlowerPurchased() {
+	public boolean isFlowerPurchased() {
 		return isFlowerPurchased;
 	}
 	
-	public static boolean isMushroomPurchased() {
+	public boolean isMushroomPurchased() {
 		return isMushroomPurchased;
 	}
 	public static void incrementCoins() {
