@@ -31,12 +31,21 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 	private GImage backLabel;
 	private int count;
 	private GImage coin;
+<<<<<<< HEAD
 	private Timer bubbleTimer;
 	private static int PrincessCost = 110;
+=======
+	private GImage equippedButtonL;
+	public Timer bubbleTimer;
+	private static int PrincessCost = 50;
+>>>>>>> branch 'master' of https://github.com/comp55/group-project-i0nics.git
 	private static int luigiCost = 50;
 	private GImage buyLabel;
 	private GImage buyLabel2;
 	private GLabel coinCount;
+	private GImage equipButtonL;
+	private GImage equipButtonP;
+	private GImage equippedButtonP;
 	
 	public CharacterPane(mainSMR mainSMR) {
 		super();
@@ -88,6 +97,23 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		
 		coin = new GImage(IMG_FOLDER + "coin.gif", 320,50);
 		coin.setSize(100, 100);
+<<<<<<< HEAD
+=======
+		
+		equipButtonL =  new GImage(IMG_FOLDER + "equipButton.png",710,490);
+		equipButtonL.setSize(labelWidth*1.3, labelHeight*1.3);
+		
+		equippedButtonL = new GImage(IMG_FOLDER + "equippedButton.png",710,490);
+		equippedButtonL.setSize(labelWidth*1.3, labelHeight*1.3);
+		
+		equipButtonP =  new GImage(IMG_FOLDER + "equipButton.png",350,490);
+		equipButtonP.setSize(labelWidth*1.3, labelHeight*1.3);
+		
+		equippedButtonP = new GImage(IMG_FOLDER + "equippedButton.png",350,490);
+		equippedButtonP.setSize(labelWidth*1.3, labelHeight*1.3);
+		
+		bubbleTimer.start();
+>>>>>>> branch 'master' of https://github.com/comp55/group-project-i0nics.git
 	}
 	
 	@Override
@@ -137,11 +163,29 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		
 		if(obj == LuigiButton || obj == buyLabel2) {
 			Luigitransaction();
+			program.remove(buyLabel2);
+			program.add(equipButtonL);
+			
 		}
 		
 		if(obj == PrincessButton || obj == buyLabel) {
 			PrincessTransaction();
+			program.remove(buyLabel);
+			program.add(equipButtonP);
 		}
+		if(obj == equipButtonL)
+		{
+			playerProgress.setCurrentCharacter("luigi");
+			program.remove(equipButtonL);
+			program.add(equippedButtonL);
+		}
+		if(obj == equipButtonP)
+		{
+			playerProgress.setCurrentCharacter("Princess");
+			program.remove(equipButtonP);
+			program.add(equippedButtonP);
+		}
+		
 	}
 	
 	@Override
@@ -153,6 +197,11 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			BackButton.move(0, 10);
 			buyLabel.move(0, 10);
 			buyLabel2.move(0,10);
+			equipButtonL.move(0, 10);
+			equippedButtonL.move(0, 10);
+			equipButtonP.move(0, 10);
+			equippedButtonP.move(0, 10);
+			
 		}
 		
 		if (count == 2) {
@@ -162,6 +211,10 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			BackButton.move(0, -10);
 			buyLabel.move(0, -10);
 			buyLabel2.move(0,-10);
+			equipButtonL.move(0,-10);
+			equippedButtonL.move(0, -10);
+			equipButtonP.move(0,-10);
+			equippedButtonP.move(0, -10);
 			count = 0;
 		}
 		count++;

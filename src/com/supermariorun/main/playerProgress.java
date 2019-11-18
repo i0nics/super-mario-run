@@ -11,6 +11,7 @@ public class playerProgress {
 	private static int numSuperMushrooms = 0;
 	private static int numSuperStars = 0;
 	private static int numCoinRush = 0;
+	private static String currentCharacter = "mario";
 	private static boolean isLuigiUnlocked = false;
 	private static boolean isPrincessUnlocked = false;
 	private static boolean isStarPurchased = false;
@@ -118,6 +119,14 @@ public class playerProgress {
 	
 	public boolean isLvlUnlocked(int lvl) {
 		return levels.get(lvl);
+	}
+	
+	public String getCurrentCharacter() {
+		return currentCharacter;
+	}
+	
+	public static void setCurrentCharacter(String charac) {
+		currentCharacter = charac;
 	}
 	
 	public void unlockLevel() {
