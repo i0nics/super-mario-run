@@ -19,7 +19,6 @@ public class ScanLevel {
 		Scanner readFile = new Scanner(new File(file));
 		String obj, x, y;
 		int loop;
-		boolean changeObj = false;
 		levelMap = new HashMap<String, ArrayList<Pair<Integer, Integer>>> ();
 		listCoord = new ArrayList<Pair<Integer, Integer>>();
 		
@@ -34,6 +33,7 @@ public class ScanLevel {
 				listCoord.add(new Pair <Integer, Integer> (Integer.valueOf(x), Integer.valueOf(y)));
 			}
 		}
+		readFile.close();
 		return levelMap;
 	}
 }
