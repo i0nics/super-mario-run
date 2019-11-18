@@ -128,6 +128,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		for (Iterator<GImage> it = level.getCoins().iterator(); it.hasNext(); ) {
 			GImage img = it.next();
 			if (character.getBounds().intersects(img.getBounds())) {
+				program.playCoinEffect();
 				Environment.remove(img);
 				program.remove(img);
 				it.remove();
