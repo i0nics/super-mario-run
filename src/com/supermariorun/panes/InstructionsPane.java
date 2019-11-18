@@ -77,11 +77,11 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 		bubbleImg.setSize(bubbleWidth, bubbleHeight);
 		
 		mTimer = new Timer(50, this);
-		mTimer.start();
 	}
 	
 	@Override
 	public void showContents() {
+		mTimer.start();
 		program.add(backImg);
 		program.add(grassImg);
 		program.add(marioRun);
@@ -93,6 +93,7 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 
 	@Override
 	public void hideContents() {
+		mTimer.stop();
 		program.remove(InstructionsList);
 		program.remove(marioRun);
 		program.remove(backImg);
@@ -110,7 +111,6 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 			program.playPipeSound();
 			program.stopGuideSound();
 			program.playMenuSound();
-			mTimer.stop();
 			program.menuPane.bubbleTimer.start();
 			program.switchToMenu();
 		}

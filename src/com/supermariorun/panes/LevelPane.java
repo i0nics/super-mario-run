@@ -219,8 +219,8 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		
 		else if(obj == continueButton) {
 			program.stopLvlOneTrack();
-			program.playPipeSound();
 			hideResume();
+			program.playPipeSound();
 			program.switchToEndPane();
 		}
 		

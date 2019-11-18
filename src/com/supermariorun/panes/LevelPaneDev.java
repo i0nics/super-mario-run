@@ -20,7 +20,7 @@ import acm.graphics.GLine;
 import acm.graphics.GObject;
 import starter.GButton;
 
-public class LevelPaneDev extends GraphicsPane implements ActionListener {
+public class LevelPaneDev extends GraphicsPane {
 	private mainSMR program;
 	private GImage Background;
 	private GImage pauseButton;
@@ -44,7 +44,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 	private ArrayList<GImage> qBlocks;
 	private GLabel collison;
 	private ILevel level;
-	private Timer timer;
+	//private Timer timer;
 	private int spaceWidth = 1150 / 30;
 	private int spaceHeight = 650 / 18;
 	public static final int MS = 100; // 110
@@ -79,7 +79,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 		moveRight = new GButton("right", 400, 40, 100, 100);
 
 		program = mainSMR;
-		timer = new Timer(MS, this);
+
 		level = new LevelOne();
 		Environment = level.getEnvironment();
 
@@ -125,12 +125,11 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 	}
 
 	public void Play() {
-		timer.start();
+		
 		program.playLvlOneTrack();
 	}
 
 	public void Pause() {
-		timer.stop();
 		program.playPauseSound();
 		program.pauseLvlOneTrack();
 	}
@@ -149,14 +148,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 	public void isGameOver() {
 		if (Background.getX() == -4840) {
 			program.stopLvlOneTrack();
-			timer.stop();
 		}
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		isGameOver();
-
 	}
 
 	@Override
@@ -181,6 +173,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 
 	@Override
 	public void hideContents() {
+		
 		program.removeAll();
 	}
 

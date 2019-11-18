@@ -66,12 +66,11 @@ import acm.graphics.GImage;
  		
  		princessPic = new GImage(IMG_FOLDER + "Princess.png", 325, 200);
 		princessPic.setSize(185, 250);
-		
- 		bubbleTimer.start();
  	}
 
  	@Override
  	public void showContents() {
+ 		bubbleTimer.start();
  		program.add(background);
  		program.add(BackButton);
  		program.add(BackPipe);
@@ -82,6 +81,7 @@ import acm.graphics.GImage;
 
  	@Override
  	public void hideContents() {
+ 		bubbleTimer.stop();
  		program.remove(background);
  		program.remove(Mushroom);
  		program.remove(Flower);
