@@ -143,6 +143,10 @@ public class LevelOne implements ILevel{
 	public ArrayList<GImage> getEnvironment() {
 		return Environment;
 	}
+	@Override
+	public ArrayList<GImage> getCoins(){
+		return coins;
+	}
 
 
 }

@@ -7,6 +7,6 @@ public interface ILevel {
 	public GImage getBackground();
 	public ArrayList <GImage> getEnvironment();
 	public ArrayList <GImage> getPipes();
-	
+	public ArrayList <GImage> getCoins();
 	
 }

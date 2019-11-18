@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.Timer;
 
@@ -13,6 +14,7 @@ import com.supermariorun.levels.ILevel;
 import com.supermariorun.levels.LevelOne;
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
+import com.supermariorun.main.playerProgress;
 
 import acm.graphics.GImage;
 import acm.graphics.GLabel;
@@ -121,6 +123,19 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		}
 	}
 	
+	public void collectCoin() {
+		GImage character = Character.getCharacter();
+		for (Iterator<GImage> it = level.getCoins().iterator(); it.hasNext(); ) {
+			GImage img = it.next();
+			if (character.getBounds().intersects(img.getBounds())) {
+				Environment.remove(img);
+				program.remove(img);
+				it.remove();
+				playerProgress.incrementCoins();
+			}
+		}
+	}
+	
 	public void isGameOver() {
 		if (Background.getX() == -4840) { //4840
 			timer.stop();
@@ -142,6 +157,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		moveEnvironment();
+		collectCoin();
 		isGameOver();
 	
 		if (jumpState == true) {
