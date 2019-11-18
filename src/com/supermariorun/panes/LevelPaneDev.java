@@ -44,7 +44,6 @@ public class LevelPaneDev extends GraphicsPane {
 	private ArrayList<GImage> qBlocks;
 	private GLabel collison;
 	private ILevel level;
-	//private Timer timer;
 	private int spaceWidth = 1150 / 30;
 	private int spaceHeight = 650 / 18;
 	public static final int MS = 100; // 110

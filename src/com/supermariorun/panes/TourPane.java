@@ -32,7 +32,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private boolean isWiggle;
 	private int wCount = 0;
 	private int count = 0;
-	public Timer bTimer;
+	private Timer bTimer;
 	
 	public TourPane(mainSMR mainSMR) {
 		super();
@@ -81,12 +81,11 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	    
 	    lockLvlFour= new GImage(IMG_FOLDER + "qBlock.png", 910, 350);
 	    lockLvlFour.setSize(qBlockWidth, qBlockHeight);
-	    
-		bTimer.start();
 	}
 
 	@Override
 	public void showContents() {
+		bTimer.start();
 		program.add(tourBackground);
 		program.add(backLabel);
 		program.add(backBubble);
@@ -102,6 +101,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 
 	@Override
 	public void hideContents() {
+		bTimer.stop();
 		program.remove(tourBackground);
 		program.remove(backLabel);
 		program.remove(backBubble);
@@ -178,7 +178,6 @@ public class TourPane extends GraphicsPane implements ActionListener {
 			isWiggle = false;
 		}
 		
-	
 		count++;
 	}
 }

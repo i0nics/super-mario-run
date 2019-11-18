@@ -66,11 +66,11 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		
 		menuBackground = new GImage(IMG_FOLDER + "menuBack.gif", 0, 0);
 		menuBackground.setSize(mainWidth, mainHeight);
-		bubbleTimer.start();
 	}
 
 	@Override
 	public void showContents() {
+		bubbleTimer.start();
 		program.add(menuBackground);
 		program.add(shopPipe);
 		program.add(shopBubble);
@@ -86,6 +86,7 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 
 	@Override
 	public void hideContents() {
+		bubbleTimer.stop();
 		program.remove(shopBubble);
 		program.remove(tourBubble);
 		program.remove(guideBubble);
@@ -99,32 +100,30 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		program.remove(guideLabel);
 	}
 	
+	void soundAction(){
+		program.playPipeSound();
+		program.stopMenuSound();
+	}
+	
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
 		if(obj == tourPipe || obj == tourBubble || obj == tourLabel) {
-			bubbleTimer.stop();
-			program.playPipeSound();
-			program.stopMenuSound();
+			soundAction();
 			program.playTourSound();
 			program.switchToTour();
 		}
 		
 		if (obj == shopPipe || obj == shopBubble || obj == shopLabel) {
-			bubbleTimer.stop();
-			program.stopMenuSound();
-			program.playPipeSound();
+			soundAction();
 			program.playShopSound();
 			program.switchToShop();
 		}
 
 		else if(obj == guidePipe || obj == guideBubble || obj == guideLabel) {
-			bubbleTimer.stop();
-			program.guidePane.mTimer.start();
-			program.stopMenuSound();
+			soundAction();
 			program.playGuideSound();
-			program.playPipeSound();
 			program.switchToInstructions();
 		}
 	}

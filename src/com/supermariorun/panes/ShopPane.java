@@ -26,7 +26,7 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 	private GImage characterLabel;
 	private GImage powerLabel;
 	private int count = 1;
-	public Timer bubbleTimer;
+	private Timer bubbleTimer;
 	
 	
 	public ShopPane(mainSMR mainSMR) {
@@ -75,12 +75,11 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 		
 		powerLabel = new GImage(IMG_FOLDER + "powerUpsButton.png", 774, 245);
 		powerLabel.setSize(labelWidth*1.5, labelHeight*1.2);
-		
-		bubbleTimer.start();
 	}
 
 	@Override
 	public void showContents() {
+		bubbleTimer.start();
 		program.add(background);
 		program.add(PowerUpButton);
 		program.add(CharacterButton);
@@ -96,6 +95,7 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 
 	@Override
 	public void hideContents() {
+		bubbleTimer.stop();
 		program.remove(background);
 		program.remove(PowerUpButton);
 		program.remove(CharacterButton);

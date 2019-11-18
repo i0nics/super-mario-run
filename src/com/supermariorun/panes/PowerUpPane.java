@@ -30,13 +30,11 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 	private GImage backLabel;
 	private int count;
 	private GImage coin;
-	public Timer bubbleTimer;
+	private Timer bubbleTimer;
 	private GImage buyLabelm;
-	private GImage buyLabelf;
 	private GImage buyLabels;
 	private GImage background;
 	private GLabel coinCount;
-	private static int flowerCost = 50;
 	private static int mushroomCost = 50;
 	private static int starCost = 50;
 
@@ -91,13 +89,12 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 
 		coin = new GImage(IMG_FOLDER + "coin.gif", 320,50);
 		coin.setSize(100, 100);
-		
-		bubbleTimer.start();
 	}
 
 	@Override
 	public void showContents() {
 		coinCount.setLabel("Coins: " + progress.getNumCoins());
+		bubbleTimer.start();
 		program.add(background);
 		program.add(BackButton);
 		program.add(BackPipe);
@@ -114,6 +111,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 
 	@Override
 	public void hideContents() {
+		bubbleTimer.stop();
 		program.remove(background);
 		program.remove(BackButton);
 		program.remove(BackPipe);

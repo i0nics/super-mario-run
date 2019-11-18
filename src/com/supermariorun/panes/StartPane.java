@@ -22,7 +22,7 @@ public class StartPane extends GraphicsPane implements ActionListener {
 	private GImage lakituImg;
 	private GImage clickImg;
 	private int count = 1;
-	public Timer timer;
+	private Timer timer;
 
 	public StartPane(mainSMR main) {
 		this.program = main;
@@ -36,7 +36,6 @@ public class StartPane extends GraphicsPane implements ActionListener {
 		redStripes.setSize(main.getWidth(), main.getHeight());
 		goombaImg.setSize(250, 250);
 		lakituImg.setSize(250, 250);
-		timer.start();
 	}
 
 	public void actionPerformed(ActionEvent evt){
@@ -55,6 +54,7 @@ public class StartPane extends GraphicsPane implements ActionListener {
 
 	@Override
 	public void showContents() {
+		timer.start();
 		program.add(redStripes);
 		program.add(marioStart);
 		program.add(marioImg);
@@ -64,6 +64,7 @@ public class StartPane extends GraphicsPane implements ActionListener {
 
 	@Override
 	public void hideContents() {
+		timer.stop();
 		program.remove(redStripes);
 		program.remove(marioStart);
 		program.remove(clickImg);
