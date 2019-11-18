@@ -62,7 +62,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		timer = new Timer (MS, this);
 		level = new LevelOne();
 		Environment = level.getEnvironment();
-		Character = new Character(mainSMR, this);
+		Character = new Character(mainSMR, this,  program.getProgress().getCurrentCharacter());
 		
 		pauseBubble = new GImage(IMG_FOLDER + "bubble.png",30, 10);
 		pauseBubble.setSize(100, 100);
@@ -128,7 +128,6 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		for (Iterator<GImage> it = level.getCoins().iterator(); it.hasNext(); ) {
 			GImage img = it.next();
 			if (character.getBounds().intersects(img.getBounds())) {
-				program.playCoinEffect();
 				Environment.remove(img);
 				program.remove(img);
 				it.remove();
@@ -138,7 +137,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	}
 	
 	public void isGameOver() {
-		if (Background.getX() == -4840) {  //
+		if (Background.getX() == -4840) { //4840
 			timer.stop();
 			Character.stand();
 			program.add(greyBack);
