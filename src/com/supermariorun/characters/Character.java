@@ -35,13 +35,11 @@ public class Character extends GraphicsProgram implements ActionListener {
 		program = mainSMR;
 		this.levelPane = levelPane;
 		character = program.getProgress().getCurrentCharacter();
-		STAR_EXT = program.getProgress().getCurrentPowerUp();
 		characImg = new GImage (IMG_FOLDER + STAR_EXT + character + "Stand.png", 100, 520); 
 		characImg.setSize(64, 64);
 		starTimer = new Timer (1000, this);
 		Environment = levelPane.getEnvironment();
 	}
-	
 
 	
 	public Character(mainSMR mainSMR, LevelPaneDev levelPaneDev) {
@@ -99,7 +97,6 @@ public class Character extends GraphicsProgram implements ActionListener {
 			}
 		}
 	}
-	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -107,8 +104,8 @@ public class Character extends GraphicsProgram implements ActionListener {
 		
 		if (starCount == 10) {
 			starTimer.stop();
-			
 			starCount = 0;
+			program.getProgress().clearCurrentPowerUp();
 			STAR_EXT = "";
 			run();
 		}

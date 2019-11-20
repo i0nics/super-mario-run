@@ -136,6 +136,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			program.playPipeSound();
 			program.switchToShop();
 		}
+		
 		if(progress.isStarPurchased() && (obj == StarButton || obj == buyLabels)){
 			if (progress.isMushroomPurchased()) {
 				buyLabelm.setImage(IMG_FOLDER + "equipButton.png");
@@ -145,6 +146,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			buyLabels.setSize(labelWidth*1.3, labelHeight*1.3);
 			progress.setCurrentPowerUp("star");
 		}
+		
 		if(progress.isMushroomPurchased() && (obj == MushroomButton || obj == buyLabelm)){
 			if (progress.isStarPurchased()) {
 				buyLabels.setImage(IMG_FOLDER + "equipButton.png");
@@ -152,7 +154,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			}
 			buyLabelm.setImage(IMG_FOLDER + "equippedButton.png");
 			buyLabelm.setSize(labelWidth*1.3, labelHeight*1.3);
-			//progress.setCurrentCharacter("Mushroom");
+			//progress.setCurrentPowerUp("Mushroom");
 		}
 		if (!progress.isMushroomPurchased() && (obj == MushroomButton || obj == buyLabelm)) {
 			mushroomTransaction();
@@ -191,8 +193,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		count++;
 	}
 
-	
-	
 	public void starTransaction() {
 		progress.getNumCoins();
 
