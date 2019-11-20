@@ -4,11 +4,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.Timer;
+
+import com.supermariorun.levels.ILevel;
+import com.supermariorun.levels.LevelOne;
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
+import com.supermariorun.main.playerProgress;
 import com.supermariorun.panes.LevelPane;
+
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;
@@ -19,7 +25,7 @@ public class eGoomba extends GraphicsPane implements ActionListener {
 	private mainSMR program;
 	double mainWidth ;
 	double mainHeight;
-
+	private ILevel level;
 	public static final String IMG_FOLDER = "enemies/";
 	private GImage goomba;
 	private boolean moveRight;
@@ -31,7 +37,7 @@ public class eGoomba extends GraphicsPane implements ActionListener {
 		program = mainSMR;
 		mainWidth = program.getWidth();
 		mainHeight = program.getHeight();
-		
+	//	level = new LevelOne();
 		goomba = new GImage(IMG_FOLDER + "goomba.png", 200, 500);
 		goomba.setSize(mainWidth/4, mainHeight/3);
 		Environment = levelPane.getEnvironment();
@@ -40,27 +46,23 @@ public class eGoomba extends GraphicsPane implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 	
-		checkCollision();
+		checkCollisionEnvironment();
 
 	}
 
-	public void checkCollision() {
-	 /*
-		if (goomba.getX() - 80 == Pipe1.getX()) {
-			moveRight = true;
-		}
-		if (goomba.getX() + 190 == Pipe2.getX()) {
-			moveRight = false;
-		} 
+	public void checkCollisionEnvironment() {
+		for (Iterator<GImage> it = level.getEnvironment().iterator(); it.hasNext(); ) {
+			GImage img = it.next();
+		if (goomba.getBounds().intersection(img.getBounds()) != null) {
 		
-		if (moveRight == true) {
-			goomba.move(10, 0);
+			goomba.move(0,-100);
+
 		}
 		
-		else {
-			goomba.move(-10, 0);
-		}*/
-	}
+		}
+
+		
+		}
 	
 	public void goombaDead() {
 		if(isGoombaDead = true)

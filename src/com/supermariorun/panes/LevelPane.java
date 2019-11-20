@@ -101,6 +101,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 	public void Play() {
 		timer.start();
+		if (program.getProgress().getCurrentPowerUp() == "star") {
+			Character.setstarMode();
+		}
 		Character.run();
 		program.playLvlOneTrack();
 	}

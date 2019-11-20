@@ -130,13 +130,16 @@ public class playerProgress {
 		currentCharacter = charac;
 	}
 	
-	public String getCurrentPowerUp()
-	{
+	public String getCurrentPowerUp() {
 		return currentPowerUp;
 	}
-	public void setCurrentPowerUp(String power)
-	{
+	
+	public void setCurrentPowerUp(String power) {
 		currentPowerUp = power;
+	}
+	
+	public void clearCurrentPowerUp() {
+		currentPowerUp = "";
 	}
 	public void unlockLevel() {
 		levels.set(lvl, true);
