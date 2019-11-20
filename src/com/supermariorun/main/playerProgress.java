@@ -12,6 +12,7 @@ public class playerProgress {
 	private static int numSuperStars = 0;
 	private static int numCoinRush = 0;
 	private static String currentCharacter = "mario";
+	private static String currentPowerUp = "";
 	private static boolean isYoshiUnlocked = false;
 	private static boolean isPrincessUnlocked = false;
 	private static boolean isStarPurchased = false;
@@ -129,6 +130,14 @@ public class playerProgress {
 		currentCharacter = charac;
 	}
 	
+	public String getCurrentPowerUp()
+	{
+		return currentPowerUp;
+	}
+	public void setCurrentPowerUp(String power)
+	{
+		currentPowerUp = power;
+	}
 	public void unlockLevel() {
 		levels.set(lvl, true);
 		lvl++;

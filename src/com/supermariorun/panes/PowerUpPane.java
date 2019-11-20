@@ -37,7 +37,8 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 	private GLabel coinCount;
 	private static int mushroomCost = 50;
 	private static int starCost = 50;
-
+	final double labelWidth;
+	final double labelHeight;
 	public PowerUpPane(mainSMR mainSMR) {
 		super();
 		this.program = mainSMR;
@@ -48,8 +49,8 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		final double pipeHeight = mainHeight / 6;
 		final double bubbleWidth = mainWidth / 9;
 		final double bubbleHeight = mainHeight / 5;
-		final double labelWidth = mainWidth / 12;
-		final double labelHeight = mainHeight / 12;
+		labelWidth = mainWidth / 12;
+		labelHeight = mainHeight / 12;
 
 		bubbleTimer = new Timer(500, this);
 
@@ -135,13 +136,34 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			program.playPipeSound();
 			program.switchToShop();
 		}
-
-		if (obj == MushroomButton || obj == buyLabelm) {
+		if(progress.isStarPurchased() && (obj == StarButton || obj == buyLabels)){
+			if (progress.isMushroomPurchased()) {
+				buyLabelm.setImage(IMG_FOLDER + "equipButton.png");
+				buyLabelm.setSize(labelWidth*1.3, labelHeight*1.3);
+			}
+			buyLabels.setImage(IMG_FOLDER + "equippedButton.png");
+			buyLabels.setSize(labelWidth*1.3, labelHeight*1.3);
+			progress.setCurrentPowerUp("star");
+		}
+		if(progress.isMushroomPurchased() && (obj == MushroomButton || obj == buyLabelm)){
+			if (progress.isStarPurchased()) {
+				buyLabels.setImage(IMG_FOLDER + "equipButton.png");
+				buyLabels.setSize(labelWidth*1.3, labelHeight*1.3);
+			}
+			buyLabelm.setImage(IMG_FOLDER + "equippedButton.png");
+			buyLabelm.setSize(labelWidth*1.3, labelHeight*1.3);
+			//progress.setCurrentCharacter("Mushroom");
+		}
+		if (!progress.isMushroomPurchased() && (obj == MushroomButton || obj == buyLabelm)) {
 			mushroomTransaction();
+			buyLabelm.setImage(IMG_FOLDER + "equipButton.png");
+			buyLabelm.setSize(labelWidth*1.3, labelHeight*1.3);
 		}
 
-		if (obj == StarButton || obj == buyLabels) {
+		if (!progress.isStarPurchased() && (obj == StarButton || obj == buyLabels)){
 			starTransaction();
+			buyLabels.setImage(IMG_FOLDER + "equipButton.png");
+			buyLabels.setSize(labelWidth*1.3, labelHeight*1.3);
 		}
 	}
 
@@ -169,6 +191,8 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		count++;
 	}
 
+	
+	
 	public void starTransaction() {
 		progress.getNumCoins();
 

@@ -55,8 +55,6 @@ public class LevelOne implements ILevel{
 		for (Pair<Integer, Integer> loop : levelMap.get("COIN")) {
 			coins.add(new GImage(IMG_FOLDER + "coin.gif", loop.getKey(), loop.getValue()));
 		}
-
-		for (GImage g : coins) { g.setSize(35, 35);}
 		
 		setUpEnvironment();
 	
