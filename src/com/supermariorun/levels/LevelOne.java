@@ -28,8 +28,7 @@ public class LevelOne implements ILevel{
 		scanLevel = new ScanLevel();
 		
 		Background = new GImage (IMG_FOLDER + "Background.png", 0, 0);
-		levelMap = scanLevel.runScan("level/levelOne.txt");
-	}
+		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");	}
 	
 	@Override
 	public void setUpLevel() {
