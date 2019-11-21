@@ -8,8 +8,7 @@ import java.util.Iterator;
 
 import javax.swing.Timer;
 
-import com.supermariorun.levels.ILevel;
-import com.supermariorun.levels.LevelOne;
+import com.supermariorun.levels.Level;
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
 import com.supermariorun.main.playerProgress;
@@ -25,7 +24,7 @@ public class eGoomba extends GraphicsPane implements ActionListener {
 	private mainSMR program;
 	double mainWidth ;
 	double mainHeight;
-	private ILevel level;
+	private Level level;
 	public static final String IMG_FOLDER = "enemies/";
 	private GImage goomba;
 	private boolean moveRight;

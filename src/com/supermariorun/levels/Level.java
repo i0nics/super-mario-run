@@ -8,7 +8,7 @@ import acm.graphics.GImage;
 import javafx.scene.layout.Background;
 import javafx.util.Pair;
 
-public class LevelOne implements ILevel{
+public class Level {
 	public static final String IMG_FOLDER = "LevelImages/";
 	private GImage Background;
 	
@@ -21,7 +21,7 @@ public class LevelOne implements ILevel{
 	private ScanLevel scanLevel;
 	private GImage coin;
 	
-	public LevelOne(String levelNum) throws FileNotFoundException {
+	public Level(String levelNum) throws FileNotFoundException {
 		Environment = new ArrayList <GImage> ();
 		qBlocks = new ArrayList <GImage> ();
 		coins = new ArrayList <GImage> ();
@@ -30,7 +30,7 @@ public class LevelOne implements ILevel{
 		Background = new GImage (IMG_FOLDER + "Background.png", 0, 0);
 		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");	}
 	
-	@Override
+
 	public void setUpLevel() {
 		Environment.clear();
 		coins.clear();
@@ -65,21 +65,19 @@ public class LevelOne implements ILevel{
 		}
 	}
 	
-	@Override
+
 	public GImage getBackground() {
 		return Background;
 	}
 
-	@Override
 	public ArrayList<GImage> getPipes() {
 		return Pipes;
 	}
 
-	@Override
 	public ArrayList<GImage> getEnvironment() {
 		return Environment;
 	}
-	@Override
+
 	public ArrayList<GImage> getCoins(){
 		return coins;
 	}

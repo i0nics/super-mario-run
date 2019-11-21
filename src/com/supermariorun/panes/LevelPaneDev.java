@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import javax.swing.Timer;
 
 import com.supermariorun.characters.Character;
-import com.supermariorun.levels.ILevel;
-import com.supermariorun.levels.LevelOne;
+import com.supermariorun.levels.Level;
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
 
@@ -43,7 +42,7 @@ public class LevelPaneDev extends GraphicsPane {
 	private ArrayList<GImage> GrassStrips;
 
 	private GLabel collison;
-	private ILevel level;
+	private Level level;
 	private int spaceWidth = 1150 / 30;
 	private int spaceHeight = 650 / 18;
 	public static final int MS = 100; // 110
@@ -79,7 +78,7 @@ public class LevelPaneDev extends GraphicsPane {
 
 		program = mainSMR;
 
-		level = new LevelOne("One");
+		level = new Level("One");
 		Environment = level.getEnvironment();
 
 		pauseBubble = new GImage(IMG_FOLDER + "bubble.png", 30, 10);

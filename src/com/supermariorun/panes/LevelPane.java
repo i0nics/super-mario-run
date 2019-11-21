@@ -11,8 +11,7 @@ import java.util.Iterator;
 import javax.swing.Timer;
 
 import com.supermariorun.characters.Character;
-import com.supermariorun.levels.ILevel;
-import com.supermariorun.levels.LevelOne;
+import com.supermariorun.levels.Level;
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
 import com.supermariorun.main.playerProgress;
@@ -43,7 +42,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public boolean jumpState;
 	public boolean isPause = false;
 	private Character Character;
-	private ILevel level;
+	private Level level;
 	private Timer timer;
 	
 	public static final int MS = 70;
@@ -59,7 +58,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		program = mainSMR;
 		timer = new Timer (MS, this);
 		
-		level = new LevelOne(levelNum);
+		level = new Level(levelNum);
 	
 		level.setUpLevel();
 		Background = level.getBackground();
