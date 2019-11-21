@@ -70,19 +70,22 @@ public class Character extends GraphicsProgram implements ActionListener {
 		characImg.setImage(IMG_FOLDER  + STAR_EXT + character + "Run.gif");
 	}
 	
-	public void jump() {
+	public void setJumpImage() {
 		characImg.setImage(IMG_FOLDER  + STAR_EXT + character + "Jump.gif");
+	}
+	
+	public void jump() {
 		leftFoot = program.getElementAt(characImg.getX() + 20, characImg.getY() + 80);
 		rightFoot = program.getElementAt(characImg.getX() + 60, characImg.getY() + 80);
 		
 		jumpUpState = false;
 			
-		if (jumpCount >=  0 && jumpCount < 6) {
+		if (jumpCount >=  0 && jumpCount < 8) {
 			jumpUpState = true;
 			setJumpCount(jumpCount + 1);
 		}
 			
-		if  (jumpCount > 6) {
+		if  (jumpCount > 8) {
 			jumpUpState = false;
 		}
 	
@@ -100,6 +103,10 @@ public class Character extends GraphicsProgram implements ActionListener {
 				}
 			}
 		}
+	}
+	
+	public void checkGround() {
+		
 	}
 	
 	public void collectCoin() {
