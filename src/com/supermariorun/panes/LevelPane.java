@@ -38,7 +38,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private LosePane losePane;
 	
 	private ArrayList <GImage> Environment;
-	private ArrayList <GImage> coins;	
+	private ArrayList <GImage> Coins;	
 	public boolean jumpState;
 	public boolean isPause = false;
 	private Character Character;
@@ -64,6 +64,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		Background = level.getBackground();
 
 		Environment = level.getEnvironment();
+		Coins = level.getCoins();
 		Character = new Character(program, this);
 		
 		pauseBubble = new GImage(IMG_FOLDER + "bubble.png",30, 10);
@@ -127,6 +128,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		for (GImage move : Environment) {
 			move.move(-10, 0);
 		}
+		for (GImage move : Coins) {
+			move.move(-10, 0);
+		}
 	}
 	
 	public void collectCoin() {
@@ -135,7 +139,6 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			GImage img = it.next();
 			if (character.getBounds().intersects(img.getBounds())) {
 				program.playCoinEffect();
-				Environment.remove(img);
 				program.remove(img);
 				it.remove();
 				program.getProgress().incrementCoins();
@@ -183,12 +186,15 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		for (GImage e: Environment) {
 			program.add(e);
 		}
+		
+		for (GImage e: Coins) {
+			program.add(e);
+		}
 	}
 
 	@Override
 	public void hideContents() {
 		timer.stop();
-		program.remove(Background);
 		program.removeAll();
 	}
 	
@@ -222,7 +228,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			Resume();
 		}
 		
-		else if(obj == retryButton){
+		else if(obj == retryButton) {
 			isPause = false;
 			program.stopLvlOneTrack();
 			hideContents();

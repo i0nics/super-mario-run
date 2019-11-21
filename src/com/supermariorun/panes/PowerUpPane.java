@@ -113,18 +113,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 	@Override
 	public void hideContents() {
 		bubbleTimer.stop();
-		program.remove(background);
-		program.remove(BackButton);
-		program.remove(BackPipe);
-		program.remove(MushroomButton);
-		program.remove(Mushroom);
-		program.remove(StarButton);
-		program.remove(Star);
-		program.remove(backLabel);
-		program.remove(buyLabelm);
-		program.remove(buyLabels);
-		program.remove(coinCount);
-		program.remove(coin);
+		program.removeAll();
 	}
 
 	@Override

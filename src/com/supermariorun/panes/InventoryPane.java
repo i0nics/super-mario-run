@@ -82,13 +82,7 @@ import acm.graphics.GImage;
  	@Override
  	public void hideContents() {
  		bubbleTimer.stop();
- 		program.remove(background);
- 		program.remove(Mushroom);
- 		program.remove(Flower);
- 		program.remove(Star);
- 		program.remove(BackButton);
- 		program.remove(BackPipe);
- 		program.remove(backLabel);
+ 		program.removeAll();
  	}
 
  	@Override

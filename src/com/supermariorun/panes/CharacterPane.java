@@ -130,21 +130,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 	@Override
 	public void hideContents() {
 		bubbleTimer.stop();
-		program.remove(background);
-		program.remove(BackButton);
-		program.remove(BackPipe);
-		program.remove(yoshiPic);
-		program.remove(PrincessPic);
-		program.remove(yoshiBubble);
-		program.remove(princessBubble);
-		program.remove(backLabel);
-		program.remove(princessLabel);
-		program.remove(yoshiLabel);
-		program.remove(coinCount);
-		program.remove(coin);
-		program.remove(marioPic);
-		program.remove(marioBubble);
-		program.remove(marioLabel);
+		program.removeAll();
 	}
 	
 	@Override

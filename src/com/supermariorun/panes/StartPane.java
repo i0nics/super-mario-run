@@ -65,12 +65,7 @@ public class StartPane extends GraphicsPane implements ActionListener {
 	@Override
 	public void hideContents() {
 		timer.stop();
-		program.remove(redStripes);
-		program.remove(marioStart);
-		program.remove(clickImg);
-		program.remove(marioImg);
-		program.remove(lakituImg);
-		program.remove(goombaImg);
+		program.removeAll();
 	}
 	
 

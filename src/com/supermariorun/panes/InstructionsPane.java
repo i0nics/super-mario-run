@@ -94,13 +94,7 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 	@Override
 	public void hideContents() {
 		mTimer.stop();
-		program.remove(InstructionsList);
-		program.remove(marioRun);
-		program.remove(backImg);
-		program.remove(bubblePipe);
-		program.remove(grassImg);
-		program.remove(backLabel);
-		program.remove(bubbleImg);
+		program.removeAll();
 	}
 
 	@Override

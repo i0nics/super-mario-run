@@ -95,17 +95,7 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 	@Override
 	public void hideContents() {
 		bubbleTimer.stop();
-		program.remove(background);
-		program.remove(PowerUpButton);
-		program.remove(CharacterButton);
-		program.remove(BackButton);
-		program.remove(BackPipe);
-		program.remove(InventoryButton);
-		program.remove(toad);
-		program.remove(backLabel);
-		program.remove(inventoryLabel);
-		program.remove(characterLabel);
-		program.remove(powerLabel);
+		program.removeAll();
 	}
 
 	@Override

@@ -62,8 +62,6 @@ public class LosePane extends GraphicsPane {
 
 	@Override
 	public void hideContents() {
-		program.remove(background);
-		program.remove(quitButton);
-		program.remove(retryButton);
+		program.removeAll();
 	}
 }

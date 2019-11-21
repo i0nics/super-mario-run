@@ -108,18 +108,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	@Override
 	public void hideContents() {
 		bTimer.stop();
-		program.remove(tourBackground);
-		program.remove(backLabel);
-		program.remove(backBubble);
-		program.remove(backPipe);
-		program.remove(lvlStrip);
-		program.remove(worldOne);
-		program.remove(lvlOne);
-		program.remove(lockLvlTwo);
-		program.remove(lockLvlThree);
-		program.remove(lockLvlFour);
-		program.remove(DevMode);
-		program.remove(testLevel);
+		program.removeAll();
 	}
 
 	@Override

@@ -52,7 +52,6 @@ public class EndPane extends GraphicsPane {
 
 	@Override
 	public void hideContents() {
-		program.remove(background);
-		program.remove(next);
+		program.removeAll();
 	}
 }

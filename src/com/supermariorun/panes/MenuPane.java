@@ -87,17 +87,7 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 	@Override
 	public void hideContents() {
 		bubbleTimer.stop();
-		program.remove(shopBubble);
-		program.remove(tourBubble);
-		program.remove(guideBubble);
-		program.remove(menuBackground);
-		program.remove(tourPipe);
-		program.remove(shopPipe);
-		program.remove(guidePipe);
-		program.remove(guidePipe);
-		program.remove(tourLabel);
-		program.remove(shopLabel);
-		program.remove(guideLabel);
+		program.removeAll();
 	}
 	
 	void soundAction(){
