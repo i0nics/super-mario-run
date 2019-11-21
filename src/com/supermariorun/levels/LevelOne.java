@@ -22,7 +22,7 @@ public class LevelOne implements ILevel{
 	private ScanLevel scanLevel;
 	private GImage coin;
 	
-	public LevelOne() throws FileNotFoundException {
+	public LevelOne(String levelNum) throws FileNotFoundException {
 		Environment = new ArrayList <GImage> ();
 		GrassStrips = new ArrayList <GImage> ();
 		Blocks = new ArrayList <GImage> ();
@@ -30,7 +30,7 @@ public class LevelOne implements ILevel{
 		Pipes = new ArrayList <GImage> ();
 		coins = new ArrayList <GImage> ();
 		scanLevel = new ScanLevel();
-		levelMap = scanLevel.runScan("level/levelOne.txt");
+		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");
 		
 		Background = new GImage (IMG_FOLDER + "Background.png", 0, 0);
 		
