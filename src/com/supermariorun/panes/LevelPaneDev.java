@@ -80,7 +80,7 @@ public class LevelPaneDev extends GraphicsPane {
 
 		program = mainSMR;
 
-		level = new LevelOne();
+		level = new LevelOne("One");
 		Environment = level.getEnvironment();
 
 		pauseBubble = new GImage(IMG_FOLDER + "bubble.png", 30, 10);
