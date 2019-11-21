@@ -62,11 +62,11 @@ public class playerProgress {
 	public boolean isMushroomPurchased() {
 		return isMushroomPurchased;
 	}
-	public static void incrementCoins() {
+	public void incrementCoins() {
 		numCoins++;
 	}
 	
-	public static void incrementCoinsRush() {
+	public void incrementCoinsRush() {
 		numCoins =+ 2;
 	}
 	

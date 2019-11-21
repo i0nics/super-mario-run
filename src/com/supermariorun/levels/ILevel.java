@@ -8,5 +8,5 @@ public interface ILevel {
 	public ArrayList <GImage> getEnvironment();
 	public ArrayList <GImage> getPipes();
 	public ArrayList <GImage> getCoins();
-	
+	public void setUpLevel();
 }

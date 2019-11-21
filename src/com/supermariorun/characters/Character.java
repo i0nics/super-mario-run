@@ -30,7 +30,6 @@ public class Character extends GraphicsProgram implements ActionListener {
 	private int starCount = 0;
 	private Timer starTimer;
 	
-	
 	public Character(mainSMR mainSMR, LevelPane levelPane) {
 		program = mainSMR;
 		this.levelPane = levelPane;
@@ -41,7 +40,6 @@ public class Character extends GraphicsProgram implements ActionListener {
 		Environment = levelPane.getEnvironment();
 	}
 
-	
 	public Character(mainSMR mainSMR, LevelPaneDev levelPaneDev) {
 		program = mainSMR;
 		this.levelPaneDev = levelPaneDev;
@@ -66,8 +64,8 @@ public class Character extends GraphicsProgram implements ActionListener {
 	}
 	
 	public void jump() {
-		characImg.setImage(IMG_FOLDER  + STAR_EXT + character + "Jump.gif");
-		characImg.setSize(64, 64);
+		//characImg.setImage(IMG_FOLDER  + STAR_EXT + character + "Jump.gif");
+		//characImg.setSize(64, 64);
 		leftFoot = program.getElementAt(characImg.getX() + 20, characImg.getY() + 80);
 		rightFoot = program.getElementAt(characImg.getX() + 30, characImg.getY() + 80);
 		
@@ -117,6 +115,11 @@ public class Character extends GraphicsProgram implements ActionListener {
 
 	public void setJumpCount(int jumpCount) {
 		this.jumpCount = jumpCount;
+	}
+
+
+	public void reset() {
+		characImg.setLocation(100, 520);		
 	}
 		
 }

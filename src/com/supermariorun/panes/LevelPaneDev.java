@@ -41,8 +41,7 @@ public class LevelPaneDev extends GraphicsPane {
 	private int lastY;
 	private ArrayList<GImage> Environment;
 	private ArrayList<GImage> GrassStrips;
-	private ArrayList<GImage> Blocks;
-	private ArrayList<GImage> qBlocks;
+
 	private GLabel collison;
 	private ILevel level;
 	private int spaceWidth = 1150 / 30;
@@ -134,7 +133,7 @@ public class LevelPaneDev extends GraphicsPane {
 	}
 
 	public void Restart() throws FileNotFoundException {
-		program.switchToLevel(1);
+		
 	}
 
 	public void moveEnvironment() {
@@ -172,13 +171,11 @@ public class LevelPaneDev extends GraphicsPane {
 
 	@Override
 	public void hideContents() {
-		
 		program.removeAll();
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-
 		lastX = e.getX();
 		lastY = e.getY();
 		obj = program.getElementAt(e.getX(), e.getY());

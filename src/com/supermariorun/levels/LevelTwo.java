@@ -100,6 +100,12 @@ public class LevelTwo implements ILevel {
 		return coins;
 	}
 
+	@Override
+	public void setUpLevel() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
 
