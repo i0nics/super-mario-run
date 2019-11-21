@@ -18,18 +18,19 @@ import com.supermariorun.panes.EndPane;
 
 public class mainSMR extends GraphicsApplication implements ActionListener{
 	public static final String MUSIC_FOLDER = "sounds";
-	private static final String START_TRACK = "startTrack.mp3";
-	private static final String MENU_TRACK = "menuTrack.mp3";
-	private static final String TOUR_TRACK = "tourTrack.mp3";
-	private static final String SHOP_TRACK = "shopTrack.mp3";
-	private static final String GUIDE_TRACK = "guideTrack.mp3";
-	private static final String PIPE_EFFECT = "pipeEffect.wav";
-	private static final String JUMP_EFFECT = "jump.wav";
-	private static final String PAUSE_EFFECT = "pause.mp3";
-	private static final String RESUME_EFFECT = "resume.mp3";
 	private static final String COIN_EFFECT = "coin.wav";
-	private static final String LVL1_TRACK = "LevelOne.mp3";
 	private static final String COURSECLEARED_EFFECT = "courseCleared.mp3";
+	private static final String GUIDE_TRACK = "guideTrack.mp3";
+	private static final String JUMP_EFFECT = "jump.wav";
+	private static final String LVL1_TRACK = "LevelOne.mp3";
+	private static final String MENU_TRACK = "menuTrack.mp3";
+	private static final String PAUSE_EFFECT = "pause.mp3";
+	private static final String PIPE_EFFECT = "pipeEffect.wav";
+	private static final String SHOP_TRACK = "shopTrack.mp3";
+	private static final String STAR_TRACK = "starSound.mp3";
+	private static final String START_TRACK = "startTrack.mp3";
+	private static final String RESUME_EFFECT = "resume.mp3";
+	private static final String TOUR_TRACK = "tourTrack.mp3";
 	
 	private StartPane startPane;
 	public MenuPane menuPane;
@@ -182,6 +183,18 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	
 	public void stopLvlOneTrack() {
 		audio.stopSound(MUSIC_FOLDER, LVL1_TRACK);
+	}
+	
+	public void playStarTrack() {
+		audio.playSound(MUSIC_FOLDER, STAR_TRACK, true);
+	}
+	
+	public void pauseStarTrack() {
+		audio.pauseSound(MUSIC_FOLDER, STAR_TRACK);
+	}
+	
+	public void stopStarTrack() {
+		audio.pauseSound(MUSIC_FOLDER, STAR_TRACK);
 	}
 	
 	public void playCoinEffect() {

@@ -43,7 +43,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	public Character(mainSMR mainSMR, LevelPaneDev levelPaneDev) {
 		program = mainSMR;
 		this.levelPaneDev = levelPaneDev;
-		characImg = new GImage (IMG_FOLDER  + STAR_EXT + "marioStand.png", 100, 520); 
+		characImg = new GImage (IMG_FOLDER  + STAR_EXT + character + "Stand.png", 100, 520); 
 		characImg.setSize(64, 64);
 	}
 
@@ -51,7 +51,6 @@ public class Character extends GraphicsProgram implements ActionListener {
 		STAR_EXT = "star";
 		starTimer.start();
 	}
-	
 	
 	public void stand() {
 		characImg.setImage(IMG_FOLDER  + STAR_EXT + character + "Stand.png");
