@@ -141,6 +141,7 @@ public class playerProgress {
 	public void clearCurrentPowerUp() {
 		currentPowerUp = "";
 	}
+	
 	public void unlockLevel() {
 		levels.set(lvl, true);
 		lvl++;

@@ -39,6 +39,10 @@ public abstract class GraphicsApplication extends GraphicsProgram {
 		curScreen = newScreen;
 	}
 	
+	public void setScreen(GraphicsPane newScreen) {
+		curScreen = newScreen;
+	}
+	
 	/*
 	 * These methods just override the basic
 	 * mouse listeners to pass any information that

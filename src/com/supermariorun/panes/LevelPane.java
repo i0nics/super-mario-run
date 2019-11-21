@@ -27,23 +27,19 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private GImage Background;
 	private GImage pauseButton;
 	private GImage pauseBubble;
-	private GImage retryButton;
-	private GImage resumeButton;
-	private GImage pausePane;
-	private GImage quitButton;
 	private GImage greyBack;
 	private GImage levelClear;
 	private GImage continueEndButton;
-	
 	private LosePane losePane;
-	
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;	
 	public boolean jumpState;
-	public boolean isPause = false;
+	private boolean isPause = false;
 	private Character Character;
 	private Level level;
 	private Timer timer;
+	private PausePane pausePane;
+	
 	
 	public static final int MS = 70;
 	public static final String IMG_FOLDER = "LevelPane/";
@@ -52,11 +48,10 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		super();
 		this.program = mainSMR;
 		
-		final double mainWidth = program.getWidth();
-		final double mainHeight = program.getHeight();
-		
 		program = mainSMR;
 		timer = new Timer (MS, this);
+		
+		pausePane = new PausePane(program, this);
 		
 		level = new Level(levelNum);
 	
@@ -73,20 +68,8 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		pauseButton = new GImage(IMG_FOLDER + "pause.png", 55, 27);
 		pauseButton.setSize(50,70);
 		
-		pausePane = new GImage(IMG_FOLDER + "pausePane.png", 400, 100);
-		pausePane.setSize(300, 400);
-		
-		quitButton = new GImage(IMG_FOLDER + "quitButton.png", 428, 437);
-		quitButton.setSize(250,50);
-		
 		greyBack = new GImage(IMG_FOLDER + "pauseBack.png", 0, 0);
-		greyBack.setSize(mainWidth, mainHeight);
-		
-		resumeButton = new GImage(IMG_FOLDER + "continueButton.png", 450, 500);
-		resumeButton.setSize(190,100);
-		
-		retryButton = new GImage(IMG_FOLDER + "retryButton.png", 415, 387);
-		retryButton.setSize(280, 50);
+		greyBack.setSize(program.getWidth(), program.getHeight());
 		
 		levelClear = new GImage(IMG_FOLDER + "courseClear.png", 380, 260);
 		levelClear.setSize(400, 150);
@@ -102,6 +85,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		Background = level.getBackground();
 		Environment = level.getEnvironment();
 		Character.reset();
+		isPause = false;
 		if (program.getProgress().getCurrentPowerUp() == "star") {
 			Character.setStarMode();
 		}
@@ -111,6 +95,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	}
 	
 	public void Resume() {
+		isPause = false;
 		timer.start();
 		Character.run();
 		playTrack();
@@ -199,14 +184,6 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		program.removeAll();
 	}
 	
-	public void hideResume() {
-		program.remove(greyBack);
-		program.remove(pausePane);
-		program.remove(quitButton);
-		program.remove(resumeButton);
-		program.remove(retryButton);
-	}
-	
 	@Override
 	public void mousePressed(MouseEvent e) {
 		
@@ -215,38 +192,11 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		if(obj == pauseButton || obj == pauseBubble) {
 			Pause();
 			isPause = true;
-			program.add(greyBack);
-			program.add(pausePane);	
-			program.add(quitButton);
-			program.add(resumeButton);
-			program.add(retryButton);
-		}
-		
-		else if(obj == resumeButton) {
-			isPause = false;
-			program.playResumeSound();
-			hideResume();
-			Resume();
-		}
-		
-		else if(obj == retryButton) {
-			isPause = false;
-			program.stopLvlOneTrack();
-			hideContents();
-			showContents();
-		}
-		
-		else if(obj == quitButton) {
-			isPause = false;
-			program.stopLvlOneTrack();
-			hideResume();
-			program.playTourSound();
-			program.switchToTour();
+			pausePane.showContents();
 		}
 		
 		else if(obj == continueEndButton) {
-			isPause = false;
-			hideResume();
+			program.removeAll();
 			program.stopLvlOneTrack();
 			program.playPipeSound();
 			program.switchToEndPane();
