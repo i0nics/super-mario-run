@@ -40,7 +40,6 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private Timer timer;
 	private PausePane pausePane;
 	
-	
 	public static final int MS = 70;
 	public static final String IMG_FOLDER = "LevelPane/";
 
@@ -136,6 +135,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		if (Background.getX() == -4840) {
 			timer.stop();
 			Character.stand();
+			isPause = true;
 			program.add(greyBack);
 			program.add(levelClear);
 			program.add(continueEndButton);

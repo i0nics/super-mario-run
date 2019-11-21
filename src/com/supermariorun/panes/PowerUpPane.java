@@ -23,22 +23,23 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 	private playerProgress progress;
 	private GImage BackButton;
 	private GImage BackPipe;
-	private GImage MushroomButton;
+	private GImage MushroomBubble;
 	private GImage Mushroom;
-	private GImage StarButton;
+	private GImage StarBubble;
 	private GImage Star;
 	private GImage backLabel;
 	private int count;
 	private GImage coin;
 	private Timer bubbleTimer;
-	private GImage buyLabelm;
-	private GImage buyLabels;
+	private GImage buyMushroom;
+	private GImage buyStar;
 	private GImage background;
 	private GLabel coinCount;
 	private static int mushroomCost = 50;
 	private static int starCost = 50;
 	final double labelWidth;
 	final double labelHeight;
+	
 	public PowerUpPane(mainSMR mainSMR) {
 		super();
 		this.program = mainSMR;
@@ -60,24 +61,18 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png", -50, 50);
 		BackPipe.setSize(pipeWidth, pipeHeight);
 
-		MushroomButton = new GImage(IMG_FOLDER + "bubble.png", 200, 450);
-		MushroomButton.setSize(bubbleWidth * 1.2, bubbleHeight * 1.2);
+		MushroomBubble = new GImage(IMG_FOLDER + "bubble.png", 200, 450);
+		MushroomBubble.setSize(bubbleWidth * 1.2, bubbleHeight * 1.2);
 
 		Mushroom = new GImage(IMG_FOLDER + "Mushroom.png", mainSMR.getWidth() / 7, mainSMR.getHeight() / 3);
 
-		StarButton = new GImage(IMG_FOLDER + "bubble.png", 800, 450);
-		StarButton.setSize(bubbleWidth * 1.2, bubbleHeight * 1.2);
+		StarBubble = new GImage(IMG_FOLDER + "bubble.png", 800, 450);
+		StarBubble.setSize(bubbleWidth * 1.2, bubbleHeight * 1.2);
 
 		Star = new GImage(IMG_FOLDER + "Star.png", mainSMR.getWidth() / 1.52, mainSMR.getHeight() / 3);
 
 		backLabel = new GImage(IMG_FOLDER + "backLabel.png", 170, 75);
 		backLabel.setSize(labelWidth * 1.2, labelHeight * 1.2);
-
-		buyLabelm = new GImage(IMG_FOLDER + "buyLabel.png", 210, 485);
-		buyLabelm.setSize(labelWidth * 1.5, labelHeight * 1.5);
-
-		buyLabels = new GImage(IMG_FOLDER + "buyLabel.png", 810, 485);
-		buyLabels.setSize(labelWidth * 1.5, labelHeight * 1.5);
 
 		background = new GImage(IMG_FOLDER + "background1.png", 0, 0);
 		background.setSize(mainWidth, mainHeight);
@@ -94,17 +89,27 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 	@Override
 	public void showContents() {
 		coinCount.setLabel("Coins: " + progress.getNumCoins());
+		
+		if (!program.getProgress().isMushroomPurchased()) {
+			buyMushroom = new GImage(IMG_FOLDER + "buyLabel.png", 210, 495);
+			buyMushroom.setSize(labelWidth * 1.5, labelHeight * 1.5);
+		}
+		
+		if (!program.getProgress().isStarPurchased()) {
+			buyStar = new GImage(IMG_FOLDER + "buyLabel.png", 810, 495);
+			buyStar.setSize(labelWidth * 1.5, labelHeight * 1.5);
+		}
 		bubbleTimer.start();
 		program.add(background);
 		program.add(BackButton);
 		program.add(BackPipe);
-		program.add(MushroomButton);
+		program.add(MushroomBubble);
 		program.add(Mushroom);
-		program.add(StarButton);
+		program.add(StarBubble);
 		program.add(Star);
 		program.add(backLabel);
-		program.add(buyLabelm);
-		program.add(buyLabels);
+		program.add(buyMushroom);
+		program.add(buyStar);
 		program.add(coinCount);
 		program.add(coin);
 	}
@@ -125,35 +130,42 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			program.switchToShop();
 		}
 		
-		if(progress.isStarPurchased() && (obj == StarButton || obj == buyLabels)){
-			if (progress.isMushroomPurchased()) {
-				buyLabelm.setImage(IMG_FOLDER + "equipButton.png");
-				buyLabelm.setSize(labelWidth*1.3, labelHeight*1.3);
-			}
-			buyLabels.setImage(IMG_FOLDER + "equippedButton.png");
-			buyLabels.setSize(labelWidth*1.3, labelHeight*1.3);
-			progress.setCurrentPowerUp("star");
-		}
-		
-		if(progress.isMushroomPurchased() && (obj == MushroomButton || obj == buyLabelm)){
-			if (progress.isStarPurchased()) {
-				buyLabels.setImage(IMG_FOLDER + "equipButton.png");
-				buyLabels.setSize(labelWidth*1.3, labelHeight*1.3);
-			}
-			buyLabelm.setImage(IMG_FOLDER + "equippedButton.png");
-			buyLabelm.setSize(labelWidth*1.3, labelHeight*1.3);
-			//progress.setCurrentPowerUp("Mushroom");
-		}
-		if (!progress.isMushroomPurchased() && (obj == MushroomButton || obj == buyLabelm)) {
+		if (!progress.isMushroomPurchased() && (obj == MushroomBubble || obj == buyMushroom)) {
 			mushroomTransaction();
-			buyLabelm.setImage(IMG_FOLDER + "equipButton.png");
-			buyLabelm.setSize(labelWidth*1.3, labelHeight*1.3);
+			buyMushroom.setImage(IMG_FOLDER + "equipButton.png");
+			buyMushroom.setSize(labelWidth*1.3, labelHeight*1.3);
 		}
 
-		if (!progress.isStarPurchased() && (obj == StarButton || obj == buyLabels)){
+		if (!progress.isStarPurchased() && (obj == StarBubble || obj == buyStar)){
 			starTransaction();
-			buyLabels.setImage(IMG_FOLDER + "equipButton.png");
-			buyLabels.setSize(labelWidth*1.3, labelHeight*1.3);
+			buyStar.setImage(IMG_FOLDER + "equipButton.png");
+			buyStar.setSize(labelWidth*1.3, labelHeight*1.3);
+		}
+		
+		if(progress.isStarPurchased() && (obj == StarBubble || obj == buyStar)){
+			if (progress.isMushroomPurchased()) {
+				buyMushroom.setImage(IMG_FOLDER + "equipButton.png");
+				buyMushroom.setSize(labelWidth*1.3, labelHeight*1.3);
+			}
+			
+			else {
+				buyStar.setImage(IMG_FOLDER + "equippedButton.png");
+				buyStar.setSize(labelWidth*1.3, labelHeight*1.3);
+				progress.setCurrentPowerUp("star");
+			}
+		}
+		
+		if(progress.isMushroomPurchased() && (obj == MushroomBubble || obj == buyMushroom)){
+			if (progress.isStarPurchased()) {
+				buyStar.setImage(IMG_FOLDER + "equipButton.png");
+				buyStar.setSize(labelWidth*1.3, labelHeight*1.3);
+			}
+			
+			else {
+				buyMushroom.setImage(IMG_FOLDER + "equippedButton.png");
+				buyMushroom.setSize(labelWidth*1.3, labelHeight*1.3);
+				progress.setCurrentPowerUp("Mushroom");
+			}
 		}
 	}
 
@@ -162,19 +174,19 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		if (count == 1) {
 			backLabel.move(0, 10);
 			BackButton.move(0, 10);
-			buyLabelm.move(0, 10);
-			buyLabels.move(0, 10);
-			MushroomButton.move(0, 10);
-			StarButton.move(0, 10);
+			buyMushroom.move(0, 10);
+			buyStar.move(0, 10);
+			MushroomBubble.move(0, 10);
+			StarBubble.move(0, 10);
 		}
 
 		if (count == 2) {
 			backLabel.move(0, -10);
 			BackButton.move(0, -10);
-			buyLabelm.move(0, -10);
-			buyLabels.move(0, -10);
-			MushroomButton.move(0, -10);
-			StarButton.move(0, -10);
+			buyMushroom.move(0, -10);
+			buyStar.move(0, -10);
+			MushroomBubble.move(0, -10);
+			StarBubble.move(0, -10);
 			count = 0;
 		}
 

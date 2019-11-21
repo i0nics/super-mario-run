@@ -123,6 +123,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 			starCount = 0;
 			STAR_EXT = "";
 			program.getProgress().clearCurrentPowerUp();
+			program.getProgress().resetStarPurchased();
 			program.stopStarTrack();
 			program.playLvlOneTrack();
 			run();

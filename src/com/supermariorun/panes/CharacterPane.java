@@ -167,23 +167,24 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			marioLabel.setSize(labelWidth*1.3, labelHeight*1.3);
 		}
 		
-		if(!progress.isYoshiUnlocked() && (obj == yoshiBubble || obj == yoshiLabel)) {
+		if (!progress.isYoshiUnlocked() && (obj == yoshiBubble || obj == yoshiLabel)) {
 			YoshiTransaction();
 			yoshiLabel.setImage(IMG_FOLDER + "equipButton.png");
 			yoshiLabel.setSize(labelWidth*1.3, labelHeight*1.3);
 		}
 		
-		if(!progress.isPrincessUnlocked() && (obj == princessBubble || obj == princessLabel)) {
+		if (!progress.isPrincessUnlocked() && (obj == princessBubble || obj == princessLabel)) {
 			PrincessTransaction();
 			princessLabel.setImage(IMG_FOLDER + "equipButton.png");
 			princessLabel.setSize(labelWidth*1.3, labelHeight*1.3);
 		}
-		if(obj == marioBubble || obj == marioLabel)
-		{
+		
+		if(obj == marioBubble || obj == marioLabel) {
 			if (progress.isPrincessUnlocked()) {
 				princessLabel.setImage(IMG_FOLDER + "equipButton.png");
 				princessLabel.setSize(labelWidth*1.3, labelHeight*1.3);
 			}
+			
 			if (progress.isYoshiUnlocked()) {
 			yoshiLabel.setImage(IMG_FOLDER + "equipButton.png");
 			yoshiLabel.setSize(labelWidth*1.3, labelHeight*1.3);
@@ -233,14 +234,14 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			coinCount.setLabel("Coins: " + progress.getNumCoins());
 		}
 		
-		else if (progress.getNumCoins() < yoshiCost) {
+		else {
 			System.out.println("not enough money");
 			coinCount.setLabel("Coins: " + progress.getNumCoins());
 		}
 	}
 	
 	public void PrincessTransaction() {
-		if(progress.getNumCoins() >= PrincessCost) {
+		if (progress.getNumCoins() >= PrincessCost) {
 			progress.setPrincessUnlocked();
 			progress.decreaseCoins(PrincessCost);
 			System.out.println("Purchase comfirmed!");
@@ -249,7 +250,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			coinCount.setLabel("Coins: " + progress.getNumCoins());
 		}
 		
-		else if (progress.getNumCoins() < PrincessCost) {
+		else {
 			System.out.println("not enough money");
 			System.out.println(progress.getNumCoins());
 			coinCount.setLabel("Coins: " + progress.getNumCoins());

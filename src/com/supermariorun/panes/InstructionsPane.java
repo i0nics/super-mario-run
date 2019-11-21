@@ -105,7 +105,6 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 			program.playPipeSound();
 			program.stopGuideSound();
 			program.playMenuSound();
-			program.menuPane.bubbleTimer.start();
 			program.switchToMenu();
 		}
 		

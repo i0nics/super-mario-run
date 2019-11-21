@@ -70,10 +70,12 @@ public class PausePane extends GraphicsPane {
 	    if(obj == resumeButton) {
 			program.playResumeSound();
 			level.Resume();
+			hideContents();
 		}
 		
 		else if(obj == retryButton) {
 			program.stopLvlOneTrack();
+			hideContents();
 		}
 		
 		else if(obj == quitButton) {
@@ -81,7 +83,5 @@ public class PausePane extends GraphicsPane {
 			program.playTourSound();
 			program.switchToTour();
 		}
-	  
-	    hideContents();
 	}
 }

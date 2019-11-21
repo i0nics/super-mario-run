@@ -104,7 +104,6 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 		}
 			
 		if (obj == BackButton || obj == backLabel || obj == BackPipe) {
-			program.menuPane.bubbleTimer.start();
 			program.playPipeSound();
 			program.stopShopSound();
 			program.playMenuSound();

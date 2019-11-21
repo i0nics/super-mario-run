@@ -16,7 +16,6 @@ public class playerProgress {
 	private static boolean isYoshiUnlocked = false;
 	private static boolean isPrincessUnlocked = false;
 	private static boolean isStarPurchased = false;
-	private static boolean isFlowerPurchased = false;
 	private static boolean isMushroomPurchased = false;
 	
 	List<Boolean> levels = new ArrayList<Boolean>(3);
@@ -53,10 +52,6 @@ public class playerProgress {
 	
 	public boolean isStarPurchased() {
 		return isStarPurchased;
-	}
-	
-	public boolean isFlowerPurchased() {
-		return isFlowerPurchased;
 	}
 	
 	public boolean isMushroomPurchased() {
@@ -110,12 +105,16 @@ public class playerProgress {
 		isStarPurchased = true;
 	}
 	
-	public void setFlowerPurchased() {
-		isFlowerPurchased = true;
-	}
-	
 	public void setMushroomPurchased() {
 		isMushroomPurchased = true;
+	}
+	
+	public void resetStarPurchased() {
+		isStarPurchased = false;
+	}
+	
+	public void resetMushroomPurchased() {
+		isMushroomPurchased = false;
 	}
 	
 	public boolean isLvlUnlocked(int lvl) {

@@ -31,11 +31,11 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private static final String TOUR_TRACK = "tourTrack.mp3";
 	
 	private StartPane startPane;
-	public MenuPane menuPane;
+	private MenuPane menuPane;
 	private ShopPane shopPane;
 	private PowerUpPane powerUpPane;
 	private CharacterPane characterPane;
-	public InstructionsPane guidePane;
+	private InstructionsPane guidePane;
 	private TourPane tourPane;
 	private playerProgress progress;
 	private EndPane EndPane;

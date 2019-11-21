@@ -116,7 +116,6 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
 		if (obj == backLabel || obj ==  backBubble || obj == backPipe) {
-			program.menuPane.bubbleTimer.start();
 			program.playPipeSound();
 			program.stopTourSound();
 			program.playMenuSound();
