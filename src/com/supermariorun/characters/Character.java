@@ -39,7 +39,6 @@ public class Character extends GraphicsProgram implements ActionListener {
 		starTimer = new Timer (1000, this);
 		Environment = levelPane.getEnvironment();
 	}
-	
 
 	public Character(mainSMR mainSMR, LevelPaneDev levelPaneDev) {
 		program = mainSMR;
@@ -96,15 +95,15 @@ public class Character extends GraphicsProgram implements ActionListener {
 			}
 		}
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		starCount++;
 		
 		if (starCount == 10) {
 			starTimer.stop();
-			
 			starCount = 0;
+			program.getProgress().clearCurrentPowerUp();
 			STAR_EXT = "";
 			run();
 		}
