@@ -42,7 +42,6 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private playerProgress progress;
 	private LevelPane levelPane;
 	private LevelPaneDev levelPaneDev;
-	private LosePane losePane;
 	private EndPane EndPane;
 	
     protected static final int FONT_SIZE = 18;
@@ -62,17 +61,13 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		guidePane = new InstructionsPane(this);
 		inventoryPane = new InventoryPane(this);
 		EndPane = new EndPane(this);
-		losePane = new LosePane(this);
+		
 		try {
 			levelPaneDev = new LevelPaneDev (this, 1);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		try {
-			levelPane = new LevelPane (this, 1);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		
 		switchToStart();
 	}
 	
@@ -85,8 +80,8 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		switchToScreen(menuPane);
 	}
 	
-	public void switchToLevel(int lvlNum) throws FileNotFoundException {
-		switchToScreen(levelPane);
+	public void switchToLevel(String lvlNum) throws FileNotFoundException {
+		switchToScreen(new LevelPane (this, lvlNum));
 	}
 	
 	public void switchToLevelDev(int levelNum) throws FileNotFoundException {
@@ -119,10 +114,6 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	
 	public void switchToEndPane() {
 		switchToScreen(EndPane);
-	}
-	
-	public void switchToLosePane() {
-		switchToScreen(losePane);
 	}
 	
 	public void playStartSound() {

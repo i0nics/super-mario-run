@@ -36,6 +36,8 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private GImage levelClear;
 	private GImage continueButton;
 	
+	private LosePane losePane;
+	
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> coins;	
 	public boolean jumpState;
@@ -47,7 +49,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public static final int MS = 70;
 	public static final String IMG_FOLDER = "LevelPane/";
 
-	public LevelPane(mainSMR mainSMR, int levelNum) throws FileNotFoundException {
+	public LevelPane(mainSMR mainSMR, String levelNum) throws FileNotFoundException {
 		super();
 		this.program = mainSMR;
 		
@@ -56,7 +58,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		
 		program = mainSMR;
 		timer = new Timer (MS, this);
-
+		
 		level = new LevelOne("One");
 	
 		level.setUpLevel();
@@ -91,6 +93,8 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		
 		continueButton = new GImage(IMG_FOLDER + "continueButton.png", 460, 425);
 		continueButton.setSize(200, 120);
+		
+		losePane = new LosePane(program, levelNum);
 	}
 	
 	public void Play() {
@@ -154,7 +158,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		if (Character.getCharacter().getY() > 650) {
 			timer.stop();
 			program.stopLvlOneTrack();
-			program.switchToLosePane();
+			program.switchToScreen(losePane);
 		}
 	}
 	
