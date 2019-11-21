@@ -50,6 +50,8 @@ public class Character extends GraphicsProgram implements ActionListener {
 	public void setStarMode() {
 		STAR_EXT = "star";
 		starTimer.start();
+		program.stopLvlOneTrack();
+		program.playStarTrack();
 	}
 	
 	public void stand() {
@@ -104,6 +106,8 @@ public class Character extends GraphicsProgram implements ActionListener {
 			starCount = 0;
 			program.getProgress().clearCurrentPowerUp();
 			STAR_EXT = "";
+			program.stopStarTrack();
+			program.playLvlOneTrack();
 			run();
 		}
 	}

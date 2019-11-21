@@ -27,7 +27,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private static final String PAUSE_EFFECT = "pause.mp3";
 	private static final String PIPE_EFFECT = "pipeEffect.wav";
 	private static final String SHOP_TRACK = "shopTrack.mp3";
-	private static final String STAR_TRACK = "starSound.mp3";
+	private static final String STAR_TRACK = "starSound.wav";
 	private static final String START_TRACK = "startTrack.mp3";
 	private static final String RESUME_EFFECT = "resume.mp3";
 	private static final String TOUR_TRACK = "tourTrack.mp3";
