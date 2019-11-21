@@ -19,10 +19,8 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 	private GImage BackButton;
 	private GImage BackPipe;
 	private GImage background;
-	private GImage InventoryButton;
 	private GImage toad;
 	private GImage backLabel;
-	private GImage inventoryLabel;
 	private GImage characterLabel;
 	private GImage powerLabel;
 	private int count = 1;
@@ -57,17 +55,11 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 		background = new GImage(IMG_FOLDER + "redStripes.png", 0, 0);
 		background.setSize(mainSMR.getWidth(), mainSMR.getHeight());
 		
-		InventoryButton = new GImage("bubble.png", 975, 30);
-		InventoryButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
-		
 		toad = new GImage(IMG_FOLDER + "tum.png",380, 257);
 		toad.setSize(400, 450);
 		
 		backLabel = new GImage(IMG_FOLDER + "backLabel.png", 170, 75);
 		backLabel.setSize(labelWidth * 1.2, labelHeight*1.2);
-		
-		inventoryLabel = new GImage(IMG_FOLDER + "inventoryButton.png", 980, 75);
-		inventoryLabel.setSize(labelWidth*1.5, labelHeight*1.2);
 		
 		characterLabel = new GImage(IMG_FOLDER + "charactersButton.png", 274, 245);
 		characterLabel.setSize(labelWidth*1.5, labelHeight*1.2);
@@ -84,9 +76,7 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 		program.add(CharacterButton);
 		program.add(BackButton);
 		program.add(BackPipe);
-		program.add(InventoryButton);
 		program.add(backLabel);
-		program.add(inventoryLabel);
 		program.add(characterLabel);
 		program.add(powerLabel);
 		program.add(toad);
@@ -112,12 +102,7 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 			program.playPipeSound();
 			program.switchToCharacter();
 		}
-		
-		if (obj == InventoryButton || obj == inventoryLabel) {
-			program.playPipeSound();
-			program.switchToInventory();
-		}
-		
+			
 		if (obj == BackButton || obj == backLabel || obj == BackPipe) {
 			program.menuPane.bubbleTimer.start();
 			program.playPipeSound();
@@ -136,8 +121,6 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 			characterLabel.move(0, -10);
 			backLabel.move(0, 10);
 			BackButton.move(0, 10);
-			InventoryButton.move(0,10);
-			inventoryLabel.move(0, 10);
 		}
 		
 		if (count == 2) {
@@ -147,8 +130,6 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 			characterLabel.move(0, +10);
 			backLabel.move(0, -10);
 			BackButton.move(0, -10);
-			inventoryLabel.move(0, -10);
-			InventoryButton.move(0,-10);
 			
 			count = 0;
 		}

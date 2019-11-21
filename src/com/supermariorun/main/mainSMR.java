@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 
 import com.supermariorun.panes.CharacterPane;
 import com.supermariorun.panes.InstructionsPane;
-import com.supermariorun.panes.InventoryPane;
 import com.supermariorun.panes.LevelPane;
 import com.supermariorun.panes.LevelPaneDev;
 import com.supermariorun.panes.LosePane;
@@ -38,7 +37,6 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private PowerUpPane powerUpPane;
 	private CharacterPane characterPane;
 	public InstructionsPane guidePane;
-	private InventoryPane inventoryPane;
 	private TourPane tourPane;
 	private playerProgress progress;
 	private LevelPane levelPane;
@@ -60,7 +58,6 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		powerUpPane = new PowerUpPane (this);
 		characterPane = new CharacterPane (this);
 		guidePane = new InstructionsPane(this);
-		inventoryPane = new InventoryPane(this);
 		EndPane = new EndPane(this);
 		
 		switchToStart();
@@ -89,10 +86,6 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	
 	public void switchToInstructions() {
 		switchToScreen(guidePane);
-	}
-	
-	public void switchToInventory() {
-		switchToScreen(inventoryPane);
 	}
 	
 	public void switchToTour() {

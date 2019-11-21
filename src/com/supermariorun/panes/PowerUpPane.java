@@ -76,7 +76,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		buyLabelm = new GImage(IMG_FOLDER + "buyLabel.png", 210, 485);
 		buyLabelm.setSize(labelWidth * 1.5, labelHeight * 1.5);
 
-
 		buyLabels = new GImage(IMG_FOLDER + "buyLabel.png", 810, 485);
 		buyLabels.setSize(labelWidth * 1.5, labelHeight * 1.5);
 

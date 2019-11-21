@@ -33,7 +33,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private GImage quitButton;
 	private GImage greyBack;
 	private GImage levelClear;
-	private GImage continueButton;
+	private GImage continueEndButton;
 	
 	private LosePane losePane;
 	
@@ -91,8 +91,8 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		levelClear = new GImage(IMG_FOLDER + "courseClear.png", 380, 260);
 		levelClear.setSize(400, 150);
 		
-		continueButton = new GImage(IMG_FOLDER + "continueButton.png", 460, 425);
-		continueButton.setSize(200, 120);
+		continueEndButton = new GImage(IMG_FOLDER + "continueButton.png", 460, 425);
+		continueEndButton.setSize(200, 120);
 		
 		losePane = new LosePane(program, levelNum);
 	}
@@ -107,13 +107,13 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		}
 		timer.start();
 		Character.run();
-		program.playLvlOneTrack();
+		playTrack();
 	}
 	
 	public void Resume() {
 		timer.start();
 		Character.run();
-		program.playLvlOneTrack();
+		playTrack();
 	}
 	
 	public void Pause() {
@@ -121,6 +121,10 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		Character.stand();
 		program.playPauseSound();
 		program.pauseLvlOneTrack();
+		
+		if (program.getProgress().getCurrentPowerUp() == "star") {
+			Character.pauseStarMode();
+		}
 	}
 	
 	public void moveEnvironment() {
@@ -133,13 +137,23 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		}
 	}
 	
+	public void playTrack() {
+		if (program.getProgress().getCurrentPowerUp().equals("")) {
+			program.playLvlOneTrack();
+		}
+		
+		else {
+			program.playStarTrack();
+		}
+	}
+	
 	public void isGameOver() {
 		if (Background.getX() == -4840) {
 			timer.stop();
 			Character.stand();
 			program.add(greyBack);
 			program.add(levelClear);
-			program.add(continueButton);
+			program.add(continueEndButton);
 			program.stopLvlOneTrack();
 			program.playCourseClearedTrack();
 		}
@@ -225,15 +239,15 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		else if(obj == quitButton) {
 			isPause = false;
 			program.stopLvlOneTrack();
-			program.playTourSound();
 			hideResume();
+			program.playTourSound();
 			program.switchToTour();
 		}
 		
-		else if(obj == continueButton) {
+		else if(obj == continueEndButton) {
 			isPause = false;
-			program.stopLvlOneTrack();
 			hideResume();
+			program.stopLvlOneTrack();
 			program.playPipeSound();
 			program.switchToEndPane();
 		}

@@ -57,6 +57,11 @@ public class Character extends GraphicsProgram implements ActionListener {
 		program.playStarTrack();
 	}
 	
+	public void pauseStarMode() {
+		starTimer.start();
+		program.pauseStarTrack();
+	}
+	
 	public void stand() {
 		characImg.setImage(IMG_FOLDER  + STAR_EXT + character + "Stand.png");
 	}
@@ -68,7 +73,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	public void jump() {
 		characImg.setImage(IMG_FOLDER  + STAR_EXT + character + "Jump.gif");
 		leftFoot = program.getElementAt(characImg.getX() + 20, characImg.getY() + 80);
-		rightFoot = program.getElementAt(characImg.getX() + 30, characImg.getY() + 80);
+		rightFoot = program.getElementAt(characImg.getX() + 60, characImg.getY() + 80);
 		
 		jumpUpState = false;
 			
@@ -88,7 +93,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 		if (!jumpUpState) {
 			characImg.move(0, 20);				
 			for (GImage obj : Environment) {
-				if (leftFoot == obj && rightFoot == obj) {
+				if (leftFoot == obj || rightFoot == obj) {
 					
 					levelPane.jumpState = false;
 					run();
@@ -116,8 +121,8 @@ public class Character extends GraphicsProgram implements ActionListener {
 		if (starCount == 10) {
 			starTimer.stop();
 			starCount = 0;
-			program.getProgress().clearCurrentPowerUp();
 			STAR_EXT = "";
+			program.getProgress().clearCurrentPowerUp();
 			program.stopStarTrack();
 			program.playLvlOneTrack();
 			run();
@@ -131,7 +136,6 @@ public class Character extends GraphicsProgram implements ActionListener {
 	public void setJumpCount(int jumpCount) {
 		this.jumpCount = jumpCount;
 	}
-
 
 	public void reset() {
 		characImg.setLocation(100, 520);		
