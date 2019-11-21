@@ -34,6 +34,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private int wCount = 0;
 	private int count = 0;
 	private Timer bTimer;
+	private GButton testLevel;
 	
 	public TourPane(mainSMR mainSMR) {
 		super();
@@ -82,6 +83,9 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	    
 	    lockLvlFour= new GImage(IMG_FOLDER + "qBlock.png", 910, 350);
 	    lockLvlFour.setSize(qBlockWidth, qBlockHeight);
+	    
+	    testLevel = new GButton ("level two", 600, 550, 100, 100);
+		testLevel.setFillColor(Color.RED);
 	}
 
 	@Override
@@ -98,6 +102,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		program.add(lockLvlThree);
 		program.add(lockLvlFour);
 		program.add(DevMode);
+		program.add(testLevel);
 	}
 
 	@Override
@@ -114,6 +119,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		program.remove(lockLvlThree);
 		program.remove(lockLvlFour);
 		program.remove(DevMode);
+		program.remove(testLevel);
 	}
 
 	@Override
