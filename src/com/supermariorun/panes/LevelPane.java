@@ -37,9 +37,6 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private GImage continueButton;
 	
 	private ArrayList <GImage> Environment;
-	private ArrayList <GImage> GrassStrips;
-	private ArrayList <GImage> Blocks;
-	private ArrayList <GImage> qBlocks;
 	private ArrayList <GImage> coins;	
 	public boolean jumpState;
 	public boolean isPause = false;
@@ -47,8 +44,6 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private ILevel level;
 	private Timer timer;
 	
-	private int spaceWidth = 1150/30;
-	private int spaceHeight = 650/18;
 	public static final int MS = 70;
 	public static final String IMG_FOLDER = "LevelPane/";
 
@@ -62,8 +57,11 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		program = mainSMR;
 		timer = new Timer (MS, this);
 		level = new LevelOne();
+		
+		level.setUpLevel();
+		Background = level.getBackground();
 		Environment = level.getEnvironment();
-		Character = new Character(mainSMR, this);
+		Character = new Character(program, this);
 		
 		pauseBubble = new GImage(IMG_FOLDER + "bubble.png",30, 10);
 		pauseBubble.setSize(100, 100);
@@ -91,15 +89,19 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		
 		continueButton = new GImage(IMG_FOLDER + "continueButton.png", 460, 425);
 		continueButton.setSize(200, 120);
-
-		DrawLevel();
-	}
-	
-	public void DrawLevel() {
-		Background = level.getBackground();
 	}
 	
 	public void Play() {
+		level.setUpLevel();
+		Background = level.getBackground();
+		Environment = level.getEnvironment();
+		Character.reset();
+		timer.start();
+		Character.run();
+		program.playLvlOneTrack();
+	}
+	
+	public void Resume() {
 		timer.start();
 		Character.run();
 		program.playLvlOneTrack();
@@ -110,15 +112,6 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		Character.stand();
 		program.playPauseSound();
 		program.pauseLvlOneTrack();
-	}
-	
-	public void Restart() {
-		program.stopLvlOneTrack();
-		try {
-			program.switchToLevel(1);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	public void moveEnvironment() {
@@ -137,13 +130,13 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 				Environment.remove(img);
 				program.remove(img);
 				it.remove();
-				playerProgress.incrementCoins();
+				program.getProgress().incrementCoins();
 			}
 		}
 	}
 	
 	public void isGameOver() {
-		if (Background.getX() == -4840) { //4840
+		if (Background.getX() == -4840) {
 			timer.stop();
 			Character.stand();
 			program.add(greyBack);
@@ -186,15 +179,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 
 	@Override
 	public void hideContents() {
-		program.remove(Background);
-		program.remove(Character.getCharacter());
-		program.remove(pauseButton);
-		program.remove(pauseBubble);
-		program.remove(quitButton);
-		
-		for (GImage e: Environment) {
-			program.remove(e);
-		}
+		timer.stop();
+		//program.remove(Background);
+		program.removeAll();
 	}
 	
 	public void hideResume() {
@@ -203,8 +190,8 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		program.remove(quitButton);
 		program.remove(resumeButton);
 		program.remove(retryButton);
-		
 	}
+	
 	@Override
 	public void mousePressed(MouseEvent e) {
 		
@@ -221,15 +208,17 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		}
 		
 		else if(obj == resumeButton) {
-			Play();
 			isPause = false;
 			program.playResumeSound();
 			hideResume();
+			Resume();
 		}
 		
 		else if(obj == retryButton){
-			Restart();
-			hideResume();
+			isPause = false;
+			program.stopLvlOneTrack();
+			hideContents();
+			showContents();
 		}
 		
 		else if(obj == quitButton) {

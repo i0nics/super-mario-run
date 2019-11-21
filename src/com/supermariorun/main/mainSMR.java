@@ -63,6 +63,16 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		inventoryPane = new InventoryPane(this);
 		EndPane = new EndPane(this);
 		losePane = new LosePane(this);
+		try {
+			levelPaneDev = new LevelPaneDev (this, 1);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		try {
+			levelPane = new LevelPane (this, 1);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		switchToStart();
 	}
 	
@@ -75,14 +85,11 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		switchToScreen(menuPane);
 	}
 	
-	public void switchToLevel(int levelNum) throws FileNotFoundException {
-		levelPane = null;
-		levelPane = new LevelPane (this, levelNum);
+	public void switchToLevel(int lvlNum) throws FileNotFoundException {
 		switchToScreen(levelPane);
 	}
 	
 	public void switchToLevelDev(int levelNum) throws FileNotFoundException {
-		levelPaneDev = new LevelPaneDev (this, levelNum);
 		switchToScreen(levelPaneDev);
 	}
 

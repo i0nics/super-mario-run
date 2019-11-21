@@ -13,10 +13,9 @@ public class LevelOne implements ILevel{
 	private GImage Background;
 	
 	private ArrayList <GImage> Pipes;
-	private ArrayList <GImage> GrassStrips;
+	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Blocks;
 	private ArrayList <GImage> qBlocks;
-	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> coins;
 	private HashMap<String, ArrayList <Pair<Integer, Integer>>> levelMap;
 	private ScanLevel scanLevel;
@@ -24,58 +23,43 @@ public class LevelOne implements ILevel{
 	
 	public LevelOne() throws FileNotFoundException {
 		Environment = new ArrayList <GImage> ();
-		GrassStrips = new ArrayList <GImage> ();
-		Blocks = new ArrayList <GImage> ();
 		qBlocks = new ArrayList <GImage> ();
-		Pipes = new ArrayList <GImage> ();
 		coins = new ArrayList <GImage> ();
 		scanLevel = new ScanLevel();
-		levelMap = scanLevel.runScan("level/levelOne.txt");
-		
 		Background = new GImage (IMG_FOLDER + "Background.png", 0, 0);
+		levelMap = scanLevel.runScan("level/levelOne.txt");
+	}
+	
+	@Override
+	public void setUpLevel() {
+		Environment.clear();
+		coins.clear();
+		Background.setLocation(0, 0);
 		
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStrip.png", -2, 578));
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png", 2065, 578));
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",3300, 578));
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShorter.png", 3300, 558));
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShorter.png", 3300, 525));
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png", 4550, 585));
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",814, 541));
-		GrassStrips.add(new GImage(IMG_FOLDER + "grassStripShort.png",814, 505));
-		
+		Environment.add(new GImage(IMG_FOLDER + "grassStrip.png", -2, 578));
+		Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png", 2065, 578));
+		Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png",3300, 578));
+		Environment.add(new GImage(IMG_FOLDER + "grassStripShorter.png", 3300, 558));
+		Environment.add(new GImage(IMG_FOLDER + "grassStripShorter.png", 3300, 525));
+		Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png", 4550, 585));
+		Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png",814, 541));
+		Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png",814, 505));
 		
 		for (Pair<Integer, Integer> loop : levelMap.get("PIPE")) {
-			Pipes.add(new GImage(IMG_FOLDER + "pipe.png", loop.getKey(), loop.getValue()));
+			Environment.add(new GImage(IMG_FOLDER + "pipe.png", loop.getKey(), loop.getValue()));
 		}
 	
 		for (Pair<Integer, Integer> loop : levelMap.get("BRICK")) {
-			Blocks.add(new GImage(IMG_FOLDER + "brick.png", loop.getKey(), loop.getValue()));
+			Environment.add(new GImage(IMG_FOLDER + "brick.png", loop.getKey(), loop.getValue()));
 		}
 		
 		for (Pair<Integer, Integer> loop : levelMap.get("COIN")) {
 			coins.add(new GImage(IMG_FOLDER + "coin.gif", loop.getKey(), loop.getValue()));
 		}
-		
 		setUpEnvironment();
-	
 	}
 	
 	public void setUpEnvironment() {
-		for(GImage a : Pipes) {
-			Environment.add(a);
-		}
-		for (GImage a : GrassStrips) {
-			Environment.add(a);
-		}
-		
-		for (GImage a : Blocks) {
-			Environment.add(a);
-		}
-		
-		for (GImage a : qBlocks) {
-			Environment.add(a);
-		}
-		
 		for (GImage a : coins) {
 			Environment.add(a);
 		}
@@ -99,6 +83,4 @@ public class LevelOne implements ILevel{
 	public ArrayList<GImage> getCoins(){
 		return coins;
 	}
-
-
 }
