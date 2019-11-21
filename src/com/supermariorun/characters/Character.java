@@ -3,6 +3,7 @@ package com.supermariorun.characters;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.Timer;
 
@@ -24,6 +25,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	public static final String IMG_FOLDER = "character/";
 	private static String STAR_EXT = "";
 	private ArrayList <GImage> Environment;
+	private ArrayList <GImage> Coins;
 	public boolean jumpUpState;
 	private String character = "mario";
 	private int jumpCount = 0;
@@ -37,7 +39,8 @@ public class Character extends GraphicsProgram implements ActionListener {
 		characImg = new GImage (IMG_FOLDER + STAR_EXT + character + "Stand.png", 100, 520); 
 		characImg.setSize(64, 64);
 		starTimer = new Timer (1000, this);
-		Environment = levelPane.getEnvironment();
+		Environment = levelPane.getLevel().getEnvironment();
+		Coins = levelPane.getLevel().getCoins();
 	}
 
 	public Character(mainSMR mainSMR, LevelPaneDev levelPaneDev) {
@@ -56,17 +59,14 @@ public class Character extends GraphicsProgram implements ActionListener {
 	
 	public void stand() {
 		characImg.setImage(IMG_FOLDER  + STAR_EXT + character + "Stand.png");
-		characImg.setSize(64, 64);
 	}
 
 	public void run() {
 		characImg.setImage(IMG_FOLDER  + STAR_EXT + character + "Run.gif");
-		characImg.setSize(64, 64);
 	}
 	
 	public void jump() {
-		//characImg.setImage(IMG_FOLDER  + STAR_EXT + character + "Jump.gif");
-		//characImg.setSize(64, 64);
+		characImg.setImage(IMG_FOLDER  + STAR_EXT + character + "Jump.gif");
 		leftFoot = program.getElementAt(characImg.getX() + 20, characImg.getY() + 80);
 		rightFoot = program.getElementAt(characImg.getX() + 30, characImg.getY() + 80);
 		
@@ -93,6 +93,18 @@ public class Character extends GraphicsProgram implements ActionListener {
 					levelPane.jumpState = false;
 					run();
 				}
+			}
+		}
+	}
+	
+	public void collectCoin() {
+		for (Iterator<GImage> it = Coins.iterator(); it.hasNext(); ) {
+			GImage img = it.next();
+			if (characImg.getBounds().intersects(img.getBounds())) {
+				program.playCoinEffect();
+				program.remove(img);
+				it.remove();
+				program.getProgress().incrementCoins();
 			}
 		}
 	}

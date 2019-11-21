@@ -131,10 +131,6 @@ public class LevelPaneDev extends GraphicsPane {
 		program.pauseLvlOneTrack();
 	}
 
-	public void Restart() throws FileNotFoundException {
-		
-	}
-
 	public void moveEnvironment() {
 		Background.move(-10, 0);
 		for (GImage move : Environment) {
@@ -217,11 +213,7 @@ public class LevelPaneDev extends GraphicsPane {
 		}
 
 		else if (obj == retryButton) {
-			try {
-				Restart();
-			} catch (FileNotFoundException e1) {
-				e1.printStackTrace();
-			}
+			Play();
 			program.remove(gBackground);
 			program.remove(pausePane);
 			program.remove(quitButton);

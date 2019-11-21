@@ -133,19 +133,6 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		}
 	}
 	
-	public void collectCoin() {
-		GImage character = Character.getCharacter();
-		for (Iterator<GImage> it = level.getCoins().iterator(); it.hasNext(); ) {
-			GImage img = it.next();
-			if (character.getBounds().intersects(img.getBounds())) {
-				program.playCoinEffect();
-				program.remove(img);
-				it.remove();
-				program.getProgress().incrementCoins();
-			}
-		}
-	}
-	
 	public void isGameOver() {
 		if (Background.getX() == -4840) {
 			timer.stop();
@@ -167,7 +154,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		moveEnvironment();
-		collectCoin();
+		Character.collectCoin();
 		isGameOver();
 	
 		if (jumpState == true) {
@@ -260,7 +247,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		}
 	}
 	
-	public ArrayList<GImage> getEnvironment() {
-		return Environment;
+	public Level getLevel() {
+		return level;
 	}
 }

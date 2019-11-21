@@ -39,7 +39,7 @@ public class eGoomba extends GraphicsPane implements ActionListener {
 	//	level = new LevelOne();
 		goomba = new GImage(IMG_FOLDER + "goomba.png", 200, 500);
 		goomba.setSize(mainWidth/4, mainHeight/3);
-		Environment = levelPane.getEnvironment();
+		Environment = levelPane.getLevel().getEnvironment();
 	}
 
 
