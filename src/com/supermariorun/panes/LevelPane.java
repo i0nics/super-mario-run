@@ -59,7 +59,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		program = mainSMR;
 		timer = new Timer (MS, this);
 		
-		level = new LevelOne("One");
+		level = new LevelOne(levelNum);
 	
 		level.setUpLevel();
 		Background = level.getBackground();

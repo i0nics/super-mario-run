@@ -9,7 +9,7 @@ import javafx.scene.layout.Background;
 import javafx.util.Pair;
 
 public class LevelOne implements ILevel{
-	public static final String IMG_FOLDER = "LevelOne/";
+	public static final String IMG_FOLDER = "LevelImages/";
 	private GImage Background;
 	
 	private ArrayList <GImage> Pipes;
@@ -35,8 +35,6 @@ public class LevelOne implements ILevel{
 		Environment.clear();
 		coins.clear();
 		Background.setLocation(0, 0);
-		
-		
 		
 		for (Pair<Integer, Integer> loop : levelMap.get("PIPE")) {
 			Environment.add(new GImage(IMG_FOLDER + "pipe.png", loop.getKey(), loop.getValue()));
