@@ -225,6 +225,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		}
 		
 		else if(obj == quitButton) {
+			isPause = false;
 			program.stopLvlOneTrack();
 			program.playTourSound();
 			hideResume();
@@ -232,6 +233,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		}
 		
 		else if(obj == continueButton) {
+			isPause = false;
 			program.stopLvlOneTrack();
 			hideResume();
 			program.playPipeSound();
