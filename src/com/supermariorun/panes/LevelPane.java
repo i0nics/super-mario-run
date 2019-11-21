@@ -98,6 +98,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		Background = level.getBackground();
 		Environment = level.getEnvironment();
 		Character.reset();
+		if (program.getProgress().getCurrentPowerUp() == "star") {
+			Character.setStarMode();
+		}
 		timer.start();
 		Character.run();
 		program.playLvlOneTrack();
@@ -105,9 +108,6 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 	public void Resume() {
 		timer.start();
-		if (program.getProgress().getCurrentPowerUp() == "star") {//
-			Character.setstarMode();
-		}
 		Character.run();
 		program.playLvlOneTrack();
 	}
@@ -185,7 +185,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	@Override
 	public void hideContents() {
 		timer.stop();
-		//program.remove(Background);
+		program.remove(Background);
 		program.removeAll();
 	}
 	

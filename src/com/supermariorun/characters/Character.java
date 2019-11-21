@@ -47,7 +47,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 		characImg.setSize(64, 64);
 	}
 
-	public void setstarMode() {
+	public void setStarMode() {
 		STAR_EXT = "star";
 		starTimer.start();
 	}
