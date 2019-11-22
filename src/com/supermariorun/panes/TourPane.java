@@ -52,6 +52,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		final double qBlockHeight = mainHeight/4.409;
 		
 		DevMode = new GButton ("Developer Mode", 500, 550, 100, 100);
+		
 		DevMode.setFillColor(Color.BLUE);
 		
 		backPipe = new GImage("gPipeR.png", -50, 30);

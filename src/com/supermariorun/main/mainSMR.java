@@ -1,6 +1,10 @@
 package com.supermariorun.main;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import com.supermariorun.panes.CharacterPane;
 import com.supermariorun.panes.InstructionsPane;
@@ -43,9 +47,18 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
     protected static final int FONT_SIZE = 18;
     public static final int WINDOW_WIDTH = 1155;
 	public static final int WINDOW_HEIGHT = 650;
+	public Font marioFont;
 	public AudioPlayer audio;
 
 	public void run() {	
+		try {
+			marioFont = Font.createFont(Font.TRUETYPE_FONT, new FileInputStream("Font/SuperMario256.ttf"));
+		}  catch (IOException e) {
+			e.printStackTrace();
+		} catch (FontFormatException e) {
+			e.printStackTrace();
+		}
+		
 		audio = AudioPlayer.getInstance();
 		progress = new playerProgress();
 		startPane = new StartPane(this);

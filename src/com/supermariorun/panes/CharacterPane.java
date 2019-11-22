@@ -58,49 +58,50 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		labelHeight = mainHeight/12;
 		
 		bubbleTimer = new Timer(500, this);
-	
-		yoshiBubble = new GImage(IMG_FOLDER + "bubble.png",550,450);
-		yoshiBubble.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
-		
-		yoshiPic = new GImage(IMG_FOLDER + "yoshiPic.png", 535, 200);
-		yoshiPic.setSize(185, 250);
-		
-		PrincessPic = new GImage(IMG_FOLDER + "Princess.png", 225, 200);
-		PrincessPic.setSize(185, 250);
-		
-		princessBubble = new GImage(IMG_FOLDER + "bubble.png",235,450);
-		princessBubble.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
-		
-		BackButton = new GImage(IMG_FOLDER + "bubble.png", 152, 30);
-		BackButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
-		
-		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png", -50, 50);
-		BackPipe.setSize(pipeWidth, pipeHeight);
 		
 		background = new GImage(IMG_FOLDER + "background.jpg", 0, 0);
 		background.setSize(mainWidth, mainHeight);
 		
 		backLabel = new GImage(IMG_FOLDER + "backLabel.png",170, 75);
 		backLabel.setSize(labelWidth*1.2, labelHeight*1.2);
+
+		BackButton = new GImage(IMG_FOLDER + "bubble.png", 152, 30);
+		BackButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
 		
-		princessLabel = new GImage(IMG_FOLDER + "buyLabel.png",240,490);
-		princessLabel.setSize(labelWidth*1.5, labelHeight*1.5);
-		
-		yoshiLabel = new GImage(IMG_FOLDER + "buyLabel.png",560, 490);
-		yoshiLabel.setSize(labelWidth * 1.5, labelHeight * 1.5);
+		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png", -50, 50);
+		BackPipe.setSize(pipeWidth, pipeHeight);
 		
 		marioPic = new GImage(IMG_FOLDER + "mario.png", 835,200);
 		marioPic.setSize(185, 250);
 		
+		PrincessPic = new GImage(IMG_FOLDER + "Princess.png", 225, 200);
+		PrincessPic.setSize(185, 250);
+		
+		yoshiPic = new GImage(IMG_FOLDER + "yoshiPic.png", 535, 200);
+		yoshiPic.setSize(185, 250);
+		
 		marioBubble = new GImage(IMG_FOLDER + "bubble.png", 845,450);
 		marioBubble.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
 		
-		marioLabel = new GImage(IMG_FOLDER + "equippedButton.png", 865,495);
+		marioLabel = new GImage(IMG_FOLDER + "equippedButton.png", 865, 495);
 		marioLabel.setSize(labelWidth*1.2, labelHeight*1.2);
-	
+		
+		princessBubble = new GImage(IMG_FOLDER + "bubble.png",235,450);
+		princessBubble.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
+
+		princessLabel = new GImage(IMG_FOLDER + "buyLabel.png",240,490);
+		princessLabel.setSize(labelWidth*1.5, labelHeight*1.5);
+		
+		yoshiBubble = new GImage(IMG_FOLDER + "bubble.png",550,450);
+		yoshiBubble.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
+		
+		yoshiLabel = new GImage(IMG_FOLDER + "buyLabel.png",560, 490);
+		yoshiLabel.setSize(labelWidth * 1.5, labelHeight * 1.5);
+		
 		coinCount = new GLabel("Coins: " + progress.getNumCoins());
 		coinCount.setLocation(400, 100);
-		coinCount.setFont(lABEL_FONT);
+		coinCount.setFont(program.marioFont.deriveFont(40f));
+		coinCount.setColor(Color.DARK_GRAY);
 		
 		coin = new GImage(IMG_FOLDER + "coin.gif", 320,50);
 		coin.setSize(100, 100);
