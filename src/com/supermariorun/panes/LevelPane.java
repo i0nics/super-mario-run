@@ -78,8 +78,6 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public void Play() {
 		level.setUpLevel();
 		Background = level.getBackground();
-		Coins = null;
-		Environment = null;
 		Coins = level.getCoins();
 		Environment = level.getEnvironment();
 		Character.reset();
