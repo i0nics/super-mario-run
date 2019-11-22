@@ -130,6 +130,28 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			program.switchToShop();
 		}
 		
+		if(progress.isStarPurchased() && (obj == StarBubble || obj == buyStar)){
+			if (progress.isMushroomPurchased()) {
+				buyMushroom.setImage(IMG_FOLDER + "equipButton.png");
+				buyMushroom.setSize(labelWidth*1.3, labelHeight*1.3);
+			}
+				buyStar.setImage(IMG_FOLDER + "equippedButton.png");
+				buyStar.setSize(labelWidth*1.3, labelHeight*1.3);
+				progress.setCurrentPowerUp("star");
+			
+		}
+		
+		if(progress.isMushroomPurchased() && (obj == MushroomBubble || obj == buyMushroom)){
+			if (progress.isStarPurchased()) {
+				buyStar.setImage(IMG_FOLDER + "equipButton.png");
+				buyStar.setSize(labelWidth*1.3, labelHeight*1.3);
+			}
+				buyMushroom.setImage(IMG_FOLDER + "equippedButton.png");
+				buyMushroom.setSize(labelWidth*1.3, labelHeight*1.3);
+				progress.setCurrentPowerUp("Mushroom");
+			
+		}
+		
 		if (!progress.isMushroomPurchased() && (obj == MushroomBubble || obj == buyMushroom)) {
 			mushroomTransaction();
 			buyMushroom.setImage(IMG_FOLDER + "equipButton.png");
@@ -140,32 +162,6 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			starTransaction();
 			buyStar.setImage(IMG_FOLDER + "equipButton.png");
 			buyStar.setSize(labelWidth*1.3, labelHeight*1.3);
-		}
-		
-		if(progress.isStarPurchased() && (obj == StarBubble || obj == buyStar)){
-			if (progress.isMushroomPurchased()) {
-				buyMushroom.setImage(IMG_FOLDER + "equipButton.png");
-				buyMushroom.setSize(labelWidth*1.3, labelHeight*1.3);
-			}
-			
-			else {
-				buyStar.setImage(IMG_FOLDER + "equippedButton.png");
-				buyStar.setSize(labelWidth*1.3, labelHeight*1.3);
-				progress.setCurrentPowerUp("star");
-			}
-		}
-		
-		if(progress.isMushroomPurchased() && (obj == MushroomBubble || obj == buyMushroom)){
-			if (progress.isStarPurchased()) {
-				buyStar.setImage(IMG_FOLDER + "equipButton.png");
-				buyStar.setSize(labelWidth*1.3, labelHeight*1.3);
-			}
-			
-			else {
-				buyMushroom.setImage(IMG_FOLDER + "equippedButton.png");
-				buyMushroom.setSize(labelWidth*1.3, labelHeight*1.3);
-				progress.setCurrentPowerUp("Mushroom");
-			}
 		}
 	}
 
