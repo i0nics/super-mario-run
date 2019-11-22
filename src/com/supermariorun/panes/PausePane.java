@@ -41,7 +41,7 @@ public class PausePane extends GraphicsPane {
 		retryButton = new GImage(IMG_FOLDER + "retryButton.png", 415, 387);
 		retryButton.setSize(280, 50);
 	}
-
+	
 	@Override
 	public void showContents() {
 		program.setScreen(this);

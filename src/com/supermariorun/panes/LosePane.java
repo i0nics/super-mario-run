@@ -22,10 +22,12 @@ public class LosePane extends GraphicsPane {
 	private GImage quitButton;
 	private GImage retryButton;
 	private GImage background;
+	private String lvlNum;
 	
 	public LosePane(mainSMR mainSMR, String lvlNum) {
 		super();
 		this.program = mainSMR;
+		this.lvlNum = lvlNum;
 		final double mainWidth = program.getWidth();
 		final double mainHeight = program.getHeight();
 		background = new GImage(IMG_FOLDER + "gameOver.jpg", 0, 0);
@@ -49,7 +51,11 @@ public class LosePane extends GraphicsPane {
 		if(obj == retryButton) {
 			program.stopLvlOneTrack();
 			program.playPipeSound();
-			
+			try {
+				program.switchToLevel(lvlNum);
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 

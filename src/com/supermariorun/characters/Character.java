@@ -27,6 +27,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;
 	public boolean jumpUpState;
+	public boolean fallState = false;
 	private String character = "mario";
 	private int jumpCount = 0;
 	private int starCount = 0;
@@ -62,6 +63,17 @@ public class Character extends GraphicsProgram implements ActionListener {
 		program.pauseStarTrack();
 	}
 	
+	public void fallDown() {
+		characImg.move(0, 20);				
+		for (GImage obj : Environment) {
+			if (leftFoot == obj || rightFoot == obj) {
+				levelPane.jumpState = false;
+				fallState = false;
+				run();
+			}
+		}
+	}
+	
 	public void stand() {
 		characImg.setImage(IMG_FOLDER  + STAR_EXT + character + "Stand.png");
 	}
@@ -94,19 +106,27 @@ public class Character extends GraphicsProgram implements ActionListener {
 		}
 			
 		if (!jumpUpState) {
-			characImg.move(0, 20);				
-			for (GImage obj : Environment) {
-				if (leftFoot == obj || rightFoot == obj) {
-					
-					levelPane.jumpState = false;
-					run();
-				}
-			}
+			fallDown();
 		}
 	}
 	
 	public void checkGround() {
+		leftFoot = program.getElementAt(characImg.getX() + 20, characImg.getY() + 80);
+		rightFoot = program.getElementAt(characImg.getX() + 60, characImg.getY() + 80);
 		
+		characImg.move(0, 20);	
+		fallState = true;
+		for (GImage obj : Environment) {
+			if (leftFoot == obj || rightFoot == obj) {
+				fallState = false;
+				break;
+			}
+			
+		}
+		
+		if (fallState) {
+			fallDown();
+		}
 	}
 	
 	public void collectCoin() {

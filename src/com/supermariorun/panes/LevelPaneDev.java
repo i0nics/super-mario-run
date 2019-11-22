@@ -20,7 +20,7 @@ import acm.graphics.GLine;
 import acm.graphics.GObject;
 import starter.GButton;
 
-public class LevelPaneDev extends GraphicsPane {
+public class LevelPaneDev extends GraphicsPane implements ActionListener {
 	private mainSMR program;
 	private GImage Background;
 	private GImage pauseButton;
@@ -29,38 +29,37 @@ public class LevelPaneDev extends GraphicsPane {
 	private GImage resumeButton;
 	private GImage pausePane;
 	private GImage quitButton;
-	private GImage gBackground;
+	private GImage greyBack;
 	private GLabel CoordLabel;
 	private GButton moveLeft;
 	private GButton moveRight;
 	private GObject obj;
 	private GLabel dragCoord;
 	private int mouseX = 0;
+	private boolean isPause = false;
+	private boolean mouseHold = false;
 	private int lastX;
 	private int lastY;
 	private ArrayList<GImage> Environment;
-	private ArrayList<GImage> GrassStrips;
-
+	private ArrayList <GImage> Coins;	
 	private GLabel collison;
 	private Level level;
-	private int spaceWidth = 1150 / 30;
-	private int spaceHeight = 650 / 18;
-	public static final int MS = 100; // 110
+	private int spaceWidth;
+	private int spaceHeight;
+	public static final int MS = 100; 
 	public static final String IMG_FOLDER = "LevelPane/";
 	private Character Character;
+	private Timer mouseTimer;
 
-	public boolean jumpState = true; // edit
-	public boolean jumpUpState;
-	private int jumpCount;
-	private GObject leftFoot;
 
 	public LevelPaneDev(mainSMR mainSMR, int levelNum) throws FileNotFoundException {
 		super();
 		this.program = mainSMR;
-
-		final double mainWidth = program.getWidth();
-		final double mainHeight = program.getHeight();
-
+		
+		spaceWidth = program.getWidth() / 30;
+		spaceHeight = program.getHeight() / 18;
+		
+		mouseTimer = new Timer (50, this);
 		collison = new GLabel("collison test", 500, 80);
 
 		Character = new Character(mainSMR, this);
@@ -80,36 +79,40 @@ public class LevelPaneDev extends GraphicsPane {
 
 		level = new Level("One");
 		Environment = level.getEnvironment();
+		Coins = level.getCoins();
 
+		pausePane = new GImage(IMG_FOLDER + "pausePane.png", 400, 100);
+		pausePane.setSize(300, 400);
+		
 		pauseBubble = new GImage(IMG_FOLDER + "bubble.png", 30, 10);
 		pauseBubble.setSize(100, 100);
 
 		pauseButton = new GImage(IMG_FOLDER + "pause.png", 55, 27);
 		pauseButton.setSize(50, 70);
 
-		pausePane = new GImage(IMG_FOLDER + "pausePane.png", 400, 100);
-		pausePane.setSize(300, 400);
-
 		quitButton = new GImage(IMG_FOLDER + "quitButton.png", 428, 437);
 		quitButton.setSize(250, 50);
 
-		gBackground = new GImage(IMG_FOLDER + "pauseBack.png", 0, 0);
-		gBackground.setSize(mainWidth, mainHeight);
+		greyBack = new GImage(IMG_FOLDER + "pauseBack.png", 0, 0);
+		greyBack.setSize(program.getWidth(), program.getHeight());
 
 		resumeButton = new GImage(IMG_FOLDER + "continueButton.png", 450, 500);
 		resumeButton.setSize(190, 100);
 
 		retryButton = new GImage(IMG_FOLDER + "retryButton.png", 415, 387);
 		retryButton.setSize(280, 50);
-
-		DrawLevel();
 	}
 
-	public void DrawLevel() {
+	public void Play() {
+		level.setUpLevel();
 		Background = level.getBackground();
+		Environment = level.getEnvironment();
+		Character.reset();
+		isPause = false;
+		Character.run();
 	}
 
-	private void drawGridLines() { // DEV
+	private void drawGridLines() {
 
 		for (int i = 1; i < 1000; i++) {
 			GLine line = new GLine(i * spaceWidth, 0, i * spaceWidth, program.getHeight());
@@ -122,26 +125,9 @@ public class LevelPaneDev extends GraphicsPane {
 		}
 	}
 
-	public void Play() {
-		program.playLvlOneTrack();
-	}
-
 	public void Pause() {
 		program.playPauseSound();
 		program.pauseLvlOneTrack();
-	}
-
-	public void moveEnvironment() {
-		Background.move(-10, 0);
-		for (GImage move : Environment) {
-			move.move(-10, 0);
-		}
-	}
-
-	public void isGameOver() {
-		if (Background.getX() == -4840) {
-			program.stopLvlOneTrack();
-		}
 	}
 
 	@Override
@@ -153,6 +139,10 @@ public class LevelPaneDev extends GraphicsPane {
 		program.add(Character.getCharacter());
 
 		for (GImage e : Environment) {
+			program.add(e);
+		}
+		
+		for (GImage e: Coins) {
 			program.add(e);
 		}
 		drawGridLines();
@@ -171,31 +161,18 @@ public class LevelPaneDev extends GraphicsPane {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		mouseTimer.start();
 		lastX = e.getX();
 		lastY = e.getY();
 		obj = program.getElementAt(e.getX(), e.getY());
+		mouseHold = true;
 
 		CoordLabel.setLabel("X: " + (e.getX() + mouseX) + " Y: " + e.getY()); // DEV
 
-		if (obj == moveLeft) {
-			Background.move(-40, 0);
-			for (GImage move : Environment) { // DEV
-				move.move(-40, 0);
-			}
-			mouseX += 40;
-		}
 
-		else if (obj == moveRight) { // DEV
-			Background.move(40, 0);
-			for (GImage move : Environment) { // DEV
-				move.move(40, 0);
-			}
-			mouseX -= 40; // DEV
-		}
-
-		else if (obj == pauseButton || obj == pauseBubble) {
+		if (obj == pauseButton || obj == pauseBubble) {
 			Pause();
-			program.add(gBackground);
+			program.add(greyBack);
 			program.add(pausePane);
 			program.add(quitButton);
 			program.add(resumeButton);
@@ -203,9 +180,8 @@ public class LevelPaneDev extends GraphicsPane {
 		}
 
 		else if (obj == resumeButton) {
-			Play();
 			program.playResumeSound();
-			program.remove(gBackground);
+			program.remove(greyBack);
 			program.remove(pausePane);
 			program.remove(quitButton);
 			program.remove(resumeButton);
@@ -213,12 +189,13 @@ public class LevelPaneDev extends GraphicsPane {
 		}
 
 		else if (obj == retryButton) {
-			Play();
-			program.remove(gBackground);
+			mouseX = 0;
+			program.remove(greyBack);
 			program.remove(pausePane);
 			program.remove(quitButton);
 			program.remove(resumeButton);
 			program.remove(retryButton);
+			Play();
 		}
 
 		else if (obj == quitButton) {
@@ -240,6 +217,35 @@ public class LevelPaneDev extends GraphicsPane {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		mouseTimer.stop();
 		obj = null;
+		mouseHold = false;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+		if (obj == moveLeft && mouseHold) {
+			Background.move(-40, 0);
+			for (GImage move : Environment) { // DEV
+				move.move(-40, 0);
+			}
+			for (GImage move : Coins) { // DEV
+				move.move(-40, 0);
+			}
+			mouseX += 40;
+		}
+
+		if (obj == moveRight && mouseHold) { // DEV
+			Background.move(40, 0);
+			for (GImage move : Environment) { // DEV
+				move.move(40, 0);
+			}
+			for (GImage move : Coins) { // DEV
+				move.move(40, 0);
+			}
+			mouseX -= 40; // DEV
+		}
+		
 	}
 }
