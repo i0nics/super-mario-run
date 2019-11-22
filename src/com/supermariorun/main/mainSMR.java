@@ -187,7 +187,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	
 	public void pauseStarTrack() {
 		audio.pauseSound(MUSIC_FOLDER, STAR_TRACK);
-	}
+	}//
 	
 	public void stopStarTrack() {
 		audio.pauseSound(MUSIC_FOLDER, STAR_TRACK);
