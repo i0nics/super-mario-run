@@ -20,6 +20,7 @@ import acm.graphics.GImage;
 import acm.graphics.GLabel;
 import acm.graphics.GLine;
 import acm.graphics.GObject;
+import acm.graphics.GRect;
 import starter.GButton;
 
 public class LevelPane extends GraphicsPane implements ActionListener{
@@ -39,7 +40,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private Level level;
 	private Timer timer;
 	private PausePane pausePane;
-	
+
 	public static final int MS = 70;
 	public static final String IMG_FOLDER = "LevelPane/";
 
@@ -54,11 +55,6 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		
 		level = new Level(levelNum);
 	
-		level.setUpLevel();
-		Background = level.getBackground();
-
-		Environment = level.getEnvironment();
-		Coins = level.getCoins();
 		Character = new Character(program, this);
 		
 		pauseBubble = new GImage(IMG_FOLDER + "bubble.png",30, 10);
@@ -82,12 +78,17 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public void Play() {
 		level.setUpLevel();
 		Background = level.getBackground();
+		Coins = null;
+		Environment = null;
+		Coins = level.getCoins();
 		Environment = level.getEnvironment();
 		Character.reset();
 		isPause = false;
+		
 		if (program.getProgress().getCurrentPowerUp() == "star") {
 			Character.setStarMode();
 		}
+		
 		timer.start();
 		Character.run();
 		playTrack();
@@ -167,6 +168,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		Play();
 		program.add(Background);
 		program.add(Character.getCharacter());
+		program.add(Character.getRect());
 		program.add(pauseButton);
 		program.add(pauseBubble);
 

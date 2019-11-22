@@ -2,6 +2,7 @@ package com.supermariorun.panes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
 
 import javax.swing.Timer;
 
@@ -21,6 +22,7 @@ public class PausePane extends GraphicsPane {
 	private GImage quitButton;
 	private GImage greyBack;
 	private GImage pausePane;
+	private String lvlNum;
 	
 	public PausePane(mainSMR main, LevelPane level) {
 		this.program = main;
@@ -76,6 +78,14 @@ public class PausePane extends GraphicsPane {
 		else if(obj == retryButton) {
 			program.stopLvlOneTrack();
 			hideContents();
+			
+			if (program.getProgress().getCurrentPowerUp() == "star") {
+				program.getProgress().clearCurrentPowerUp();
+				program.getProgress().resetStarPurchased();
+				program.stopStarTrack();
+			}
+			level.hideContents();
+			level.showContents();
 		}
 		
 		else if(obj == quitButton) {

@@ -13,6 +13,8 @@ import com.supermariorun.panes.LevelPaneDev;
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;
+import acm.graphics.GRect;
+import acm.graphics.GRectangle;
 import acm.program.GraphicsProgram;
 
 public class Character extends GraphicsProgram implements ActionListener {
@@ -22,26 +24,36 @@ public class Character extends GraphicsProgram implements ActionListener {
 	private GImage characImg;
 	private GObject leftFoot;
 	private GObject rightFoot;
+	private GRect Feet;
+	private GRect rightBody;
+	private GRect Head;
+	private GRectangle Feetr;
+	private GRectangle rightBodyr;
+	private GRectangle Headr;
 	public static final String IMG_FOLDER = "character/";
 	private static String STAR_EXT = "";
-	private ArrayList <GImage> Environment;
-	private ArrayList <GImage> Coins;
+	private String character = "mario";
 	public boolean jumpUpState;
 	public boolean fallState = false;
-	private String character = "mario";
 	private int jumpCount = 0;
 	private int starCount = 0;
 	private Timer starTimer;
+	private ArrayList <GImage> Environment;
+	private ArrayList <GImage> Coins;
 	
 	public Character(mainSMR mainSMR, LevelPane levelPane) {
 		program = mainSMR;
 		this.levelPane = levelPane;
+		
 		character = program.getProgress().getCurrentCharacter();
 		characImg = new GImage (IMG_FOLDER + STAR_EXT + character + "Stand.png", 100, 520); 
 		characImg.setSize(64, 64);
 		starTimer = new Timer (1000, this);
+		
 		Environment = levelPane.getLevel().getEnvironment();
 		Coins = levelPane.getLevel().getCoins();
+		
+		Feet = new GRect(characImg.getX(),characImg.getX() + characImg.getHeight(), characImg.getWidth(), 10);	
 	}
 
 	public Character(mainSMR mainSMR, LevelPaneDev levelPaneDev) {
@@ -159,6 +171,10 @@ public class Character extends GraphicsProgram implements ActionListener {
 	
 	public GImage getCharacter(){
 		return characImg;
+	}
+	
+	public GRect getRect(){
+		return Feet;
 	}
 
 	public void setJumpCount(int jumpCount) {
