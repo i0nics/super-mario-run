@@ -80,9 +80,9 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		coinCount = new GLabel("Coins: " + progress.getNumCoins());
 		coinCount.setFont(program.marioFont.deriveFont(40f));
 		coinCount.setColor(Color.WHITE);
-		coinCount.setLocation(400, 100);
+		coinCount.setLocation(900, 100);
 
-		coin = new GImage(IMG_FOLDER + "coin.gif", 320,50);
+		coin = new GImage(IMG_FOLDER + "coin.gif", 820,50);
 		coin.setSize(100, 100);
 	}
 

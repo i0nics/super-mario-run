@@ -99,11 +99,11 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		yoshiLabel.setSize(labelWidth * 1.5, labelHeight * 1.5);
 		
 		coinCount = new GLabel("Coins: " + progress.getNumCoins());
-		coinCount.setLocation(400, 100);
+		coinCount.setLocation(900, 100);
 		coinCount.setFont(program.marioFont.deriveFont(40f));
 		coinCount.setColor(Color.DARK_GRAY);
 		
-		coin = new GImage(IMG_FOLDER + "coin.gif", 320,50);
+		coin = new GImage(IMG_FOLDER + "coin.gif", 820,50);
 		coin.setSize(100, 100);
 	}
 	
