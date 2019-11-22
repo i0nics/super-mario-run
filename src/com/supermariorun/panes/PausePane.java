@@ -78,12 +78,6 @@ public class PausePane extends GraphicsPane {
 		else if(obj == retryButton) {
 			program.stopLvlOneTrack();
 			hideContents();
-			
-			if (program.getProgress().getCurrentPowerUp() == "star") {
-				program.getProgress().clearCurrentPowerUp();
-				program.getProgress().resetStarPurchased();
-				program.stopStarTrack();
-			}
 			level.hideContents();
 			level.showContents();
 		}

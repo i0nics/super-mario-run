@@ -53,7 +53,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 		Environment = levelPane.getLevel().getEnvironment();
 		Coins = levelPane.getLevel().getCoins();
 		
-		Feet = new GRect(characImg.getX(),characImg.getX() + characImg.getHeight(), characImg.getWidth(), 10);	
+		Feet = new GRect(characImg.getX() + 5, characImg.getY() + characImg.getHeight(), characImg.getWidth() - 20, 5);	
 	}
 
 	public Character(mainSMR mainSMR, LevelPaneDev levelPaneDev) {
@@ -61,6 +61,11 @@ public class Character extends GraphicsProgram implements ActionListener {
 		this.levelPaneDev = levelPaneDev;
 		characImg = new GImage (IMG_FOLDER  + STAR_EXT + character + "Stand.png", 100, 520); 
 		characImg.setSize(64, 64);
+		
+		Environment = levelPaneDev.getLevel().getEnvironment();
+		Coins = levelPaneDev.getLevel().getCoins();
+		
+		Feet = new GRect(characImg.getX() + 5, characImg.getY() + characImg.getHeight(), characImg.getWidth() - 20, 5);	
 	}
 
 	public void setStarMode() {
@@ -75,17 +80,6 @@ public class Character extends GraphicsProgram implements ActionListener {
 		program.pauseStarTrack();
 	}
 	
-	public void fallDown() {
-		characImg.move(0, 20);				
-		for (GImage obj : Environment) {
-			if (leftFoot == obj || rightFoot == obj) {
-				levelPane.jumpState = false;
-				fallState = false;
-				run();
-			}
-		}
-	}
-	
 	public void stand() {
 		characImg.setImage(IMG_FOLDER  + STAR_EXT + character + "Stand.png");
 	}
@@ -98,6 +92,18 @@ public class Character extends GraphicsProgram implements ActionListener {
 		characImg.setImage(IMG_FOLDER  + STAR_EXT + character + "Jump.gif");
 	}
 	
+	public void fallDown() {
+		characImg.move(0, 20);	
+		Feet.move(0, 20);
+		for (GImage obj : Environment) {
+			if (Feet.getBounds().intersects(obj.getBounds())) {
+				levelPane.jumpState = false;
+				fallState = false;
+				run();
+			}
+		}
+	}
+	
 	public void jump() {
 		leftFoot = program.getElementAt(characImg.getX() + 20, characImg.getY() + 80);
 		rightFoot = program.getElementAt(characImg.getX() + 60, characImg.getY() + 80);
@@ -106,7 +112,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 			
 		if (jumpCount >=  0 && jumpCount < 8) {
 			jumpUpState = true;
-			setJumpCount(jumpCount + 1);
+			jumpCount++;
 		}
 			
 		if  (jumpCount > 8) {
@@ -115,6 +121,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	
 		if (jumpUpState) {		
 			characImg.move(0, -20);
+			Feet.move(0, -20);
 		}
 			
 		if (!jumpUpState) {
@@ -133,7 +140,6 @@ public class Character extends GraphicsProgram implements ActionListener {
 				fallState = false;
 				break;
 			}
-			
 		}
 		
 		if (fallState) {

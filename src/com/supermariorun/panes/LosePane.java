@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 
 import javax.swing.Timer;
 
+import com.supermariorun.levels.Level;
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
 import com.supermariorun.main.playerProgress;
@@ -22,12 +23,12 @@ public class LosePane extends GraphicsPane {
 	private GImage quitButton;
 	private GImage retryButton;
 	private GImage background;
-	private String lvlNum;
+	private LevelPane level;
 	
-	public LosePane(mainSMR mainSMR, String lvlNum) {
+	public LosePane(mainSMR mainSMR, LevelPane level) {
 		super();
 		this.program = mainSMR;
-		this.lvlNum = lvlNum;
+		this.level = level;
 		final double mainWidth = program.getWidth();
 		final double mainHeight = program.getHeight();
 		background = new GImage(IMG_FOLDER + "gameOver.jpg", 0, 0);
@@ -50,12 +51,10 @@ public class LosePane extends GraphicsPane {
 		
 		if(obj == retryButton) {
 			program.stopLvlOneTrack();
-			program.playPipeSound();
-			try {
-				program.switchToLevel(lvlNum);
-			} catch (FileNotFoundException e1) {
-				e1.printStackTrace();
-			}
+			hideContents();
+			program.setScreen(level);
+			level.hideContents();
+			level.showContents();
 		}
 	}
 

@@ -54,7 +54,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 
 	public LevelPaneDev(mainSMR mainSMR, int levelNum) throws FileNotFoundException {
 		super();
-		this.program = mainSMR;
+		program = mainSMR;
 		
 		spaceWidth = program.getWidth() / 30;
 		spaceHeight = program.getHeight() / 18;
@@ -62,7 +62,8 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 		mouseTimer = new Timer (50, this);
 		collison = new GLabel("collison test", 500, 80);
 
-		Character = new Character(mainSMR, this);
+		level = new Level("One");
+		Character = new Character(program, this);
 		
 		CoordLabel = new GLabel("label ", 500, 40);
 		CoordLabel.setColor(Color.red);
@@ -74,12 +75,6 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 
 		moveLeft = new GButton("left", 300, 40, 100, 100);
 		moveRight = new GButton("right", 400, 40, 100, 100);
-
-		program = mainSMR;
-
-		level = new Level("One");
-		Environment = level.getEnvironment();
-		Coins = level.getCoins();
 
 		pausePane = new GImage(IMG_FOLDER + "pausePane.png", 400, 100);
 		pausePane.setSize(300, 400);
@@ -106,6 +101,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 	public void Play() {
 		level.setUpLevel();
 		Background = level.getBackground();
+		Coins = level.getCoins();
 		Environment = level.getEnvironment();
 		Character.reset();
 		isPause = false;
@@ -137,6 +133,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 		program.add(pauseButton);
 		program.add(pauseBubble);
 		program.add(Character.getCharacter());
+		program.add(Character.getRect());
 
 		for (GImage e : Environment) {
 			program.add(e);
@@ -246,6 +243,9 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 			}
 			mouseX -= 40; // DEV
 		}
-		
+	}
+	
+	public Level getLevel() {
+		return level;
 	}
 }

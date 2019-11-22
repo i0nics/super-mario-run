@@ -72,7 +72,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		continueEndButton = new GImage(IMG_FOLDER + "continueButton.png", 460, 425);
 		continueEndButton.setSize(200, 120);
 		
-		losePane = new LosePane(program, levelNum);
+		losePane = new LosePane(program, this);
 	}
 	
 	public void Play() {
@@ -166,9 +166,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		Play();
 		program.add(Background);
 		program.add(Character.getCharacter());
-		program.add(Character.getRect());
 		program.add(pauseButton);
 		program.add(pauseBubble);
+		program.add(Character.getRect());
 
 		for (GImage e: Environment) {
 			program.add(e);
