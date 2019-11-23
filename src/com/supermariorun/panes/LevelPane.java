@@ -205,6 +205,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 				jumpState = true;
 				Character.setJumpCount(0);
 				Character.setJumpImage();
+				program.playJumpSound();
 				Character.jump();
 			}
 		}
