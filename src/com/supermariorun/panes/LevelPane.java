@@ -28,14 +28,16 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;	
 	private ArrayList <GImage> Plants;
-	public boolean jumpState;
-	private boolean isPause = false;
 	private Character Character;
 	private Level level;
 	private Timer timer;
 	private PausePane pausePane;
 	private EndPane EndPane;
 	private boolean isRestartTimer = false;
+	public boolean jumpState = false;
+	private boolean isPause = false;
+	private boolean isMousePressed = false;
+	private int mouseCounter = 0;
 
 	public static final int MS = 30;
 	public static final String IMG_FOLDER = "LevelPane/";
@@ -150,12 +152,15 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		moveEnvironment();
 		Character.collectCoin();
 		isGameOver();
+		
+		if (isMousePressed) {mouseCounter++;}
+		if (mouseCounter == 10) {Character.setLongJump();}
+
 		if (jumpState) { Character.jump(); }
-		if(!jumpState) { 
+		
+		else { 
 			Character.checkGround();
-			
 			if (Character.checkCollision()) {
-				Character.checkGround();
 				if (!Character.getFallState()) {
 					timer.stop();
 					isRestartTimer = true;
@@ -166,7 +171,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
-		
+		isMousePressed = true;
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
 		if (isRestartTimer) {
@@ -191,13 +196,19 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		else {
 			if (!jumpState && !isPause) {
 				jumpState = true;
-				Character.setJumpCount(0);
 				Character.setJumpImage();
 				program.playJumpSound();
 				Character.jump();
 			}
 		}
 	}
+	
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		isMousePressed = false;
+		mouseCounter = 0;
+	}
+		
 	
 	@Override
 	public void showContents() {

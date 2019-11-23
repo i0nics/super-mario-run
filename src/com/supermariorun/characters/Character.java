@@ -35,6 +35,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	public boolean fallState = false;
 	private int jumpCount = 0;
 	private int starCount = 0;
+	private int jumpLimit = 10;
 	private Timer starTimer;
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;
@@ -44,7 +45,6 @@ public class Character extends GraphicsProgram implements ActionListener {
 		this.levelPane = levelPane;
 		
 		characImg = new GImage (IMG_FOLDER + BIG_EXT + STAR_EXT + character + "Stand.png", 100, 520); 
-		characImg.setSize(64, 64);
 		starTimer = new Timer (1000, this);
 				
 		character = program.getProgress().getCurrentCharacter();
@@ -93,6 +93,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 			if (Feet.intersects(obj.getBounds())) {
 				levelPane.jumpState = false;
 				fallState = false;
+				jumpCount = 0;
 				characImg.setLocation(characImg.getX(), obj.getY() - 55);
 				updateBounds();
 				run();
@@ -102,29 +103,31 @@ public class Character extends GraphicsProgram implements ActionListener {
 	
 	public void jump() {
 		jumpUpState = false;
-			
-		if (jumpCount >=  0 && jumpCount < 10) {
+				
+		if (jumpCount >=  0 && jumpCount < jumpLimit) {
 			jumpUpState = true;
 			jumpCount++;
 		}
-			
-		if  (jumpCount > 10) {
-			jumpUpState = false;
-		}
-	
+
 		if (jumpUpState) {		
 			characImg.move(0, -10);
 			updateBounds();
 		}
 			
 		if (!jumpUpState) {
+			jumpLimit = 10;
 			fallDown();
 		}
+	}
+	
+	public void setLongJump() {
+	    jumpLimit = 15;
 	}
 	
 	public boolean checkCollision() {
 		for (GImage obj : Environment) {
 			if (rightBody.intersects(obj.getBounds())) {
+				stand();
 				return true;
 			}
 		}
@@ -204,12 +207,10 @@ public class Character extends GraphicsProgram implements ActionListener {
 	public boolean getFallState() {
 		return fallState;
 	}
-	public void setJumpCount(int jumpCount) {
-		this.jumpCount = jumpCount;
-	}
 
 	public void reset() {
-		characImg.setLocation(100, 520);		
+		characImg.setLocation(100, 520);	
+		updateBounds();
 	}
 	
 	//public GRect getRect() {
