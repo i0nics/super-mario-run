@@ -154,11 +154,13 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		moveEnvironment();
-		//Character.checkGround();
+		if(!jumpState) {
+			Character.checkGround();
+		}
 		Character.collectCoin();
 		isGameOver();
 	
-		if (jumpState == true) {
+		if (jumpState) {
 			Character.jump();
 		}
 	}

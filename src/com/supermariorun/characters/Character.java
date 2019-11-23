@@ -23,6 +23,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	private LevelPaneDev levelPaneDev;
 	private GImage characImg;
 	private GRectangle Feet;
+	private GObject detectGround;
 	private GRect rightBody;
 	private GRect Head;
 	private GRectangle rightBodyr;
@@ -130,14 +131,12 @@ public class Character extends GraphicsProgram implements ActionListener {
 	}
 	
 	public void checkGround() {	
-		characImg.move(0, 10);
-		updateBounds();
-		fallState = true;
+		detectGround = program.getElementAt(characImg.getX() + characImg.getWidth()/2, characImg.getY() + 80);
 		
-		//if (leftFoot== null && rightFoot == null) {
-		//	fallState = false;
-		//}
-		
+		if (detectGround == levelPane.getLevel().getBackground()) {
+			fallState = true;
+		}
+	
 		if (fallState) {
 			fallDown();
 		}
