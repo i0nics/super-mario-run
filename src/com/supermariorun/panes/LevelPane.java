@@ -141,6 +141,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		if (Character.getCharacter().getY() > 650) {
 			timer.stop();
 			program.stopLvlOneTrack();
+			program.playGameOverSound();
 			program.switchToScreen(losePane);
 		}
 	}
