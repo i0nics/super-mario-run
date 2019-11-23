@@ -95,10 +95,10 @@ public class Character extends GraphicsProgram implements ActionListener {
 	}
 	
 	public void fallDown() {
-		characImg.move(0, 20);	
-		Feet.move(0, 20);
+		characImg.move(0, 3);	
+		Feet.move(0, 3);
 		for (GImage obj : Environment) {
-			if (Feet.getBounds().intersects(obj.getBounds())) {
+			if (leftFoot == obj || rightFoot == obj) {
 				levelPane.jumpState = false;
 				fallState = false;
 				run();
@@ -107,23 +107,23 @@ public class Character extends GraphicsProgram implements ActionListener {
 	}
 	
 	public void jump() {
-		leftFoot = program.getElementAt(characImg.getX() + 20, characImg.getY() + 80);
-		rightFoot = program.getElementAt(characImg.getX() + 60, characImg.getY() + 80);
+		leftFoot = program.getElementAt(characImg.getX() + 20, characImg.getY() + characImg.getHeight() - 10);
+		rightFoot = program.getElementAt(characImg.getX() + 60, characImg.getY() + characImg.getHeight() - 10);
 		
 		jumpUpState = false;
 			
-		if (jumpCount >=  0 && jumpCount < 8) {
+		if (jumpCount >=  0 && jumpCount < 40) {
 			jumpUpState = true;
 			jumpCount++;
 		}
 			
-		if  (jumpCount > 8) {
+		if  (jumpCount > 40) {
 			jumpUpState = false;
 		}
 	
 		if (jumpUpState) {		
-			characImg.move(0, -20);
-			Feet.move(0, -20);
+			characImg.move(0, -3);
+			Feet.move(0, -3);
 		}
 			
 		if (!jumpUpState) {
@@ -168,6 +168,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	public void coinsCollected() {
 	program.getProgress().increaseCoins(numCoins);
 	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		starCount++;

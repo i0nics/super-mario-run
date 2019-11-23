@@ -42,7 +42,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private PausePane pausePane;
 	private EndPane EndPane;
 
-	public static final int MS = 10;
+	public static final int MS = 1;
 	public static final String IMG_FOLDER = "LevelPane/";
 
 	public LevelPane(mainSMR mainSMR, String levelNum) throws FileNotFoundException {
@@ -57,7 +57,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 		Character = new Character(program, this);
 		
-		pauseBubble = new GImage(IMG_FOLDER + "bubble.png",30, 10);
+		pauseBubble = new GImage(IMG_FOLDER + "bubble.png", 30, 10);
 		pauseBubble.setSize(100, 100);
 		
 		pauseButton = new GImage(IMG_FOLDER + "pause.png", 55, 27);
@@ -111,12 +111,12 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	}
 	
 	public void moveEnvironment() {
-		Background.move(-10, 0);
+		Background.move(-2, 0);
 		for (GImage move : Environment) {
-			move.move(-10, 0);
+			move.move(-2, 0);
 		}
 		for (GImage move : Coins) {
-			move.move(-10, 0);
+			move.move(-2, 0);
 		}
 	}
 	
@@ -131,7 +131,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	}
 	
 	public void isGameOver() {
-		if (Background.getX() == -4840) {
+		if (Background.getX() == -4500) {
 			timer.stop();
 			Character.stand();
 			isPause = true;
