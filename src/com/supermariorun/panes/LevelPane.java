@@ -35,6 +35,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private Timer timer;
 	private PausePane pausePane;
 	private EndPane EndPane;
+	private boolean isRestartTimer = false;
 
 	public static final int MS = 30;
 	public static final String IMG_FOLDER = "LevelPane/";
@@ -107,15 +108,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 	public void moveEnvironment() {
 		Background.move(-8, 0);
-		for (GImage move : Environment) {
-			move.move(-8, 0);
-		}
-		for (GImage move : Coins) {
-			move.move(-8, 0);
-		}
-		for (GImage move : Plants) {
-			move.move(-8, 0);
-		}
+		for (GImage move : Environment) { move.move(-8, 0); }
+		for (GImage move : Coins) { move.move(-8, 0); }
+		for (GImage move : Plants) { move.move(-8, 0); }
 	}
 	
 	public void playTrack() {
@@ -139,7 +134,6 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.stopLvlOneTrack();
 			program.playCourseClearedTrack();
 			Character.numCoinsCollected();
-			System.out.println(Character.numCoinsCollected());
 			Character.coinsCollected();
 		}
 		
@@ -154,48 +148,32 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		moveEnvironment();
-		if(!jumpState) {
-			Character.checkGround();
-		}
 		Character.collectCoin();
 		isGameOver();
-	
-		if (jumpState) {
-			Character.jump();
+		if (jumpState) { Character.jump(); }
+		if(!jumpState) { 
+			Character.checkGround();
+			
+			if (Character.checkCollision()) {
+				Character.checkGround();
+				if (!Character.getFallState()) {
+					timer.stop();
+					isRestartTimer = true;
+				}
+			}
 		}
-	}
-
-	@Override
-	public void showContents() {
-		Play();
-		program.add(Background);
-		program.add(Character.getCharacter());
-		program.add(pauseButton);
-		program.add(pauseBubble);
-		//program.add(Character.getRect());
-		for (GImage e: Plants) {
-			program.add(e);
-		}
-		for (GImage e: Environment) {
-			program.add(e);
-		}
-		
-		for (GImage e: Coins) {
-			program.add(e);
-		}
-	}
-
-	@Override
-	public void hideContents() {
-		timer.stop();
-		program.removeAll();
 	}
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
 		
 		GObject obj = program.getElementAt(e.getX(), e.getY());
-	    
+		
+		if (isRestartTimer) {
+			timer.start();
+			isRestartTimer = false;
+		}
+	
 		if(obj == pauseButton || obj == pauseBubble) {
 			Pause();
 			isPause = true;
@@ -219,6 +197,26 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 				Character.jump();
 			}
 		}
+	}
+	
+	@Override
+	public void showContents() {
+		Play();
+		program.add(Background);
+		program.add(Character.getCharacter());
+		program.add(pauseButton);
+		program.add(pauseBubble);
+		//program.add(Character.getRect());
+		
+		for (GImage e: Plants) { program.add(e); }
+		for (GImage e: Environment) { program.add(e); }
+		for (GImage e: Coins) { program.add(e); }
+	}
+
+	@Override
+	public void hideContents() {
+		timer.stop();
+		program.removeAll();
 	}
 	
 	public Level getLevel() {

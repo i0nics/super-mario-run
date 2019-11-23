@@ -23,13 +23,10 @@ public class Character extends GraphicsProgram implements ActionListener {
 	private LevelPaneDev levelPaneDev;
 	private GImage characImg;
 	private GRectangle Feet;
+	private GRectangle rightBody;
 	private GObject detectGround;
-	private GRect rightBody;
 	private GRect Head;
-	private GRectangle rightBodyr;
-	private GRectangle Headr;
 	private int numCoins = 0;
-	private int totalCoins = 0;
 	public static final String IMG_FOLDER = "character/";
 	private static String STAR_EXT = "";
 	private static String BIG_EXT = "";
@@ -41,8 +38,6 @@ public class Character extends GraphicsProgram implements ActionListener {
 	private Timer starTimer;
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;
-	private double feetX;
-	private double feetY;
 	
 	public Character(mainSMR mainSMR, LevelPane levelPane) {
 		program = mainSMR;
@@ -51,17 +46,15 @@ public class Character extends GraphicsProgram implements ActionListener {
 		characImg = new GImage (IMG_FOLDER + BIG_EXT + STAR_EXT + character + "Stand.png", 100, 520); 
 		characImg.setSize(64, 64);
 		starTimer = new Timer (1000, this);
-		
-		feetX = characImg.getX() + 6;
-		feetY = characImg.getY() + characImg.getHeight() - 12;
-		
+				
 		character = program.getProgress().getCurrentCharacter();
 		BIG_EXT = program.getProgress().getCurrentPowerUp();
 		
 		Environment = levelPane.getLevel().getEnvironment();
 		Coins = levelPane.getLevel().getCoins();
 		
-		Feet = new GRectangle(feetX, feetY, characImg.getWidth() - 25, 2);	
+		Feet = new GRectangle(characImg.getX() + 6, characImg.getY() + characImg.getHeight() - 12, characImg.getWidth() - 25, 2);	
+		rightBody = new GRectangle(characImg.getX() + characImg.getWidth() - 7,  characImg.getY() + 6, 2, characImg.getHeight() - 21);	
 	}
 
 	public Character(mainSMR mainSMR, LevelPaneDev levelPaneDev) {
@@ -72,12 +65,6 @@ public class Character extends GraphicsProgram implements ActionListener {
 		
 		Environment = levelPaneDev.getLevel().getEnvironment();
 		Coins = levelPaneDev.getLevel().getCoins();
-		
-		Feet = new GRectangle(feetX, feetY, characImg.getWidth() - 25, 2);	
-	}
-	
-	public void updateBounds() {
-		Feet.setLocation(characImg.getX() + 6, characImg.getY() + characImg.getHeight() - 12);
 	}
 	
 	public void stand() {
@@ -93,12 +80,17 @@ public class Character extends GraphicsProgram implements ActionListener {
 		characImg.setImage(IMG_FOLDER + BIG_EXT + STAR_EXT + character + "Jump.gif");
 	}
 	
+	public void updateBounds() {
+		Feet.setLocation(characImg.getX() + 6, characImg.getY() + characImg.getHeight() - 12);
+		rightBody.setLocation(characImg.getX() + characImg.getWidth() - 7,  characImg.getY() + 8);
+	}
+	
 	public void fallDown() {
 		characImg.move(0, 10);	
 		updateBounds();
 		
 		for (GImage obj : Environment) {
-			if (Feet.getBounds().intersects(obj.getBounds())) {
+			if (Feet.intersects(obj.getBounds())) {
 				levelPane.jumpState = false;
 				fallState = false;
 				characImg.setLocation(characImg.getX(), obj.getY() - 55);
@@ -128,6 +120,15 @@ public class Character extends GraphicsProgram implements ActionListener {
 		if (!jumpUpState) {
 			fallDown();
 		}
+	}
+	
+	public boolean checkCollision() {
+		for (GImage obj : Environment) {
+			if (rightBody.intersects(obj.getBounds())) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public void checkGround() {	
@@ -200,6 +201,9 @@ public class Character extends GraphicsProgram implements ActionListener {
 		return characImg;
 	}
 	
+	public boolean getFallState() {
+		return fallState;
+	}
 	public void setJumpCount(int jumpCount) {
 		this.jumpCount = jumpCount;
 	}
@@ -207,5 +211,8 @@ public class Character extends GraphicsProgram implements ActionListener {
 	public void reset() {
 		characImg.setLocation(100, 520);		
 	}
-		
+	
+	//public GRect getRect() {
+		//return rightBody;
+	//}
 }
