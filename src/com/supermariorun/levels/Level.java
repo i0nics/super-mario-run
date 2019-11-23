@@ -36,15 +36,15 @@ public class Level {
 		for (Pair<Integer, Integer> loop : levelMap.get("PIPE")) {
 			Environment.add(new GImage(IMG_FOLDER + "pipe.png", loop.getKey(), loop.getValue()));
 		}
-	
-		Environment.add(new GImage(IMG_FOLDER + "grassStrip.png", -2, 578));
-		Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png", 2065, 578));
-		Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png",3300, 578));
-		Environment.add(new GImage(IMG_FOLDER + "grassStripShorter.png", 3300, 558));
-		Environment.add(new GImage(IMG_FOLDER + "grassStripShorter.png", 3300, 525));
-		Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png", 4550, 585));
-		Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png",814, 541));
-		Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png",814, 505));
+		for (Pair<Integer, Integer> loop : levelMap.get("GRESSLONG")) {
+			Environment.add(new GImage(IMG_FOLDER + "grassStrip.png", loop.getKey(), loop.getValue()));
+		}
+		for (Pair<Integer, Integer> loop : levelMap.get("GRESS")) {
+			Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png", loop.getKey(), loop.getValue()));
+		}
+		for (Pair<Integer, Integer> loop : levelMap.get("GRESSSHORT")) {
+			Environment.add(new GImage(IMG_FOLDER + "grassStripShorter.png", loop.getKey(), loop.getValue()));
+		}
 		
 		for (Pair<Integer, Integer> loop : levelMap.get("BRICK")) {
 			Environment.add(new GImage(IMG_FOLDER + "brick.png", loop.getKey(), loop.getValue()));
