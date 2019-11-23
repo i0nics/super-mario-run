@@ -80,7 +80,9 @@ public class playerProgress {
 	public void decreaseCoins(int coins) {
 		numCoins -= coins;
 	}
-	
+	public void increaseCoins(int coins) {
+		numCoins += coins;
+	}
 	public void decrementSuperMushrooms() {
 		numSuperMushrooms--;
 	}

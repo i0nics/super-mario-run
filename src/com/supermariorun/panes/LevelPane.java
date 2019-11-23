@@ -1,12 +1,10 @@
 package com.supermariorun.panes;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.Timer;
 
@@ -14,14 +12,9 @@ import com.supermariorun.characters.Character;
 import com.supermariorun.levels.Level;
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
-import com.supermariorun.main.playerProgress;
 
 import acm.graphics.GImage;
-import acm.graphics.GLabel;
-import acm.graphics.GLine;
 import acm.graphics.GObject;
-import acm.graphics.GRect;
-import starter.GButton;
 
 public class LevelPane extends GraphicsPane implements ActionListener{
 	private mainSMR program;
@@ -40,14 +33,14 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private Level level;
 	private Timer timer;
 	private PausePane pausePane;
+	private EndPane EndPane;
 
-	public static final int MS = 70;
+	public static final int MS = 1;
 	public static final String IMG_FOLDER = "LevelPane/";
 
 	public LevelPane(mainSMR mainSMR, String levelNum) throws FileNotFoundException {
 		super();
 		this.program = mainSMR;
-		
 		program = mainSMR;
 		timer = new Timer (MS, this);
 		
@@ -57,7 +50,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 		Character = new Character(program, this);
 		
-		pauseBubble = new GImage(IMG_FOLDER + "bubble.png",30, 10);
+		pauseBubble = new GImage(IMG_FOLDER + "bubble.png", 30, 10);
 		pauseBubble.setSize(100, 100);
 		
 		pauseButton = new GImage(IMG_FOLDER + "pause.png", 55, 27);
@@ -111,12 +104,12 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	}
 	
 	public void moveEnvironment() {
-		Background.move(-10, 0);
+		Background.move(-2, 0);
 		for (GImage move : Environment) {
-			move.move(-10, 0);
+			move.move(-2, 0);
 		}
 		for (GImage move : Coins) {
-			move.move(-10, 0);
+			move.move(-2, 0);
 		}
 	}
 	
@@ -131,7 +124,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	}
 	
 	public void isGameOver() {
-		if (Background.getX() == -4840) {
+		if (Background.getX() == -10000) {
 			timer.stop();
 			Character.stand();
 			isPause = true;
@@ -140,6 +133,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.add(continueEndButton);
 			program.stopLvlOneTrack();
 			program.playCourseClearedTrack();
+			Character.numCoinsCollected();
+			System.out.println(Character.numCoinsCollected());
+			Character.coinsCollected();
 		}
 		
 		if (Character.getCharacter().getY() > 650) {
@@ -200,7 +196,8 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.removeAll();
 			program.stopLvlOneTrack();
 			program.playPipeSound();
-			program.switchToEndPane();
+			EndPane = new EndPane(program, this);
+			program.switchToScreen(EndPane);
 		}
 		
 		else {
@@ -215,5 +212,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 	public Level getLevel() {
 		return level;
+	}
+	
+	public Character getCharacter() {
+		return Character;
 	}
 }

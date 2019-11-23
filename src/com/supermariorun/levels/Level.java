@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.supermariorun.characters.Character;
+import com.supermariorun.enemies.ePiranhaPlant;
+
 import acm.graphics.GImage;
 import javafx.scene.layout.Background;
 import javafx.util.Pair;
@@ -13,12 +15,14 @@ public class Level {
 	private GImage Background;
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;
+	private ePiranhaPlant ePlant;
 	private HashMap<String, ArrayList <Pair<Integer, Integer>>> levelMap;
 	private ScanLevel scanLevel;
 	
 	public Level(String levelNum) throws FileNotFoundException {
 		Environment = new ArrayList <GImage> ();
 		Coins = new ArrayList <GImage> ();
+		ePlant = new ePiranhaPlant(this);
 		scanLevel = new ScanLevel();
 		
 		Background = new GImage (IMG_FOLDER + "Background.png", 0, 0);
@@ -28,7 +32,7 @@ public class Level {
 		Environment.clear();
 		Coins.clear();
 		Background.setLocation(0, 0);
-		
+		ePlant.getPlant().setLocation(1892, 471);
 		for (Pair<Integer, Integer> loop : levelMap.get("PIPE")) {
 			Environment.add(new GImage(IMG_FOLDER + "pipe.png", loop.getKey(), loop.getValue()));
 		}
@@ -61,5 +65,9 @@ public class Level {
 
 	public ArrayList<GImage> getCoins(){
 		return Coins;
+	}
+	
+	public ePiranhaPlant getEnemy() {
+		return ePlant;
 	}
 }

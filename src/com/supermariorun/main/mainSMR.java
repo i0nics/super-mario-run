@@ -42,7 +42,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private InstructionsPane guidePane;
 	private TourPane tourPane;
 	private playerProgress progress;
-	private EndPane EndPane;
+	private LevelPane LevelPane;
 	
     protected static final int FONT_SIZE = 18;
     public static final int WINDOW_WIDTH = 1155;
@@ -68,7 +68,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		powerUpPane = new PowerUpPane (this);
 		characterPane = new CharacterPane (this);
 		guidePane = new InstructionsPane(this);
-		EndPane = new EndPane(this);
+		
 		switchToStart();
 	}
 	
@@ -107,10 +107,6 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 
 	public void switchToCharacter() {
 		switchToScreen(characterPane);
-	}
-		
-	public void switchToEndPane() {
-		switchToScreen(EndPane);
 	}
 	
 	public void playStartSound() {
