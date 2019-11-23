@@ -131,7 +131,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	}
 	
 	public void isGameOver() {
-		if (Background.getX() == -4500) {
+		if (Background.getX() == -10000) {
 			timer.stop();
 			Character.stand();
 			isPause = true;
