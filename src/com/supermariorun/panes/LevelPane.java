@@ -27,6 +27,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private LosePane losePane;
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;	
+	private ArrayList <GImage> Plants;
 	public boolean jumpState;
 	private boolean isPause = false;
 	private Character Character;
@@ -73,6 +74,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		Background = level.getBackground();
 		Coins = level.getCoins();
 		Environment = level.getEnvironment();
+		Plants = level.getPlant();
 		Character.reset();
 		isPause = false;
 		
@@ -109,6 +111,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			move.move(-2, 0);
 		}
 		for (GImage move : Coins) {
+			move.move(-2, 0);
+		}
+		for (GImage move : Plants) {
 			move.move(-2, 0);
 		}
 	}
@@ -166,7 +171,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		program.add(pauseButton);
 		program.add(pauseBubble);
 		program.add(Character.getRect());
-
+		for (GImage e: Plants) {
+			program.add(e);
+		}
 		for (GImage e: Environment) {
 			program.add(e);
 		}

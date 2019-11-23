@@ -15,6 +15,7 @@ public class Level {
 	private GImage Background;
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;
+	private ArrayList <GImage> Plants;
 	private ePiranhaPlant ePlant;
 	private HashMap<String, ArrayList <Pair<Integer, Integer>>> levelMap;
 	private ScanLevel scanLevel;
@@ -22,6 +23,7 @@ public class Level {
 	public Level(String levelNum) throws FileNotFoundException {
 		Environment = new ArrayList <GImage> ();
 		Coins = new ArrayList <GImage> ();
+		Plants = new ArrayList<GImage> ();
 		ePlant = new ePiranhaPlant(this);
 		scanLevel = new ScanLevel();
 		
@@ -31,20 +33,20 @@ public class Level {
 	public void setUpLevel() {
 		Environment.clear();
 		Coins.clear();
+		Plants.clear();
 		Background.setLocation(0, 0);
-		ePlant.getPlant().setLocation(1892, 471);
+		
 		for (Pair<Integer, Integer> loop : levelMap.get("PIPE")) {
 			Environment.add(new GImage(IMG_FOLDER + "pipe.png", loop.getKey(), loop.getValue()));
 		}
-		for (Pair<Integer, Integer> loop : levelMap.get("GRESSLONG")) {
-			Environment.add(new GImage(IMG_FOLDER + "grassStrip.png", loop.getKey(), loop.getValue()));
-		}
-		for (Pair<Integer, Integer> loop : levelMap.get("GRESS")) {
-			Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png", loop.getKey(), loop.getValue()));
-		}
-		for (Pair<Integer, Integer> loop : levelMap.get("GRESSSHORT")) {
-			Environment.add(new GImage(IMG_FOLDER + "grassStripShorter.png", loop.getKey(), loop.getValue()));
-		}
+		Environment.add(new GImage(IMG_FOLDER + "grassStrip.png", -2, 578));
+		Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png", 2065, 578));
+		Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png",3300, 578));
+		Environment.add(new GImage(IMG_FOLDER + "grassStripShorter.png", 3300, 558));
+		Environment.add(new GImage(IMG_FOLDER + "grassStripShorter.png", 3300, 525));
+		Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png", 4550, 585));
+		Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png",814, 541));
+		Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png",814, 505));
 		
 		for (Pair<Integer, Integer> loop : levelMap.get("BRICK")) {
 			Environment.add(new GImage(IMG_FOLDER + "brick.png", loop.getKey(), loop.getValue()));
@@ -53,7 +55,11 @@ public class Level {
 		for (Pair<Integer, Integer> loop : levelMap.get("COIN")) {
 			Coins.add(new GImage(IMG_FOLDER + "coin.gif", loop.getKey(), loop.getValue()));
 		}
+		for (Pair<Integer, Integer> loop : levelMap.get("PLANT")) {
+			Plants.add(new GImage(IMG_FOLDER + "pPlant.png", loop.getKey(), loop.getValue()));
+		}
 	}
+		
 
 	public GImage getBackground() {
 		return Background;
@@ -67,7 +73,8 @@ public class Level {
 		return Coins;
 	}
 	
-	public ePiranhaPlant getEnemy() {
-		return ePlant;
+	
+	public ArrayList<GImage> getPlant(){
+		return Plants;
 	}
 }
