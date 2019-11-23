@@ -1,12 +1,10 @@
 package com.supermariorun.panes;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.Timer;
 
@@ -14,14 +12,9 @@ import com.supermariorun.characters.Character;
 import com.supermariorun.levels.Level;
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
-import com.supermariorun.main.playerProgress;
 
 import acm.graphics.GImage;
-import acm.graphics.GLabel;
-import acm.graphics.GLine;
 import acm.graphics.GObject;
-import acm.graphics.GRect;
-import starter.GButton;
 
 public class LevelPane extends GraphicsPane implements ActionListener{
 	private mainSMR program;
