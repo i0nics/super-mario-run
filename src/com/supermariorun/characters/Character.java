@@ -153,6 +153,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 		for (Iterator<GImage> it = Coins.iterator(); it.hasNext(); ) {
 			GImage img = it.next();
 			if (characImg.getBounds().intersects(img.getBounds())) {
+				program.stopCoinEffect();
 				program.playCoinEffect();
 				program.remove(img);
 				it.remove();
