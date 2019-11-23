@@ -193,6 +193,10 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		audio.playSound(MUSIC_FOLDER, COIN_EFFECT);
 	}
 	
+	public void stopCoinEffect() {
+		audio.stopSound(MUSIC_FOLDER, COIN_EFFECT);
+	}
+	
 	public void playCourseClearedTrack() {
 		audio.playSound(MUSIC_FOLDER, COURSECLEARED_EFFECT);
 	}
