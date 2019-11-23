@@ -30,6 +30,8 @@ public class Character extends GraphicsProgram implements ActionListener {
 	private GRectangle Feetr;
 	private GRectangle rightBodyr;
 	private GRectangle Headr;
+	private int numCoins = 0;
+	private int totalCoins = 0;
 	public static final String IMG_FOLDER = "character/";
 	private static String STAR_EXT = "";
 	private String character = "mario";
@@ -154,11 +156,18 @@ public class Character extends GraphicsProgram implements ActionListener {
 				program.playCoinEffect();
 				program.remove(img);
 				it.remove();
-				program.getProgress().incrementCoins();
+				numCoins++;
 			}
 		}
 	}
-
+	
+	public int numCoinsCollected() {
+		return numCoins;
+	}
+	
+	public void coinsCollected() {
+	program.getProgress().increaseCoins(numCoins);
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		starCount++;

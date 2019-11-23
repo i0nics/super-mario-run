@@ -40,14 +40,14 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private Level level;
 	private Timer timer;
 	private PausePane pausePane;
+	private EndPane EndPane;
 
-	public static final int MS = 70;
+	public static final int MS = 10;
 	public static final String IMG_FOLDER = "LevelPane/";
 
 	public LevelPane(mainSMR mainSMR, String levelNum) throws FileNotFoundException {
 		super();
 		this.program = mainSMR;
-		
 		program = mainSMR;
 		timer = new Timer (MS, this);
 		
@@ -140,6 +140,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.add(continueEndButton);
 			program.stopLvlOneTrack();
 			program.playCourseClearedTrack();
+			Character.numCoinsCollected();
+			System.out.println(Character.numCoinsCollected());
+			Character.coinsCollected();
 		}
 		
 		if (Character.getCharacter().getY() > 650) {
@@ -200,7 +203,8 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.removeAll();
 			program.stopLvlOneTrack();
 			program.playPipeSound();
-			program.switchToEndPane();
+			EndPane = new EndPane(program, this);
+			program.switchToScreen(EndPane);
 		}
 		
 		else {
@@ -215,5 +219,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 	public Level getLevel() {
 		return level;
+	}
+	
+	public Character getCharacter() {
+		return Character;
 	}
 }
