@@ -36,7 +36,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private PausePane pausePane;
 	private EndPane EndPane;
 
-	public static final int MS = 25;
+	public static final int MS = 30;
 	public static final String IMG_FOLDER = "LevelPane/";
 
 	public LevelPane(mainSMR mainSMR, String levelNum) throws FileNotFoundException {
@@ -106,15 +106,15 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	}
 	
 	public void moveEnvironment() {
-		Background.move(-2, 0);
+		Background.move(-8, 0);
 		for (GImage move : Environment) {
-			move.move(-2, 0);
+			move.move(-8, 0);
 		}
 		for (GImage move : Coins) {
-			move.move(-2, 0);
+			move.move(-8, 0);
 		}
 		for (GImage move : Plants) {
-			move.move(-2, 0);
+			move.move(-8, 0);
 		}
 	}
 	

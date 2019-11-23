@@ -39,12 +39,15 @@ public class Level {
 		for (Pair<Integer, Integer> loop : levelMap.get("PIPE")) {
 			Environment.add(new GImage(IMG_FOLDER + "pipe.png", loop.getKey(), loop.getValue()));
 		}
+		
 		for (Pair<Integer, Integer> loop : levelMap.get("GRASSLONG")) {
  			Environment.add(new GImage(IMG_FOLDER + "grassStrip.png", loop.getKey(), loop.getValue()));
  		}
+		
  		for (Pair<Integer, Integer> loop : levelMap.get("GRASS")) {
  			Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png", loop.getKey(), loop.getValue()));
  		}
+ 		
  		for (Pair<Integer, Integer> loop : levelMap.get("GRASSSHORT")) {
  			Environment.add(new GImage(IMG_FOLDER + "grassStripShorter.png", loop.getKey(), loop.getValue()));
  		}
@@ -56,6 +59,7 @@ public class Level {
 		for (Pair<Integer, Integer> loop : levelMap.get("COIN")) {
 			Coins.add(new GImage(IMG_FOLDER + "coin.gif", loop.getKey(), loop.getValue()));
 		}
+		
 		for (Pair<Integer, Integer> loop : levelMap.get("PLANT")) {
 			Plants.add(new GImage(IMG_FOLDER + "pPlant.png", loop.getKey(), loop.getValue()));
 		}

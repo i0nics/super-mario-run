@@ -95,8 +95,8 @@ public class Character extends GraphicsProgram implements ActionListener {
 	}
 	
 	public void fallDown() {
-		characImg.move(0, 3);	
-		Feet.move(0, 3);
+		characImg.move(0, 10);	
+		Feet.move(0, 10);
 		for (GImage obj : Environment) {
 			if (leftFoot == obj || rightFoot == obj) {
 				levelPane.jumpState = false;
@@ -112,18 +112,18 @@ public class Character extends GraphicsProgram implements ActionListener {
 		
 		jumpUpState = false;
 			
-		if (jumpCount >=  0 && jumpCount < 40) {
+		if (jumpCount >=  0 && jumpCount < 20) {
 			jumpUpState = true;
 			jumpCount++;
 		}
 			
-		if  (jumpCount > 40) {
+		if  (jumpCount > 20) {
 			jumpUpState = false;
 		}
 	
 		if (jumpUpState) {		
-			characImg.move(0, -3);
-			Feet.move(0, -3);
+			characImg.move(0, -10);
+			Feet.move(0, -10);
 		}
 			
 		if (!jumpUpState) {
