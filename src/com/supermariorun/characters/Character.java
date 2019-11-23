@@ -137,11 +137,10 @@ public class Character extends GraphicsProgram implements ActionListener {
 		
 		characImg.move(0, 20);	
 		fallState = true;
-		for (GImage obj : Environment) {
-			if (leftFoot == obj || rightFoot == obj) {
-				fallState = false;
-				break;
-			}
+		
+		if (leftFoot== null && rightFoot == null) {
+			fallState = false;
+
 		}
 		
 		if (fallState) {
