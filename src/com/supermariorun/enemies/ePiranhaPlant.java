@@ -29,14 +29,13 @@ public class ePiranhaPlant implements ActionListener {
 	private GImage pPlant;
 	private ArrayList <GImage> Environment;
 	
-
+	
 	public ePiranhaPlant(Level level) {
 		
 	//	level = new LevelOne();
-		plantTimer = new Timer(500, this);
+		plantTimer = new Timer(50, this);
 		pPlant = new GImage(IMG_FOLDER + "pPlant.png", 100, 470);
 		pPlant.setSize(1000, 1000);
-
 		Environment = level.getEnvironment();
 	}
 

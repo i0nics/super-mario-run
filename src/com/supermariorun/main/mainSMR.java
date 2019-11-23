@@ -22,6 +22,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	public static final String MUSIC_FOLDER = "sounds";
 	private static final String COIN_EFFECT = "coin.wav";
 	private static final String COURSECLEARED_EFFECT = "courseCleared.mp3";
+	private static final String GAMEOVER_TRACK = "gameOver.wav";
 	private static final String GUIDE_TRACK = "guideTrack.mp3";
 	private static final String JUMP_EFFECT = "jump.wav";
 	private static final String LVL1_TRACK = "LevelOne.mp3";
@@ -199,6 +200,10 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	
 	public void playCourseClearedTrack() {
 		audio.playSound(MUSIC_FOLDER, COURSECLEARED_EFFECT);
+	}
+	
+	public void playGameOverSound() {
+		audio.playSound(MUSIC_FOLDER, GAMEOVER_TRACK);
 	}
 	
 	public void init() {
