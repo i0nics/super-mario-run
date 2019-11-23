@@ -43,7 +43,7 @@ public class Level {
 			Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png", loop.getKey(), loop.getValue()));
 		}
 		for (Pair<Integer, Integer> loop : levelMap.get("GRESSSHORT")) {
-		Environment.add(new GImage(IMG_FOLDER + "grassStripShorter.png", loop.getKey(), loop.getValue()));
+			Environment.add(new GImage(IMG_FOLDER + "grassStripShorter.png", loop.getKey(), loop.getValue()));
 		}
 		
 		for (Pair<Integer, Integer> loop : levelMap.get("BRICK")) {
