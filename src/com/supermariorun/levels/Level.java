@@ -78,7 +78,6 @@ public class Level {
 		return Coins;
 	}
 	
-	
 	public ArrayList<GImage> getPlant(){
 		return Plants;
 	}

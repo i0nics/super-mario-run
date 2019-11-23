@@ -148,8 +148,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			}
 				buyMushroom.setImage(IMG_FOLDER + "equippedButton.png");
 				buyMushroom.setSize(labelWidth*1.3, labelHeight*1.3);
-				progress.setCurrentPowerUp("Mushroom");
-			
+				progress.setCurrentPowerUp("big");
 		}
 		
 		if (!progress.isMushroomPurchased() && (obj == MushroomBubble || obj == buyMushroom)) {

@@ -22,18 +22,16 @@ public class Character extends GraphicsProgram implements ActionListener {
 	private LevelPane levelPane;
 	private LevelPaneDev levelPaneDev;
 	private GImage characImg;
-	private GObject leftFoot;
-	private GObject rightFoot;
-	private GRect Feet;
+	private GRectangle Feet;
 	private GRect rightBody;
 	private GRect Head;
-	private GRectangle Feetr;
 	private GRectangle rightBodyr;
 	private GRectangle Headr;
 	private int numCoins = 0;
 	private int totalCoins = 0;
 	public static final String IMG_FOLDER = "character/";
 	private static String STAR_EXT = "";
+	private static String BIG_EXT = "";
 	private String character = "mario";
 	public boolean jumpUpState;
 	public boolean fallState = false;
@@ -42,34 +40,114 @@ public class Character extends GraphicsProgram implements ActionListener {
 	private Timer starTimer;
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;
+	private double feetX;
+	private double feetY;
 	
 	public Character(mainSMR mainSMR, LevelPane levelPane) {
 		program = mainSMR;
 		this.levelPane = levelPane;
 		
-		character = program.getProgress().getCurrentCharacter();
-		characImg = new GImage (IMG_FOLDER + STAR_EXT + character + "Stand.png", 100, 520); 
+		characImg = new GImage (IMG_FOLDER + BIG_EXT + STAR_EXT + character + "Stand.png", 100, 520); 
 		characImg.setSize(64, 64);
 		starTimer = new Timer (1000, this);
+		
+		feetX = characImg.getX() + 6;
+		feetY = characImg.getY() + characImg.getHeight() - 12;
+		
+		character = program.getProgress().getCurrentCharacter();
+		BIG_EXT = program.getProgress().getCurrentPowerUp();
 		
 		Environment = levelPane.getLevel().getEnvironment();
 		Coins = levelPane.getLevel().getCoins();
 		
-		Feet = new GRect(characImg.getX() + 5, characImg.getY() + characImg.getHeight(), characImg.getWidth() - 20, 5);	
+		Feet = new GRectangle(feetX, feetY, characImg.getWidth() - 25, 2);	
 	}
 
 	public Character(mainSMR mainSMR, LevelPaneDev levelPaneDev) {
 		program = mainSMR;
 		this.levelPaneDev = levelPaneDev;
-		characImg = new GImage (IMG_FOLDER  + STAR_EXT + character + "Stand.png", 100, 520); 
+		characImg = new GImage (IMG_FOLDER + BIG_EXT + STAR_EXT + character + "Stand.png", 100, 520); 
 		characImg.setSize(64, 64);
 		
 		Environment = levelPaneDev.getLevel().getEnvironment();
 		Coins = levelPaneDev.getLevel().getCoins();
 		
-		Feet = new GRect(characImg.getX() + 5, characImg.getY() + characImg.getHeight(), characImg.getWidth() - 20, 5);	
+		Feet = new GRectangle(feetX, feetY, characImg.getWidth() - 25, 2);	
+	}
+	
+	public void updateBounds() {
+		Feet.setLocation(characImg.getX() + 6, characImg.getY() + characImg.getHeight() - 12);
+	}
+	
+	public void stand() {
+		characImg.setImage(IMG_FOLDER + BIG_EXT + STAR_EXT + character + "Stand.png");
+		characImg.setSize(54, 57);
 	}
 
+	public void run() {
+		characImg.setImage(IMG_FOLDER + BIG_EXT + STAR_EXT + character + "Run.gif");
+	}
+	
+	public void setJumpImage() {
+		characImg.setImage(IMG_FOLDER + BIG_EXT + STAR_EXT + character + "Jump.gif");
+	}
+	
+	public void fallDown() {
+		characImg.move(0, 10);	
+		updateBounds();
+		
+		for (GImage obj : Environment) {
+			if (Feet.getBounds().intersects(obj.getBounds())) {
+				levelPane.jumpState = false;
+				fallState = false;
+				characImg.setLocation(characImg.getX(), obj.getY() - 55);
+				updateBounds();
+				run();
+			}
+		}
+	}
+	
+	public void jump() {
+		jumpUpState = false;
+			
+		if (jumpCount >=  0 && jumpCount < 10) {
+			jumpUpState = true;
+			jumpCount++;
+		}
+			
+		if  (jumpCount > 10) {
+			jumpUpState = false;
+		}
+	
+		if (jumpUpState) {		
+			characImg.move(0, -10);
+			updateBounds();
+		}
+			
+		if (!jumpUpState) {
+			fallDown();
+		}
+	}
+	
+	public void checkGround() {	
+		characImg.move(0, 10);
+		updateBounds();
+		fallState = true;
+		
+		//if (leftFoot== null && rightFoot == null) {
+		//	fallState = false;
+		//}
+		
+		if (fallState) {
+			fallDown();
+		}
+	}
+	
+	public void resetPowerUp() {
+		BIG_EXT = "";
+		run();
+	}
+	
 	public void setStarMode() {
 		STAR_EXT = "star";
 		starTimer.start();
@@ -80,72 +158,6 @@ public class Character extends GraphicsProgram implements ActionListener {
 	public void pauseStarMode() {
 		starTimer.start();
 		program.pauseStarTrack();
-	}
-	
-	public void stand() {
-		characImg.setImage(IMG_FOLDER  + STAR_EXT + character + "Stand.png");
-	}
-
-	public void run() {
-		characImg.setImage(IMG_FOLDER  + STAR_EXT + character + "Run.gif");
-	}
-	
-	public void setJumpImage() {
-		characImg.setImage(IMG_FOLDER  + STAR_EXT + character + "Jump.gif");
-	}
-	
-	public void fallDown() {
-		characImg.move(0, 10);	
-		Feet.move(0, 10);
-		for (GImage obj : Environment) {
-			if (leftFoot == obj || rightFoot == obj) {
-				levelPane.jumpState = false;
-				fallState = false;
-				run();
-			}
-		}
-	}
-	
-	public void jump() {
-		leftFoot = program.getElementAt(characImg.getX() + 20, characImg.getY() + characImg.getHeight() - 10);
-		rightFoot = program.getElementAt(characImg.getX() + 60, characImg.getY() + characImg.getHeight() - 10);
-		
-		jumpUpState = false;
-			
-		if (jumpCount >=  0 && jumpCount < 20) {
-			jumpUpState = true;
-			jumpCount++;
-		}
-			
-		if  (jumpCount > 20) {
-			jumpUpState = false;
-		}
-	
-		if (jumpUpState) {		
-			characImg.move(0, -10);
-			Feet.move(0, -10);
-		}
-			
-		if (!jumpUpState) {
-			fallDown();
-		}
-	}
-	
-	public void checkGround() {
-		leftFoot = program.getElementAt(characImg.getX() + 20, characImg.getY() + 80);
-		rightFoot = program.getElementAt(characImg.getX() + 60, characImg.getY() + 80);
-		
-		characImg.move(0, 20);	
-		fallState = true;
-		
-		if (leftFoot== null && rightFoot == null) {
-			fallState = false;
-
-		}
-		
-		if (fallState) {
-			fallDown();
-		}
 	}
 	
 	public void collectCoin() {
@@ -159,14 +171,6 @@ public class Character extends GraphicsProgram implements ActionListener {
 				numCoins++;
 			}
 		}
-	}
-	
-	public int numCoinsCollected() {
-		return numCoins;
-	}
-	
-	public void coinsCollected() {
-	program.getProgress().increaseCoins(numCoins);
 	}
 	
 	@Override
@@ -185,14 +189,18 @@ public class Character extends GraphicsProgram implements ActionListener {
 		}
 	}
 	
+	public int numCoinsCollected() {
+		return numCoins;
+	}
+	
+	public void coinsCollected() {
+		program.getProgress().increaseCoins(numCoins);
+	}
+	
 	public GImage getCharacter(){
 		return characImg;
 	}
 	
-	public GRect getRect(){
-		return Feet;
-	}
-
 	public void setJumpCount(int jumpCount) {
 		this.jumpCount = jumpCount;
 	}
