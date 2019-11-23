@@ -36,7 +36,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private PausePane pausePane;
 	private EndPane EndPane;
 
-	public static final int MS = 1;
+	public static final int MS = 25;
 	public static final String IMG_FOLDER = "LevelPane/";
 
 	public LevelPane(mainSMR mainSMR, String levelNum) throws FileNotFoundException {
