@@ -70,12 +70,14 @@ public class PausePane extends GraphicsPane {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
 	    if(obj == resumeButton) {
+	    	program.playButtonEffect();
 			program.playResumeSound();
 			level.Resume();
 			hideContents();
 		}
 		
 		else if(obj == retryButton) {
+			program.playButtonEffect();
 			program.stopLvlOneTrack();
 			hideContents();
 			level.hideContents();
@@ -83,6 +85,7 @@ public class PausePane extends GraphicsPane {
 		}
 		
 		else if(obj == quitButton) {
+			program.playButtonEffect();
 			program.stopLvlOneTrack();
 			program.playTourSound();
 			program.switchToTour();

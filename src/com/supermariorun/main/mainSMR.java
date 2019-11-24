@@ -20,6 +20,7 @@ import com.supermariorun.panes.EndPane;
 
 public class mainSMR extends GraphicsApplication implements ActionListener{
 	public static final String MUSIC_FOLDER = "sounds";
+	private static final String BUTTON_EFFECT = "buttonEffect.mp3";
 	private static final String COIN_EFFECT = "coin.wav";
 	private static final String COURSECLEARED_EFFECT = "courseCleared.mp3";
 	private static final String GAMEOVER_TRACK = "gameOver.wav";
@@ -118,6 +119,10 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	
 	public void stopStartSound() {
 		audio.stopSound(MUSIC_FOLDER, START_TRACK);
+	}
+	
+	public void playButtonEffect() {
+		audio.playSound(MUSIC_FOLDER, BUTTON_EFFECT, true);
 	}
 	
 	public void playMenuSound() {

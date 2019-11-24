@@ -46,8 +46,8 @@ public class EndPane extends GraphicsPane {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
 		if(obj == next) {
+			program.playButtonEffect();
 			program.playTourSound();
-			program.playPipeSound();
 			program.switchToTour();
 		}
 	}

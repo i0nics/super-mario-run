@@ -94,12 +94,12 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
 		if (obj == PowerUpButton || obj == powerLabel) {
-			program.playPipeSound();
+			program.playButtonEffect();
 			program.switchToPowerUp();
 		}
 		
 		if (obj == CharacterButton || obj == characterLabel) {
-			program.playPipeSound();
+			program.playButtonEffect();
 			program.switchToCharacter();
 		}
 			

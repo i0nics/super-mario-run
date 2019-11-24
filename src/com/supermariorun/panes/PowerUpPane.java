@@ -131,6 +131,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		}
 		
 		if(progress.isStarPurchased() && (obj == StarBubble || obj == buyStar)){
+			program.playButtonEffect();
 			if (progress.isMushroomPurchased()) {
 				buyMushroom.setImage(IMG_FOLDER + "equipButton.png");
 				buyMushroom.setSize(labelWidth*1.3, labelHeight*1.3);
@@ -142,6 +143,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		}
 		
 		if(progress.isMushroomPurchased() && (obj == MushroomBubble || obj == buyMushroom)){
+			program.playButtonEffect();
 			if (progress.isStarPurchased()) {
 				buyStar.setImage(IMG_FOLDER + "equipButton.png");
 				buyStar.setSize(labelWidth*1.3, labelHeight*1.3);
@@ -152,12 +154,14 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		}
 		
 		if (!progress.isMushroomPurchased() && (obj == MushroomBubble || obj == buyMushroom)) {
+			program.playButtonEffect();
 			mushroomTransaction();
 			buyMushroom.setImage(IMG_FOLDER + "equipButton.png");
 			buyMushroom.setSize(labelWidth*1.3, labelHeight*1.3);
 		}
 
 		if (!progress.isStarPurchased() && (obj == StarBubble || obj == buyStar)){
+			program.playButtonEffect();
 			starTransaction();
 			buyStar.setImage(IMG_FOLDER + "equipButton.png");
 			buyStar.setSize(labelWidth*1.3, labelHeight*1.3);
