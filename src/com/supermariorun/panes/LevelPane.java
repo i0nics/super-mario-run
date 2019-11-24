@@ -28,6 +28,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;	
 	private ArrayList <GImage> Plants;
+	private ArrayList <GImage> Goombas;
 	public boolean jumpState;
 	private boolean isPause = false;
 	private Character Character;
@@ -76,6 +77,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		Coins = level.getCoins();
 		Environment = level.getEnvironment();
 		Plants = level.getPlant();
+		Goombas = level.getGoombas();
 		Character.reset();
 		isPause = false;
 		
@@ -111,6 +113,12 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		for (GImage move : Environment) { move.move(-8, 0); }
 		for (GImage move : Coins) { move.move(-8, 0); }
 		for (GImage move : Plants) { move.move(-8, 0); }
+		for (GImage move : Goombas) { 
+			move.move(-8,  0);
+			if (move.getX() > 0 && move.getX() < program.getWidth()) {
+				move.move(-1, 0);
+			}
+		}
 	}
 	
 	public void playTrack() {
@@ -149,6 +157,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		moveEnvironment();
 		Character.collectCoin();
+		Character.checkGoombaCollision();
 		isGameOver();
 		if (jumpState) { Character.jump(); }
 		if(!jumpState) { 
@@ -209,6 +218,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		//program.add(Character.getRect());
 		
 		for (GImage e: Plants) { program.add(e); }
+		for (GImage e: Goombas) { program.add(e); }
 		for (GImage e: Environment) { program.add(e); }
 		for (GImage e: Coins) { program.add(e); }
 	}

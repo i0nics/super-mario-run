@@ -16,6 +16,7 @@ public class Level {
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;
 	private ArrayList <GImage> Plants;
+	private ArrayList <GImage> Goombas;
 	private ePiranhaPlant ePlant;
 	private HashMap<String, ArrayList <Pair<Integer, Integer>>> levelMap;
 	private ScanLevel scanLevel;
@@ -24,6 +25,7 @@ public class Level {
 		Environment = new ArrayList <GImage> ();
 		Coins = new ArrayList <GImage> ();
 		Plants = new ArrayList<GImage> ();
+		Goombas = new ArrayList<GImage> ();
 		ePlant = new ePiranhaPlant(this);
 		scanLevel = new ScanLevel();
 		
@@ -63,6 +65,9 @@ public class Level {
 		for (Pair<Integer, Integer> loop : levelMap.get("PLANT")) {
 			Plants.add(new GImage(IMG_FOLDER + "pPlant.png", loop.getKey(), loop.getValue()));
 		}
+		for (Pair<Integer, Integer> loop : levelMap.get("GOOMBA")) {
+			Goombas.add(new GImage(IMG_FOLDER + "goomba.png", loop.getKey(), loop.getValue()));
+		}
 	}
 		
 	public GImage getBackground() {
@@ -79,5 +84,9 @@ public class Level {
 	
 	public ArrayList<GImage> getPlant(){
 		return Plants;
+	}
+	
+	public ArrayList<GImage> getGoombas() {
+		return Goombas;
 	}
 }
