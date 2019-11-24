@@ -43,7 +43,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private InstructionsPane guidePane;
 	private TourPane tourPane;
 	private playerProgress progress;
-	private LevelPane LevelPane;
+	private LevelPane levelPane;
 	
     protected static final int FONT_SIZE = 18;
     public static final int WINDOW_WIDTH = 1155;
@@ -83,7 +83,9 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	}
 	
 	public void switchToLevel(String lvlNum) throws FileNotFoundException {
-		switchToScreen(new LevelPane (this, lvlNum));
+		levelPane = null;
+		levelPane = new LevelPane (this, lvlNum);
+		switchToScreen(levelPane);
 	}
 	
 	public void switchToLevelDev(int levelNum) throws FileNotFoundException {
