@@ -31,14 +31,14 @@ public class EndPane extends GraphicsPane {
 		this.levelPane = level;
 		final double mainWidth = program.getWidth();
 		final double mainHeight = program.getHeight();
-		background = new GImage(IMG_FOLDER + "tourBack.png", 0, 0);
+		background = new GImage(IMG_FOLDER + "endBack.png", 0, 0);
 		background.setSize(mainWidth, mainHeight);
 		next = new GImage(IMG_FOLDER + "continueButton.png", 450, 500);
 		next.setSize(200, 120);
 		coinCount = new GLabel("Coins: " + level.getCharacter().numCoinsCollected());
 		coinCount.setFont(program.marioFont.deriveFont(40f));
 		coinCount.setColor(Color.RED);
-		coinCount.setLocation(500, 500);
+		coinCount.setLocation(485, 300);
 	}
 	
 
