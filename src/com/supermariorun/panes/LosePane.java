@@ -44,14 +44,14 @@ public class LosePane extends GraphicsPane {
 		
 		if(obj == quitButton) {
 			program.playButtonEffect();
-			program.stopLvlOneTrack();
+			program.stopLvlOneTrack(level.getLevelNum());
 			program.playTourSound();
 			program.switchToTour();
 		}
 		
 		if(obj == retryButton) {
 			program.playButtonEffect();
-			program.stopLvlOneTrack();
+			program.stopLvlOneTrack(level.getLevelNum());
 			hideContents();
 			program.setScreen(level);
 			level.hideContents();

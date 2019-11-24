@@ -34,10 +34,11 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private PausePane pausePane;
 	private EndPane EndPane;
 	private boolean isRestartTimer = false;
-	public boolean jumpState = false;
+	private boolean jumpState = false;
 	private boolean isPause = false;
 	private boolean isMousePressed = false;
 	private int mouseCounter = 0;
+	private String lvlNum;
 
 	public static final int MS = 30;
 	public static final String IMG_FOLDER = "LevelPane/";
@@ -51,6 +52,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		pausePane = new PausePane(program, this);
 		
 		level = new Level(levelNum);
+		this.lvlNum = levelNum;
 	
 		Character = new Character(program, this);
 		
@@ -101,7 +103,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	    timer.stop();
 		Character.stand();
 		program.playPauseSound();
-		program.pauseLvlOneTrack();
+		program.pauseLvlOneTrack(lvlNum);
 		
 		if (program.getProgress().getCurrentPowerUp() == "star") {
 			Character.pauseStarMode();
@@ -117,7 +119,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 	public void playTrack() {
 		if (program.getProgress().getCurrentPowerUp().equals("")) {
-			program.playLvlOneTrack();
+			program.playLvlOneTrack(lvlNum);
 		}
 		
 		else {
@@ -133,7 +135,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.add(greyBack);
 			program.add(levelClear);
 			program.add(continueEndButton);
-			program.stopLvlOneTrack();
+			program.stopLvlOneTrack(lvlNum);
 			program.playCourseClearedTrack();
 			Character.numCoinsCollected();
 			Character.coinsCollected();
@@ -141,7 +143,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		
 		if (Character.getCharacter().getY() > 650) {
 			timer.stop();
-			program.stopLvlOneTrack();
+			program.stopLvlOneTrack(lvlNum);
 			program.playGameOverSound();
 			program.switchToScreen(losePane);
 		}
@@ -188,7 +190,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		
 		else if(obj == continueEndButton) {
 			program.removeAll();
-			program.stopLvlOneTrack();
+			program.stopLvlOneTrack(lvlNum);
 			program.playButtonEffect();
 			EndPane = new EndPane(program, this);
 			program.switchToScreen(EndPane);
@@ -231,8 +233,16 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		program.removeAll();
 	}
 	
+	public void setJumpState() {
+		jumpState = false;
+	}
+	
 	public Level getLevel() {
 		return level;
+	}
+	
+	public String getLevelNum() {
+		return lvlNum;
 	}
 	
 	public Character getCharacter() {

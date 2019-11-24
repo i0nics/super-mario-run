@@ -50,12 +50,13 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 	public static final String IMG_FOLDER = "LevelPane/";
 	private Character Character;
 	private Timer mouseTimer;
+	private String lvlNum;
 
 
-	public LevelPaneDev(mainSMR mainSMR, int levelNum) throws FileNotFoundException {
+	public LevelPaneDev(mainSMR mainSMR, String levelNum) throws FileNotFoundException {
 		super();
 		program = mainSMR;
-		
+		lvlNum = levelNum;
 		spaceWidth = program.getWidth() / 30;
 		spaceHeight = program.getHeight() / 18;
 		
@@ -123,7 +124,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 
 	public void Pause() {
 		program.playPauseSound();
-		program.pauseLvlOneTrack();
+		program.pauseLvlOneTrack(lvlNum);
 	}
 
 	@Override

@@ -88,7 +88,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	public void detectObj(String performAction) {
 		for (GImage obj : Environment) {
 			if (performAction.equals("Fall") && Feet.intersects(obj.getBounds())) {
-				levelPane.jumpState = false;
+				levelPane.setJumpState();
 				fallState = false;
 				jumpCount = 0;
 				characImg.setLocation(characImg.getX(), obj.getY() - 55);
@@ -161,7 +161,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	public void setStarMode() {
 		POWERUP_EXT = "star";
 		starTimer.start();
-		program.stopLvlOneTrack();
+		program.stopLvlOneTrack(levelPane.getLevelNum());
 		program.playStarTrack();
 	}
 	
@@ -194,7 +194,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 			program.getProgress().clearCurrentPowerUp();
 			program.getProgress().resetStarPurchased();
 			program.stopStarTrack();
-			program.playLvlOneTrack();
+			program.playLvlOneTrack(levelPane.getLevelNum());
 			run();
 		}
 	}

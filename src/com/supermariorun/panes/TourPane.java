@@ -147,7 +147,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 			program.playPipeSound();
 			program.stopTourSound();
 			try {
-				program.switchToLevelDev(1);
+				program.switchToLevelDev("One");
 			} catch (FileNotFoundException e1) {
 				e1.printStackTrace();
 			}

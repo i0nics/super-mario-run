@@ -78,7 +78,7 @@ public class PausePane extends GraphicsPane {
 		
 		else if(obj == retryButton) {
 			program.playButtonEffect();
-			program.stopLvlOneTrack();
+			program.stopLvlOneTrack(level.getLevelNum());
 			hideContents();
 			level.hideContents();
 			level.showContents();
@@ -86,7 +86,7 @@ public class PausePane extends GraphicsPane {
 		
 		else if(obj == quitButton) {
 			program.playButtonEffect();
-			program.stopLvlOneTrack();
+			program.stopLvlOneTrack(level.getLevelNum());
 			program.playTourSound();
 			program.switchToTour();
 		}
