@@ -11,7 +11,7 @@ import javafx.scene.layout.Background;
 import javafx.util.Pair;
 
 public class Level {
-	public static final String IMG_FOLDER = "LevelImages/";
+	private static String IMG_FOLDER;
 	private GImage Background;
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;
@@ -21,13 +21,14 @@ public class Level {
 	private ScanLevel scanLevel;
 	
 	public Level(String levelNum) throws FileNotFoundException {
+		IMG_FOLDER = "level" + levelNum + "/";
 		Environment = new ArrayList <GImage> ();
 		Coins = new ArrayList <GImage> ();
 		Plants = new ArrayList<GImage> ();
 		ePlant = new ePiranhaPlant(this);
 		scanLevel = new ScanLevel();
 		
-		Background = new GImage (IMG_FOLDER + "Background.png", 0, 0);
+		Background = new GImage (IMG_FOLDER + levelNum + "Background.png", 0, 0);
 		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");	}
 	
 	public void setUpLevel() {
@@ -40,15 +41,15 @@ public class Level {
 			Environment.add(new GImage(IMG_FOLDER + "pipe.png", loop.getKey(), loop.getValue()));
 		}
 		
-		for (Pair<Integer, Integer> loop : levelMap.get("GRASSLONG")) {
+		for (Pair<Integer, Integer> loop : levelMap.get("GROUNDLONG")) {
  			Environment.add(new GImage(IMG_FOLDER + "grassStrip.png", loop.getKey(), loop.getValue()));
  		}
 		
- 		for (Pair<Integer, Integer> loop : levelMap.get("GRASS")) {
+ 		for (Pair<Integer, Integer> loop : levelMap.get("GROUND")) {
  			Environment.add(new GImage(IMG_FOLDER + "grassStripShort.png", loop.getKey(), loop.getValue()));
  		}
  		
- 		for (Pair<Integer, Integer> loop : levelMap.get("GRASSSHORT")) {
+ 		for (Pair<Integer, Integer> loop : levelMap.get("GROUNDSHORT")) {
  			Environment.add(new GImage(IMG_FOLDER + "grassStripShorter.png", loop.getKey(), loop.getValue()));
  		}
 		
@@ -61,7 +62,7 @@ public class Level {
 		}
 		
 		for (Pair<Integer, Integer> loop : levelMap.get("PLANT")) {
-			Plants.add(new GImage(IMG_FOLDER + "pPlant.png", loop.getKey(), loop.getValue()));
+			Plants.add(new GImage("enemies/pPlant.png", loop.getKey(), loop.getValue()));
 		}
 	}
 		
