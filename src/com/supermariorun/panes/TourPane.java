@@ -28,6 +28,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private GImage lockLvlThree;
 	private GImage lockLvlFour;
 	private GImage lvlOne;
+	private GImage lvlTwo;
 	private GObject wiggleObj;
 	private GButton DevMode;
 	private boolean isWiggle;
@@ -76,6 +77,9 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		lvlOne = new GImage(IMG_FOLDER + "lvlOne.png", 170, 345);
 		lvlOne.setSize(mainWidth/7 + 10, mainHeight/4.209 );
 	    
+		lvlTwo = new GImage(IMG_FOLDER + "lvlTwo.png");
+		lvlTwo.setSize(mainWidth/7 + 10, mainHeight/4.209 );
+		
 	    lockLvlTwo = new GImage(IMG_FOLDER + "qBlock.png", 430, 350);
 	    lockLvlTwo.setSize(qBlockWidth, qBlockHeight);
 	    
@@ -132,7 +136,15 @@ public class TourPane extends GraphicsPane implements ActionListener {
 				e1.printStackTrace();
 			}
 		}
-		
+		if (obj == lvlTwo) {
+			program.playPipeSound();
+			program.stopTourSound();
+			try {
+				program.switchToLevel("One");
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			}
+		}
 		if (obj == testLevel) {
 			program.playPipeSound();
 			program.stopTourSound();
@@ -193,5 +205,6 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		}
 		
 		count++;
+		
 	}
 }
