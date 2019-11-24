@@ -185,7 +185,6 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		if(obj == pauseButton || obj == pauseBubble) {
 			Pause();
 			isPause = true;
-			program.playButtonEffect();
 			pausePane.showContents();
 		}
 		

@@ -52,7 +52,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 		Coins = levelPane.getLevel().getCoins();
 		
 		Head = new GRectangle(characImg.getX() + 17, characImg.getY() + 3, characImg.getWidth() - 25, 2);
-		Feet = new GRectangle(characImg.getX() + 6, characImg.getY() + characImg.getHeight() - 12, characImg.getWidth() - 25, 2);	
+		Feet = new GRectangle(characImg.getX(), characImg.getY() + characImg.getHeight() - 12, characImg.getWidth() - 25, 2);	
 		rightBody = new GRectangle(characImg.getX() + characImg.getWidth() - 9,  characImg.getY() + 8, 2, characImg.getHeight() - 21);
 	}
 
@@ -68,7 +68,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	
 	public void updateBounds() {
 		Head.setLocation(characImg.getX() + 17, characImg.getY() + 3);
-		Feet.setLocation(characImg.getX() + 6, characImg.getY() + characImg.getHeight() - 12);
+		Feet.setLocation(characImg.getX(), characImg.getY() + characImg.getHeight() - 12);
 		rightBody.setLocation(characImg.getX() + characImg.getWidth() - 9,  characImg.getY() + 8);
 	}
 	
