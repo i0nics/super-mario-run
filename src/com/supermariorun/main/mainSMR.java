@@ -122,7 +122,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	}
 	
 	public void playButtonEffect() {
-		audio.playSound(MUSIC_FOLDER, BUTTON_EFFECT, true);
+		audio.playSound(MUSIC_FOLDER, BUTTON_EFFECT);
 	}
 	
 	public void playMenuSound() {
