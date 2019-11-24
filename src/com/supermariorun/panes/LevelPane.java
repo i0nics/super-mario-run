@@ -81,6 +81,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		Environment = level.getEnvironment();
 		Plants = level.getPlant();
 		Character.reset();
+		Character.resetCoinsCollected();
 		isPause = false;
 		
 		if (program.getProgress().getCurrentPowerUp() == "star") {

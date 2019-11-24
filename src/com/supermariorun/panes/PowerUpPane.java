@@ -82,7 +82,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		coinCount.setColor(Color.WHITE);
 		coinCount.setLocation(900, 100);
 
-		coin = new GImage(IMG_FOLDER + "coin.gif", 820,50);
+		coin = new GImage(IMG_FOLDER + "coin.gif", 820, 35);
 		coin.setSize(100, 100);
 	}
 

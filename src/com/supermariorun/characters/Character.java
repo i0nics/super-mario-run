@@ -203,6 +203,10 @@ public class Character extends GraphicsProgram implements ActionListener {
 		return numCoins;
 	}
 	
+	public void resetCoinsCollected() {
+		numCoins = 0;
+	}
+	
 	public void coinsCollected() {
 		program.getProgress().increaseCoins(numCoins);
 	}
