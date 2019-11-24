@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 import javax.swing.Timer;
 
@@ -24,9 +25,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private GImage tourBackground;
 	private GImage lvlStrip;
 	private GImage worldOne;
-	private GImage lockLvlTwo;
-	private GImage lockLvlThree;
-	private GImage lockLvlFour;
+	private ArrayList <GImage> lockLvl;
 	private GImage lvlOne;
 	private GImage lvlTwo;
 	private GObject wiggleObj;
@@ -34,6 +33,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private boolean isWiggle;
 	private int wCount = 0;
 	private int count = 0;
+	private int sizeCount = 0;
 	private Timer bTimer;
 	private GButton testLevel;
 	
@@ -41,6 +41,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		super();
 		program = mainSMR;
 		bTimer = new Timer(100, this);
+		lockLvl = new ArrayList <GImage> (3);
 		final double mainWidth = program.getWidth();
 		final double mainHeight = program.getHeight();
 		final double pipeWidth = mainWidth/6;
@@ -80,14 +81,11 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		lvlTwo = new GImage(IMG_FOLDER + "lvlTwo.png");
 		lvlTwo.setSize(mainWidth/7 + 10, mainHeight/4.209 );
 		
-	    lockLvlTwo = new GImage(IMG_FOLDER + "qBlock.png", 430, 350);
-	    lockLvlTwo.setSize(qBlockWidth, qBlockHeight);
-	    
-	    lockLvlThree = new GImage(IMG_FOLDER + "qBlock.png", 670, 350);
-	    lockLvlThree.setSize(qBlockWidth, qBlockHeight);
-	    
-	    lockLvlFour= new GImage(IMG_FOLDER + "qBlock.png", 910, 350);
-	    lockLvlFour.setSize(qBlockWidth, qBlockHeight);
+		for (int i = 430; i <= 910; i = i + 240) {
+			lockLvl.add(new GImage(IMG_FOLDER + "qBlock.png", i, 350));
+			lockLvl.get(sizeCount).setSize(qBlockWidth, qBlockHeight);
+			sizeCount++;
+		}
 	    
 	    testLevel = new GButton ("level two", 600, 550, 100, 100);
 		testLevel.setFillColor(Color.RED);
@@ -103,9 +101,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		program.add(lvlStrip);
 		program.add(worldOne);
 		program.add(lvlOne);
-		program.add(lockLvlTwo);
-		program.add(lockLvlThree);
-		program.add(lockLvlFour);
+		for (GImage img : lockLvl) {program.add(img);}
 		program.add(DevMode);
 		program.add(testLevel);
 	}
@@ -136,6 +132,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 				e1.printStackTrace();
 			}
 		}
+		
 		if (obj == lvlTwo) {
 			program.playPipeSound();
 			program.stopTourSound();
@@ -145,6 +142,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 				e1.printStackTrace();
 			}
 		}
+		
 		if (obj == testLevel) {
 			program.playPipeSound();
 			program.stopTourSound();
@@ -165,10 +163,12 @@ public class TourPane extends GraphicsPane implements ActionListener {
 			}
 		}
 		
-		if(isWiggle == false && (obj == lockLvlTwo || obj == lockLvlThree || obj == lockLvlFour)){	
+		for (GImage img : lockLvl) {
+			if(isWiggle == false && obj == img){	
 				wiggleObj = obj;
 				wiggleObj.move(10, 0);
 				isWiggle = true;
+			}
 		}
 	}
 	
