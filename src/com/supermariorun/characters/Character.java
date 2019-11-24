@@ -28,8 +28,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	private GObject detectGround;
 	private int numCoins = 0;
 	public static final String IMG_FOLDER = "character/";
-	private static String STAR_EXT = "";
-	private static String BIG_EXT = "";
+	private static String POWERUP_EXT = "";
 	private String character = "mario";
 	public boolean jumpUpState;
 	public boolean fallState = false;
@@ -44,11 +43,10 @@ public class Character extends GraphicsProgram implements ActionListener {
 		program = mainSMR;
 		this.levelPane = levelPane;
 		
-		characImg = new GImage (IMG_FOLDER + BIG_EXT + STAR_EXT + character + "Stand.png", 100, 520); 
+		characImg = new GImage (IMG_FOLDER + POWERUP_EXT + character + "Stand.png", 100, 520); 
 		starTimer = new Timer (1000, this);
 				
 		character = program.getProgress().getCurrentCharacter();
-		BIG_EXT = program.getProgress().getCurrentPowerUp();
 		
 		Environment = levelPane.getLevel().getEnvironment();
 		Coins = levelPane.getLevel().getCoins();
@@ -61,7 +59,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	public Character(mainSMR mainSMR, LevelPaneDev levelPaneDev) {
 		program = mainSMR;
 		this.levelPaneDev = levelPaneDev;
-		characImg = new GImage (IMG_FOLDER + BIG_EXT + STAR_EXT + character + "Stand.png", 100, 520); 
+		characImg = new GImage (IMG_FOLDER + POWERUP_EXT + character + "Stand.png", 100, 520); 
 		characImg.setSize(64, 64);
 		
 		Environment = levelPaneDev.getLevel().getEnvironment();
@@ -75,16 +73,16 @@ public class Character extends GraphicsProgram implements ActionListener {
 	}
 	
 	public void stand() {
-		characImg.setImage(IMG_FOLDER + BIG_EXT + STAR_EXT + character + "Stand.png");
+		characImg.setImage(IMG_FOLDER + POWERUP_EXT + character + "Stand.png");
 		characImg.setSize(54, 57);
 	}
 
 	public void run() {
-		characImg.setImage(IMG_FOLDER + BIG_EXT + STAR_EXT + character + "Run.gif");
+		characImg.setImage(IMG_FOLDER + POWERUP_EXT + character + "Run.gif");
 	}
 	
 	public void setJumpImage() {
-		characImg.setImage(IMG_FOLDER + BIG_EXT + STAR_EXT + character + "Jump.gif");
+		characImg.setImage(IMG_FOLDER + POWERUP_EXT + character + "Jump.gif");
 	}
 	
 	public void detectObj(String performAction) {
@@ -156,12 +154,12 @@ public class Character extends GraphicsProgram implements ActionListener {
 	}
 	
 	public void resetPowerUp() {
-		BIG_EXT = "";
+		POWERUP_EXT = "";
 		run();
 	}
 	
 	public void setStarMode() {
-		STAR_EXT = "star";
+		POWERUP_EXT = "star";
 		starTimer.start();
 		program.stopLvlOneTrack();
 		program.playStarTrack();
@@ -192,7 +190,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 		if (starCount == 10) {
 			starTimer.stop();
 			starCount = 0;
-			STAR_EXT = "";
+			POWERUP_EXT = "";
 			program.getProgress().clearCurrentPowerUp();
 			program.getProgress().resetStarPurchased();
 			program.stopStarTrack();
