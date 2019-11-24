@@ -153,14 +153,14 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 				progress.setCurrentPowerUp("big");
 		}
 		
-		if (!progress.isMushroomPurchased() && (obj == MushroomBubble || obj == buyMushroom)) {
+		if (!progress.isMushroomPurchased() &&(progress.getNumCoins() >= mushroomCost)&& (obj == MushroomBubble || obj == buyMushroom)) {
 			program.playButtonEffect();
 			mushroomTransaction();
 			buyMushroom.setImage(IMG_FOLDER + "equipButton.png");
 			buyMushroom.setSize(labelWidth*1.3, labelHeight*1.3);
 		}
 
-		if (!progress.isStarPurchased() && (obj == StarBubble || obj == buyStar)){
+		if (!progress.isStarPurchased() && (progress.getNumCoins() >= starCost) && (obj == StarBubble || obj == buyStar)){
 			program.playButtonEffect();
 			starTransaction();
 			buyStar.setImage(IMG_FOLDER + "equipButton.png");

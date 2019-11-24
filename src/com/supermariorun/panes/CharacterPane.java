@@ -170,14 +170,14 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			marioLabel.setSize(labelWidth * 1.3, labelHeight * 1.3);
 		}
 		
-		if (!progress.isYoshiUnlocked() && (obj == yoshiBubble || obj == yoshiLabel)) {
+		if (!progress.isYoshiUnlocked() && (progress.getNumCoins() >= yoshiCost) && (obj == yoshiBubble || obj == yoshiLabel)) {
 			program.playButtonEffect();
 			YoshiTransaction();
 			yoshiLabel.setImage(IMG_FOLDER + "equipButton.png");
 			yoshiLabel.setSize(labelWidth*1.3, labelHeight*1.3);
 		}
 		
-		if (!progress.isPrincessUnlocked() && (obj == princessBubble || obj == princessLabel)) {
+		if (!progress.isPrincessUnlocked() && (progress.getNumCoins() >= PrincessCost) && (obj == princessBubble || obj == princessLabel)) {
 			program.playButtonEffect();
 			PrincessTransaction();
 			princessLabel.setImage(IMG_FOLDER + "equipButton.png");
