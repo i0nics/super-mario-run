@@ -96,8 +96,11 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	}
 	
 	public void unlockLvl() {
-		lockLvl.remove(0);
-		unlockCount++;
+		if(!lockLvl.isEmpty())
+		{
+			lockLvl.remove(0);
+			unlockCount++;
+		}
 	}
 
 	@Override
