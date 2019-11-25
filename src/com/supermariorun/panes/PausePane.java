@@ -16,7 +16,7 @@ import starter.GParagraph;
 public class PausePane extends GraphicsPane {
 	private mainSMR program; 
 	private LevelPane level;
-	public static final String IMG_FOLDER = "LevelPane/";
+	public static final String IMG_FOLDER = "pausePane/";
 	private GImage retryButton;
 	private GImage resumeButton;
 	private GImage quitButton;
@@ -28,7 +28,7 @@ public class PausePane extends GraphicsPane {
 		this.program = main;
 		this.level = level;
 		
-		pausePane = new GImage(IMG_FOLDER + "pausePane.png", 400, 100);
+		pausePane = new GImage(IMG_FOLDER + level.getLevelNum() + "PausePane.png", 400, 100);
 		pausePane.setSize(300, 400);
 		
 		quitButton = new GImage(IMG_FOLDER + "quitButton.png", 428, 437);

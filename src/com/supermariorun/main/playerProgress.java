@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Collection;
 
 public class playerProgress {
-	private int lvl = 0;
 	private static int numCoins = 100;
 	private static int numSuperMushrooms = 0;
 	private static int numSuperStars = 0;
@@ -137,10 +136,5 @@ public class playerProgress {
 	
 	public void clearCurrentPowerUp() {
 		currentPowerUp = "";
-	}
-	
-	public void unlockLevel() {
-		levels.set(lvl, true);
-		lvl++;
 	}
 }
