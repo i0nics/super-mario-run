@@ -12,7 +12,20 @@ import acm.graphics.GImage;
 import acm.graphics.GObject;
 
 public class MenuPane extends GraphicsPane implements ActionListener {
-	public static final String IMG_FOLDER = "menuScreen/";
+	private static final int MOVE_HEIGHT = 10;
+	private static final String IMG_FOLDER = "menuScreen/";
+	private static final double PROGRAM_WIDTH = mainSMR.WINDOW_WIDTH;
+	private static final double PROGRAM_HEIGHT = mainSMR.WINDOW_HEIGHT;
+	private static final double PIPE_HEIGHT = PROGRAM_HEIGHT/3;
+	private static final double PIPE_WIDTH = PROGRAM_WIDTH/8;
+	private static final double BUBBLE_WIDTH = PROGRAM_WIDTH/9;
+	private static final double BUBBLE_HEIGHT = PROGRAM_HEIGHT/5;
+	private static final double PIPE_Y = PROGRAM_HEIGHT - 130;
+	private static final double BUBBLE_Y = PROGRAM_HEIGHT/1.756;
+	private static final double LABEL_Y = PROGRAM_HEIGHT/1.6;
+	private static final double LABEL_WIDTH = PROGRAM_WIDTH/12;
+	private static final double LABEL_HEIGHT = PROGRAM_HEIGHT/12;
+	
 	public Timer bubbleTimer;
 	private mainSMR program; 
 	private GImage menuBackground;
@@ -31,41 +44,30 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		super();
 		this.program = mainSMR;
 		bubbleTimer = new Timer(500, this);
-		final double mainWidth = program.getWidth();
-		final double mainHeight = program.getHeight();
-		final double pipeHeight = mainHeight/3;
-		final double pipeWidth = mainWidth/8;
-		final double bubbleWidth = mainWidth/9;
-		final double bubbleHeight = mainHeight/5;
-		final double pipeY = mainHeight - 130;
-		final double bubbleY = mainHeight/1.756;
-		final double labelY = mainHeight/1.6;
-		final double labelWidth = mainWidth/12;
-		final double labelHeight = mainHeight/12;
 	
-		tourPipe = new GImage(IMG_FOLDER + "gPipe.png", mainWidth/7, pipeY);
-		tourPipe.setSize(pipeWidth, pipeHeight);
-		tourBubble = new GImage(IMG_FOLDER + "bubble.png", mainWidth/6.6, bubbleY);
-		tourBubble.setSize(bubbleWidth, bubbleHeight);
-		tourLabel = new GImage(IMG_FOLDER + "TourLabel.png", mainWidth/6.16, labelY);
-		tourLabel.setSize(labelWidth, labelHeight);
+		tourPipe = new GImage(IMG_FOLDER + "gPipe.png", PROGRAM_WIDTH/7, PIPE_Y);
+		tourPipe.setSize(PIPE_WIDTH, PIPE_HEIGHT);
+		tourBubble = new GImage(IMG_FOLDER + "bubble.png", PROGRAM_WIDTH/6.6, BUBBLE_Y);
+		tourBubble.setSize(BUBBLE_WIDTH, BUBBLE_HEIGHT);
+		tourLabel = new GImage(IMG_FOLDER + "TourLabel.png", PROGRAM_WIDTH/6.16, LABEL_Y);
+		tourLabel.setSize(LABEL_WIDTH, LABEL_HEIGHT);
 		
-		shopPipe = new GImage(IMG_FOLDER + "pPipe.png", mainWidth/2.33, pipeY);
-		shopPipe.setSize(pipeWidth, pipeHeight);
-		shopBubble = new GImage(IMG_FOLDER + "bubble.png", mainWidth/2.283, bubbleY + 10);
-		shopBubble.setSize(bubbleWidth, bubbleHeight);
-		shopLabel = new GImage(IMG_FOLDER + "shopLabel.png", mainWidth/2.21, labelY + 10);
-		shopLabel.setSize(labelWidth, labelHeight);
+		shopPipe = new GImage(IMG_FOLDER + "pPipe.png", PROGRAM_WIDTH/2.33, PIPE_Y);
+		shopPipe.setSize(PIPE_WIDTH, PIPE_HEIGHT);
+		shopBubble = new GImage(IMG_FOLDER + "bubble.png", PROGRAM_WIDTH/2.283, BUBBLE_Y + MOVE_HEIGHT);
+		shopBubble.setSize(BUBBLE_WIDTH, BUBBLE_HEIGHT);
+		shopLabel = new GImage(IMG_FOLDER + "shopLabel.png", PROGRAM_WIDTH/2.21, LABEL_Y + MOVE_HEIGHT);
+		shopLabel.setSize(LABEL_WIDTH, LABEL_HEIGHT);
 		
-		guidePipe = new GImage(IMG_FOLDER + "yPipe.png", mainWidth/1.4, pipeY);
-		guidePipe.setSize(pipeWidth, pipeHeight);
-		guideBubble = new GImage(IMG_FOLDER + "bubble.png", mainWidth/1.3832, bubbleY);
-		guideBubble.setSize(bubbleWidth, bubbleHeight);
-		guideLabel = new GImage(IMG_FOLDER + "guideLabel.png", mainWidth/1.3557, labelY);
-		guideLabel.setSize(labelWidth, labelHeight);
+		guidePipe = new GImage(IMG_FOLDER + "yPipe.png", PROGRAM_WIDTH/1.4, PIPE_Y);
+		guidePipe.setSize(PIPE_WIDTH, PIPE_HEIGHT);
+		guideBubble = new GImage(IMG_FOLDER + "bubble.png", PROGRAM_WIDTH/1.3832, BUBBLE_Y);
+		guideBubble.setSize(BUBBLE_WIDTH, BUBBLE_HEIGHT);
+		guideLabel = new GImage(IMG_FOLDER + "guideLabel.png", PROGRAM_WIDTH/1.3557, LABEL_Y);
+		guideLabel.setSize(LABEL_WIDTH, LABEL_HEIGHT);
 		
 		menuBackground = new GImage(IMG_FOLDER + "menuBack.gif", 0, 0);
-		menuBackground.setSize(mainWidth, mainHeight);
+		menuBackground.setSize(PROGRAM_WIDTH, PROGRAM_HEIGHT);
 	}
 
 	@Override
@@ -121,21 +123,21 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (count == 1) {
-			tourBubble.move(0, 10);
-			tourLabel.move(0, 10);
-			shopBubble.move(0, -10);
-			shopLabel.move(0, -10);
-			guideBubble.move(0, 10);
-			guideLabel.move(0, 10);
+			tourBubble.move(0, MOVE_HEIGHT);
+			tourLabel.move(0, MOVE_HEIGHT);
+			shopBubble.move(0, -MOVE_HEIGHT);
+			shopLabel.move(0, -MOVE_HEIGHT);
+			guideBubble.move(0, MOVE_HEIGHT);
+			guideLabel.move(0, MOVE_HEIGHT);
 		}
 		
 		if (count == 2) {
-			tourBubble.move(0, -10);
-			tourLabel.move(0, -10);
-			shopBubble.move(0, +10);
-			shopLabel.move(0, +10);
-			guideBubble.move(0, -10);
-			guideLabel.move(0, -10);
+			tourBubble.move(0, -MOVE_HEIGHT);
+			tourLabel.move(0, -MOVE_HEIGHT);
+			shopBubble.move(0, +MOVE_HEIGHT);
+			shopLabel.move(0, +MOVE_HEIGHT);
+			guideBubble.move(0, -MOVE_HEIGHT);
+			guideLabel.move(0, -MOVE_HEIGHT);
 			count = 0;
 		}
 		count++;
