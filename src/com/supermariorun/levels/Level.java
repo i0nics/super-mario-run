@@ -37,6 +37,7 @@ public class Level {
 		Environment.clear();
 		Coins.clear();
 		Plants.clear();
+		Goombas.clear();
 		Background.setLocation(0, 0);
 		
 		for (Pair<Integer, Integer> loop : levelMap.get("PIPE")) {

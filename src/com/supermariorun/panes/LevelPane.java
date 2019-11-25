@@ -152,7 +152,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.getTourPane().unlockLvl();
 		}
 		
-		if (Character.getCharacter().getY() > 650) {
+		if (Character.getCharacter().getY() > 650 || Character.isDead) {
 			timer.stop();
 			program.stopLvlOneTrack(lvlNum);
 			program.playGameOverSound();

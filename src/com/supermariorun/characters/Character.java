@@ -30,6 +30,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	public static final String IMG_FOLDER = "character/";
 	private static String POWERUP_EXT = "";
 	private String character = "mario";
+	public boolean isDead = false;
 	public boolean jumpUpState;
 	public boolean fallState = false;
 	private int jumpCount = 0;
@@ -189,11 +190,12 @@ public class Character extends GraphicsProgram implements ActionListener {
 	public void checkGoombaCollision() {
 		for (Iterator<GImage> it = Goombas.iterator(); it.hasNext(); ) {
 			GImage img = it.next();
-			GRectangle characBounds = characImg.getBounds();
 			GRectangle goombaBounds = img.getBounds();
-			if (characBounds.intersects(goombaBounds)) {
-				program.remove(img);
+			if (Feet.intersects(goombaBounds)) {
 				it.remove();
+				program.remove(img);
+			} else if (rightBody.intersects(goombaBounds)) {
+				isDead = true;
 			}
 		}
 	} 
@@ -235,6 +237,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	}
 
 	public void reset() {
+		isDead = false;
 		characImg.setLocation(100, 520);	
 	}
 	
