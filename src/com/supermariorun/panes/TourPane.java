@@ -18,26 +18,26 @@ import starter.GButton;
 
 public class TourPane extends GraphicsPane implements ActionListener {
 	public static final String IMG_FOLDER = "tourPane/";
-	private mainSMR program; 
 	private static final double PROGRAM_WIDTH = mainSMR.WINDOW_WIDTH;
 	private static final double PROGRAM_HEIGHT = mainSMR.WINDOW_HEIGHT;
-	private static final double PIPE_WIDTH = mainSMR.WINDOW_WIDTH/6;
-	private static final double PIPE_HEIGHT = mainSMR.WINDOW_HEIGHT/6;
-	private static final double BUBBLE_WIDTH = mainSMR.WINDOW_WIDTH/9;
-	private static final double BUBBLE_HEIGHT = mainSMR.WINDOW_HEIGHT/5;
-	private static final double LABEL_WIDTH = mainSMR.WINDOW_WIDTH/12;
-	private static final double LABEL_HEIGHT = mainSMR.WINDOW_HEIGHT/12;
-	private static final double QBLOCK_WIDTH = mainSMR.WINDOW_WIDTH/7.2 - 10;
-	private static final double QBLOCK_HEIGHT = mainSMR.WINDOW_HEIGHT/4.409;
+	private static final double PIPE_WIDTH = PROGRAM_WIDTH/6;
+	private static final double PIPE_HEIGHT = PROGRAM_HEIGHT/6;
+	private static final double BUBBLE_WIDTH = PROGRAM_WIDTH/9;
+	private static final double BUBBLE_HEIGHT = PROGRAM_HEIGHT/5;
+	private static final double LABEL_WIDTH = PROGRAM_WIDTH/12;
+	private static final double LABEL_HEIGHT = PROGRAM_HEIGHT/12;
+	private static final double QBLOCK_WIDTH = PROGRAM_WIDTH/7.2 - 10;
+	private static final double QBLOCK_HEIGHT = PROGRAM_HEIGHT/4.409;
+	private static final double LEVEL_ICON_WIDTH = PROGRAM_WIDTH/7 + 10;
+	private static final double LEVEL_ICON_HEIGHT = PROGRAM_HEIGHT/4.209;
 	
+	private mainSMR program; 
 	private GImage backLabel;
 	private GImage backPipe;
 	private GImage backBubble;
 	private GImage tourBackground;
 	private GImage lvlStrip;
 	private GImage worldOne;
-	private GImage lvlOne;
-	private GImage lvlTwo;
 	private GObject wiggleObj;
 	private GButton DevMode;
 	private boolean isWiggle;
@@ -45,18 +45,20 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private int count = 0;
 	private int sizeCount = 0;
 	private int unlockCount = 0;
+	private int lvlCount = 1;
 	private Timer bTimer;
 	private GButton testLevel;
 	private ArrayList <GImage> lockLvl;
+	private ArrayList <GImage> levelIcons;
 	
 	public TourPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;
 		bTimer = new Timer(100, this);
-		lockLvl = new ArrayList <GImage> (3);
-		
+		lockLvl = new ArrayList <GImage> (2);
+		levelIcons = new ArrayList <GImage> (3);
+			
 		DevMode = new GButton ("Developer Mode", 500, 550, 100, 100);
-		
 		DevMode.setFillColor(Color.BLUE);
 		
 		backPipe = new GImage("gPipeR.png", -50, 30);
@@ -76,14 +78,14 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		
 		worldOne = new GImage(IMG_FOLDER + "worldOne.png", 0, 350);
 	    worldOne.setSize(150, 150);
-			
-		lvlOne = new GImage(IMG_FOLDER + "lvlOne.png", 170, 345);
-		lvlOne.setSize(PROGRAM_WIDTH/7 + 10, PROGRAM_HEIGHT/4.209 );
 	    
-		lvlTwo = new GImage(IMG_FOLDER + "lvlTwo.png");
-		lvlTwo.setSize(PROGRAM_WIDTH/7 + 10, PROGRAM_HEIGHT/4.209 );
-		
-		for (int i = 430; i <= 910; i = i + 240) {
+	    for (int i = 170; i <= 650; i = i + 240) {
+	    	levelIcons.add(new GImage(IMG_FOLDER + "lvl" + lvlCount + ".png", i, 345));
+	 	    levelIcons.get(lvlCount - 1).setSize(LEVEL_ICON_WIDTH, LEVEL_ICON_HEIGHT);
+	 	    lvlCount++;
+		}
+	    	
+		for (int i = 430; i <= 670; i = i + 240) {
 			lockLvl.add(new GImage(IMG_FOLDER + "qBlock.png", i, 350));
 			lockLvl.get(sizeCount).setSize(QBLOCK_WIDTH, QBLOCK_HEIGHT);
 			sizeCount++;
@@ -93,8 +95,9 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		testLevel.setFillColor(Color.RED);
 	}
 	
-	private void unlockLvl() {
-		
+	public void unlockLvl() {
+		lockLvl.remove(0);
+		unlockCount++;
 	}
 
 	@Override
@@ -106,8 +109,12 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		program.add(backPipe);
 		program.add(lvlStrip);
 		program.add(worldOne);
-		program.add(lvlOne);
-		for (GImage img : lockLvl) {program.add(img);}
+		program.add(levelIcons.get(0));
+		if (unlockCount > 0) { program.add(levelIcons.get(1)); }
+	    if (unlockCount > 1) { program.add(levelIcons.get(2)); } 
+		if (!lockLvl.isEmpty()) {
+			for (GImage img1 : lockLvl) {program.add(img1);}
+		}
 		program.add(DevMode);
 		program.add(testLevel);
 	}
@@ -129,7 +136,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 			program.switchToMenu();
 		}
 		
-		if (obj == lvlOne) {
+		if (obj == levelIcons.get(0)) {
 			program.playPipeSound();
 			program.stopTourSound();
 			try {
@@ -139,11 +146,11 @@ public class TourPane extends GraphicsPane implements ActionListener {
 			}
 		}
 		
-		if (obj == lvlTwo) {
+		if (obj == levelIcons.get(1)) {
 			program.playPipeSound();
 			program.stopTourSound();
 			try {
-				program.switchToLevel("One");
+				program.switchToLevel("Two");
 			} catch (FileNotFoundException e1) {
 				e1.printStackTrace();
 			}
@@ -211,6 +218,5 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		}
 		
 		count++;
-		
 	}
 }

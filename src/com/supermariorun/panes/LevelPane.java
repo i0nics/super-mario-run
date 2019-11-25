@@ -29,8 +29,6 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private ArrayList <GImage> Coins;	
 	private ArrayList <GImage> Plants;
 	private ArrayList <GImage> Goombas;
-	public boolean jumpState1;
-	private boolean isPause1 = false;
 
 	private Character Character;
 	private Level level;
@@ -86,11 +84,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		Plants = level.getPlant();
 		Goombas = level.getGoombas();
 		Character.reset();
-		isPause1 = false;
 		Character.resetCoinsCollected();
 		isPause = false;
 
-		
 		if (program.getProgress().getCurrentPowerUp() == "star") {
 			Character.setStarMode();
 		}
@@ -101,7 +97,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	}
 	
 	public void Resume() {
-		isPause1 = false;
+		isPause = false;
 		timer.start();
 		Character.run();
 		playTrack();
@@ -145,7 +141,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		if (Background.getX() == -10000) {
 			timer.stop();
 			Character.stand();
-			isPause1 = true;
+			isPause = true;
 			program.add(greyBack);
 			program.add(levelClear);
 			program.add(continueEndButton);
@@ -153,6 +149,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.playCourseClearedTrack();
 			Character.numCoinsCollected();
 			Character.coinsCollected();
+			program.getTourPane().unlockLvl();
 		}
 		
 		if (Character.getCharacter().getY() > 650) {
@@ -198,7 +195,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 		if(obj == pauseButton || obj == pauseBubble) {
 			Pause();
-			isPause1 = true;
+			isPause = true;
 			pausePane.showContents();
 		}
 		
@@ -211,7 +208,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		}
 		
 		else {
-			if (!jumpState && !isPause1) {
+			if (!jumpState && !isPause) {
 				jumpState = true;
 				Character.setJumpImage();
 				program.playJumpSound();
