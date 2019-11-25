@@ -22,7 +22,6 @@ public class PausePane extends GraphicsPane {
 	private GImage quitButton;
 	private GImage greyBack;
 	private GImage pausePane;
-	private String lvlNum;
 	
 	public PausePane(mainSMR main, LevelPane level) {
 		this.program = main;
