@@ -30,7 +30,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private ArrayList <GImage> Plants;
 	private ArrayList <GImage> Goombas;
 	public boolean jumpState1;
-	private boolean isPause = false;
+	private boolean isPause1 = false;
 
 	private Character Character;
 	private Level level;
