@@ -103,7 +103,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		coinCount.setFont(program.marioFont.deriveFont(40f));
 		coinCount.setColor(Color.DARK_GRAY);
 		
-		coin = new GImage(IMG_FOLDER + "coin.gif", 810, 40);
+		coin = new GImage(IMG_FOLDER + "coin.gif", 800, 35);
 		coin.setSize(100, 100);
 	}
 	
@@ -145,6 +145,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		}
 		
 		if(progress.isYoshiUnlocked() && (obj == yoshiBubble || obj == yoshiLabel)) {
+			program.playButtonEffect();
 			if (progress.isPrincessUnlocked()) {
 				princessLabel.setImage(IMG_FOLDER + "equipButton.png");
 				princessLabel.setSize(labelWidth * 1.3, labelHeight*1.3);
@@ -157,6 +158,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		}
 		
 		if(progress.isPrincessUnlocked() && (obj == princessBubble || obj == princessLabel)) {
+			program.playButtonEffect();
 			if (progress.isYoshiUnlocked()) {
 				yoshiLabel.setImage(IMG_FOLDER + "equipButton.png");
 				yoshiLabel.setSize(labelWidth * 1.3, labelHeight * 1.3);
@@ -168,19 +170,22 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			marioLabel.setSize(labelWidth * 1.3, labelHeight * 1.3);
 		}
 		
-		if (!progress.isYoshiUnlocked() && (obj == yoshiBubble || obj == yoshiLabel)) {
+		if (!progress.isYoshiUnlocked() && (progress.getNumCoins() >= yoshiCost) && (obj == yoshiBubble || obj == yoshiLabel)) {
+			program.playButtonEffect();
 			YoshiTransaction();
 			yoshiLabel.setImage(IMG_FOLDER + "equipButton.png");
 			yoshiLabel.setSize(labelWidth*1.3, labelHeight*1.3);
 		}
 		
-		if (!progress.isPrincessUnlocked() && (obj == princessBubble || obj == princessLabel)) {
+		if (!progress.isPrincessUnlocked() && (progress.getNumCoins() >= PrincessCost) && (obj == princessBubble || obj == princessLabel)) {
+			program.playButtonEffect();
 			PrincessTransaction();
 			princessLabel.setImage(IMG_FOLDER + "equipButton.png");
 			princessLabel.setSize(labelWidth * 1.3, labelHeight * 1.3);
 		}
 		
 		if(obj == marioBubble || obj == marioLabel) {
+			program.playButtonEffect();
 			if (progress.isPrincessUnlocked()) {
 				princessLabel.setImage(IMG_FOLDER + "equipButton.png");
 				princessLabel.setSize(labelWidth * 1.3, labelHeight * 1.3);
@@ -193,7 +198,6 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 			progress.setCurrentCharacter("mario");
 			marioLabel.setImage(IMG_FOLDER + "equippedButton.png");
 			marioLabel.setSize(labelWidth * 1.3, labelHeight * 1.3);
-		
 		}
 	}
 	

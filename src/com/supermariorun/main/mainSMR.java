@@ -20,12 +20,12 @@ import com.supermariorun.panes.EndPane;
 
 public class mainSMR extends GraphicsApplication implements ActionListener{
 	public static final String MUSIC_FOLDER = "sounds";
+	private static final String BUTTON_EFFECT = "buttonEffect.mp3";
 	private static final String COIN_EFFECT = "coin.wav";
 	private static final String COURSECLEARED_EFFECT = "courseCleared.mp3";
 	private static final String GAMEOVER_TRACK = "gameOver.wav";
 	private static final String GUIDE_TRACK = "guideTrack.mp3";
 	private static final String JUMP_EFFECT = "jump.wav";
-	private static final String LVL1_TRACK = "LevelOne.mp3";
 	private static final String MENU_TRACK = "menuTrack.mp3";
 	private static final String PAUSE_EFFECT = "pause.mp3";
 	private static final String PIPE_EFFECT = "pipeEffect.wav";
@@ -43,7 +43,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private InstructionsPane guidePane;
 	private TourPane tourPane;
 	private playerProgress progress;
-	private LevelPane LevelPane;
+	private LevelPane levelPane;
 	
     protected static final int FONT_SIZE = 18;
     public static final int WINDOW_WIDTH = 1155;
@@ -82,12 +82,14 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		switchToScreen(menuPane);
 	}
 	
-	public void switchToLevel(String lvlNum) throws FileNotFoundException {
-		switchToScreen(new LevelPane (this, lvlNum));
+	public void switchToLevel(String levelNum) throws FileNotFoundException {
+		levelPane = null;
+		levelPane = new LevelPane (this, levelNum);
+		switchToScreen(levelPane);
 	}
 	
-	public void switchToLevelDev(int levelNum) throws FileNotFoundException {
-		switchToScreen(new LevelPaneDev (this, 1));
+	public void switchToLevelDev(String levelNum) throws FileNotFoundException {
+		switchToScreen(new LevelPaneDev (this, levelNum));
 	}
 
 	public void switchToShop() {
@@ -116,6 +118,10 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	
 	public void stopStartSound() {
 		audio.stopSound(MUSIC_FOLDER, START_TRACK);
+	}
+	
+	public void playButtonEffect() {
+		audio.playSound(MUSIC_FOLDER, BUTTON_EFFECT);
 	}
 	
 	public void playMenuSound() {
@@ -166,18 +172,18 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 		audio.playSound(MUSIC_FOLDER, RESUME_EFFECT);
 	}
 	
-	public void playLvlOneTrack() {
-		audio.playSound(MUSIC_FOLDER, LVL1_TRACK, true);
+	public void playLvlOneTrack(String lvl) {
+		audio.playSound(MUSIC_FOLDER, "Level" + lvl + ".mp3", true);
 	}
 	
-	public void pauseLvlOneTrack() {
-		audio.pauseSound(MUSIC_FOLDER, LVL1_TRACK);
+	public void pauseLvlOneTrack(String lvl) {
+		audio.pauseSound(MUSIC_FOLDER, "Level" + lvl + ".mp3");
 	}
 	
-	public void stopLvlOneTrack() {
-		audio.stopSound(MUSIC_FOLDER, LVL1_TRACK);
+	public void stopLvlOneTrack(String lvl) {
+		audio.stopSound(MUSIC_FOLDER, "Level" + lvl + ".mp3");
 	}
-	
+		
 	public void playStarTrack() {
 		audio.playSound(MUSIC_FOLDER, STAR_TRACK, true);
 	}

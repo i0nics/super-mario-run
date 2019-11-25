@@ -24,12 +24,11 @@ public class Character extends GraphicsProgram implements ActionListener {
 	private GImage characImg;
 	private GRectangle Feet;
 	private GRectangle rightBody;
+	private GRectangle Head;
 	private GObject detectGround;
-	private GRect Head;
 	private int numCoins = 0;
 	public static final String IMG_FOLDER = "character/";
-	private static String STAR_EXT = "";
-	private static String BIG_EXT = "";
+	private static String POWERUP_EXT = "";
 	private String character = "mario";
 	public boolean jumpUpState;
 	public boolean fallState = false;
@@ -45,24 +44,24 @@ public class Character extends GraphicsProgram implements ActionListener {
 		program = mainSMR;
 		this.levelPane = levelPane;
 		
-		characImg = new GImage (IMG_FOLDER + BIG_EXT + STAR_EXT + character + "Stand.png", 100, 520); 
+		characImg = new GImage (IMG_FOLDER + POWERUP_EXT + character + "Stand.png", 100, 520); 
 		starTimer = new Timer (1000, this);
 				
 		character = program.getProgress().getCurrentCharacter();
-		BIG_EXT = program.getProgress().getCurrentPowerUp();
 		
 		Environment = levelPane.getLevel().getEnvironment();
 		Coins = levelPane.getLevel().getCoins();
 		Goombas = levelPane.getLevel().getGoombas();
 		
-		Feet = new GRectangle(characImg.getX() + 6, characImg.getY() + characImg.getHeight() - 12, characImg.getWidth() - 25, 2);	
-		rightBody = new GRectangle(characImg.getX() + characImg.getWidth() - 7,  characImg.getY() + 6, 2, characImg.getHeight() - 21);	
+		Head = new GRectangle(characImg.getX() + 17, characImg.getY() + 3, characImg.getWidth() - 25, 2);
+		Feet = new GRectangle(characImg.getX(), characImg.getY() + characImg.getHeight() - 12, characImg.getWidth() - 25, 2);	
+		rightBody = new GRectangle(characImg.getX() + characImg.getWidth() - 9,  characImg.getY() + 8, 2, characImg.getHeight() - 21);
 	}
 
 	public Character(mainSMR mainSMR, LevelPaneDev levelPaneDev) {
 		program = mainSMR;
 		this.levelPaneDev = levelPaneDev;
-		characImg = new GImage (IMG_FOLDER + BIG_EXT + STAR_EXT + character + "Stand.png", 100, 520); 
+		characImg = new GImage (IMG_FOLDER + POWERUP_EXT + character + "Stand.png", 100, 520); 
 		characImg.setSize(64, 64);
 		
 		Environment = levelPaneDev.getLevel().getEnvironment();
@@ -70,38 +69,45 @@ public class Character extends GraphicsProgram implements ActionListener {
 		Goombas = levelPaneDev.getLevel().getGoombas();
 	}
 	
+	public void updateBounds() {
+		Head.setLocation(characImg.getX() + 17, characImg.getY() + 3);
+		Feet.setLocation(characImg.getX(), characImg.getY() + characImg.getHeight() - 12);
+		rightBody.setLocation(characImg.getX() + characImg.getWidth() - 9,  characImg.getY() + 8);
+	}
+	
 	public void stand() {
-		characImg.setImage(IMG_FOLDER + BIG_EXT + STAR_EXT + character + "Stand.png");
+		characImg.setImage(IMG_FOLDER + POWERUP_EXT + character + "Stand.png");
 		characImg.setSize(54, 57);
 	}
 
 	public void run() {
-		characImg.setImage(IMG_FOLDER + BIG_EXT + STAR_EXT + character + "Run.gif");
+		characImg.setImage(IMG_FOLDER + POWERUP_EXT + character + "Run.gif");
 	}
 	
 	public void setJumpImage() {
-		characImg.setImage(IMG_FOLDER + BIG_EXT + STAR_EXT + character + "Jump.gif");
+		characImg.setImage(IMG_FOLDER + POWERUP_EXT + character + "Jump.gif");
 	}
 	
-	public void updateBounds() {
-		Feet.setLocation(characImg.getX() + 6, characImg.getY() + characImg.getHeight() - 12);
-		rightBody.setLocation(characImg.getX() + characImg.getWidth() - 7,  characImg.getY() + 8);
-	}
-	
-	public void fallDown() {
-		characImg.move(0, 10);	
-		updateBounds();
-		
+	public void detectObj(String performAction) {
 		for (GImage obj : Environment) {
-			if (Feet.intersects(obj.getBounds())) {
-				levelPane.jumpState = false;
+			if (performAction.equals("Fall") && Feet.intersects(obj.getBounds())) {
+				levelPane.setJumpState();
 				fallState = false;
 				jumpCount = 0;
 				characImg.setLocation(characImg.getX(), obj.getY() - 55);
 				updateBounds();
 				run();
 			}
+			
+			if (performAction.equals("Head") && Head.intersects(obj.getBounds())) {
+				fallDown();
+			}
 		}
+	}
+	public void fallDown() {
+		characImg.move(0, 10);	
+		updateBounds();
+		detectObj("Fall");
 	}
 	
 	public void jump() {
@@ -115,6 +121,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 		if (jumpUpState) {		
 			characImg.move(0, -10);
 			updateBounds();
+			detectObj("Head");
 		}
 			
 		if (!jumpUpState) {
@@ -150,14 +157,14 @@ public class Character extends GraphicsProgram implements ActionListener {
 	}
 	
 	public void resetPowerUp() {
-		BIG_EXT = "";
+		POWERUP_EXT = "";
 		run();
 	}
 	
 	public void setStarMode() {
-		STAR_EXT = "star";
+		POWERUP_EXT = "star";
 		starTimer.start();
-		program.stopLvlOneTrack();
+		program.stopLvlOneTrack(levelPane.getLevelNum());
 		program.playStarTrack();
 	}
 	
@@ -198,17 +205,21 @@ public class Character extends GraphicsProgram implements ActionListener {
 		if (starCount == 10) {
 			starTimer.stop();
 			starCount = 0;
-			STAR_EXT = "";
+			POWERUP_EXT = "";
 			program.getProgress().clearCurrentPowerUp();
 			program.getProgress().resetStarPurchased();
 			program.stopStarTrack();
-			program.playLvlOneTrack();
+			program.playLvlOneTrack(levelPane.getLevelNum());
 			run();
 		}
 	}
 	
 	public int numCoinsCollected() {
 		return numCoins;
+	}
+	
+	public void resetCoinsCollected() {
+		numCoins = 0;
 	}
 	
 	public void coinsCollected() {
@@ -225,10 +236,9 @@ public class Character extends GraphicsProgram implements ActionListener {
 
 	public void reset() {
 		characImg.setLocation(100, 520);	
-		updateBounds();
 	}
 	
-	//public GRect getRect() {
-		//return rightBody;
-	//}
+	/*public GRect getRect() {
+		return Head;
+	}*/
 }

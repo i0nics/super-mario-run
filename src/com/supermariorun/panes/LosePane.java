@@ -43,14 +43,15 @@ public class LosePane extends GraphicsPane {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
 		if(obj == quitButton) {
-			program.stopLvlOneTrack();
+			program.playButtonEffect();
+			program.stopLvlOneTrack(level.getLevelNum());
 			program.playTourSound();
-			program.playPipeSound();
 			program.switchToTour();
 		}
 		
 		if(obj == retryButton) {
-			program.stopLvlOneTrack();
+			program.playButtonEffect();
+			program.stopLvlOneTrack(level.getLevelNum());
 			hideContents();
 			program.setScreen(level);
 			level.hideContents();

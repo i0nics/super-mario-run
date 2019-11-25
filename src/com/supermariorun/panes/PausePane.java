@@ -16,19 +16,18 @@ import starter.GParagraph;
 public class PausePane extends GraphicsPane {
 	private mainSMR program; 
 	private LevelPane level;
-	public static final String IMG_FOLDER = "LevelPane/";
+	public static final String IMG_FOLDER = "levelPane/";
 	private GImage retryButton;
 	private GImage resumeButton;
 	private GImage quitButton;
 	private GImage greyBack;
 	private GImage pausePane;
-	private String lvlNum;
 	
 	public PausePane(mainSMR main, LevelPane level) {
 		this.program = main;
 		this.level = level;
 		
-		pausePane = new GImage(IMG_FOLDER + "pausePane.png", 400, 100);
+		pausePane = new GImage(IMG_FOLDER + "PausePane.png", 400, 100);
 		pausePane.setSize(300, 400);
 		
 		quitButton = new GImage(IMG_FOLDER + "quitButton.png", 428, 437);
@@ -70,20 +69,23 @@ public class PausePane extends GraphicsPane {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
 	    if(obj == resumeButton) {
+	    	program.playButtonEffect();
 			program.playResumeSound();
 			level.Resume();
 			hideContents();
 		}
 		
 		else if(obj == retryButton) {
-			program.stopLvlOneTrack();
+			program.playButtonEffect();
+			program.stopLvlOneTrack(level.getLevelNum());
 			hideContents();
 			level.hideContents();
 			level.showContents();
 		}
 		
 		else if(obj == quitButton) {
-			program.stopLvlOneTrack();
+			program.playButtonEffect();
+			program.stopLvlOneTrack(level.getLevelNum());
 			program.playTourSound();
 			program.switchToTour();
 		}
