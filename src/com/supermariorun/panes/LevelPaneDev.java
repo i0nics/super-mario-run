@@ -59,7 +59,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 		
 		mouseTimer = new Timer (50, this);
 
-		level = new Level("One");
+		level = new Level(levelNum);
 		
 		CoordLabel = new GLabel("label ", 500, 40);
 		CoordLabel.setColor(Color.red);
