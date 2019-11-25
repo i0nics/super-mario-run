@@ -16,7 +16,7 @@ import starter.GParagraph;
 public class PausePane extends GraphicsPane {
 	private mainSMR program; 
 	private LevelPane level;
-	public static final String IMG_FOLDER = "pausePane/";
+	public static final String IMG_FOLDER = "levelPane/";
 	private GImage retryButton;
 	private GImage resumeButton;
 	private GImage quitButton;

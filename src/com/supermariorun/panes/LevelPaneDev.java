@@ -74,7 +74,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 		moveLeft = new GButton("left", 300, 40, 100, 100);
 		moveRight = new GButton("right", 400, 40, 100, 100);
 
-		pausePane = new GImage(IMG_FOLDER + "pausePane.png", 400, 100);
+		pausePane = new GImage(IMG_FOLDER + "PausePane.png", 400, 100);
 		pausePane.setSize(300, 400);
 		
 		pauseBubble = new GImage(IMG_FOLDER + "bubble.png", 30, 10);
