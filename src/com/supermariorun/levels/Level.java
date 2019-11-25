@@ -66,8 +66,9 @@ public class Level {
 		for (Pair<Integer, Integer> loop : levelMap.get("PLANT")) {
 			Plants.add(new GImage("enemies/pPlant.png", loop.getKey(), loop.getValue()));
 		}
+		
 		for (Pair<Integer, Integer> loop : levelMap.get("GOOMBA")) {
-			Goombas.add(new GImage(IMG_FOLDER + "goomba.png", loop.getKey(), loop.getValue()));
+			Goombas.add(new GImage("enemies/goomba.png", loop.getKey(), loop.getValue()));
 		}
 	}
 		
