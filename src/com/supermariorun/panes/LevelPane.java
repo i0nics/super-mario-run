@@ -29,14 +29,19 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private ArrayList <GImage> Coins;	
 	private ArrayList <GImage> Plants;
 	private ArrayList <GImage> Goombas;
-	public boolean jumpState;
+	public boolean jumpState1;
 	private boolean isPause = false;
+
 	private Character Character;
 	private Level level;
 	private Timer timer;
 	private PausePane pausePane;
 	private EndPane EndPane;
 	private boolean isRestartTimer = false;
+	public boolean jumpState = false;
+	private boolean isPause = false;
+	private boolean isMousePressed = false;
+	private int mouseCounter = 0;
 
 	public static final int MS = 30;
 	public static final String IMG_FOLDER = "LevelPane/";
@@ -79,7 +84,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		Plants = level.getPlant();
 		Goombas = level.getGoombas();
 		Character.reset();
-		isPause = false;
+		isPause1 = false;
 		
 		if (program.getProgress().getCurrentPowerUp() == "star") {
 			Character.setStarMode();
@@ -91,7 +96,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	}
 	
 	public void Resume() {
-		isPause = false;
+		isPause1 = false;
 		timer.start();
 		Character.run();
 		playTrack();
@@ -135,7 +140,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		if (Background.getX() == -10000) {
 			timer.stop();
 			Character.stand();
-			isPause = true;
+			isPause1 = true;
 			program.add(greyBack);
 			program.add(levelClear);
 			program.add(continueEndButton);
@@ -159,12 +164,15 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		Character.collectCoin();
 		Character.checkGoombaCollision();
 		isGameOver();
+		
+		if (isMousePressed) {mouseCounter++;}
+		if (mouseCounter == 10) {Character.setLongJump();}
+
 		if (jumpState) { Character.jump(); }
-		if(!jumpState) { 
+		
+		else { 
 			Character.checkGround();
-			
 			if (Character.checkCollision()) {
-				Character.checkGround();
 				if (!Character.getFallState()) {
 					timer.stop();
 					isRestartTimer = true;
@@ -175,7 +183,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
-		
+		isMousePressed = true;
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		
 		if (isRestartTimer) {
@@ -185,7 +193,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 		if(obj == pauseButton || obj == pauseBubble) {
 			Pause();
-			isPause = true;
+			isPause1 = true;
 			pausePane.showContents();
 		}
 		
@@ -198,15 +206,21 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		}
 		
 		else {
-			if (!jumpState && !isPause) {
+			if (!jumpState && !isPause1) {
 				jumpState = true;
-				Character.setJumpCount(0);
 				Character.setJumpImage();
 				program.playJumpSound();
 				Character.jump();
 			}
 		}
 	}
+	
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		isMousePressed = false;
+		mouseCounter = 0;
+	}
+		
 	
 	@Override
 	public void showContents() {
