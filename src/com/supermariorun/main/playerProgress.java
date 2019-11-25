@@ -29,10 +29,6 @@ public class playerProgress {
 		return numCoins;
 	}
 	
-	public static int getNumSuperMushrooms() {
-		return numSuperMushrooms;
-	}
-	
 	public static int getNumSuperStars() {
 		return numSuperStars;
 	}

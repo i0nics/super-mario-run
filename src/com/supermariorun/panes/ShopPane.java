@@ -63,10 +63,10 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 		backLabel = new GImage(IMG_FOLDER + "backLabel.png", 170, 75);
 		backLabel.setSize(labelWidth, labelHeight);
 		
-		characterLabel = new GImage(IMG_FOLDER + "charactersButton.png", 274, 245);
+		characterLabel = new GImage(IMG_FOLDER + "charactersButton.png", 290, 245);
 		characterLabel.setSize(labelWidth, labelHeight);
 		
-		powerLabel = new GImage(IMG_FOLDER + "powerUpsButton.png", 774, 245);
+		powerLabel = new GImage(IMG_FOLDER + "powerUpsButton.png", 785, 245);
 		powerLabel.setSize(labelWidth, labelHeight);
 	}
 
