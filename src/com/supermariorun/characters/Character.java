@@ -23,7 +23,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	private LevelPaneDev levelPaneDev;
 	private GImage characImg;
 	private GRectangle Feet;
-	private GRectangle rightBody;
+	private GRectangle Body;
 	private GRectangle Head;
 	private GObject detectGround;
 	private int numCoins = 0;
@@ -52,28 +52,16 @@ public class Character extends GraphicsProgram implements ActionListener {
 		
 		Environment = levelPane.getLevel().getEnvironment();
 		Coins = levelPane.getLevel().getCoins();
-		Goombas = levelPane.getLevel().getGoombas();
 		
 		Head = new GRectangle(characImg.getX() + 17, characImg.getY() + 3, characImg.getWidth() - 25, 2);
 		Feet = new GRectangle(characImg.getX(), characImg.getY() + characImg.getHeight() - 12, characImg.getWidth() - 25, 2);	
-		rightBody = new GRectangle(characImg.getX() + characImg.getWidth() - 9,  characImg.getY() + 8, 2, characImg.getHeight() - 21);
+		Body = new GRectangle(characImg.getX() + characImg.getWidth() - 9,  characImg.getY() + 8, 2, characImg.getHeight() - 21);
 	}
 
-	public Character(mainSMR mainSMR, LevelPaneDev levelPaneDev) {
-		program = mainSMR;
-		this.levelPaneDev = levelPaneDev;
-		characImg = new GImage (IMG_FOLDER + POWERUP_EXT + character + "Stand.png", 100, 520); 
-		characImg.setSize(64, 64);
-		
-		Environment = levelPaneDev.getLevel().getEnvironment();
-		Coins = levelPaneDev.getLevel().getCoins();
-		Goombas = levelPaneDev.getLevel().getGoombas();
-	}
-	
 	public void updateBounds() {
 		Head.setLocation(characImg.getX() + 17, characImg.getY() + 3);
 		Feet.setLocation(characImg.getX(), characImg.getY() + characImg.getHeight() - 12);
-		rightBody.setLocation(characImg.getX() + characImg.getWidth() - 9,  characImg.getY() + 8);
+		Body.setLocation(characImg.getX() + characImg.getWidth() - 9,  characImg.getY() + 8);
 	}
 	
 	public void stand() {
@@ -137,7 +125,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	
 	public boolean checkCollision() {
 		for (GImage obj : Environment) {
-			if (rightBody.intersects(obj.getBounds())) {
+			if (Body.intersects(obj.getBounds())) {
 				stand();
 				return true;
 			}
@@ -187,19 +175,6 @@ public class Character extends GraphicsProgram implements ActionListener {
 		}
 	}
 	
-	public void checkGoombaCollision() {
-		for (Iterator<GImage> it = Goombas.iterator(); it.hasNext(); ) {
-			GImage img = it.next();
-			GRectangle goombaBounds = img.getBounds();
-			if (Feet.intersects(goombaBounds)) {
-				it.remove();
-				program.remove(img);
-			} else if (rightBody.intersects(goombaBounds)) {
-				isDead = true;
-			}
-		}
-	} 
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		starCount++;
@@ -240,7 +215,6 @@ public class Character extends GraphicsProgram implements ActionListener {
 		isDead = false;
 		characImg.setLocation(100, 520);	
 	}
-	
 	/*public GRect getRect() {
 		return Head;
 	}*/

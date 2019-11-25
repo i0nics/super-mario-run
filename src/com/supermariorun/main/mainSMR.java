@@ -34,6 +34,7 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	private static final String START_TRACK = "startTrack.mp3";
 	private static final String RESUME_EFFECT = "resume.mp3";
 	private static final String TOUR_TRACK = "tourTrack.mp3";
+	private static final String STOMP_EFFECT = "stomp.wav";
 	
 	private StartPane startPane;
 	private MenuPane menuPane;
@@ -207,6 +208,11 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	public void playCourseClearedTrack() {
 		audio.playSound(MUSIC_FOLDER, COURSECLEARED_EFFECT);
 	}
+	
+	public void playStompEffect() {
+		audio.playSound(MUSIC_FOLDER, STOMP_EFFECT);
+	}
+	
 	
 	public void playGameOverSound() {
 		audio.playSound(MUSIC_FOLDER, GAMEOVER_TRACK);

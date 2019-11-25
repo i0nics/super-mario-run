@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.Timer;
 
 import com.supermariorun.characters.Character;
+import com.supermariorun.enemies.eGoomba;
 import com.supermariorun.levels.Level;
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
@@ -28,7 +29,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;	
 	private ArrayList <GImage> Plants;
-	private ArrayList <GImage> Goombas;
+	private ArrayList <eGoomba> Goombas;
 
 	private Character Character;
 	private Level level;
@@ -53,7 +54,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		
 		pausePane = new PausePane(program, this);
 		
-		level = new Level(levelNum);
+		level = new Level(program, levelNum, this);
 		this.lvlNum = levelNum;
 	
 		Character = new Character(program, this);
@@ -119,12 +120,6 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		for (GImage move : Environment) { move.move(-8, 0); }
 		for (GImage move : Coins) { move.move(-8, 0); }
 		for (GImage move : Plants) { move.move(-8, 0); }
-		for (GImage move : Goombas) { 
-			move.move(-8,  0);
-			if (move.getX() > 0 && move.getX() < program.getWidth()) {
-				move.move(-1, 0);
-			}
-		}
 	}
 	
 	public void playTrack() {
@@ -163,9 +158,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		moveEnvironment();
-		Character.collectCoin();
-		Character.checkGoombaCollision();
 		isGameOver();
+		for (eGoomba g : Goombas) { g.Run();}
+		Character.collectCoin();
 		
 		if (isMousePressed) {mouseCounter++;}
 		if (mouseCounter == 10) {Character.setLongJump();}
@@ -234,7 +229,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		//program.add(Character.getRect());
 		
 		for (GImage e: Plants) { program.add(e); }
-		for (GImage e: Goombas) { program.add(e); }
+		for (eGoomba e: Goombas) { program.add(e.getEnemy()); }
 		for (GImage e: Environment) { program.add(e); }
 		for (GImage e: Coins) { program.add(e); }
 	}
@@ -255,6 +250,10 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 	public String getLevelNum() {
 		return lvlNum;
+	}
+	
+	public GImage getBackground() {
+		return Background;
 	}
 	
 	public Character getCharacter() {

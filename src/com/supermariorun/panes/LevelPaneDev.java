@@ -46,7 +46,6 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 	private int spaceHeight;
 	public static final int MS = 100; 
 	public static final String IMG_FOLDER = "LevelPane/";
-	private Character Character;
 	private Timer mouseTimer;
 	private String lvlNum;
 
@@ -61,7 +60,6 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 		mouseTimer = new Timer (50, this);
 
 		level = new Level("One");
-		Character = new Character(program, this);
 		
 		CoordLabel = new GLabel("label ", 500, 40);
 		CoordLabel.setColor(Color.red);
@@ -101,7 +99,6 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 		Background = level.getBackground();
 		Coins = level.getCoins();
 		Environment = level.getEnvironment();
-		Character.run();
 	}
 
 	private void drawGridLines() {
@@ -128,7 +125,6 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 		program.add(Background);
 		program.add(pauseButton);
 		program.add(pauseBubble);
-		program.add(Character.getCharacter());
 		//program.add(Character.getRect());
 
 		for (GImage e : Environment) {

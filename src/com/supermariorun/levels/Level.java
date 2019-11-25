@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.supermariorun.characters.Character;
+import com.supermariorun.enemies.eGoomba;
 import com.supermariorun.enemies.ePiranhaPlant;
+import com.supermariorun.main.mainSMR;
+import com.supermariorun.panes.LevelPane;
+import com.supermariorun.panes.LevelPaneDev;
 
 import acm.graphics.GImage;
 import javafx.scene.layout.Background;
@@ -12,14 +16,30 @@ import javafx.util.Pair;
 
 public class Level {
 	private static String IMG_FOLDER;
+	private mainSMR program;
 	private GImage Background;
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;
 	private ArrayList <GImage> Plants;
-	private ArrayList <GImage> Goombas;
+	private ArrayList <eGoomba> Goombas;
 	private ePiranhaPlant ePlant;
 	private HashMap<String, ArrayList <Pair<Integer, Integer>>> levelMap;
 	private ScanLevel scanLevel;
+	private LevelPane levelPane;
+	
+	public Level(mainSMR main, String levelNum, LevelPane levelPane) throws FileNotFoundException {
+		program = main;
+		IMG_FOLDER = "level" + levelNum + "/";
+		this.levelPane = levelPane;
+		scanLevel = new ScanLevel();
+		Environment = new ArrayList <GImage> ();
+		Coins = new ArrayList <GImage> ();
+		Plants = new ArrayList<GImage> ();
+		Goombas = new ArrayList<eGoomba> ();
+		ePlant = new ePiranhaPlant(this);
+		Background = new GImage (IMG_FOLDER + levelNum + "Background.png", 0, 0);
+		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");	
+	}
 	
 	public Level(String levelNum) throws FileNotFoundException {
 		IMG_FOLDER = "level" + levelNum + "/";
@@ -27,11 +47,12 @@ public class Level {
 		Environment = new ArrayList <GImage> ();
 		Coins = new ArrayList <GImage> ();
 		Plants = new ArrayList<GImage> ();
-		Goombas = new ArrayList<GImage> ();
+		Goombas = new ArrayList<eGoomba> ();
 		ePlant = new ePiranhaPlant(this);
 		Background = new GImage (IMG_FOLDER + levelNum + "Background.png", 0, 0);
-		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");	}
-	
+		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");	
+	}
+
 	public void setUpLevel() {
 		Environment.clear();
 		Coins.clear();
@@ -82,7 +103,7 @@ public class Level {
 		
 		if (levelMap.containsKey("GOOMBA")) {
 			for (Pair<Integer, Integer> loop : levelMap.get("GOOMBA")) {
-				Goombas.add(new GImage("enemies/goomba.png", loop.getKey(), loop.getValue()));
+				Goombas.add(new eGoomba(program, levelPane, loop.getKey(), loop.getValue()));
 			}
 		}
 	}
@@ -103,7 +124,7 @@ public class Level {
 		return Plants;
 	}
 	
-	public ArrayList<GImage> getGoombas() {
+	public ArrayList<eGoomba> getGoombas() {
 		return Goombas;
 	}
 }

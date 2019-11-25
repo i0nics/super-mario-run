@@ -17,65 +17,59 @@ import com.supermariorun.panes.LevelPane;
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;
+import acm.graphics.GRect;
 import acm.graphics.GRectangle;
 import acm.program.GraphicsProgram;
+import acm.program.Program;
 
-public class eGoomba extends GraphicsPane implements ActionListener {
+public class eGoomba {
 	private mainSMR program;
-	double mainWidth ;
-	double mainHeight;
-	private Level level;
+	private LevelPane level;
 	public static final String IMG_FOLDER = "enemies/";
+	private static final double PROGRAM_WIDTH = mainSMR.WINDOW_WIDTH;
 	private GImage goomba;
 	private boolean moveRight;
 	private boolean isGoombaDead;
-	private ArrayList <GImage> Environment;
-	
+	private GRectangle body;
+	private GRectangle head;	
 
-	public void goomba(mainSMR mainSMR, LevelPane levelPane) {
-		program = mainSMR;
-		mainWidth = program.getWidth();
-		mainHeight = program.getHeight();
-	//	level = new LevelOne();
-		goomba = new GImage(IMG_FOLDER + "goomba.png", 200, 500);
-		goomba.setSize(mainWidth/4, mainHeight/3);
-		Environment = levelPane.getLevel().getEnvironment();
-	}
-
-
-	public void actionPerformed(ActionEvent e) {
-	
-		checkCollisionEnvironment();
-
-	}
-
-	public void checkCollisionEnvironment() {
-		for (Iterator<GImage> it = level.getEnvironment().iterator(); it.hasNext(); ) {
-			GImage img = it.next();
-		if (goomba.getBounds().intersection(img.getBounds()) != null) {
+	public eGoomba(mainSMR main, LevelPane levelPane, int x, int y) {
+		program = main;
+		level = levelPane;
+		goomba = new GImage(IMG_FOLDER + "goomba.png", x, y);
 		
-			goomba.move(0,-100);
-
-		}
-		
-		}
-
-		
-		}
-	
-	public void goombaDead() {
-		if(isGoombaDead = true)
-		{
-		}
-	}
-	
-	@Override
-	public void showContents() {
-		program.add(goomba);	
+		head = new GRectangle (goomba.getX() + 17, goomba.getY() + 3, goomba.getWidth() - 25, 2);
+		body = new GRectangle (goomba.getX() + goomba.getWidth() - 9,  goomba.getY() + 8, 2, goomba.getHeight() - 21);
 	}
 
-	@Override
-	public void hideContents() {
-		program.remove(goomba);
+	public void updateBounds() {
+		head.setLocation(goomba.getX() + 17, goomba.getY() + 3);
+		body.setLocation(goomba.getX() + goomba.getWidth() - 9,  goomba.getY() + 8);
+	}
+	
+	public void Run() {
+		
+		if (level.getBackground().getX() <= goomba.getX() - PROGRAM_WIDTH) {
+			goomba.move(-10, 0);
+			updateBounds();
+		} 
+		
+		else {
+			goomba.move(-8, 0);
+			updateBounds();
+		}
+
+		if (head.intersects(level.getCharacter().getCharacter().getBounds())) {
+			program.playStompEffect();
+			program.remove(goomba);
+		} 
+		
+		/*if (body.intersects(level.getCharacter().getCharacter().getBounds())) {
+			level.getCharacter().isDead = true;
+		}*/
+	} 
+
+	public GImage getEnemy() {
+		return goomba;
 	}
 }
