@@ -48,6 +48,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private int lvlCount = 1;
 	private Timer bTimer;
 	private GButton testLevel;
+	private GButton testlevel1;
 	private ArrayList <GImage> lockLvl;
 	private ArrayList <GImage> levelIcons;
 	
@@ -93,6 +94,9 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	    
 	    testLevel = new GButton ("level two", 600, 550, 100, 100);
 		testLevel.setFillColor(Color.RED);
+
+		testlevel1 = new GButton ("level three", 700, 550, 100, 100);
+		testlevel1.setFillColor(Color.BLUE);
 	}
 	
 	public void unlockLvl() {
@@ -120,6 +124,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		}
 		program.add(DevMode);
 		program.add(testLevel);
+		program.add(testlevel1);
 	}
 
 	@Override
@@ -159,11 +164,31 @@ public class TourPane extends GraphicsPane implements ActionListener {
 			}
 		}
 		
-		if (obj == testLevel) {
+		if (obj == levelIcons.get(2)) {
+			program.playPipeSound();
+			program.stopTourSound();
+			try {
+				program.switchToLevel("Three");
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+		if (obj == testLevel) {//remove later
 			program.playPipeSound();
 			program.stopTourSound();
 			try {
 				program.switchToLevel("Two");
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+		if (obj == testlevel1) {//remove later
+			program.playPipeSound();
+			program.stopTourSound();
+			try {
+				program.switchToLevel("Three");
 			} catch (FileNotFoundException e1) {
 				e1.printStackTrace();
 			}
