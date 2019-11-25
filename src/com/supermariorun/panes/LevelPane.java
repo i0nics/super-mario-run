@@ -43,7 +43,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private int mouseCounter = 0;
 	private String lvlNum;
 
-	public static final int MS = 1;//30
+	public static final int MS = 30;//30
 	public static final String IMG_FOLDER = "LevelPane/";
 
 	public LevelPane(mainSMR mainSMR, String levelNum) throws FileNotFoundException {
