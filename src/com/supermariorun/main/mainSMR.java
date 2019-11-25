@@ -220,4 +220,8 @@ public class mainSMR extends GraphicsApplication implements ActionListener{
 	public playerProgress getProgress() {
 		return progress;
 	}
+	
+	public TourPane getTourPane() {
+		return tourPane;
+	}
 }

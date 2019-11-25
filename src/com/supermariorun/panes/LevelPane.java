@@ -149,6 +149,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.playCourseClearedTrack();
 			Character.numCoinsCollected();
 			Character.coinsCollected();
+			program.getTourPane().unlockLvl();
 		}
 		
 		if (Character.getCharacter().getY() > 650) {
