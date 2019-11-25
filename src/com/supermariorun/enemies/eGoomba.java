@@ -31,21 +31,23 @@ public class eGoomba {
 	private boolean moveRight;
 	private boolean isGoombaDead;
 	private GRectangle body;
-	private GRectangle head;	
+	private GRectangle head;
+	private GRectangle Feet;
 
 	public eGoomba(mainSMR main, LevelPane levelPane, int x, int y) {
 		program = main;
 		level = levelPane;
 		goomba = new GImage(IMG_FOLDER + "goomba.png", x, y);
 		
-		head = new GRectangle (goomba.getX() + 17, goomba.getY() + 3, goomba.getWidth() - 25, 2);
-		body = new GRectangle (goomba.getX() + goomba.getWidth() - 9,  goomba.getY() + 8, 2, goomba.getHeight() - 21);
+		head = new GRectangle (goomba.getX() + 15, goomba.getY() + 4, goomba.getWidth() - 21, 2);
+		body = new GRectangle (goomba.getX() + goomba.getWidth() - 35,  goomba.getY() + 8, 2, goomba.getHeight() - 21);
 	}
 
 	public void updateBounds() {
-		head.setLocation(goomba.getX() + 17, goomba.getY() + 3);
-		body.setLocation(goomba.getX() + goomba.getWidth() - 9,  goomba.getY() + 8);
+		head.setLocation(goomba.getX() + 12, goomba.getY() + 3);
+		body.setLocation(goomba.getX() + goomba.getWidth() - 35,  goomba.getY() + 8);
 	}
+	
 	
 	public void Run() {
 		
@@ -64,10 +66,17 @@ public class eGoomba {
 			program.remove(goomba);
 		} 
 		
-		/*if (body.intersects(level.getCharacter().getCharacter().getBounds())) {
+		if (body.intersects(level.getCharacter().getCharacter().getBounds())) {
 			level.getCharacter().isDead = true;
-		}*/
+		}
 	} 
+	//public GRect getBody() {
+		//return body;
+	//}
+	//public GRect getHead() {
+		//return head;
+	//}
+	
 
 	public GImage getEnemy() {
 		return goomba;

@@ -229,9 +229,10 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		//program.add(Character.getRect());
 		
 		for (GImage e: Plants) { program.add(e); }
-		for (eGoomba e: Goombas) { program.add(e.getEnemy()); }
+		for (eGoomba e: Goombas) { program.add(e.getEnemy());}
 		for (GImage e: Environment) { program.add(e); }
 		for (GImage e: Coins) { program.add(e); }
+		
 	}
 
 	@Override
