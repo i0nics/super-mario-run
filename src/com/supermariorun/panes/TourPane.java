@@ -18,18 +18,21 @@ import starter.GButton;
 
 public class TourPane extends GraphicsPane implements ActionListener {
 	public static final String IMG_FOLDER = "tourPane/";
-	private mainSMR program; 
 	private static final double PROGRAM_WIDTH = mainSMR.WINDOW_WIDTH;
 	private static final double PROGRAM_HEIGHT = mainSMR.WINDOW_HEIGHT;
-	private static final double PIPE_WIDTH = mainSMR.WINDOW_WIDTH/6;
-	private static final double PIPE_HEIGHT = mainSMR.WINDOW_HEIGHT/6;
-	private static final double BUBBLE_WIDTH = mainSMR.WINDOW_WIDTH/9;
-	private static final double BUBBLE_HEIGHT = mainSMR.WINDOW_HEIGHT/5;
-	private static final double LABEL_WIDTH = mainSMR.WINDOW_WIDTH/12;
-	private static final double LABEL_HEIGHT = mainSMR.WINDOW_HEIGHT/12;
-	private static final double QBLOCK_WIDTH = mainSMR.WINDOW_WIDTH/7.2 - 10;
-	private static final double QBLOCK_HEIGHT = mainSMR.WINDOW_HEIGHT/4.409;
+	private static final double PIPE_WIDTH = PROGRAM_WIDTH/6;
+	private static final double PIPE_HEIGHT = PROGRAM_HEIGHT/6;
+	private static final double BUBBLE_WIDTH = PROGRAM_WIDTH/9;
+	private static final double BUBBLE_HEIGHT = PROGRAM_HEIGHT/5;
+	private static final double LABEL_WIDTH = PROGRAM_WIDTH/12;
+	private static final double LABEL_HEIGHT = PROGRAM_HEIGHT/12;
+	private static final double QBLOCK_WIDTH = PROGRAM_WIDTH/7.2 - 10;
+	private static final double QBLOCK_HEIGHT = PROGRAM_HEIGHT/4.409;
+	private static final double LEVEL_ICON_WIDTH = PROGRAM_WIDTH/7 + 10;
+	private static final double LEVEL_ICON_HEIGHT = PROGRAM_HEIGHT/4.209;
 	
+	
+	private mainSMR program; 
 	private GImage backLabel;
 	private GImage backPipe;
 	private GImage backBubble;
@@ -48,12 +51,13 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private Timer bTimer;
 	private GButton testLevel;
 	private ArrayList <GImage> lockLvl;
+	private ArrayList <GImage> levelIcons;
 	
 	public TourPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;
 		bTimer = new Timer(100, this);
-		lockLvl = new ArrayList <GImage> (3);
+		lockLvl = new ArrayList <GImage> (2);
 		
 		DevMode = new GButton ("Developer Mode", 500, 550, 100, 100);
 		
@@ -78,12 +82,13 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	    worldOne.setSize(150, 150);
 			
 		lvlOne = new GImage(IMG_FOLDER + "lvlOne.png", 170, 345);
-		lvlOne.setSize(PROGRAM_WIDTH/7 + 10, PROGRAM_HEIGHT/4.209 );
+		
+		lvlOne.setSize(LEVEL_ICON_WIDTH, LEVEL_ICON_HEIGHT);
 	    
 		lvlTwo = new GImage(IMG_FOLDER + "lvlTwo.png");
-		lvlTwo.setSize(PROGRAM_WIDTH/7 + 10, PROGRAM_HEIGHT/4.209 );
+		lvlTwo.setSize(LEVEL_ICON_WIDTH, LEVEL_ICON_HEIGHT);
 		
-		for (int i = 430; i <= 910; i = i + 240) {
+		for (int i = 430; i <= 670; i = i + 240) {
 			lockLvl.add(new GImage(IMG_FOLDER + "qBlock.png", i, 350));
 			lockLvl.get(sizeCount).setSize(QBLOCK_WIDTH, QBLOCK_HEIGHT);
 			sizeCount++;
@@ -94,7 +99,8 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	}
 	
 	private void unlockLvl() {
-		
+		lockLvl.remove(unlockCount);
+		unlockCount++;
 	}
 
 	@Override
@@ -211,6 +217,5 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		}
 		
 		count++;
-		
 	}
 }
