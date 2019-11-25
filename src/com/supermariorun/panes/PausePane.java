@@ -27,7 +27,7 @@ public class PausePane extends GraphicsPane {
 		this.program = main;
 		this.level = level;
 		
-		pausePane = new GImage(IMG_FOLDER + level.getLevelNum() + "PausePane.png", 400, 100);
+		pausePane = new GImage(IMG_FOLDER + "PausePane.png", 400, 100);
 		pausePane.setSize(300, 400);
 		
 		quitButton = new GImage(IMG_FOLDER + "quitButton.png", 428, 437);
