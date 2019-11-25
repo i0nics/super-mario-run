@@ -17,6 +17,10 @@ import acm.graphics.GObject;
 import starter.GButton;
 
 public class PowerUpPane extends GraphicsPane implements ActionListener {
+	private static final int PIPE_WH = 50;
+	private static final int BUBBLE_HEIGHT = 450;
+	private static final int MOVE_WIDTH = 0;
+	private static final int MOVE_HEIGHT = 10;
 	private mainSMR program;
 	public static final String IMG_FOLDER = "powerUpPane/";
 	public static final String lABEL_FONT = "Arial-Bold-22";
@@ -35,8 +39,8 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 	private GImage buyStar;
 	private GImage background;
 	private GLabel coinCount;
-	private static int mushroomCost = 50;
-	private static int starCost = 50;
+	private static int mushroomCost = PIPE_WH;
+	private static int starCost = PIPE_WH;
 	final double labelWidth;
 	final double labelHeight;
 	
@@ -48,26 +52,26 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		final double mainHeight = program.getHeight();
 		final double pipeWidth = mainWidth / 6;
 		final double pipeHeight = mainHeight / 6;
-		final double bubbleWidth = mainWidth / 9;
-		final double bubbleHeight = mainHeight / 5;
+		final double bubbleWidth = mainWidth / 9 * 1.2;
+		final double bubbleHeight = mainHeight / 5 *1.2;
 		labelWidth = mainWidth / 12;
 		labelHeight = mainHeight / 12;
 
 		bubbleTimer = new Timer(500, this);
 
 		BackButton = new GImage(IMG_FOLDER + "bubble.png", 152, 30);
-		BackButton.setSize(bubbleWidth * 1.2, bubbleHeight * 1.2);
+		BackButton.setSize(bubbleWidth, bubbleHeight);
 
-		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png", -50, 50);
+		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png", -PIPE_WH, PIPE_WH);
 		BackPipe.setSize(pipeWidth, pipeHeight);
 
-		MushroomBubble = new GImage(IMG_FOLDER + "bubble.png", 200, 450);
-		MushroomBubble.setSize(bubbleWidth * 1.2, bubbleHeight * 1.2);
+		MushroomBubble = new GImage(IMG_FOLDER + "bubble.png", 200, BUBBLE_HEIGHT);
+		MushroomBubble.setSize(bubbleWidth, bubbleHeight);
 
 		Mushroom = new GImage(IMG_FOLDER + "Mushroom.png", mainSMR.getWidth() / 7, mainSMR.getHeight() / 3);
 
-		StarBubble = new GImage(IMG_FOLDER + "bubble.png", 800, 450);
-		StarBubble.setSize(bubbleWidth * 1.2, bubbleHeight * 1.2);
+		StarBubble = new GImage(IMG_FOLDER + "bubble.png", 800, BUBBLE_HEIGHT);
+		StarBubble.setSize(bubbleWidth, bubbleHeight);
 
 		Star = new GImage(IMG_FOLDER + "Star.png", mainSMR.getWidth() / 1.52, mainSMR.getHeight() / 3);
 
@@ -171,22 +175,22 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (count == 1) {
-			backLabel.move(0, 10);
-			BackButton.move(0, 10);
-			buyMushroom.move(0, 10);
-			buyStar.move(0, 10);
-			MushroomBubble.move(0, 10);
-			StarBubble.move(0, 10);
+			backLabel.move(MOVE_WIDTH, MOVE_HEIGHT);
+			BackButton.move(MOVE_WIDTH, MOVE_HEIGHT);
+			buyMushroom.move(MOVE_WIDTH, MOVE_HEIGHT);
+			buyStar.move(MOVE_WIDTH, MOVE_HEIGHT);
+			MushroomBubble.move(MOVE_WIDTH, MOVE_HEIGHT);
+			StarBubble.move(MOVE_WIDTH, MOVE_HEIGHT);
 		}
 
 		if (count == 2) {
-			backLabel.move(0, -10);
-			BackButton.move(0, -10);
-			buyMushroom.move(0, -10);
-			buyStar.move(0, -10);
-			MushroomBubble.move(0, -10);
-			StarBubble.move(0, -10);
-			count = 0;
+			backLabel.move(MOVE_WIDTH, -MOVE_HEIGHT);
+			BackButton.move(MOVE_WIDTH, -MOVE_HEIGHT);
+			buyMushroom.move(MOVE_WIDTH, -MOVE_HEIGHT);
+			buyStar.move(MOVE_WIDTH, -MOVE_HEIGHT);
+			MushroomBubble.move(MOVE_WIDTH, -MOVE_HEIGHT);
+			StarBubble.move(MOVE_WIDTH, -MOVE_HEIGHT);
+			count = MOVE_WIDTH;
 		}
 
 		count++;
