@@ -38,7 +38,8 @@ public class Character extends GraphicsProgram implements ActionListener {
 	private Timer starTimer;
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;
-	
+	private ArrayList <GImage> Goombas;
+	 
 	public Character(mainSMR mainSMR, LevelPane levelPane) {
 		program = mainSMR;
 		this.levelPane = levelPane;
@@ -50,6 +51,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 		
 		Environment = levelPane.getLevel().getEnvironment();
 		Coins = levelPane.getLevel().getCoins();
+		Goombas = levelPane.getLevel().getGoombas();
 		
 		Head = new GRectangle(characImg.getX() + 17, characImg.getY() + 3, characImg.getWidth() - 25, 2);
 		Feet = new GRectangle(characImg.getX(), characImg.getY() + characImg.getHeight() - 12, characImg.getWidth() - 25, 2);	
@@ -64,6 +66,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 		
 		Environment = levelPaneDev.getLevel().getEnvironment();
 		Coins = levelPaneDev.getLevel().getCoins();
+		Goombas = levelPaneDev.getLevel().getGoombas();
 	}
 	
 	public void updateBounds() {
@@ -182,6 +185,18 @@ public class Character extends GraphicsProgram implements ActionListener {
 			}
 		}
 	}
+	
+	public void checkGoombaCollision() {
+		for (Iterator<GImage> it = Goombas.iterator(); it.hasNext(); ) {
+			GImage img = it.next();
+			GRectangle characBounds = characImg.getBounds();
+			GRectangle goombaBounds = img.getBounds();
+			if (characBounds.intersects(goombaBounds)) {
+				program.remove(img);
+				it.remove();
+			}
+		}
+	} 
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {

@@ -28,6 +28,10 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;	
 	private ArrayList <GImage> Plants;
+	private ArrayList <GImage> Goombas;
+	public boolean jumpState1;
+	private boolean isPause1 = false;
+
 	private Character Character;
 	private Level level;
 	private Timer timer;
@@ -80,9 +84,12 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		Coins = level.getCoins();
 		Environment = level.getEnvironment();
 		Plants = level.getPlant();
+		Goombas = level.getGoombas();
 		Character.reset();
+		isPause1 = false;
 		Character.resetCoinsCollected();
 		isPause = false;
+
 		
 		if (program.getProgress().getCurrentPowerUp() == "star") {
 			Character.setStarMode();
@@ -94,7 +101,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	}
 	
 	public void Resume() {
-		isPause = false;
+		isPause1 = false;
 		timer.start();
 		Character.run();
 		playTrack();
@@ -116,6 +123,12 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		for (GImage move : Environment) { move.move(-8, 0); }
 		for (GImage move : Coins) { move.move(-8, 0); }
 		for (GImage move : Plants) { move.move(-8, 0); }
+		for (GImage move : Goombas) { 
+			move.move(-8,  0);
+			if (move.getX() > 0 && move.getX() < program.getWidth()) {
+				move.move(-1, 0);
+			}
+		}
 	}
 	
 	public void playTrack() {
@@ -132,7 +145,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		if (Background.getX() == -10000) {
 			timer.stop();
 			Character.stand();
-			isPause = true;
+			isPause1 = true;
 			program.add(greyBack);
 			program.add(levelClear);
 			program.add(continueEndButton);
@@ -154,6 +167,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		moveEnvironment();
 		Character.collectCoin();
+		Character.checkGoombaCollision();
 		isGameOver();
 		
 		if (isMousePressed) {mouseCounter++;}
@@ -184,7 +198,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 		if(obj == pauseButton || obj == pauseBubble) {
 			Pause();
-			isPause = true;
+			isPause1 = true;
 			pausePane.showContents();
 		}
 		
@@ -197,7 +211,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		}
 		
 		else {
-			if (!jumpState && !isPause) {
+			if (!jumpState && !isPause1) {
 				jumpState = true;
 				Character.setJumpImage();
 				program.playJumpSound();
@@ -223,6 +237,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		//program.add(Character.getRect());
 		
 		for (GImage e: Plants) { program.add(e); }
+		for (GImage e: Goombas) { program.add(e); }
 		for (GImage e: Environment) { program.add(e); }
 		for (GImage e: Coins) { program.add(e); }
 	}
