@@ -23,13 +23,12 @@ public class Level {
 	
 	public Level(String levelNum) throws FileNotFoundException {
 		IMG_FOLDER = "level" + levelNum + "/";
+		scanLevel = new ScanLevel();
 		Environment = new ArrayList <GImage> ();
 		Coins = new ArrayList <GImage> ();
 		Plants = new ArrayList<GImage> ();
 		Goombas = new ArrayList<GImage> ();
 		ePlant = new ePiranhaPlant(this);
-		scanLevel = new ScanLevel();
-		
 		Background = new GImage (IMG_FOLDER + levelNum + "Background.png", 0, 0);
 		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");	}
 	
