@@ -82,16 +82,9 @@ public class LevelMakerPane extends GraphicsPane implements ActionListener {
 
 		retryButton = new GImage(IMG_FOLDER + "retryButton.png", 415, 387);
 		retryButton.setSize(280, 50);
-		
-		
+
 	}
 
-	public void Play() {
-
-		
-	}
-
-	
 	public void Pause() {
 		program.playPauseSound();
 		program.pauseLvlOneTrack(lvlNum);
