@@ -92,7 +92,6 @@ public class LevelMakerPane extends GraphicsPane implements ActionListener {
 
 	@Override
 	public void showContents() {
-		Play();
 		program.add(Background);
 		program.add(pauseButton);
 		program.add(pauseBubble);
@@ -150,7 +149,6 @@ public class LevelMakerPane extends GraphicsPane implements ActionListener {
 			program.remove(quitButton);
 			program.remove(resumeButton);
 			program.remove(retryButton);
-			Play();
 		}
 
 		else if (obj == quitButton) {
