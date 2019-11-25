@@ -10,6 +10,8 @@ public class playerProgress {
 	private static int numSuperMushrooms = 0;
 	private static int numSuperStars = 0;
 	private static int numCoinRush = 0;
+	private static int highScore = 0;
+	private static int tempHigh = 0;
 	private static String currentCharacter = "mario";
 	private static String currentPowerUp = "";
 	private static boolean isYoshiUnlocked = false;
@@ -24,13 +26,20 @@ public class playerProgress {
 			iterate = false;
 		}
 	}
+	public int getHighScore() {
+		return highScore;
+	}
+	
+	public void sethighScore(int newHigh) {
+		tempHigh  = newHigh;
+		if(tempHigh > highScore) {
+		highScore = tempHigh;
+		}
+	
+	}
 	
 	public int getNumCoins() {
 		return numCoins;
-	}
-	
-	public static int getNumSuperMushrooms() {
-		return numSuperMushrooms;
 	}
 	
 	public static int getNumSuperStars() {

@@ -24,6 +24,7 @@ public class EndPane extends GraphicsPane {
 	private GLabel coinCount;
 	private Character Character;
 	private LevelPane levelPane;
+	private GLabel HighScore;
 	
 	public EndPane(mainSMR mainSMR, LevelPane level) {
 		super();
@@ -39,6 +40,11 @@ public class EndPane extends GraphicsPane {
 		coinCount.setFont(program.marioFont.deriveFont(40f));
 		coinCount.setColor(Color.RED);
 		coinCount.setLocation(485, 300);
+		HighScore = new GLabel("High Score: " + program.getProgress().getHighScore());
+		HighScore.setFont(program.marioFont.deriveFont(40f));
+		HighScore.setColor(Color.RED);
+		HighScore.setLocation(485, 400);
+		
 	}
 	
 
@@ -57,6 +63,7 @@ public class EndPane extends GraphicsPane {
 		program.add(background);
 		program.add(next);
 		program.add(coinCount);
+		program.add(HighScore);
 	}
 
 	@Override

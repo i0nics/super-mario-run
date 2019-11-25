@@ -12,6 +12,8 @@ import acm.graphics.GImage;
 import acm.graphics.GObject;
 
 public class ShopPane extends GraphicsPane implements ActionListener {
+	private static final int MOVE_HEIGHT = 10;
+	private static final int MOVE_WIDTH = 0;
 	private mainSMR program; 
 	public static final String IMG_FOLDER = "shopPane/";
 	private GImage PowerUpButton;
@@ -33,21 +35,21 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 		final double mainHeight = program.getHeight();
 		final double pipeWidth = mainWidth/6;
 		final double pipeHeight = mainHeight/6;
-		final double bubbleWidth = mainWidth/9;
-		final double bubbleHeight = mainHeight/5;
-		final double labelWidth = mainWidth/12;
-		final double labelHeight = mainHeight/12;
+		final double bubbleWidth = mainWidth/9 * 1.2;
+		final double bubbleHeight = mainHeight/5 * 1.2;
+		final double labelWidth = mainWidth/12 * 1.2;
+		final double labelHeight = mainHeight/12 * 1.2;
 			
 		bubbleTimer = new Timer(500, this);
 		
 		PowerUpButton = new GImage("bubble.png", 770, 200);
-		PowerUpButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
+		PowerUpButton.setSize(bubbleWidth, bubbleHeight);
 	
-		CharacterButton = new GImage("bubble.png", 270, 200);
-		CharacterButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
+		CharacterButton = new GImage("bubble.png", 275, 200);
+		CharacterButton.setSize(bubbleWidth, bubbleHeight);
 	
 		BackButton = new GImage(IMG_FOLDER + "bubble.png", 152, 30);
-		BackButton.setSize(bubbleWidth*1.2, bubbleHeight*1.2);
+		BackButton.setSize(bubbleWidth, bubbleHeight);
 	
 		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png", -50, 50);
 		BackPipe.setSize(pipeWidth, pipeHeight);
@@ -59,13 +61,13 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 		toad.setSize(400, 450);
 		
 		backLabel = new GImage(IMG_FOLDER + "backLabel.png", 170, 75);
-		backLabel.setSize(labelWidth * 1.2, labelHeight*1.2);
+		backLabel.setSize(labelWidth, labelHeight);
 		
-		characterLabel = new GImage(IMG_FOLDER + "charactersButton.png", 274, 245);
-		characterLabel.setSize(labelWidth*1.5, labelHeight*1.2);
+		characterLabel = new GImage(IMG_FOLDER + "charactersButton.png", 290, 245);
+		characterLabel.setSize(labelWidth, labelHeight);
 		
-		powerLabel = new GImage(IMG_FOLDER + "powerUpsButton.png", 774, 245);
-		powerLabel.setSize(labelWidth*1.5, labelHeight*1.2);
+		powerLabel = new GImage(IMG_FOLDER + "powerUpsButton.png", 785, 245);
+		powerLabel.setSize(labelWidth, labelHeight);
 	}
 
 	@Override
@@ -114,21 +116,21 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (count == 1) {
-			PowerUpButton.move(0, 10);
-			powerLabel.move(0, 10);
-			CharacterButton.move(0, -10);
-			characterLabel.move(0, -10);
-			backLabel.move(0, 10);
-			BackButton.move(0, 10);
+			PowerUpButton.move(MOVE_WIDTH, MOVE_HEIGHT);
+			powerLabel.move(MOVE_WIDTH, MOVE_HEIGHT);
+			CharacterButton.move(MOVE_WIDTH, -MOVE_HEIGHT);
+			characterLabel.move(MOVE_WIDTH, -MOVE_HEIGHT);
+			backLabel.move(MOVE_WIDTH, MOVE_HEIGHT);
+			BackButton.move(MOVE_WIDTH, MOVE_HEIGHT);
 		}
 		
 		if (count == 2) {
-			PowerUpButton.move(0, -10);
-			powerLabel.move(0, -10);
-			CharacterButton.move(0, +10);
-			characterLabel.move(0, +10);
-			backLabel.move(0, -10);
-			BackButton.move(0, -10);
+			PowerUpButton.move(MOVE_WIDTH, -MOVE_HEIGHT);
+			powerLabel.move(MOVE_WIDTH, -MOVE_HEIGHT);
+			CharacterButton.move(MOVE_WIDTH, +MOVE_HEIGHT);
+			characterLabel.move(MOVE_WIDTH, +MOVE_HEIGHT);
+			backLabel.move(MOVE_WIDTH, -MOVE_HEIGHT);
+			BackButton.move(MOVE_WIDTH, -MOVE_HEIGHT);
 			
 			count = 0;
 		}
