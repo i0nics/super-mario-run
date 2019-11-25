@@ -12,6 +12,7 @@ import acm.graphics.GImage;
 import acm.graphics.GObject;
 
 public class MenuPane extends GraphicsPane implements ActionListener {
+	private static final int MOVE_WIDTH = 0;
 	private static final int MOVE_HEIGHT = 10;
 	private static final String IMG_FOLDER = "menuScreen/";
 	private static final double PROGRAM_WIDTH = mainSMR.WINDOW_WIDTH;
@@ -66,7 +67,7 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 		guideLabel = new GImage(IMG_FOLDER + "guideLabel.png", PROGRAM_WIDTH/1.3557, LABEL_Y);
 		guideLabel.setSize(LABEL_WIDTH, LABEL_HEIGHT);
 		
-		menuBackground = new GImage(IMG_FOLDER + "menuBack.gif", 0, 0);
+		menuBackground = new GImage(IMG_FOLDER + "menuBack.gif", MOVE_WIDTH, MOVE_WIDTH);
 		menuBackground.setSize(PROGRAM_WIDTH, PROGRAM_HEIGHT);
 	}
 
@@ -123,22 +124,22 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (count == 1) {
-			tourBubble.move(0, MOVE_HEIGHT);
-			tourLabel.move(0, MOVE_HEIGHT);
-			shopBubble.move(0, -MOVE_HEIGHT);
-			shopLabel.move(0, -MOVE_HEIGHT);
-			guideBubble.move(0, MOVE_HEIGHT);
-			guideLabel.move(0, MOVE_HEIGHT);
+			tourBubble.move(MOVE_WIDTH, MOVE_HEIGHT);
+			tourLabel.move(MOVE_WIDTH, MOVE_HEIGHT);
+			shopBubble.move(MOVE_WIDTH, -MOVE_HEIGHT);
+			shopLabel.move(MOVE_WIDTH, -MOVE_HEIGHT);
+			guideBubble.move(MOVE_WIDTH, MOVE_HEIGHT);
+			guideLabel.move(MOVE_WIDTH, MOVE_HEIGHT);
 		}
 		
 		if (count == 2) {
-			tourBubble.move(0, -MOVE_HEIGHT);
-			tourLabel.move(0, -MOVE_HEIGHT);
-			shopBubble.move(0, +MOVE_HEIGHT);
-			shopLabel.move(0, +MOVE_HEIGHT);
-			guideBubble.move(0, -MOVE_HEIGHT);
-			guideLabel.move(0, -MOVE_HEIGHT);
-			count = 0;
+			tourBubble.move(MOVE_WIDTH, -MOVE_HEIGHT);
+			tourLabel.move(MOVE_WIDTH, -MOVE_HEIGHT);
+			shopBubble.move(MOVE_WIDTH, +MOVE_HEIGHT);
+			shopLabel.move(MOVE_WIDTH, +MOVE_HEIGHT);
+			guideBubble.move(MOVE_WIDTH, -MOVE_HEIGHT);
+			guideLabel.move(MOVE_WIDTH, -MOVE_HEIGHT);
+			count = MOVE_WIDTH;
 		}
 		count++;
 	}

@@ -18,6 +18,12 @@ import acm.graphics.GLabel;
 import acm.graphics.GObject;
 
 public class LosePane extends GraphicsPane {
+	private static final double PROGRAM_WIDTH = mainSMR.WINDOW_WIDTH;
+	private static final double PROGRAM_HEIGHT = mainSMR.WINDOW_HEIGHT;
+	
+	private static final int BUTTON_HEIGHT = 200;
+	private static final int BUTTON_SIZEW = 201;
+	private static final int BUTTON_WIDTH = 450;
 	private mainSMR program; 
 	public static final String IMG_FOLDER = "losePane/";
 	private GImage quitButton;
@@ -33,10 +39,10 @@ public class LosePane extends GraphicsPane {
 		final double mainHeight = program.getHeight();
 		background = new GImage(IMG_FOLDER + "gameOver.jpg", 0, 0);
 		background.setSize(mainWidth, mainHeight);
-		quitButton = new GImage(IMG_FOLDER + "quit.png", 450, 200);
-		quitButton.setSize(200, 60);
-		retryButton = new GImage(IMG_FOLDER + "retry.png", 450, 250);
-		retryButton.setSize(200, 120);
+		quitButton = new GImage(IMG_FOLDER + "quit.png", BUTTON_WIDTH, BUTTON_HEIGHT);
+		quitButton.setSize(BUTTON_SIZEW, 60);
+		retryButton = new GImage(IMG_FOLDER + "retry.png", BUTTON_WIDTH, BUTTON_HEIGHT + 50);
+		retryButton.setSize(BUTTON_SIZEW, 120);
 	}
 	
 	public void mousePressed(MouseEvent e) {
