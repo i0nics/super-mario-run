@@ -17,6 +17,7 @@ import acm.graphics.GObject;
 import starter.GButton;
 
 public class PowerUpPane extends GraphicsPane implements ActionListener {
+	private static final double LABEL_MULT = 1.3;
 	private static final int PIPE_WH = 50;
 	private static final int BUBBLE_HEIGHT = 450;
 	private static final int MOVE_WIDTH = 0;
@@ -138,10 +139,10 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			program.playButtonEffect();
 			if (progress.isMushroomPurchased()) {
 				buyMushroom.setImage(IMG_FOLDER + "equipButton.png");
-				buyMushroom.setSize(labelWidth*1.3, labelHeight*1.3);
+				buyMushroom.setSize(labelWidth*LABEL_MULT, labelHeight*LABEL_MULT);
 			}
 				buyStar.setImage(IMG_FOLDER + "equippedButton.png");
-				buyStar.setSize(labelWidth*1.3, labelHeight*1.3);
+				buyStar.setSize(labelWidth*LABEL_MULT, labelHeight*LABEL_MULT);
 				progress.setCurrentPowerUp("star");
 			
 		}
@@ -150,10 +151,10 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			program.playButtonEffect();
 			if (progress.isStarPurchased()) {
 				buyStar.setImage(IMG_FOLDER + "equipButton.png");
-				buyStar.setSize(labelWidth*1.3, labelHeight*1.3);
+				buyStar.setSize(labelWidth*LABEL_MULT, labelHeight*LABEL_MULT);
 			}
 				buyMushroom.setImage(IMG_FOLDER + "equippedButton.png");
-				buyMushroom.setSize(labelWidth*1.3, labelHeight*1.3);
+				buyMushroom.setSize(labelWidth*LABEL_MULT, labelHeight*LABEL_MULT);
 				progress.setCurrentPowerUp("big");
 		}
 		
@@ -161,14 +162,14 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 			program.playButtonEffect();
 			mushroomTransaction();
 			buyMushroom.setImage(IMG_FOLDER + "equipButton.png");
-			buyMushroom.setSize(labelWidth*1.3, labelHeight*1.3);
+			buyMushroom.setSize(labelWidth*LABEL_MULT, labelHeight*LABEL_MULT);
 		}
 
 		if (!progress.isStarPurchased() && (progress.getNumCoins() >= starCost) && (obj == StarBubble || obj == buyStar)){
 			program.playButtonEffect();
 			starTransaction();
 			buyStar.setImage(IMG_FOLDER + "equipButton.png");
-			buyStar.setSize(labelWidth*1.3, labelHeight*1.3);
+			buyStar.setSize(labelWidth*LABEL_MULT, labelHeight*LABEL_MULT);
 		}
 	}
 

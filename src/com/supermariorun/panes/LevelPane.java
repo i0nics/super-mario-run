@@ -18,6 +18,7 @@ import acm.graphics.GImage;
 import acm.graphics.GObject;
 
 public class LevelPane extends GraphicsPane implements ActionListener{
+	private static final int ENVI_MOVEW = 8;
 	private static final boolean BOOLEAN_FALSE = false;
 	private mainSMR program;
 	private GImage Background;
@@ -119,10 +120,10 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	}
 	
 	public void moveEnvironment() {
-		Background.move(-8, 0);
-		for (GImage move : Environment) { move.move(-8, 0); }
-		for (GImage move : Coins) { move.move(-8, 0); }
-		for (GImage move : Plants) { move.move(-8, 0); }
+		Background.move(-ENVI_MOVEW, 0);
+		for (GImage move : Environment) { move.move(-ENVI_MOVEW, 0); }
+		for (GImage move : Coins) { move.move(-ENVI_MOVEW, 0); }
+		for (GImage move : Plants) { move.move(-ENVI_MOVEW, 0); }
 	}
 	
 	public void playTrack() {
