@@ -40,7 +40,6 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private GImage lvlStrip;
 	private GImage worldOne;
 	private GObject wiggleObj;
-	private GButton DevMode;
 	private boolean isWiggle;
 	private int wCount = 0;
 	private int count = 0;
@@ -61,9 +60,6 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		bTimer = new Timer(100, this);
 		lockLvl = new ArrayList <GImage> (2);
 		levelIcons = new ArrayList <GImage> (3);
-			
-		//DevMode = new GButton ("Developer Mode", 500, 550, 100, 100);
-		//DevMode.setFillColor(Color.BLUE);
 		
 		backPipe = new GImage("gPipeR.png", -50, 30);
 		backPipe.setSize(PIPE_WIDTH, PIPE_HEIGHT);
@@ -124,7 +120,6 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		if (!lockLvl.isEmpty()) {
 			for (GImage img1 : lockLvl) {program.add(img1);}
 		}
-		//program.add(DevMode);
 		program.add(testLevel);
 		program.add(testlevel1);
 	}
