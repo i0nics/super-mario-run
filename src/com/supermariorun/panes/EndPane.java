@@ -17,6 +17,7 @@ public class EndPane extends GraphicsPane {
 	private GImage next;
 	private GImage background;
 	private GLabel coinCount;
+	private Character Character;
 	private LevelPane levelPane;
 	private GLabel HighScore;
 	
