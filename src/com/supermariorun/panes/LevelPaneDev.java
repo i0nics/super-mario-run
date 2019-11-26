@@ -125,7 +125,6 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 		program.add(Background);
 		program.add(pauseButton);
 		program.add(pauseBubble);
-		//program.add(Character.getRect());
 
 		for (GImage e : Environment) {
 			program.add(e);
