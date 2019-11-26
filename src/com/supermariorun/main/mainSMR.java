@@ -16,7 +16,6 @@ import com.supermariorun.panes.ShopPane;
 import com.supermariorun.panes.StartPane;
 import com.supermariorun.panes.TourPane;
 import com.supermariorun.soundeffects.AudioPlayer;
-import com.supermariorun.panes.EndPane;
 
 public class mainSMR extends GraphicsApplication implements ActionListener {
 	private static final String MUSIC_FOLDER = "sounds";

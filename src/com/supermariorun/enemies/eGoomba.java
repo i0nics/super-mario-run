@@ -3,7 +3,6 @@ package com.supermariorun.enemies;
 import com.supermariorun.main.mainSMR;
 import com.supermariorun.panes.LevelPane;
 import acm.graphics.GImage;
-import acm.graphics.GRect;
 import acm.graphics.GRectangle;
 
 public class eGoomba {
