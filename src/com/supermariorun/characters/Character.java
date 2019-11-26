@@ -158,8 +158,9 @@ public class Character extends GraphicsProgram implements ActionListener {
 	
 	public void setMushroomMode() {
 		POWERUP_EXT = "big";
-		characImg.setLocation(100,495);
+		characImg.setLocation(100, 495);
 	}
+	
 	public void pauseStarMode() {
 		starTimer.start();
 		program.pauseStarTrack();

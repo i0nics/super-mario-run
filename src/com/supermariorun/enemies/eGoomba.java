@@ -31,22 +31,18 @@ public class eGoomba {
 	
 	
 	public void Run() {
-		
-		if (level.getBackground().getX() <= goomba.getX() - PROGRAM_WIDTH) {
+		if (goomba.getX() - level.getCharacter().getCharacter().getX() <= 1000) {
 			goomba.move(-10, 0);
 			updateBounds();
 		} 
 		
 		else {
-			goomba.move(-5, 0);
+			goomba.move(-8, 0);
 			updateBounds();
 		}
 		
-		if (program.getProgress().getCurrentPowerUp().equals("star")) {
-			
-			if (goomba.getBounds().intersects(level.getCharacter().getCharacter().getBounds())) {
+		if (program.getProgress().getCurrentPowerUp().equals("star") && goomba.getBounds().intersects(level.getCharacter().getCharacter().getBounds())) {
 				program.remove(goomba);
-			}
 		}
 		
 		else {
