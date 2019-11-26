@@ -59,6 +59,7 @@ public class PausePane extends GraphicsPane {
 		program.add(resumeButton);
 		program.add(retryButton);
 		program.add(quitButton);
+		program.add(bestCount);
 	}
 
 	@Override
@@ -69,6 +70,7 @@ public class PausePane extends GraphicsPane {
 		program.remove(retryButton);
 		program.remove(quitButton);
 		program.setScreen(level);
+		program.remove(bestCount);
 	}
 	
 
