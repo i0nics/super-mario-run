@@ -14,7 +14,6 @@ import com.supermariorun.main.playerProgress;
 import acm.graphics.GImage;
 import acm.graphics.GLabel;
 import acm.graphics.GObject;
-import starter.GButton;
 
 public class CharacterPane extends GraphicsPane implements ActionListener{
 	private static final double MULT2 = 1.5;
