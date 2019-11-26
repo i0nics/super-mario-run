@@ -44,8 +44,10 @@ public class eGoomba {
 			updateBounds();
 		}
 		
-		if (program.getProgress().getCurrentPowerUp().equals("star") && goomba.getBounds().intersects(level.getCharacter().getCharacter().getBounds())) {
+		if (program.getProgress().getCurrentPowerUp().equals("star")) {
+				if (goomba.getBounds().intersects(level.getCharacter().getCharacter().getBounds())) {
 				program.remove(goomba);
+				}
 		}
 		
 		else {
