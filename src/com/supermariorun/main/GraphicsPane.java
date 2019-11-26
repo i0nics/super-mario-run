@@ -1,6 +1,5 @@
 package com.supermariorun.main;
 
-
 /* File: GraphicsPane.java
  * -----------------------
  * Like you did with your own graphics programs, simply
