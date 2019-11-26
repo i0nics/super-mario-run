@@ -1,6 +1,4 @@
 package com.supermariorun.main;
-
-
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
