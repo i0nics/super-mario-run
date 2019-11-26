@@ -36,7 +36,8 @@ public class Level {
 		Coins = new ArrayList <GImage> ();
 		Plants = new ArrayList<GImage> ();
 		Goombas = new ArrayList<eGoomba> ();
-		ePlant = new ArrayList<ePiranhaPlant>();
+
+		//ePlant = new ePiranhaPlant(this);
 		Background = new GImage (IMG_FOLDER + levelNum + "Background.png", 0, 0);
 		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");	
 	}
@@ -48,7 +49,8 @@ public class Level {
 		Coins = new ArrayList <GImage> ();
 		Plants = new ArrayList<GImage> ();
 		Goombas = new ArrayList<eGoomba> ();
-		ePlant = new ArrayList<ePiranhaPlant>();
+
+		//ePlant = new ePiranhaPlant(this);
 		Background = new GImage (IMG_FOLDER + levelNum + "Background.png", 0, 0);
 		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");	
 	}

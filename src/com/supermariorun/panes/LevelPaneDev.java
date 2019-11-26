@@ -6,14 +6,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-
 import javax.swing.Timer;
-
-import com.supermariorun.characters.Character;
 import com.supermariorun.levels.Level;
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
-
 import acm.graphics.GImage;
 import acm.graphics.GLabel;
 import acm.graphics.GLine;
@@ -138,9 +134,10 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 		for (GImage e: Coins) {
 			program.add(e);
 		}
+		
 		drawGridLines();
 
-		program.add(CoordLabel); // DEV
+		program.add(CoordLabel); 
 		program.add(dragCoord);
 		program.add(moveLeft);
 		program.add(moveRight);
@@ -159,8 +156,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 		obj = program.getElementAt(e.getX(), e.getY());
 		mouseHold = true;
 
-		CoordLabel.setLabel("X: " + (e.getX() + mouseX) + " Y: " + e.getY()); // DEV
-
+		CoordLabel.setLabel("X: " + (e.getX() + mouseX) + " Y: " + e.getY());
 
 		if (obj == pauseButton || obj == pauseBubble) {
 			Pause();
@@ -219,24 +215,24 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 
 		if (obj == moveLeft && mouseHold) {
 			Background.move(-BACK_MOVEW, BACK_MOVEH);
-			for (GImage move : Environment) { // DEV
+			for (GImage move : Environment) { 
 				move.move(-BACK_MOVEW, BACK_MOVEH);
 			}
-			for (GImage move : Coins) { // DEV
+			for (GImage move : Coins) { 
 				move.move(-BACK_MOVEW, BACK_MOVEH);
 			}
 			mouseX += BACK_MOVEW;
 		}
 
-		if (obj == moveRight && mouseHold) { // DEV
+		if (obj == moveRight && mouseHold) {
 			Background.move(BACK_MOVEW, BACK_MOVEH);
-			for (GImage move : Environment) { // DEV
+			for (GImage move : Environment) { 
 				move.move(BACK_MOVEW, BACK_MOVEH);
 			}
-			for (GImage move : Coins) { // DEV
+			for (GImage move : Coins) { 
 				move.move(BACK_MOVEW, BACK_MOVEH);
 			}
-			mouseX -= BACK_MOVEW; // DEV
+			mouseX -= BACK_MOVEW;
 		}
 	}
 	
