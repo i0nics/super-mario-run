@@ -88,6 +88,11 @@ public class Level {
 			for (Pair<Integer, Integer> loop : levelMap.get("BRICK")) {
 				Environment.add(new GImage(IMG_FOLDER + "brick.png", loop.getKey(), loop.getValue()));
 		}
+ 		
+ 		if (levelMap.containsKey("PLATFORM"))
+			for (Pair<Integer, Integer> loop : levelMap.get("PLATFORM")) {
+				Environment.add(new GImage(IMG_FOLDER + "platform.png", loop.getKey(), loop.getValue()));
+		}
 		
 		if (levelMap.containsKey("COIN")) {
 			for (Pair<Integer, Integer> loop : levelMap.get("COIN")) {
