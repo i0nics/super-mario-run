@@ -7,10 +7,7 @@ import java.util.Collection;
 
 public class playerProgress {
 	private static int numCoins = 100;
-	private static int numSuperMushrooms = 0;
-	private static int numSuperStars = 0;
 	private static int numCoinRush = 0;
-	private static int highScore = 0;
 	private static int tempHigh = 0;
 	private static String currentCharacter = "mario";
 	private static String currentPowerUp = "";
@@ -18,32 +15,22 @@ public class playerProgress {
 	private static boolean isPrincessUnlocked = false;
 	private static boolean isStarPurchased = false;
 	private static boolean isMushroomPurchased = false;
-	
-	List<Boolean> levels = new ArrayList<Boolean>(3);
-	
-	public playerProgress() {
-		for (boolean iterate : levels) {
-			iterate = false;
-		}
-	}
-	public int getHighScore() {
-		return highScore;
+	private static ArrayList<Integer> HighScore = new ArrayList <Integer> (3);
+
+	public int getHighScore(int lvl) {
+		return HighScore.get(lvl - 1);
 	}
 	
-	public void sethighScore(int newHigh) {
+	public void sethighScore(int newHigh, int lvl) {
 		tempHigh  = newHigh;
-		if(tempHigh > highScore) {
-		highScore = tempHigh;
+
+		if (tempHigh > HighScore.get(lvl - 1)) {
+			HighScore.set(lvl - 1, tempHigh);
 		}
-	
 	}
 	
 	public int getNumCoins() {
 		return numCoins;
-	}
-	
-	public static int getNumSuperStars() {
-		return numSuperStars;
 	}
 	
 	public int getNumCoinRush() {
@@ -54,7 +41,7 @@ public class playerProgress {
 		return isYoshiUnlocked;
 	}
 	
-	public  boolean isPrincessUnlocked() {
+	public boolean isPrincessUnlocked() {
 		return isPrincessUnlocked;
 	}
 	
@@ -65,6 +52,7 @@ public class playerProgress {
 	public boolean isMushroomPurchased() {
 		return isMushroomPurchased;
 	}
+	
 	public void incrementCoins() {
 		numCoins++;
 	}
@@ -73,34 +61,12 @@ public class playerProgress {
 		numCoins =+ 2;
 	}
 	
-	public  void incrementNumSuperMushrooms() {
-		numSuperMushrooms++;
-	}
-	
-	public  void incrementNumSuperStars() {
-		numSuperStars++;
-	}
-	
-	public  void incrementNumCoinRush() {
-		numCoinRush++;
-	}
-	
 	public void decreaseCoins(int coins) {
 		numCoins -= coins;
 	}
+	
 	public void increaseCoins(int coins) {
 		numCoins += coins;
-	}
-	public void decrementSuperMushrooms() {
-		numSuperMushrooms--;
-	}
-	
-	public void decrementNumSuperStars() {
-		numSuperStars--;
-	}
-	
-	public  void decrementNumCoinRush() {
-		numCoinRush--;
 	}
 	
 	public void setYoshiUnlocked() {

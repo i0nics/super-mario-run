@@ -40,14 +40,13 @@ public class EndPane extends GraphicsPane {
 		coinCount.setFont(program.marioFont.deriveFont(40f));
 		coinCount.setColor(Color.RED);
 		coinCount.setLocation(485, 300);
-		HighScore = new GLabel("High Score: " + program.getProgress().getHighScore());
+		HighScore = new GLabel("High Score: " + program.getProgress().getHighScore(level.getLevelInt()));
 		HighScore.setFont(program.marioFont.deriveFont(40f));
 		HighScore.setColor(Color.RED);
 		HighScore.setLocation(485, 400);
 		
 	}
 	
-
 	public void mousePressed(MouseEvent e) {
 		GObject obj = program.getElementAt(e.getX(), e.getY());
 		

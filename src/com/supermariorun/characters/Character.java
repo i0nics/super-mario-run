@@ -201,7 +201,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	
 	public void coinsCollected() {
 		program.getProgress().increaseCoins(numCoins);
-		program.getProgress().sethighScore(numCoins);
+		program.getProgress().sethighScore(numCoins, levelPane.getLevelInt());
 	}
 	
 	public GImage getCharacter(){

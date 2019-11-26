@@ -18,7 +18,7 @@ import com.supermariorun.panes.TourPane;
 import com.supermariorun.soundeffects.AudioPlayer;
 import com.supermariorun.panes.EndPane;
 
-public class mainSMR extends GraphicsApplication implements ActionListener{
+public class mainSMR extends GraphicsApplication implements ActionListener {
 	private static final String MUSIC_FOLDER = "sounds";
 	private static final String BUTTON_EFFECT = "buttonEffect.mp3";
 	private static final String COIN_EFFECT = "coin.wav";

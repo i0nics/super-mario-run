@@ -144,7 +144,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.playCourseClearedTrack();
 			Character.numCoinsCollected();
 			Character.coinsCollected();
-			program.getTourPane().unlockLvl();
+			//program.getTourPane().unlockLvl(lvlNum);
 		}
 		
 		if (Character.getCharacter().getY() > 650 || Character.isDead) {
@@ -259,5 +259,17 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 	public Character getCharacter() {
 		return Character;
+	}
+	
+	public int getLevelInt() {
+		if (lvlNum.contentEquals("lvlOne")) {
+			return 1;
+		}
+		
+		else if (lvlNum.contentEquals("lvlTwo")) {
+			return 2;
+		}
+		
+		return 3;
 	}
 }

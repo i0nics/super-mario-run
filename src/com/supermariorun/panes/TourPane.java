@@ -99,14 +99,6 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		testlevel1.setFillColor(Color.BLUE);
 	}
 	
-	public void unlockLvl() {
-		if(!lockLvl.isEmpty())
-		{
-			lockLvl.remove(0);
-			unlockCount++;
-		}
-	}
-
 	@Override
 	public void showContents() {
 		bTimer.start();
@@ -117,8 +109,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		program.add(lvlStrip);
 		program.add(worldOne);
 		program.add(levelIcons.get(0));
-		if (unlockCount > 0) { program.add(levelIcons.get(1)); }
-	    if (unlockCount > 1) { program.add(levelIcons.get(2)); } 
+	
 		if (!lockLvl.isEmpty()) {
 			for (GImage img1 : lockLvl) {program.add(img1);}
 		}
