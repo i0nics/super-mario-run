@@ -20,39 +20,44 @@ import acm.graphics.GObject;
 import acm.graphics.GRectangle;
 import acm.program.GraphicsProgram;
 
-public class ePiranhaPlant implements ActionListener {
-	double mainWidth ;
-	double mainHeight;
-	private int count;
-	public Timer plantTimer;
+public class ePiranhaPlant {
+	private mainSMR program;
+	private LevelPane level;
+	private static final double PROGRAM_WIDTH = mainSMR.WINDOW_WIDTH;
 	public static final String IMG_FOLDER = "enemies/";
 	private GImage pPlant;
-	private ArrayList <GImage> Environment;
+	private GRectangle body;
+	//private ArrayList <GImage> Environment;
 	
 	
-	public ePiranhaPlant(Level level) {
+	public ePiranhaPlant(mainSMR main, LevelPane levelPane, int x, int y) {
+		program = main;
+		level = levelPane;
+		pPlant = new GImage(IMG_FOLDER + "pPlant.png", x, y);
 		
-	//	level = new LevelOne();
-		plantTimer = new Timer(50, this);
-		pPlant = new GImage(IMG_FOLDER + "pPlant.png", 100, 470);
-		pPlant.setSize(1000, 1000);
-		Environment = level.getEnvironment();
+		body = new GRectangle (pPlant.getX(), pPlant.getY() + 4, pPlant.getWidth() - 21, 2);
 	}
 
-
-	public void actionPerformed(ActionEvent e) {
-		if (count == 1) {
-			pPlant.move(0, -60);
+	public void updateBounds() {
+		body.setLocation(pPlant.getX() + 12, pPlant.getY() + 3);
+	}
+	
+	public void Run() {
+		
+		if (level.getBackground().getX() <= pPlant.getX() - PROGRAM_WIDTH) {
+			pPlant.move(0, -10);
+			updateBounds();
+		} 
+		
+		else {
+			pPlant.move(0, -8);
+			updateBounds();
 		}
-		
-		if (count == 2) {
-			pPlant.move(0, 60);
-			
-		}		
-		count++;
-		
-	}
 
+		if (body.intersects(level.getCharacter().getCharacter().getBounds())) {
+			level.getCharacter().isDead = true;
+		}
+	} 
 	
 		
 	public GImage getPlant(){

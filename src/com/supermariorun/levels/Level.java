@@ -22,7 +22,7 @@ public class Level {
 	private ArrayList <GImage> Coins;
 	private ArrayList <GImage> Plants;
 	private ArrayList <eGoomba> Goombas;
-	private ePiranhaPlant ePlant;
+	private ArrayList <ePiranhaPlant> ePlant;
 	private HashMap<String, ArrayList <Pair<Integer, Integer>>> levelMap;
 	private ScanLevel scanLevel;
 	private LevelPane levelPane;
@@ -36,7 +36,7 @@ public class Level {
 		Coins = new ArrayList <GImage> ();
 		Plants = new ArrayList<GImage> ();
 		Goombas = new ArrayList<eGoomba> ();
-		ePlant = new ePiranhaPlant(this);
+		ePlant = new ArrayList<ePiranhaPlant>();
 		Background = new GImage (IMG_FOLDER + levelNum + "Background.png", 0, 0);
 		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");	
 	}
@@ -48,7 +48,7 @@ public class Level {
 		Coins = new ArrayList <GImage> ();
 		Plants = new ArrayList<GImage> ();
 		Goombas = new ArrayList<eGoomba> ();
-		ePlant = new ePiranhaPlant(this);
+		ePlant = new ArrayList<ePiranhaPlant>();
 		Background = new GImage (IMG_FOLDER + levelNum + "Background.png", 0, 0);
 		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");	
 	}
