@@ -54,13 +54,11 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		program = mainSMR;
 		timer = new Timer (MS, this);
 		
-		pausePane = new PausePane(program, this);
-		
 		level = new Level(program, levelNum, this);
 		this.lvlNum = levelNum;
 	
 		Character = new Character(program, this);
-		
+		pausePane = new PausePane(program, this);
 		pauseBubble = new GImage(IMG_FOLDER + "bubble.png", 30, 10);
 		pauseBubble.setSize(100, 100);
 		

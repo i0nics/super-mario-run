@@ -1,4 +1,5 @@
 package com.supermariorun.panes;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -10,6 +11,7 @@ import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
 
 import acm.graphics.GImage;
+import acm.graphics.GLabel;
 import acm.graphics.GObject;
 import starter.GParagraph;
 
@@ -22,6 +24,7 @@ public class PausePane extends GraphicsPane {
 	private GImage quitButton;
 	private GImage greyBack;
 	private GImage pausePane;
+	private GLabel bestCount;
 	
 	public PausePane(mainSMR main, LevelPane level) {
 		this.program = main;
@@ -41,6 +44,11 @@ public class PausePane extends GraphicsPane {
 		
 		retryButton = new GImage(IMG_FOLDER + "retryButton.png", 415, 387);
 		retryButton.setSize(280, 50);
+		
+		bestCount = new GLabel("" + program.getProgress().getHighScore(level.getLevelInt()), 580, 385);
+		bestCount.setFont(program.marioFont.deriveFont(35f));
+		bestCount.setColor(Color.GRAY);
+		
 	}
 	
 	@Override
