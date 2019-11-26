@@ -213,7 +213,6 @@ public class mainSMR extends GraphicsApplication implements ActionListener {
 		audio.playSound(MUSIC_FOLDER, STOMP_EFFECT);
 	}
 	
-	
 	public void playGameOverSound() {
 		audio.playSound(MUSIC_FOLDER, GAMEOVER_TRACK);
 	}
