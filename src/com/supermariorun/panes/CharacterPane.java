@@ -32,7 +32,8 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 	private GImage marioPic;
 	private GImage marioBubble;
 	private GImage marioLabel;
-	
+	private GLabel costP;
+	private GLabel costY;
 	private int count;
 	private GImage coin;
 	public Timer bubbleTimer;
@@ -105,6 +106,14 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		
 		coin = new GImage(IMG_FOLDER + "coin.gif", 800, 35);
 		coin.setSize(100, 100);
+		
+		costP = new GLabel("Cost: 50", mainSMR.getWidth() / 5, mainSMR.getHeight() / 1);
+		costP.setFont(program.marioFont.deriveFont(30f));
+		costP.setColor(Color.DARK_GRAY);
+		
+		costY = new GLabel("Cost: 50", mainSMR.getWidth() / 2.07, mainSMR.getHeight() / 1);
+		costY.setFont(program.marioFont.deriveFont(30f));
+		costY.setColor(Color.DARK_GRAY);
 	}
 	
 	@Override
@@ -126,6 +135,8 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		program.add(marioPic);
 		program.add(marioBubble);
 		program.add(marioLabel);
+		program.add(costY);
+		program.add(costP);
 	}
 
 	@Override

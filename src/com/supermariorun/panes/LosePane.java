@@ -41,8 +41,8 @@ public class LosePane extends GraphicsPane {
 		background.setSize(mainWidth, mainHeight);
 		quitButton = new GImage(IMG_FOLDER + "quit.png", BUTTON_WIDTH, BUTTON_HEIGHT);
 		quitButton.setSize(BUTTON_SIZEW, 60);
-		retryButton = new GImage(IMG_FOLDER + "retry.png", BUTTON_WIDTH, BUTTON_HEIGHT + 50);
-		retryButton.setSize(BUTTON_SIZEW, 120);
+		retryButton = new GImage(IMG_FOLDER + "retry.png", BUTTON_WIDTH - 20, BUTTON_HEIGHT + 50);
+		retryButton.setSize(BUTTON_SIZEW * 1.15, 160);
 	}
 	
 	public void mousePressed(MouseEvent e) {

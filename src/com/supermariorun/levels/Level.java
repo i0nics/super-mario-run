@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 import com.supermariorun.characters.Character;
 import com.supermariorun.enemies.eGoomba;
-import com.supermariorun.enemies.ePiranhaPlant;
 import com.supermariorun.main.mainSMR;
 import com.supermariorun.panes.LevelPane;
 import com.supermariorun.panes.LevelPaneDev;
@@ -22,7 +21,6 @@ public class Level {
 	private ArrayList <GImage> Coins;
 	private ArrayList <GImage> Plants;
 	private ArrayList <eGoomba> Goombas;
-	private ePiranhaPlant ePlant;
 	private HashMap<String, ArrayList <Pair<Integer, Integer>>> levelMap;
 	private ScanLevel scanLevel;
 	private LevelPane levelPane;
@@ -36,6 +34,7 @@ public class Level {
 		Coins = new ArrayList <GImage> ();
 		Plants = new ArrayList<GImage> ();
 		Goombas = new ArrayList<eGoomba> ();
+
 		//ePlant = new ePiranhaPlant(this);
 		Background = new GImage (IMG_FOLDER + levelNum + "Background.png", 0, 0);
 		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");	
@@ -48,6 +47,7 @@ public class Level {
 		Coins = new ArrayList <GImage> ();
 		Plants = new ArrayList<GImage> ();
 		Goombas = new ArrayList<eGoomba> ();
+
 		//ePlant = new ePiranhaPlant(this);
 		Background = new GImage (IMG_FOLDER + levelNum + "Background.png", 0, 0);
 		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");	
@@ -97,12 +97,6 @@ public class Level {
 		if (levelMap.containsKey("COIN")) {
 			for (Pair<Integer, Integer> loop : levelMap.get("COIN")) {
 				Coins.add(new GImage(IMG_FOLDER + "coin.gif", loop.getKey(), loop.getValue()));
-			}
-		}
-		
-		if (levelMap.containsKey("PLANT")) {
-			for (Pair<Integer, Integer> loop : levelMap.get("PLANT")) {
-				Plants.add(new GImage("enemies/pPlant.png", loop.getKey(), loop.getValue()));
 			}
 		}
 		
