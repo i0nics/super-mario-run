@@ -52,6 +52,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private ArrayList <GImage> lockLvl;
 	private ArrayList <GImage> levelIcons;
 	private playerProgress progress;
+	private GImage developerMode;
 	
 	public TourPane(mainSMR mainSMR) {
 		super();
@@ -61,8 +62,8 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		lockLvl = new ArrayList <GImage> (2);
 		levelIcons = new ArrayList <GImage> (3);
 			
-		DevMode = new GButton ("Developer Mode", 500, 550, 100, 100);
-		DevMode.setFillColor(Color.BLUE);
+		//DevMode = new GButton ("Developer Mode", 500, 550, 100, 100);
+		//DevMode.setFillColor(Color.BLUE);
 		
 		backPipe = new GImage("gPipeR.png", -50, 30);
 		backPipe.setSize(PIPE_WIDTH, PIPE_HEIGHT);
@@ -81,6 +82,9 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		
 		worldOne = new GImage(IMG_FOLDER + "worldOne.png", 0, 350);
 	    worldOne.setSize(150, 150);
+	   
+	    developerMode = new GImage(IMG_FOLDER + "Builder_Mario.png", 875,300);
+	    developerMode.setSize(200, 200);
 	    
 	    for (int i = 170; i <= 650; i = i + 240) {
 	    	levelIcons.add(new GImage(IMG_FOLDER + "lvl" + lvlCount + ".png", i, 345));
@@ -110,6 +114,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		program.add(backPipe);
 		program.add(lvlStrip);
 		program.add(worldOne);
+		program.add(developerMode);
 		for (int i = 1; i <= 3; i++) {
 			if (progress.isLevelUnlocked(i)) {
 				program.add(levelIcons.get(i-1));
@@ -119,7 +124,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		if (!lockLvl.isEmpty()) {
 			for (GImage img1 : lockLvl) {program.add(img1);}
 		}
-		program.add(DevMode);
+		//program.add(DevMode);
 		program.add(testLevel);
 		program.add(testlevel1);
 	}
@@ -191,7 +196,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 			}
 		}
 		
-		if (obj == DevMode) {
+		if (obj == developerMode) {
 			program.playPipeSound();
 			program.stopTourSound();
 			try {

@@ -40,6 +40,8 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 	private GImage buyStar;
 	private GImage background;
 	private GLabel coinCount;
+	private GLabel costM;
+	private GLabel costS;
 	private static int mushroomCost = PIPE_WH;
 	private static int starCost = PIPE_WH;
 	final double labelWidth;
@@ -89,6 +91,14 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 
 		coin = new GImage(IMG_FOLDER + "coin.gif", 820, 35);
 		coin.setSize(100, 100);
+		
+		costM = new GLabel("Cost: 50", mainSMR.getWidth() / 5.8, mainSMR.getHeight() / 3);
+		costM.setFont(program.marioFont.deriveFont(30f));
+		costM.setColor(Color.WHITE);
+		
+		costS = new GLabel("Cost: 50", mainSMR.getWidth() / 1.42, mainSMR.getHeight() / 3);
+		costS.setFont(program.marioFont.deriveFont(30f));
+		costS.setColor(Color.WHITE);
 	}
 
 	@Override
@@ -117,6 +127,8 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 		program.add(buyStar);
 		program.add(coinCount);
 		program.add(coin);
+		program.add(costM);
+		program.add(costS);
 	}
 
 	@Override
