@@ -9,8 +9,6 @@ import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
 
 import acm.graphics.GImage;
-import acm.graphics.GObject;
-import starter.GParagraph;
 
 public class StartPane extends GraphicsPane implements ActionListener {
 	private mainSMR program; 
