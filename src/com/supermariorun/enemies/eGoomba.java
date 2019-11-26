@@ -1,26 +1,9 @@
 package com.supermariorun.enemies;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Iterator;
-
-import javax.swing.Timer;
-
-import com.supermariorun.levels.Level;
-import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
-import com.supermariorun.main.playerProgress;
 import com.supermariorun.panes.LevelPane;
-
-
 import acm.graphics.GImage;
-import acm.graphics.GObject;
-import acm.graphics.GRect;
 import acm.graphics.GRectangle;
-import acm.program.GraphicsProgram;
-import acm.program.Program;
 
 public class eGoomba {
 	private mainSMR program;
@@ -39,7 +22,7 @@ public class eGoomba {
 		level = levelPane;
 		goomba = new GImage(IMG_FOLDER + "goomba.png", x, y);
 		
-		head = new GRectangle (goomba.getX() + 15, goomba.getY() + 4, goomba.getWidth() - 21, 2);
+		head = new GRectangle (goomba.getX(), goomba.getY() + 4, goomba.getWidth() - 21, 2);
 		body = new GRectangle (goomba.getX() + goomba.getWidth() - 35,  goomba.getY() + 8, 2, goomba.getHeight() - 21);
 	}
 
@@ -70,6 +53,7 @@ public class eGoomba {
 			level.getCharacter().isDead = true;
 		}
 	} 
+	
 	//public GRect getBody() {
 		//return body;
 	//}
