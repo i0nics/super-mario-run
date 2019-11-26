@@ -66,7 +66,6 @@ public class Character extends GraphicsProgram implements ActionListener {
 	
 	public void stand() {
 		characImg.setImage(IMG_FOLDER + POWERUP_EXT + character + "Stand.png");
-		characImg.setSize(54, 57);
 	}
 
 	public void run() {
@@ -156,7 +155,10 @@ public class Character extends GraphicsProgram implements ActionListener {
 		program.stopLvlOneTrack(levelPane.getLevelNum());
 		program.playStarTrack();
 	}
-	
+	public void setMushroomMode() {
+		POWERUP_EXT = "big";
+		characImg.setLocation(100,495);
+	}
 	public void pauseStarMode() {
 		starTimer.start();
 		program.pauseStarTrack();

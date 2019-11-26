@@ -91,7 +91,9 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		if (program.getProgress().getCurrentPowerUp() == "star") {
 			Character.setStarMode();
 		}
-		
+		if(program.getProgress().getCurrentPowerUp() == "big") {
+			Character.setMushroomMode();
+		}
 		timer.start();
 		Character.run();
 		playTrack();
