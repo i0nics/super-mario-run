@@ -18,6 +18,7 @@ import acm.graphics.GImage;
 import acm.graphics.GObject;
 
 public class LevelPane extends GraphicsPane implements ActionListener{
+	private static final boolean BOOLEAN_FALSE = false;
 	private mainSMR program;
 	private GImage Background;
 	private GImage pauseButton;
@@ -36,14 +37,14 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private Timer timer;
 	private PausePane pausePane;
 	private EndPane EndPane;
-	private boolean isRestartTimer = false;
-	private boolean jumpState = false;
-	private boolean isPause = false;
-	private boolean isMousePressed = false;
+	private boolean isRestartTimer = BOOLEAN_FALSE;
+	private boolean jumpState = BOOLEAN_FALSE;
+	private boolean isPause = BOOLEAN_FALSE;
+	private boolean isMousePressed = BOOLEAN_FALSE;
 	private int mouseCounter = 0;
 	private String lvlNum;
 
-	public static final int MS = 10;
+	public static final int MS = 30;
 	public static final String IMG_FOLDER = "LevelPane/";
 
 	public LevelPane(mainSMR mainSMR, String levelNum) throws FileNotFoundException {
@@ -86,7 +87,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		Goombas = level.getGoombas();
 		Character.reset();
 		Character.resetCoinsCollected();
-		isPause = false;
+		isPause = BOOLEAN_FALSE;
 
 		if (program.getProgress().getCurrentPowerUp() == "star") {
 			Character.setStarMode();
@@ -100,7 +101,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	}
 	
 	public void Resume() {
-		isPause = false;
+		isPause = BOOLEAN_FALSE;
 		timer.start();
 		Character.run();
 		playTrack();
@@ -187,7 +188,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		
 		if (isRestartTimer) {
 			timer.start();
-			isRestartTimer = false;
+			isRestartTimer = BOOLEAN_FALSE;
 		}
 	
 		if(obj == pauseButton || obj == pauseBubble) {
@@ -216,7 +217,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		isMousePressed = false;
+		isMousePressed = BOOLEAN_FALSE;
 		mouseCounter = 0;
 	}
 		
@@ -243,7 +244,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	}
 	
 	public void setJumpState() {
-		jumpState = false;
+		jumpState = BOOLEAN_FALSE;
 	}
 	
 	public Level getLevel() {
