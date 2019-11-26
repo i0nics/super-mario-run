@@ -17,8 +17,10 @@ public class playerProgress {
 	private static ArrayList<Boolean> levelUnlocked = new ArrayList <Boolean> (Arrays.asList(true, false, false));
 	
 	public void unlockLevel(int lvl, TourPane tour) {
-		levelUnlocked.set(lvl, true);
-		tour.removeQBlock();
+		if (!levelUnlocked.get(lvl)) {
+			levelUnlocked.set(lvl, true);
+			tour.removeQBlock();
+		}
 	}
 	
 	public boolean isLevelUnlocked(int lvl) {
