@@ -21,6 +21,9 @@ import acm.graphics.GObject;
 import starter.GButton;
 
 public class LevelPaneDev extends GraphicsPane implements ActionListener {
+	private static final int BACK_MOVEH = 0;
+	private static final int BACK_MOVEW = 40;
+	private static final int BUTTON_SIZE = 100;
 	private mainSMR program;
 	private GImage Background;
 	private GImage pauseButton;
@@ -44,6 +47,8 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 	private Level level;
 	private int spaceWidth;
 	private int spaceHeight;
+
+	public static final int MS = BUTTON_SIZE; 
 	public static final String IMG_FOLDER = "LevelPane/";
 	private Timer mouseTimer;
 	private String lvlNum;
@@ -60,22 +65,22 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 
 		level = new Level(levelNum);
 		
-		CoordLabel = new GLabel("label ", 500, 40);
+		CoordLabel = new GLabel("label ", 500, BACK_MOVEW);
 		CoordLabel.setColor(Color.red);
 		CoordLabel.setFont("Arial-40");
 
-		dragCoord = new GLabel("drag obj", 800, 40);
+		dragCoord = new GLabel("drag obj", 800, BACK_MOVEW);
 		dragCoord.setColor(Color.red);
 		dragCoord.setFont("Arial-40");
 
-		moveLeft = new GButton("left", 300, 40, 100, 100);
-		moveRight = new GButton("right", 400, 40, 100, 100);
+		moveLeft = new GButton("left", 300, BACK_MOVEW, BUTTON_SIZE, BUTTON_SIZE);
+		moveRight = new GButton("right", 400, BACK_MOVEW, BUTTON_SIZE, BUTTON_SIZE);
 
-		pausePane = new GImage(IMG_FOLDER + "PausePane.png", 400, 100);
+		pausePane = new GImage(IMG_FOLDER + "PausePane.png", 400, BUTTON_SIZE);
 		pausePane.setSize(300, 400);
 		
 		pauseBubble = new GImage(IMG_FOLDER + "bubble.png", 30, 10);
-		pauseBubble.setSize(100, 100);
+		pauseBubble.setSize(BUTTON_SIZE, BUTTON_SIZE);
 
 		pauseButton = new GImage(IMG_FOLDER + "pause.png", 55, 27);
 		pauseButton.setSize(50, 70);
@@ -87,7 +92,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 		greyBack.setSize(program.getWidth(), program.getHeight());
 
 		resumeButton = new GImage(IMG_FOLDER + "continueButton.png", 450, 500);
-		resumeButton.setSize(190, 100);
+		resumeButton.setSize(190, BUTTON_SIZE);
 
 		retryButton = new GImage(IMG_FOLDER + "retryButton.png", 415, 387);
 		retryButton.setSize(280, 50);
@@ -213,25 +218,25 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (obj == moveLeft && mouseHold) {
-			Background.move(-40, 0);
+			Background.move(-BACK_MOVEW, BACK_MOVEH);
 			for (GImage move : Environment) { // DEV
-				move.move(-40, 0);
+				move.move(-BACK_MOVEW, BACK_MOVEH);
 			}
 			for (GImage move : Coins) { // DEV
-				move.move(-40, 0);
+				move.move(-BACK_MOVEW, BACK_MOVEH);
 			}
-			mouseX += 40;
+			mouseX += BACK_MOVEW;
 		}
 
 		if (obj == moveRight && mouseHold) { // DEV
-			Background.move(40, 0);
+			Background.move(BACK_MOVEW, BACK_MOVEH);
 			for (GImage move : Environment) { // DEV
-				move.move(40, 0);
+				move.move(BACK_MOVEW, BACK_MOVEH);
 			}
 			for (GImage move : Coins) { // DEV
-				move.move(40, 0);
+				move.move(BACK_MOVEW, BACK_MOVEH);
 			}
-			mouseX -= 40; // DEV
+			mouseX -= BACK_MOVEW; // DEV
 		}
 	}
 	
