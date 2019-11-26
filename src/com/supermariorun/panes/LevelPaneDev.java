@@ -44,7 +44,6 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 	private Level level;
 	private int spaceWidth;
 	private int spaceHeight;
-	public static final int MS = 100; 
 	public static final String IMG_FOLDER = "LevelPane/";
 	private Timer mouseTimer;
 	private String lvlNum;
