@@ -3,9 +3,7 @@ package com.supermariorun.main;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import com.supermariorun.panes.LevelPane;
 import com.supermariorun.panes.TourPane;
-import java.util.Collection;
 
 public class playerProgress {
 	private static int numCoins = 100;
@@ -20,7 +18,7 @@ public class playerProgress {
 	private static ArrayList<Boolean> levelUnlocked = new ArrayList <Boolean> (Arrays.asList(true, false, false));
 	
 	public void unlockLevel(int lvl, TourPane tour) {
-		levelUnlocked.set(lvl - 1, true);
+		levelUnlocked.set(lvl, true);
 		tour.removeQBlock();
 	}
 	

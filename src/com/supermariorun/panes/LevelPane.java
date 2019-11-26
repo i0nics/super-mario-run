@@ -131,7 +131,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		
 		else {
 			program.playStarTrack();
-		}//
+		}
 	}
 	
 	public void isGameOver() {
@@ -263,11 +263,11 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	}
 	
 	public int getLevelInt() {
-		if (lvlNum.contentEquals("lvlOne")) {
+		if (lvlNum.contentEquals("One")) {
 			return 1;
 		}
 		
-		else if (lvlNum.contentEquals("lvlTwo")) {
+		if (lvlNum.contentEquals("Two")) {
 			return 2;
 		}
 		
