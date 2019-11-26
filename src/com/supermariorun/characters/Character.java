@@ -4,23 +4,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
-
 import javax.swing.Timer;
-
 import com.supermariorun.main.mainSMR;
 import com.supermariorun.panes.LevelPane;
-import com.supermariorun.panes.LevelPaneDev;
-
 import acm.graphics.GImage;
 import acm.graphics.GObject;
-import acm.graphics.GRect;
 import acm.graphics.GRectangle;
 import acm.program.GraphicsProgram;
 
 public class Character extends GraphicsProgram implements ActionListener {
 	private mainSMR program;
 	private LevelPane levelPane;
-	private LevelPaneDev levelPaneDev;
 	private GImage characImg;
 	private GRectangle Feet;
 	private GRectangle Body;
@@ -39,7 +33,6 @@ public class Character extends GraphicsProgram implements ActionListener {
 	private Timer starTimer;
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;
-	private ArrayList <GImage> Goombas;
 	 
 	public Character(mainSMR mainSMR, LevelPane levelPane) {
 		program = mainSMR;
@@ -220,7 +213,4 @@ public class Character extends GraphicsProgram implements ActionListener {
 		isDead = false;
 		characImg.setLocation(100, 520);	
 	}
-	/*public GRect getRect() {
-		return Head;
-	}*/
 }
