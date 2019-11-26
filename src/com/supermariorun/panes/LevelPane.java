@@ -43,7 +43,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private int mouseCounter = 0;
 	private String lvlNum;
 
-	public static final int MS = 30;
+	public static final int MS = 10;
 	public static final String IMG_FOLDER = "LevelPane/";
 
 	public LevelPane(mainSMR mainSMR, String levelNum) throws FileNotFoundException {
@@ -144,7 +144,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 			program.playCourseClearedTrack();
 			Character.numCoinsCollected();
 			Character.coinsCollected();
-			//program.getTourPane().unlockLvl(lvlNum);
+			program.getProgress().unlockLevel(getLevelInt(), program.getTourPane());
 		}
 		
 		if (Character.getCharacter().getY() > 650 || Character.isDead) {
@@ -232,7 +232,6 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		for (eGoomba e: Goombas) { program.add(e.getEnemy());}
 		for (GImage e: Environment) { program.add(e); }
 		for (GImage e: Coins) { program.add(e); }
-		
 	}
 
 	@Override

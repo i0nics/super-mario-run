@@ -3,11 +3,12 @@ package com.supermariorun.main;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import com.supermariorun.panes.LevelPane;
+import com.supermariorun.panes.TourPane;
 import java.util.Collection;
 
 public class playerProgress {
 	private static int numCoins = 100;
-	private static int numCoinRush = 0;
 	private static int tempHigh = 0;
 	private static String currentCharacter = "mario";
 	private static String currentPowerUp = "";
@@ -15,10 +16,16 @@ public class playerProgress {
 	private static boolean isPrincessUnlocked = false;
 	private static boolean isStarPurchased = false;
 	private static boolean isMushroomPurchased = false;
-	private static ArrayList<Integer> HighScore = new ArrayList <Integer> (3);
-
-	public int getHighScore(int lvl) {
-		return HighScore.get(lvl - 1);
+	private static ArrayList<Integer> HighScore = new ArrayList <Integer> (Arrays.asList(0, 0, 0));
+	private static ArrayList<Boolean> levelUnlocked = new ArrayList <Boolean> (Arrays.asList(true, false, false));
+	
+	public void unlockLevel(int lvl, TourPane tour) {
+		levelUnlocked.set(lvl - 1, true);
+		tour.removeQBlock();
+	}
+	
+	public boolean isLevelUnlocked(int lvl) {
+		return levelUnlocked.get(lvl - 1);
 	}
 	
 	public void sethighScore(int newHigh, int lvl) {
@@ -29,12 +36,12 @@ public class playerProgress {
 		}
 	}
 	
-	public int getNumCoins() {
-		return numCoins;
+	public int getHighScore(int lvl) {
+		return HighScore.get(lvl-1);
 	}
 	
-	public int getNumCoinRush() {
-		return numCoinRush;
+	public int getNumCoins() {
+		return numCoins;
 	}
 	
 	public boolean isYoshiUnlocked() {

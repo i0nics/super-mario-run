@@ -11,6 +11,7 @@ import javax.swing.Timer;
 
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.mainSMR;
+import com.supermariorun.main.playerProgress;
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;
@@ -44,17 +45,18 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private int wCount = 0;
 	private int count = 0;
 	private int sizeCount = 0;
-	private int unlockCount = 0;
 	private int lvlCount = 1;
 	private Timer bTimer;
 	private GButton testLevel;
 	private GButton testlevel1;
 	private ArrayList <GImage> lockLvl;
 	private ArrayList <GImage> levelIcons;
+	private playerProgress progress;
 	
 	public TourPane(mainSMR mainSMR) {
 		super();
 		program = mainSMR;
+		progress = program.getProgress();
 		bTimer = new Timer(100, this);
 		lockLvl = new ArrayList <GImage> (2);
 		levelIcons = new ArrayList <GImage> (3);
@@ -108,7 +110,11 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		program.add(backPipe);
 		program.add(lvlStrip);
 		program.add(worldOne);
-		program.add(levelIcons.get(0));
+		for (int i = 1; i <= 3; i++) {
+			if (progress.isLevelUnlocked(i)) {
+				program.add(levelIcons.get(i-1));
+			}
+		}
 	
 		if (!lockLvl.isEmpty()) {
 			for (GImage img1 : lockLvl) {program.add(img1);}
@@ -220,11 +226,11 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		}
 		
 		if (isWiggle == true) {
-			if (wCount % 2 != 0) { //odd
+			if (wCount % 2 != 0) { 
 				wiggleObj.move(-20, 0);
 			}
 			
-			else { //even
+			else { 
 				wiggleObj.move(20, 0);
 			}
 			wCount++;
@@ -237,5 +243,11 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		}
 		
 		count++;
+	}
+	
+	public void removeQBlock() {
+		if (!lockLvl.isEmpty()) {
+			lockLvl.remove(0);
+		}
 	}
 }
