@@ -14,6 +14,7 @@ public class eGoomba {
 	private GImage goomba;;
 	private GRectangle body;
 	private GRectangle head;
+	private boolean isStomp = false;
 
 	public eGoomba(mainSMR main, LevelPane levelPane, int x, int y) {
 		program = main;
@@ -21,16 +22,18 @@ public class eGoomba {
 		goomba = new GImage(IMG_FOLDER + "goomba.png", x, y);
 		
 		head = new GRectangle (goomba.getX(), goomba.getY() + 2, goomba.getWidth(), 2);
-		body = new GRectangle (goomba.getX() + 10,  goomba.getY() + 8, 2, goomba.getHeight() - 10);
+		body = new GRectangle (goomba.getX() - 10,  goomba.getY() + 8, 2, goomba.getHeight() - 10);
 	}
 
 	public void updateBounds() {
 		head.setLocation(goomba.getX(), goomba.getY() + 2);
-		body.setLocation(goomba.getX() + 3,  goomba.getY() + 8);
+		body.setLocation(goomba.getX() - 10,  goomba.getY() + 8);
 	}
 	
 	
 	public void Run() {
+		isStomp = false;
+		
 		if (goomba.getX() - level.getCharacter().getCharacter().getX() <= 1000) {
 			goomba.move(-10, 0);
 			updateBounds();
@@ -49,9 +52,10 @@ public class eGoomba {
 			if (head.intersects(level.getCharacter().getCharacter().getBounds())) {
 				program.playStompEffect();
 				program.remove(goomba);
+				isStomp = true;
 			} 
 			
-			if (!level.getJumpState() && body.intersects(level.getCharacter().getCharacter().getBounds())) {
+			if (!isStomp && body.intersects(level.getCharacter().getCharacter().getBounds())) {
 				level.getCharacter().isDead = true;
 			}
 		}
