@@ -27,7 +27,7 @@ public class eGoomba {
 	}
 
 	public void updateBounds() {
-		head.setLocation(goomba.getX() + 12, goomba.getY() + 3);
+		head.setLocation(goomba.getX(), goomba.getY() + 3);
 		body.setLocation(goomba.getX() + goomba.getWidth() - 35,  goomba.getY() + 8);
 	}
 	
