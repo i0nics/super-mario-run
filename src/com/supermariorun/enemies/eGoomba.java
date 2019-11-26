@@ -41,14 +41,23 @@ public class eGoomba {
 			goomba.move(-5, 0);
 			updateBounds();
 		}
-
-		if (head.intersects(level.getCharacter().getCharacter().getBounds())) {
-			program.playStompEffect();
-			program.remove(goomba);
-		} 
 		
-		if (!level.getJumpState() && body.intersects(level.getCharacter().getCharacter().getBounds())) {
-			level.getCharacter().isDead = true;
+		if (program.getProgress().getCurrentPowerUp().equals("star")) {
+			
+			if (goomba.getBounds().intersects(level.getCharacter().getCharacter().getBounds())) {
+				program.remove(goomba);
+			}
+		}
+		
+		else {
+			if (head.intersects(level.getCharacter().getCharacter().getBounds())) {
+				program.playStompEffect();
+				program.remove(goomba);
+			} 
+			
+			if (!level.getJumpState() && body.intersects(level.getCharacter().getCharacter().getBounds())) {
+				level.getCharacter().isDead = true;
+			}
 		}
 	} 
 

@@ -155,6 +155,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 		program.stopLvlOneTrack(levelPane.getLevelNum());
 		program.playStarTrack();
 	}
+	
 	public void setMushroomMode() {
 		POWERUP_EXT = "big";
 		characImg.setLocation(100,495);

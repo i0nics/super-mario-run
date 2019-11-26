@@ -112,7 +112,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 		program.add(worldOne);
 		for (int i = 1; i <= 3; i++) {
 			if (progress.isLevelUnlocked(i)) {
-				program.add(levelIcons.get(i-1));
+				program.add(levelIcons.get(i - 1));
 			}
 		}
 	
