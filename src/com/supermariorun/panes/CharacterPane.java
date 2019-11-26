@@ -17,6 +17,11 @@ import acm.graphics.GObject;
 import starter.GButton;
 
 public class CharacterPane extends GraphicsPane implements ActionListener{
+	private static final double MULT2 = 1.5;
+	private static final double MULT = 1.2;
+	private static final int LABEL_HEIGHT = 490;
+	private static final int BUBBLE_HEIGHT = 450;
+	private static final int CHAR_HEIGHT = 200;
 	private mainSMR program;
 	private playerProgress progress;
 	public static final String IMG_FOLDER = "characterPane/";
@@ -64,40 +69,40 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 		background.setSize(mainWidth, mainHeight);
 		
 		backLabel = new GImage(IMG_FOLDER + "backLabel.png",170, 75);
-		backLabel.setSize(labelWidth * 1.2, labelHeight*1.2);
+		backLabel.setSize(labelWidth * MULT, labelHeight*MULT);
 
 		BackButton = new GImage(IMG_FOLDER + "bubble.png", 152, 30);
-		BackButton.setSize(bubbleWidth * 1.2, bubbleHeight*1.2);
+		BackButton.setSize(bubbleWidth * MULT, bubbleHeight*MULT);
 		
 		BackPipe = new GImage(IMG_FOLDER + "gPipeR.png", -50, 50);
 		BackPipe.setSize(pipeWidth, pipeHeight);
 		
-		marioPic = new GImage(IMG_FOLDER + "mario.png", 835,200);
+		marioPic = new GImage(IMG_FOLDER + "mario.png", 835,CHAR_HEIGHT);
 		marioPic.setSize(230, 250);
 		
-		PrincessPic = new GImage(IMG_FOLDER + "Princess.png", 225, 200);
+		PrincessPic = new GImage(IMG_FOLDER + "Princess.png", 225, CHAR_HEIGHT);
 		PrincessPic.setSize(185, 250);
 		
-		yoshiPic = new GImage(IMG_FOLDER + "yoshiPic.png", 535, 200);
+		yoshiPic = new GImage(IMG_FOLDER + "yoshiPic.png", 535, CHAR_HEIGHT);
 		yoshiPic.setSize(185, 250);
 		
-		marioBubble = new GImage(IMG_FOLDER + "bubble.png", 845,450);
-		marioBubble.setSize(bubbleWidth * 1.2, bubbleHeight * 1.2);
+		marioBubble = new GImage(IMG_FOLDER + "bubble.png", 845,BUBBLE_HEIGHT);
+		marioBubble.setSize(bubbleWidth * MULT, bubbleHeight * MULT);
 		
 		marioLabel = new GImage(IMG_FOLDER + "equippedButton.png", 865, 495);
-		marioLabel.setSize(labelWidth * 1.2, labelHeight * 1.2);
+		marioLabel.setSize(labelWidth * MULT, labelHeight * MULT);
 		
-		princessBubble = new GImage(IMG_FOLDER + "bubble.png",235,450);
-		princessBubble.setSize(bubbleWidth * 1.2, bubbleHeight*1.2);
+		princessBubble = new GImage(IMG_FOLDER + "bubble.png",235,BUBBLE_HEIGHT);
+		princessBubble.setSize(bubbleWidth * MULT, bubbleHeight*MULT);
 
-		princessLabel = new GImage(IMG_FOLDER + "buyLabel.png",240,490);
-		princessLabel.setSize(labelWidth * 1.5, labelHeight * 1.5);
+		princessLabel = new GImage(IMG_FOLDER + "buyLabel.png",240,LABEL_HEIGHT);
+		princessLabel.setSize(labelWidth * MULT2, labelHeight * MULT2);
 		
-		yoshiBubble = new GImage(IMG_FOLDER + "bubble.png",550,450);
-		yoshiBubble.setSize(bubbleWidth * 1.2, bubbleHeight * 1.2);
+		yoshiBubble = new GImage(IMG_FOLDER + "bubble.png",550,BUBBLE_HEIGHT);
+		yoshiBubble.setSize(bubbleWidth * MULT, bubbleHeight * MULT);
 		
-		yoshiLabel = new GImage(IMG_FOLDER + "buyLabel.png",560, 490);
-		yoshiLabel.setSize(labelWidth * 1.5, labelHeight * 1.5);
+		yoshiLabel = new GImage(IMG_FOLDER + "buyLabel.png",560, LABEL_HEIGHT);
+		yoshiLabel.setSize(labelWidth * MULT2, labelHeight * MULT2);
 		
 		coinCount = new GLabel("Coins: " + progress.getNumCoins());
 		coinCount.setLocation(900, 100);
