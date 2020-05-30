@@ -12,7 +12,7 @@ RAM: 1 GB<br />
 Storage: 500 MB<br />
 Display: LCD Color Display<br />
 Resolution: 1280 x 720<br />
-OS: Windows 10 version 1507 or higher/ macOS 10.14: Mojave (Liberty) or higher
+OS: Windows 10 version 1507/macOS 10.14 Mojave (Liberty)
 
 # How to Run
 Import this project into Eclipse IDE and run the mainSMR.java file
