@@ -15,7 +15,7 @@ Resolution: 1280 x 720<br />
 OS: Windows 10 version 1507 or higher/ macOS 10.14: Mojave (Liberty) or higher
 
 # How to Run
-Import this project in Eclipse IDE and run the mainSMR.java file
+Import this project into Eclipse IDE and run the mainSMR.java file
 
 # Acknowledgements
 * Nintendo Co., Ltd.
