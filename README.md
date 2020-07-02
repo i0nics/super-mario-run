@@ -1,4 +1,8 @@
-# Super Mario Run
+
+# Super Mario Run<br />
+<p align="center">
+  <img width="500" height="453" src="https://github.com/i0nicsBik/SuperMarioRun/blob/master/media/startScreen/mario.png?raw=true">
+
 This project is based on the original 2016 Super Mario Run mobile game developed and published by Nintendo for iOS devices.
 Super Mario Run is a side-scrolling platformer which consists of 3 levels. The player controls Mario or other characters 
 as they automatically run across the screen while timing jumps to kill enemies, dodge environmental obstacles, and collect
@@ -19,4 +23,4 @@ Import this project into Eclipse IDE and run the mainSMR.java file
 
 # Acknowledgements
 * Nintendo Co., Ltd.
-
+</p>
