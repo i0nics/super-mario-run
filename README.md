@@ -10,7 +10,7 @@ coins to purchase new characters or power ups. This game also consists of a deve
 of making it easier for us to determine object placement coordinates while creating a new level.
 
 # Project Documentation
-Please open the "Final Project Report.pdf" file to learn more about this project. Project documentation includes customer statement of requirements, use cases, use case diagram, Unified Modeling Language (UML) class diagram, interaction diagrams, history of work, algorithms, data structures, UI design, key accomplishments, future plans, and references
+Please open the "Final Project Report.pdf" file to learn more about this project. Project documentation includes customer statement of requirements, use cases, use case diagram, Unified Modeling Language (UML) class diagram, interaction diagrams, history of work, algorithms, data structures, UI design, key accomplishments, future plans, and references.
 
 # Minimum Hardware Requirements
 CPU: Mediatek MT6582M Quad Core 1.6 GHz or equivalent<br />
