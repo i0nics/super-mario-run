@@ -11,14 +11,13 @@
 <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
 
 - [About The Project](#about)
-    - [Built With](#built)
-- [Logic Design](#logic)
 - [Minimum Hardware Requirements](#min_hardware)
 - [Getting Started](#start)
 - [License](#license)
 - [Acknowledgements](#ack)
 
 <h2 id='about'>About The Project</h2>
+<img src='Screenshots/level.png '>
 This project is based on the original 2016 Super Mario Run mobile game developed by Nintendo for iOS.
 Super Mario Run is a side-scrolling platformer which consists of three levels. As Mario, Luigi, or Peach
 automatically run across the world, the player controls them by timing the jumps to kill enemies, dodge environmental obstacles, and collect
