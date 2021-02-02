@@ -9,7 +9,7 @@ import javax.swing.Timer;
 
 import com.supermariorun.levels.Level;
 import com.supermariorun.main.GraphicsPane;
-import com.supermariorun.main.mainSMR;
+import com.supermariorun.main.MainSMR;
 import com.supermariorun.main.playerProgress;
 
 import acm.graphics.GImage;
@@ -17,20 +17,20 @@ import acm.graphics.GLabel;
 import acm.graphics.GObject;
 
 public class LosePane extends GraphicsPane {
-	private static final double PROGRAM_WIDTH = mainSMR.WINDOW_WIDTH;
-	private static final double PROGRAM_HEIGHT = mainSMR.WINDOW_HEIGHT;
+	private static final double PROGRAM_WIDTH = MainSMR.WINDOW_WIDTH;
+	private static final double PROGRAM_HEIGHT = MainSMR.WINDOW_HEIGHT;
 	
 	private static final int BUTTON_HEIGHT = 200;
 	private static final int BUTTON_SIZEW = 201;
 	private static final int BUTTON_WIDTH = 450;
-	private mainSMR program; 
+	private MainSMR program; 
 	public static final String IMG_FOLDER = "losePane/";
 	private GImage quitButton;
 	private GImage retryButton;
 	private GImage background;
 	private LevelPane level;
 	
-	public LosePane(mainSMR mainSMR, LevelPane level) {
+	public LosePane(MainSMR mainSMR, LevelPane level) {
 		super();
 		this.program = mainSMR;
 		this.level = level;

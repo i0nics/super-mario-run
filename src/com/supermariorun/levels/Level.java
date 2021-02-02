@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.supermariorun.characters.Character;
-import com.supermariorun.enemies.eGoomba;
-import com.supermariorun.main.mainSMR;
+import com.supermariorun.enemies.Goomba;
+import com.supermariorun.main.MainSMR;
 import com.supermariorun.panes.LevelPane;
 import com.supermariorun.panes.LevelPaneDev;
 
@@ -15,17 +15,17 @@ import javafx.util.Pair;
 
 public class Level {
 	private static String IMG_FOLDER;
-	private mainSMR program;
+	private MainSMR program;
 	private GImage Background;
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;
 	private ArrayList <GImage> Plants;
-	private ArrayList <eGoomba> Goombas;
+	private ArrayList <Goomba> Goombas;
 	private HashMap<String, ArrayList <Pair<Integer, Integer>>> levelMap;
 	private ScanLevel scanLevel;
 	private LevelPane levelPane;
 	
-	public Level(mainSMR main, String levelNum, LevelPane levelPane) throws FileNotFoundException {
+	public Level(MainSMR main, String levelNum, LevelPane levelPane) throws FileNotFoundException {
 		program = main;
 		IMG_FOLDER = "level" + levelNum + "/";
 		this.levelPane = levelPane;
@@ -33,7 +33,7 @@ public class Level {
 		Environment = new ArrayList <GImage> ();
 		Coins = new ArrayList <GImage> ();
 		Plants = new ArrayList<GImage> ();
-		Goombas = new ArrayList<eGoomba> ();
+		Goombas = new ArrayList<Goomba> ();
 
 		Background = new GImage (IMG_FOLDER + levelNum + "Background.png", 0, 0);
 		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");	
@@ -45,7 +45,7 @@ public class Level {
 		Environment = new ArrayList <GImage> ();
 		Coins = new ArrayList <GImage> ();
 		Plants = new ArrayList<GImage> ();
-		Goombas = new ArrayList<eGoomba> ();
+		Goombas = new ArrayList<Goomba> ();
 
 		Background = new GImage (IMG_FOLDER + levelNum + "Background.png", 0, 0);
 		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");	
@@ -100,7 +100,7 @@ public class Level {
 		
 		if (levelMap.containsKey("GOOMBA")) {
 			for (Pair<Integer, Integer> loop : levelMap.get("GOOMBA")) {
-				Goombas.add(new eGoomba(program, levelPane, loop.getKey(), loop.getValue()));
+				Goombas.add(new Goomba(program, levelPane, loop.getKey(), loop.getValue()));
 			}
 		}
 	}
@@ -121,7 +121,7 @@ public class Level {
 		return Plants;
 	}
 	
-	public ArrayList<eGoomba> getGoombas() {
+	public ArrayList<Goomba> getGoombas() {
 		return Goombas;
 	}
 }

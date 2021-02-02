@@ -6,12 +6,12 @@ import java.awt.event.MouseEvent;
 import javax.swing.Timer;
 
 import com.supermariorun.main.GraphicsPane;
-import com.supermariorun.main.mainSMR;
+import com.supermariorun.main.MainSMR;
 
 import acm.graphics.GImage;
 
 public class StartPane extends GraphicsPane implements ActionListener {
-	private mainSMR program; 
+	private MainSMR program; 
 	public static final String IMG_FOLDER = "startScreen/";
 	private GImage redStripes;
 	private GImage marioStart;
@@ -22,7 +22,7 @@ public class StartPane extends GraphicsPane implements ActionListener {
 	private int count = 1;
 	private Timer timer;
 
-	public StartPane(mainSMR main) {
+	public StartPane(MainSMR main) {
 		this.program = main;
 		timer = new Timer(600, this);
 		redStripes = new GImage(IMG_FOLDER + "redStripes.png",0, 0);

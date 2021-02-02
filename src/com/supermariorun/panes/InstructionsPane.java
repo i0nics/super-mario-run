@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.Timer;
 
 import com.supermariorun.main.GraphicsPane;
-import com.supermariorun.main.mainSMR;
+import com.supermariorun.main.MainSMR;
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;
@@ -16,7 +16,7 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 	private static final int JUMPint = 11;
 	public static final String IMG_FOLDER = "guidePane/";
 	public static final int MAX_STEPS = 100;
-	private mainSMR program;
+	private MainSMR program;
 	private GImage backImg;
 	private GImage InstructionsList;
 	private GImage bubbleImg;
@@ -39,7 +39,7 @@ public class InstructionsPane extends GraphicsPane implements ActionListener {
 	double moveMarioX;
 	double moveMarioY;
 	
-	public InstructionsPane(mainSMR mainSMR) {
+	public InstructionsPane(MainSMR mainSMR) {
 		super();
 		program = mainSMR;
 	    mainWidth = program.getWidth();

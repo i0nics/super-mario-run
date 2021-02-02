@@ -6,13 +6,13 @@ import java.awt.event.MouseEvent;
 import com.supermariorun.panes.LevelPane;
 import com.supermariorun.characters.Character;
 import com.supermariorun.main.GraphicsPane;
-import com.supermariorun.main.mainSMR;
+import com.supermariorun.main.MainSMR;
 import acm.graphics.GImage;
 import acm.graphics.GLabel;
 import acm.graphics.GObject;
 
 public class EndPane extends GraphicsPane {
-	private mainSMR program; 
+	private MainSMR program; 
 	public static final String IMG_FOLDER = "endPane/";
 	private GImage next;
 	private GImage background;
@@ -21,7 +21,7 @@ public class EndPane extends GraphicsPane {
 	private LevelPane levelPane;
 	private GLabel HighScore;
 	
-	public EndPane(mainSMR mainSMR, LevelPane level) {
+	public EndPane(MainSMR mainSMR, LevelPane level) {
 		super();
 		this.program = mainSMR;
 		this.levelPane = level;

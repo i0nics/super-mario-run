@@ -2,14 +2,14 @@ package com.supermariorun.panes;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import com.supermariorun.main.GraphicsPane;
-import com.supermariorun.main.mainSMR;
+import com.supermariorun.main.MainSMR;
 import acm.graphics.GImage;
 import acm.graphics.GLabel;
 import acm.graphics.GObject;
 
 public class PausePane extends GraphicsPane {
 	private static final String IMG_FOLDER = "levelPane/";
-	private mainSMR program; 
+	private MainSMR program; 
 	private LevelPane level;
 	private GImage retryButton;
 	private GImage resumeButton;
@@ -18,7 +18,7 @@ public class PausePane extends GraphicsPane {
 	private GImage pausePane;
 	private GLabel bestCount;
 	
-	public PausePane(mainSMR main, LevelPane level) {
+	public PausePane(MainSMR main, LevelPane level) {
 		this.program = main;
 		this.level = level;
 		

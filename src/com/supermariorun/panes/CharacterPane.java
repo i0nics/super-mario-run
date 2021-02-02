@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.Timer;
 
 import com.supermariorun.main.GraphicsPane;
-import com.supermariorun.main.mainSMR;
+import com.supermariorun.main.MainSMR;
 import com.supermariorun.main.playerProgress;
 
 import acm.graphics.GImage;
@@ -21,7 +21,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 	private static final int LABEL_HEIGHT = 490;
 	private static final int BUBBLE_HEIGHT = 450;
 	private static final int CHAR_HEIGHT = 200;
-	private mainSMR program;
+	private MainSMR program;
 	private playerProgress progress;
 	public static final String IMG_FOLDER = "characterPane/";
 	public static final String lABEL_FONT = "Arial-Bold-22";
@@ -49,7 +49,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 	final double labelWidth;
 	final double labelHeight;
 	
-	public CharacterPane(mainSMR mainSMR) {
+	public CharacterPane(MainSMR mainSMR) {
 		super();
 		this.program = mainSMR;
 		this.progress = program.getProgress();

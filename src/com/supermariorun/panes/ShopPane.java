@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import javax.swing.Timer;
 import com.supermariorun.main.GraphicsPane;
-import com.supermariorun.main.mainSMR;
+import com.supermariorun.main.MainSMR;
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;
@@ -13,7 +13,7 @@ import acm.graphics.GObject;
 public class ShopPane extends GraphicsPane implements ActionListener {
 	private static final int MOVE_HEIGHT = 10;
 	private static final int MOVE_WIDTH = 0;
-	private mainSMR program; 
+	private MainSMR program; 
 	public static final String IMG_FOLDER = "shopPane/";
 	private GImage PowerUpButton;
 	private GImage CharacterButton;
@@ -27,7 +27,7 @@ public class ShopPane extends GraphicsPane implements ActionListener {
 	private int count = 1;
 	private Timer bubbleTimer;
 	
-	public ShopPane(mainSMR mainSMR) {
+	public ShopPane(MainSMR mainSMR) {
 		super();
 		this.program = mainSMR;
 		final double mainWidth = program.getWidth();

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import javax.swing.Timer;
 import com.supermariorun.levels.Level;
 import com.supermariorun.main.GraphicsPane;
-import com.supermariorun.main.mainSMR;
+import com.supermariorun.main.MainSMR;
 import acm.graphics.GImage;
 import acm.graphics.GLabel;
 import acm.graphics.GLine;
@@ -20,7 +20,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 	private static final int BACK_MOVEH = 0;
 	private static final int BACK_MOVEW = 40;
 	private static final int BUTTON_SIZE = 100;
-	private mainSMR program;
+	private MainSMR program;
 	private GImage Background;
 	private GImage pauseButton;
 	private GImage pauseBubble;
@@ -50,7 +50,7 @@ public class LevelPaneDev extends GraphicsPane implements ActionListener {
 	private String lvlNum;
 
 
-	public LevelPaneDev(mainSMR mainSMR, String levelNum) throws FileNotFoundException {
+	public LevelPaneDev(MainSMR mainSMR, String levelNum) throws FileNotFoundException {
 		super();
 		program = mainSMR;
 		lvlNum = levelNum;

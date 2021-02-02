@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import javax.swing.Timer;
 
 import com.supermariorun.main.GraphicsPane;
-import com.supermariorun.main.mainSMR;
+import com.supermariorun.main.MainSMR;
 import com.supermariorun.main.playerProgress;
 
 import acm.graphics.GImage;
@@ -17,8 +17,8 @@ import acm.graphics.GObject;
 
 public class TourPane extends GraphicsPane implements ActionListener {
 	public static final String IMG_FOLDER = "tourPane/";
-	private static final double PROGRAM_WIDTH = mainSMR.WINDOW_WIDTH;
-	private static final double PROGRAM_HEIGHT = mainSMR.WINDOW_HEIGHT;
+	private static final double PROGRAM_WIDTH = MainSMR.WINDOW_WIDTH;
+	private static final double PROGRAM_HEIGHT = MainSMR.WINDOW_HEIGHT;
 	private static final double PIPE_WIDTH = PROGRAM_WIDTH/6;
 	private static final double PIPE_HEIGHT = PROGRAM_HEIGHT/6;
 	private static final double BUBBLE_WIDTH = PROGRAM_WIDTH/9;
@@ -30,7 +30,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private static final double LEVEL_ICON_WIDTH = PROGRAM_WIDTH/7 + 10;
 	private static final double LEVEL_ICON_HEIGHT = PROGRAM_HEIGHT/4.209;
 	
-	private mainSMR program; 
+	private MainSMR program; 
 	private GImage backLabel;
 	private GImage backPipe;
 	private GImage backBubble;
@@ -49,7 +49,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private playerProgress progress;
 	private GImage developerMode;
 	
-	public TourPane(mainSMR mainSMR) {
+	public TourPane(MainSMR mainSMR) {
 		super();
 		program = mainSMR;
 		progress = program.getProgress();

@@ -10,14 +10,14 @@ import javax.swing.Timer;
 
 import com.supermariorun.characters.Character;
 import com.supermariorun.main.GraphicsPane;
-import com.supermariorun.main.mainSMR;
+import com.supermariorun.main.MainSMR;
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;
 import starter.GButton;
 
 public class LevelMakerPane extends GraphicsPane implements ActionListener {
-	private mainSMR program;
+	private MainSMR program;
 	private GImage Background;
 	private GImage pauseButton;
 	private GImage pauseBubble;
@@ -48,7 +48,7 @@ public class LevelMakerPane extends GraphicsPane implements ActionListener {
 	private String lvlNum;
 
 
-	public LevelMakerPane(mainSMR mainSMR) throws FileNotFoundException {
+	public LevelMakerPane(MainSMR mainSMR) throws FileNotFoundException {
 		super();
 		program = mainSMR;
 	

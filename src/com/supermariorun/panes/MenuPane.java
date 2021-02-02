@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.Timer;
 
 import com.supermariorun.main.GraphicsPane;
-import com.supermariorun.main.mainSMR;
+import com.supermariorun.main.MainSMR;
 import acm.graphics.GImage;
 import acm.graphics.GObject;
 
@@ -15,8 +15,8 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 	private static final int MOVE_WIDTH = 0;
 	private static final int MOVE_HEIGHT = 10;
 	private static final String IMG_FOLDER = "menuScreen/";
-	private static final double PROGRAM_WIDTH = mainSMR.WINDOW_WIDTH;
-	private static final double PROGRAM_HEIGHT = mainSMR.WINDOW_HEIGHT;
+	private static final double PROGRAM_WIDTH = MainSMR.WINDOW_WIDTH;
+	private static final double PROGRAM_HEIGHT = MainSMR.WINDOW_HEIGHT;
 	private static final double PIPE_HEIGHT = PROGRAM_HEIGHT/3;
 	private static final double PIPE_WIDTH = PROGRAM_WIDTH/8;
 	private static final double BUBBLE_WIDTH = PROGRAM_WIDTH/9;
@@ -28,7 +28,7 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 	private static final double LABEL_HEIGHT = PROGRAM_HEIGHT/12;
 	
 	public Timer bubbleTimer;
-	private mainSMR program; 
+	private MainSMR program; 
 	private GImage menuBackground;
 	private GImage shopPipe;
 	private GImage tourPipe;
@@ -41,7 +41,7 @@ public class MenuPane extends GraphicsPane implements ActionListener {
 	private GImage guideLabel;
 	private int count = 1;
 	
-	public MenuPane(mainSMR mainSMR) {
+	public MenuPane(MainSMR mainSMR) {
 		super();
 		this.program = mainSMR;
 		bubbleTimer = new Timer(500, this);

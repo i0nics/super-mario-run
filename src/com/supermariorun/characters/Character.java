@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.Timer;
-import com.supermariorun.main.mainSMR;
+import com.supermariorun.main.MainSMR;
 import com.supermariorun.panes.LevelPane;
 import acm.graphics.GImage;
 import acm.graphics.GObject;
@@ -13,7 +13,7 @@ import acm.graphics.GRectangle;
 import acm.program.GraphicsProgram;
 
 public class Character extends GraphicsProgram implements ActionListener {
-	private mainSMR program;
+	private MainSMR program;
 	private LevelPane levelPane;
 	private GImage characImg;
 	private GRectangle Feet;
@@ -34,7 +34,7 @@ public class Character extends GraphicsProgram implements ActionListener {
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;
 	 
-	public Character(mainSMR mainSMR, LevelPane levelPane) {
+	public Character(MainSMR mainSMR, LevelPane levelPane) {
 		program = mainSMR;
 		this.levelPane = levelPane;
 		

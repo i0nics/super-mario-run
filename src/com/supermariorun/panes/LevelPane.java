@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import javax.swing.Timer;
 
 import com.supermariorun.characters.Character;
-import com.supermariorun.enemies.eGoomba;
+import com.supermariorun.enemies.Goomba;
 import com.supermariorun.levels.Level;
 import com.supermariorun.main.GraphicsPane;
-import com.supermariorun.main.mainSMR;
+import com.supermariorun.main.MainSMR;
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;
@@ -20,7 +20,7 @@ import acm.graphics.GObject;
 public class LevelPane extends GraphicsPane implements ActionListener{
 	private static final int ENVI_MOVEW = 8;
 	private static final boolean BOOLEAN_FALSE = false;
-	private mainSMR program;
+	private MainSMR program;
 	private GImage Background;
 	private GImage pauseButton;
 	private GImage pauseBubble;
@@ -31,7 +31,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;	
 	private ArrayList <GImage> Plants;
-	private ArrayList <eGoomba> Goombas;
+	private ArrayList <Goomba> Goombas;
 
 	private Character Character;
 	private Level level;
@@ -48,7 +48,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public static final int MS = 30;
 	public static final String IMG_FOLDER = "LevelPane/";
 
-	public LevelPane(mainSMR mainSMR, String levelNum) throws FileNotFoundException {
+	public LevelPane(MainSMR mainSMR, String levelNum) throws FileNotFoundException {
 		super();
 		this.program = mainSMR;
 		program = mainSMR;
@@ -161,7 +161,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		moveEnvironment();
 		isGameOver();
-		for (eGoomba g : Goombas) { g.Run();}
+		for (Goomba g : Goombas) { g.Run();}
 		Character.collectCoin();
 		
 		if (isMousePressed) {mouseCounter++;}
@@ -230,7 +230,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		program.add(pauseBubble);
 		
 		for (GImage e: Plants) { program.add(e); }
-		for (eGoomba e: Goombas) { program.add(e.getEnemy());}
+		for (Goomba e: Goombas) { program.add(e.getEnemy());}
 		for (GImage e: Environment) { program.add(e); }
 		for (GImage e: Coins) { program.add(e); }
 	}
