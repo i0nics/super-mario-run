@@ -13,7 +13,7 @@
 - [About The Project](#about)
     - [Built With](#built)
 - [Logic Design](#logic)
-- [Minimum Hardware Requirements](#min h)
+- [Minimum Hardware Requirements](#min_hardware)
 - [Getting Started](#start)
 - [License](#license)
 - [Acknowledgements](#ack)
