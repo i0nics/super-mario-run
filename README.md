@@ -1,7 +1,13 @@
+[![Contributors][contributors-shield]][contributors-url] 
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+<br>
 
-# Super Mario Run<br />
+
 <p align="center">
-  <img width="510" height="469" src="https://github.com/i0nicsBik/SuperMarioRun/blob/master/media/startScreen/mario.png?raw=true">
+<img src="https://github.com/i0nicsBik/SuperMarioRun/blob/master/media/startScreen/mario.png?raw=true"></p>
+<h1 align='center' >Super Mario Run</h1>
+<p align='center'>A fun side-scrolling platformer written in Java based on the original Super Mario Run game for iOS!</p>
 
 This project is based on the original 2016 Super Mario Run mobile game developed by Nintendo for iOS.
 Super Mario Run is a side-scrolling platformer which consists of three levels. The player controls Mario or other characters 
@@ -27,3 +33,10 @@ Import this project into Eclipse IDE and run the mainSMR.java file
 # Acknowledgements
 * Nintendo Co., Ltd.
 </p>
+
+[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-url]: https://github.com/i0nics/super-mario-run/graphs/contributors
+[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[license-url]: https://github.com/i0nics/mac-app-store/blob/main/LICENSE
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/bikramce
