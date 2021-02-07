@@ -11,7 +11,8 @@
 <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
 
 - [About The Project](#about)
-- [Minimum Hardware Requirements](#min_hardware)
+- [Screenshots](#screenshots)
+- [Minimum Requirements](#min)
 - [Getting Started](#start)
 - [License](#license)
 - [Acknowledgements](#ack)
@@ -24,14 +25,18 @@ automatically run across the world, the player controls them by timing the jumps
 coins to purchase new characters or power ups. This game also consists of a developer mode which was created with the intention
 of making it easier for devs to determine object placement coordinates while creating a new level.
 
-<h2 id='min_hardware'>Minimum Hardware Requirements</h2>
+<h2 id='screenshots'>Screenshots</h2>
+<h3>Start Screen</h3>
+<img src='Screenshots/start.png'>
+<h2 id='min'>Minimum Requirements</h2>
 CPU: Mediatek MT6582M Quad Core 1.6 GHz or equivalent<br />
 GPU: ARM Mali-400 or equivalent<br />
 RAM: 1 GB<br />
 Storage: 500 MB<br />
 Display: LCD Color Display<br />
-Resolution: 1280 x 720<br />
 OS: Windows 10 version 1507/macOS 10.14 Mojave (Liberty)
+
+[Java SE 8](https://www.oracle.com/java/technologies/javase-downloads.html)
 
 <h2 id='start'>Getting Started</h2>
 Import this project into Eclipse IDE and run the mainSMR.java file
