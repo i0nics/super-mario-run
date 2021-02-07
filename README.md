@@ -27,15 +27,25 @@ of making it easier for devs to determine object placement coordinates while cre
 
 <h2 id='screenshots'>Screenshots</h2>
 <h3>Start Screen</h3>
-<img src='Screenshots/start.jpeg'>
+<img src='Screenshots/start.png'>
 <h3>Main Menu</h3>
-<img src='Screenshots/menu.jpeg'>
+<img src='Screenshots/menu.png'>
 <h3>World Tour</h3>
 <img src='Screenshots/world_tour.png'>
-<h3>World 2</h3>
-<img src='Screenshots/w2.png'>
-<h3>World 3</h3>
-<img src='Screenshots/w3.png'>
+<h3>Level One</h3>
+<img src='Screenshots/level1.png'>
+<h3>Level Two</h3>
+<img src='Screenshots/level2.png'>
+<h3>Level Three</h3>
+<img src='Screenshots/level3.png'>
+<h3>Shop</h3>
+<img src='Screenshots/shop.png'>
+<h3>Characters</h3>
+<img src='Screenshots/charac.png'>
+<h3>Power Ups</h3>
+<img src='Screenshots/powerup.png'>
+<h3>Guide</h3>
+<img src='Screenshots/guide.png'>
 <h2 id='min'>Minimum Requirements</h2>
 CPU: Mediatek MT6582M Quad Core 1.6 GHz or equivalent<br />
 GPU: ARM Mali-400 or equivalent<br />
