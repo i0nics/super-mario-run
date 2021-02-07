@@ -46,6 +46,6 @@ Import this project into Eclipse IDE and run the mainSMR.java file
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
 [contributors-url]: https://github.com/i0nics/super-mario-run/graphs/contributors
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/i0nics/super-mario-run/blob/main/LICENSE
+[license-url]: https://github.com/i0nics/super-mario-run/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/bikramce
