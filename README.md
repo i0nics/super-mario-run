@@ -11,6 +11,7 @@
 <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
 
 - [About The Project](#about)
+- [Additional Documentation](#doc)
 - [Screenshots](#screenshots)
 - [Minimum Requirements](#min)
 - [Getting Started](#start)
@@ -24,6 +25,9 @@ Super Mario Run is a side-scrolling platformer which consists of three levels. A
 automatically run across the world, the player controls them by timing the jumps to kill enemies, dodge environmental obstacles, and collect
 coins to purchase new characters or power ups. This game also consists of a developer mode which was created with the intention
 of making it easier for devs to determine object placement coordinates while creating a new level.
+
+<h2 id='doc'>Documentation</h2>
+<p>Please visit <a href='https://github.com/i0nics/super-mario-run/blob/master/Documentation.pdf'>Documentation.pdf</a> for additional project documentation containing use cases, UML class diagram, interaction diagrams, algorithms, and key accomplishments.</p>
 
 <h2 id='screenshots'>Screenshots</h2>
 <h3>Start Screen</h3>
