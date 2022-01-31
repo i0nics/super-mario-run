@@ -230,7 +230,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		program.add(pauseBubble);
 		
 		for (GImage e: Plants) { program.add(e); }
-		for (Goomba e: Goombas) { program.add(e.getEnemy());}
+		for (Goomba e: Goombas) { program.add(e.getEnemyImg());}
 		for (GImage e: Environment) { program.add(e); }
 		for (GImage e: Coins) { program.add(e); }
 	}
@@ -267,6 +267,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public boolean getJumpState() {
 		return jumpState;
 	}
+	
 	public int getLevelInt() {
 		if (lvlNum.contentEquals("One")) {
 			return 1;

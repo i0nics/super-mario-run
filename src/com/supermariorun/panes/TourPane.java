@@ -10,7 +10,7 @@ import javax.swing.Timer;
 
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.MainSMR;
-import com.supermariorun.main.playerProgress;
+import com.supermariorun.main.PlayerProgress;
 
 import acm.graphics.GImage;
 import acm.graphics.GObject;
@@ -46,7 +46,7 @@ public class TourPane extends GraphicsPane implements ActionListener {
 	private Timer bTimer;
 	private ArrayList <GImage> lockLvl;
 	private ArrayList <GImage> levelIcons;
-	private playerProgress progress;
+	private PlayerProgress progress;
 	private GImage developerMode;
 	
 	public TourPane(MainSMR mainSMR) {

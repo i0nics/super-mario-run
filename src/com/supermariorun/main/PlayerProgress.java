@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import com.supermariorun.panes.TourPane;
 
-public class playerProgress {
+public class PlayerProgress {
 	private static int numCoins = 100;
 	private static int tempHigh = 0;
 	private static String currentCharacter = "mario";

@@ -41,7 +41,7 @@ public class MainSMR extends GraphicsApplication implements ActionListener {
 	private CharacterPane characterPane;
 	private InstructionsPane guidePane;
 	private TourPane tourPane;
-	private playerProgress progress;
+	private PlayerProgress progress;
 	private LevelPane levelPane;
 	
     protected static final int FONT_SIZE = 18;
@@ -60,7 +60,7 @@ public class MainSMR extends GraphicsApplication implements ActionListener {
 		}
 		
 		audio = AudioPlayer.getInstance();
-		progress = new playerProgress();
+		progress = new PlayerProgress();
 		startPane = new StartPane(this);
 		menuPane = new MenuPane(this);
 		tourPane = new TourPane(this);
@@ -220,7 +220,7 @@ public class MainSMR extends GraphicsApplication implements ActionListener {
 		requestFocus();
 	}
 
-	public playerProgress getProgress() {
+	public PlayerProgress getProgress() {
 		return progress;
 	}
 	

@@ -9,7 +9,7 @@ import javax.swing.Timer;
 
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.MainSMR;
-import com.supermariorun.main.playerProgress;
+import com.supermariorun.main.PlayerProgress;
 
 import acm.graphics.GImage;
 import acm.graphics.GLabel;
@@ -25,7 +25,7 @@ public class PowerUpPane extends GraphicsPane implements ActionListener {
 	private MainSMR program;
 	public static final String IMG_FOLDER = "powerUpPane/";
 	public static final String lABEL_FONT = "Arial-Bold-22";
-	private playerProgress progress;
+	private PlayerProgress progress;
 	private GImage BackButton;
 	private GImage BackPipe;
 	private GImage MushroomBubble;

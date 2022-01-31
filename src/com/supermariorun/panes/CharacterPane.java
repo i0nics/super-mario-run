@@ -9,7 +9,7 @@ import javax.swing.Timer;
 
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.MainSMR;
-import com.supermariorun.main.playerProgress;
+import com.supermariorun.main.PlayerProgress;
 
 import acm.graphics.GImage;
 import acm.graphics.GLabel;
@@ -22,7 +22,7 @@ public class CharacterPane extends GraphicsPane implements ActionListener{
 	private static final int BUBBLE_HEIGHT = 450;
 	private static final int CHAR_HEIGHT = 200;
 	private MainSMR program;
-	private playerProgress progress;
+	private PlayerProgress progress;
 	public static final String IMG_FOLDER = "characterPane/";
 	public static final String lABEL_FONT = "Arial-Bold-22";
 	private GImage BackButton;

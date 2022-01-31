@@ -10,7 +10,7 @@ import javax.swing.Timer;
 import com.supermariorun.levels.Level;
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.MainSMR;
-import com.supermariorun.main.playerProgress;
+import com.supermariorun.main.PlayerProgress;
 
 import acm.graphics.GImage;
 import acm.graphics.GLabel;
