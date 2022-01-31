@@ -3,7 +3,6 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 <br>
 
-
 <p align="center">
 <img src="https://github.com/i0nicsBik/SuperMarioRun/blob/master/media/startScreen/mario.png?raw=true"></p>
 <h1 align='center' >Super Mario Run</h1>
@@ -12,6 +11,7 @@
 
 - [About The Project](#about)
 - [Additional Documentation](#doc)
+- [New Goomba & Koopa Troopa Update](#update)
 - [Screenshots](#screenshots)
 - [Minimum Requirements](#min)
 - [Getting Started](#start)
@@ -26,8 +26,78 @@ automatically run across the world, the player controls them by timing the jumps
 coins to purchase new characters or power ups. This game also consists of a developer mode which was created with the intention
 of making it easier for devs to determine object placement coordinates while creating a new level.
 
-<h2 id='doc'>Documentation</h2>
+<h2 id='doc'>Additional Documentation</h2>
 <p>Please visit <a href='https://github.com/i0nics/super-mario-run/blob/master/Documentation.pdf'>Documentation.pdf</a> for additional project documentation containing use cases, UML class diagram, interaction diagrams, algorithms, and key accomplishments.</p>
+
+<h2 id='update'>New Goomba & Koopa Troopa Update</h2>
+<h3>Feature Overview</h3>
+<p>The new update introduces Koop Troopa which are turtle-like creatures. Similar to Goombas, the player needs to stomp on top of them to knock them out.
+ A new Enemy interface is also implemented for the previous Goomba class along with the new KoopaTroopa class. The speed of the enemies are also now dynamically implemented from a text file.
+</p>
+
+<h3>Pseudocode</h3>
+<p>The Enemies interface contains common methods that are going to be used by the Goomba and KoopaTroopa Class</p>
+
+```
+interface Enemies
+    updateBounds() Method that updates the location of invisible head and body GRectangles for collision detection
+    Run() Method that initiates enemy and boundary movement and detects player collision
+    getEnemy() Method that returns current enemy's GImage
+    getEnemySpeed() Method that returns current enemy's speed from text file
+```
+
+<p>The KoopaTroopa class manages the location, movement, speed and collision detection of Koopa Troopa enemy</p>
+
+```
+class KoopaTroopa that implements the Enemies interface
+    KoopaTroopa initialization constructor (main, levelPane, locationX, locationY)
+        set program to main
+        set level to levelPane
+        set koopaTroopa to the image of koopaTroopa at location (locationX, locationY)
+        initialize head to an invisible GRectangle object with appropriate height and width
+        initialize body to an invisible GRectangle objectwith appropriate height and width
+        
+    // Update head and body GRectangles to appropriate locations surrounding the enemy's head and body
+    updateBounds()
+        set location of head GRectangle around enemy's head
+        set location of body GRectangle around enemy's body
+    
+    // Retrieve enemy speed from text file
+    getEnemySpeed()
+        open text file
+        set enemySpeed to first integer in text file
+   
+    // Return KoopaTroopa Image
+    getEnemy()
+        return KoopaTroopa image
+      
+    // Manage enemy movement and track enemy collision with player
+    Run()
+        initialize hasPlayerStompedEnemy to false
+        
+        if enemy is within 1000 pixels distance of the player
+            move KoopaTroopa enemy at speed extracted from text file
+            update collision boundaries
+        
+        else
+            move KoopaTroopa enemy at default speed
+            update collision boundaries
+        
+        if player has equipped star power up and player touches enemy
+            kill KoopaTroopa enemy
+        
+        else if player has equipped mushroom power up and player touches enemy
+            kill KoopaTroopa enemy
+            reduce size of player
+        
+        else if player collides with enemy's head
+            play stomp sound
+            koopa troopa goes into his shell
+       
+        else if player collides with enemy's body
+             kill player
+ 
+```
 
 <h2 id='screenshots'>Screenshots</h2>
 <h3>Start Screen</h3>
