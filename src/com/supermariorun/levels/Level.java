@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import com.supermariorun.characters.Character;
 import com.supermariorun.enemies.Goomba;
+import com.supermariorun.enemies.KoopaTroopa;
 import com.supermariorun.main.MainSMR;
 import com.supermariorun.panes.LevelPane;
 import com.supermariorun.panes.LevelPaneDev;
@@ -21,6 +22,7 @@ public class Level {
 	private ArrayList <GImage> Coins;
 	private ArrayList <GImage> Plants;
 	private ArrayList <Goomba> Goombas;
+	private ArrayList <KoopaTroopa> KoopaTroopas;
 	private HashMap<String, ArrayList <Pair<Integer, Integer>>> levelMap;
 	private ScanLevel scanLevel;
 	private LevelPane levelPane;
@@ -34,7 +36,7 @@ public class Level {
 		Coins = new ArrayList <GImage> ();
 		Plants = new ArrayList<GImage> ();
 		Goombas = new ArrayList<Goomba> ();
-
+		KoopaTroopas = new ArrayList<KoopaTroopa> ();
 		Background = new GImage (IMG_FOLDER + levelNum + "Background.png", 0, 0);
 		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");	
 	}
@@ -46,6 +48,7 @@ public class Level {
 		Coins = new ArrayList <GImage> ();
 		Plants = new ArrayList<GImage> ();
 		Goombas = new ArrayList<Goomba> ();
+		KoopaTroopas = new ArrayList<KoopaTroopa> ();
 
 		Background = new GImage (IMG_FOLDER + levelNum + "Background.png", 0, 0);
 		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");	
@@ -103,6 +106,12 @@ public class Level {
 				Goombas.add(new Goomba(program, levelPane, loop.getKey(), loop.getValue()));
 			}
 		}
+		
+		if (levelMap.containsKey("KOOPATROOPA")) {
+			for (Pair<Integer, Integer> loop : levelMap.get("KOOPATROOPA")) {
+				KoopaTroopas.add(new KoopaTroopa(program, levelPane, loop.getKey(), loop.getValue()));
+			}
+		}
 	}
 		
 	public GImage getBackground() {
@@ -123,5 +132,9 @@ public class Level {
 	
 	public ArrayList<Goomba> getGoombas() {
 		return Goombas;
+	}
+	
+	public ArrayList<KoopaTroopa> getKoopaTroopas() {
+		return KoopaTroopas;
 	}
 }
