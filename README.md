@@ -65,7 +65,7 @@ class KoopaTroopa that implements the Enemies interface
     // Retrieve enemy speed from text file
     getEnemySpeed()
         open text file
-        set enemySpeed to first integer in text file
+        set enemySpeed to first integer in text file and return
    
     // Return KoopaTroopa Image
     getEnemy()
@@ -73,15 +73,13 @@ class KoopaTroopa that implements the Enemies interface
       
     // Manage enemy movement and track enemy collision with player
     Run()
-        initialize hasPlayerStompedEnemy to false
-        
         if enemy is within 1000 pixels distance of the player
             move KoopaTroopa enemy at speed extracted from text file
-            update collision boundaries
+            update KoopaTroopa's collision boundaries
         
         else
             move KoopaTroopa enemy at default speed
-            update collision boundaries
+            update KoopaTroopa's collision boundaries
         
         if player has equipped star power up and player touches enemy
             kill KoopaTroopa enemy
