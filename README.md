@@ -42,7 +42,6 @@ of making it easier for devs to determine object placement coordinates while cre
 interface Enemies
     updateBounds() Method that updates the location of invisible head and body GRectangles for collision detection
     Run() Method that initiates enemy and boundary movement and detects player collision
-    getEnemySpeed() Method that returns current enemy's speed
     getEnemySpeed() Method that returns current enemy's speed from text file
 ```
 
@@ -66,10 +65,6 @@ class KoopaTroopa that implements the Enemies interface
     getEnemySpeed()
         open text file
         set enemySpeed to first integer in text file and return
-   
-    // Return KoopaTroopa Image
-    getEnemy()
-        return KoopaTroopa image
       
     // Manage enemy movement and track enemy collision with player
     Run()
