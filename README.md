@@ -42,7 +42,7 @@ of making it easier for devs to determine object placement coordinates while cre
 interface Enemies
     updateBounds() Method that updates the location of invisible head and body GRectangles for collision detection
     Run() Method that initiates enemy and boundary movement and detects player collision
-    getEnemy() Method that returns current enemy's GImage
+    getEnemySpeed() Method that returns current enemy's speed
     getEnemySpeed() Method that returns current enemy's speed from text file
 ```
 
