@@ -2,16 +2,10 @@ package com.supermariorun.levels;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import com.supermariorun.characters.Character;
-import com.supermariorun.enemies.Goomba;
-import com.supermariorun.enemies.KoopaTroopa;
+import com.supermariorun.enemies.Enemy;
 import com.supermariorun.main.MainSMR;
 import com.supermariorun.panes.LevelPane;
-import com.supermariorun.panes.LevelPaneDev;
-
 import acm.graphics.GImage;
-import javafx.scene.layout.Background;
 import javafx.util.Pair;
 
 public class Level {
@@ -21,8 +15,7 @@ public class Level {
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;
 	private ArrayList <GImage> Plants;
-	private ArrayList <Goomba> Goombas;
-	private ArrayList <KoopaTroopa> KoopaTroopas;
+	private ArrayList <Enemy> Enemies;
 	private HashMap<String, ArrayList <Pair<Integer, Integer>>> levelMap;
 	private ScanLevel scanLevel;
 	private LevelPane levelPane;
@@ -35,8 +28,7 @@ public class Level {
 		Environment = new ArrayList <GImage> ();
 		Coins = new ArrayList <GImage> ();
 		Plants = new ArrayList<GImage> ();
-		Goombas = new ArrayList<Goomba> ();
-		KoopaTroopas = new ArrayList<KoopaTroopa> ();
+		Enemies = new ArrayList<Enemy> ();
 		Background = new GImage (IMG_FOLDER + levelNum + "Background.png", 0, 0);
 		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");	
 	}
@@ -47,9 +39,7 @@ public class Level {
 		Environment = new ArrayList <GImage> ();
 		Coins = new ArrayList <GImage> ();
 		Plants = new ArrayList<GImage> ();
-		Goombas = new ArrayList<Goomba> ();
-		KoopaTroopas = new ArrayList<KoopaTroopa> ();
-
+		Enemies = new ArrayList<Enemy> ();
 		Background = new GImage (IMG_FOLDER + levelNum + "Background.png", 0, 0);
 		levelMap = scanLevel.runScan("level/level"+ levelNum + ".txt");	
 	}
@@ -58,7 +48,7 @@ public class Level {
 		Environment.clear();
 		Coins.clear();
 		Plants.clear();
-		Goombas.clear();
+		Enemies.clear();
 		Background.setLocation(0, 0);
 		
 		if (levelMap.containsKey("PIPE")) {
@@ -103,13 +93,13 @@ public class Level {
 		
 		if (levelMap.containsKey("GOOMBA")) {
 			for (Pair<Integer, Integer> loop : levelMap.get("GOOMBA")) {
-				Goombas.add(new Goomba(program, levelPane, loop.getKey(), loop.getValue()));
+				Enemies.add(new Enemy(program, levelPane, "goomba", loop.getKey(), loop.getValue()));
 			}
 		}
 		
 		if (levelMap.containsKey("KOOPATROOPA")) {
 			for (Pair<Integer, Integer> loop : levelMap.get("KOOPATROOPA")) {
-				KoopaTroopas.add(new KoopaTroopa(program, levelPane, loop.getKey(), loop.getValue()));
+				Enemies.add(new Enemy(program, levelPane, "koopa", loop.getKey(), loop.getValue()));
 			}
 		}
 	}
@@ -130,11 +120,7 @@ public class Level {
 		return Plants;
 	}
 	
-	public ArrayList<Goomba> getGoombas() {
-		return Goombas;
-	}
-	
-	public ArrayList<KoopaTroopa> getKoopaTroopas() {
-		return KoopaTroopas;
+	public ArrayList<Enemy> getEnemies() {
+		return Enemies;
 	}
 }

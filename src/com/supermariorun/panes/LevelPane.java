@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.Timer;
 
 import com.supermariorun.characters.Character;
+import com.supermariorun.enemies.Enemy;
 import com.supermariorun.enemies.Goomba;
 import com.supermariorun.enemies.KoopaTroopa;
 import com.supermariorun.levels.Level;
@@ -32,8 +33,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;	
 	private ArrayList <GImage> Plants;
-	private ArrayList <Goomba> Goombas;
-	private ArrayList <KoopaTroopa> KoopaTroopas;
+	private ArrayList <Enemy> Enemies;
 
 	private Character Character;
 	private Level level;
@@ -85,8 +85,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		Coins = level.getCoins();
 		Environment = level.getEnvironment();
 		Plants = level.getPlant();
-		Goombas = level.getGoombas();
-		KoopaTroopas = level.getKoopaTroopas();
+		Enemies = level.getEnemies();
 		Character.reset();
 		Character.resetCoinsCollected();
 		isPause = BOOLEAN_FALSE;
@@ -164,8 +163,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		moveEnvironment();
 		isGameOver();
-		for (Goomba g : Goombas) { g.Run();}
-		for (KoopaTroopa k : KoopaTroopas) { k.Run();}
+		for (Enemy en : Enemies) { en.Run();}
 		Character.collectCoin();
 		
 		if (isMousePressed) {mouseCounter++;}
@@ -234,8 +232,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		program.add(pauseBubble);
 		
 		for (GImage e: Plants) { program.add(e); }
-		for (Goomba e: Goombas) { program.add(e.getEnemyImg());}
-		for (KoopaTroopa e: KoopaTroopas) { program.add(e.getEnemyImg());}
+		for (Enemy e: Enemies) { program.add(e.getEnemyImg());}
 		for (GImage e: Environment) { program.add(e); }
 		for (GImage e: Coins) { program.add(e); }
 	}
