@@ -1,5 +1,6 @@
 package com.supermariorun.panes;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -15,6 +16,7 @@ import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.MainSMR;
 
 import acm.graphics.GImage;
+import acm.graphics.GLabel;
 import acm.graphics.GObject;
 
 public class LevelPane extends GraphicsPane implements ActionListener{
@@ -24,9 +26,11 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	private GImage Background;
 	private GImage pauseButton;
 	private GImage pauseBubble;
+	private GImage coinCounterImg;
 	private GImage greyBack;
 	private GImage levelClear;
 	private GImage continueEndButton;
+	private GLabel coinCounterLabel;
 	private LosePane losePane;
 	private ArrayList <GImage> Environment;
 	private ArrayList <GImage> Coins;	
@@ -59,6 +63,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 	
 		Character = new Character(program, this);
 		pausePane = new PausePane(program, this);
+		
 		pauseBubble = new GImage(IMG_FOLDER + "bubble.png", 30, 10);
 		pauseBubble.setSize(100, 100);
 		
@@ -75,6 +80,12 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		continueEndButton.setSize(200, 120);
 		
 		losePane = new LosePane(program, this);
+		
+		coinCounterImg = new GImage(IMG_FOLDER + "coin.gif", 1028, 37);
+		
+		coinCounterLabel = new GLabel(String.valueOf(Character.numCoinsCollected()), 1080, 68);
+		coinCounterLabel.setFont(program.marioFont.deriveFont(38f));
+		coinCounterLabel.setColor(Color.WHITE);
 	}
 	
 	public void Play() {
@@ -163,6 +174,7 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		isGameOver();
 		for (Enemy en : Enemies) { en.Run();}
 		Character.collectCoin();
+		coinCounterLabel.setLabel(String.valueOf(Character.numCoinsCollected()));
 		
 		if (isMousePressed) {mouseCounter++;}
 		if (mouseCounter == 10) {Character.setLongJump();}
@@ -228,6 +240,8 @@ public class LevelPane extends GraphicsPane implements ActionListener{
 		program.add(Character.getCharacter());
 		program.add(pauseButton);
 		program.add(pauseBubble);
+		program.add(coinCounterImg);
+		program.add(coinCounterLabel);
 		
 		for (GImage e: Plants) { program.add(e); }
 		for (Enemy e: Enemies) { program.add(e.getEnemyImg());}
