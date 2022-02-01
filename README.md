@@ -105,6 +105,14 @@ ActionPerformed()
     check if character has collected coin and update current number of coins collected accordingly
     Update coin counter label to current number of coins collected
 ```
+<h3>Steps to Check Out the New Features</h3>
+<ul>
+<li>Start Game</li>
+<li> Click on Tour</li>
+<li> Click on any level that is unlocked</li>
+<li> Koopa Troopas now visible on selected level as you play through</li>
+<li> Coin Tracker on top-right of screen is present and dynamically updated as you collect coins</li>
+</ul>
 
 <h2 id='screenshots'>Screenshots</h2>
 <h3>Start Screen</h3>
