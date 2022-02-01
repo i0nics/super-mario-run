@@ -11,7 +11,7 @@
 
 - [About The Project](#about)
 - [Additional Documentation](#doc)
-- [New Goomba & Koopa Troopa Update](#update)
+- [New Enemy & Coin Tracker Update](#update)
 - [Screenshots](#screenshots)
 - [Minimum Requirements](#min)
 - [Getting Started](#start)
@@ -29,14 +29,14 @@ of making it easier for devs to determine object placement coordinates while cre
 <h2 id='doc'>Additional Documentation</h2>
 <p>Please visit <a href='https://github.com/i0nics/super-mario-run/blob/master/Documentation.pdf'>Documentation.pdf</a> for additional project documentation containing use cases, UML class diagram, interaction diagrams, algorithms, and key accomplishments.</p>
 
-<h2 id='update'>New Goomba & Koopa Troopa Update</h2>
+<h2 id='update'>New Enemy & Coin Tracker Update</h2>
 <h3>Feature Overview</h3>
 <p>The new update introduces Koop Troopa which are turtle-like creatures. Similar to Goombas, the player needs to stomp on top of them to knock them out.
- A new Enemy interface is also implemented for the previous Goomba class along with the new KoopaTroopa class. The speed of the enemies are also now dynamically implemented from a text file.
+A new Enemy interface is also implemented for a new merged Enemy class that handles the operation of both the original Goomba and the new Koopa Troopa. The speed of the enemies are also now dynamically implemented from a text file. Furthermore, every level now has a coin tracker on the top right which displays and dynamically updates the number of coins that are collected in the current level as the player progresses through it.
 </p>
 
 <h3>Pseudocode</h3>
-<p>The Enemies interface contains common methods that are going to be used by the Goomba and KoopaTroopa Class</p>
+<p>A) The Enemies interface contains methods that are going to be used in the Enemy Class</p>
 
 ```
 interface Enemies
@@ -46,13 +46,14 @@ interface Enemies
     getEnemyImage() Method that returns current enemy's image file
 ```
 
- <p>The Enemies class manages the location, movement, speed and collision detection of desired enemy</p>
+<p>B) The Enemy class manages the location, movement, speed and collision detection of desired enemy (Goomba or Koopa Troopa)</p>
 
 ```
 class Enemy that implements the Enemies interface
     Enemy initialization constructor (main, levelPane, String enemyType, locationX, locationY)
         set program to main
         set level to levelPane
+        set enemy type (Goomba or Koopa Troopa) to parameter enemyType
         set enemyImg to the image of enemy at location (locationX, locationY)
         initialize head to an invisible GRectangle object with appropriate height and width
         initialize body to an invisible GRectangle objectwith appropriate height and width
@@ -65,7 +66,7 @@ class Enemy that implements the Enemies interface
     
     // Retrieve enemy speed from text file
     getEnemySpeed()
-        open text file
+        open text file determined by enemy type
         set enemySpeed to first integer in text file and return
     
     // Return enemy image
@@ -90,8 +91,19 @@ class Enemy that implements the Enemies interface
             kill enemy
        
         else if player collides with enemy's body
-             kill player
- 
+             kill player 
+```
+<p>C) The Constructor and actionPerformed methods in the LevelPane class are now used to implement a dynamic coin tracker</p>
+   
+```
+LevelPane() 
+    Initialize new coin counter GIF file at desired location in top-right of screen
+    Initialize new coin counter label at desired location in top-right of screen and set it to current number of coins collected
+    Set color of GLabel to white
+
+ActionPerformed()
+    check if character has collected coin and update current number of coins collected accordingly
+    Update coin counter label to current number of coins collected
 ```
 
 <h2 id='screenshots'>Screenshots</h2>
