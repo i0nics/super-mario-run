@@ -27,12 +27,16 @@ public class KoopaTroopa implements Enemies {
 		body = new GRectangle (koopaTroopa.getX() - 10,  koopaTroopa.getY() + 8, 2, koopaTroopa.getHeight() - 10);
 	}
 	
+	
+	// Update head and body GRectangles to appropriate locations surrounding the enemy's head and body
 	@Override
 	public void updateBounds() {
 		head.setLocation(koopaTroopa.getX(), koopaTroopa.getY() + 2);
 		body.setLocation(koopaTroopa.getX() - 10,  koopaTroopa.getY() + 8);
 	}
 	
+	
+    // Retrieve enemy speed from text file
 	@Override
 	public Integer getEnemySpeed() {
 		int speed = 0;
@@ -48,11 +52,15 @@ public class KoopaTroopa implements Enemies {
 		return speed;
 	}
 	
+	
+	// Return enemy image
 	@Override
 	public GImage getEnemyImg() {
 		return koopaTroopa;
 	}
 
+	
+	// Manage enemy movement and track enemy collision with player
 	@Override
 	public void Run() {
 		GRectangle playerBounds = level.getCharacter().getCharacter().getBounds();
