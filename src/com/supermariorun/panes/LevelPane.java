@@ -10,8 +10,6 @@ import javax.swing.Timer;
 
 import com.supermariorun.characters.Character;
 import com.supermariorun.enemies.Enemy;
-import com.supermariorun.enemies.Goomba;
-import com.supermariorun.enemies.KoopaTroopa;
 import com.supermariorun.levels.Level;
 import com.supermariorun.main.GraphicsPane;
 import com.supermariorun.main.MainSMR;
