@@ -46,16 +46,17 @@ interface Enemies
     getEnemyImage() Method that returns current enemy's image file
 ```
 
-<p>The KoopaTroopa class manages the location, movement, speed and collision detection of Koopa Troopa enemy</p>
+ <p>The Enemies class manages the location, movement, speed and collision detection of desired enemy</p>
 
 ```
-class KoopaTroopa that implements the Enemies interface
-    KoopaTroopa initialization constructor (main, levelPane, locationX, locationY)
+class Enemy that implements the Enemies interface
+    Enemy initialization constructor (main, levelPane, String enemyType, locationX, locationY)
         set program to main
         set level to levelPane
-        set koopaTroopa to the image of koopaTroopa at location (locationX, locationY)
+        set enemyImg to the image of enemy at location (locationX, locationY)
         initialize head to an invisible GRectangle object with appropriate height and width
         initialize body to an invisible GRectangle objectwith appropriate height and width
+        set enemySpeed to the value extracted from text file returned by getEnemySpeed
         
     // Update head and body GRectangles to appropriate locations surrounding the enemy's head and body
     updateBounds()
@@ -74,23 +75,19 @@ class KoopaTroopa that implements the Enemies interface
     // Manage enemy movement and track enemy collision with player
     Run()
         if enemy is within 1000 pixels distance of the player
-            move KoopaTroopa enemy at speed extracted from text file
-            update KoopaTroopa's collision boundaries
+            move enemy at speed extracted from text file
+            update enemy's collision boundaries
         
         else
-            move KoopaTroopa enemy at default speed
-            update KoopaTroopa's collision boundaries
+            move enemy at default speed
+            update enemy's collision boundaries
         
         if player has equipped star power up and player touches enemy
-            kill KoopaTroopa enemy
-        
-        else if player has equipped mushroom power up and player touches enemy
-            kill KoopaTroopa enemy
-            reduce size of player
+            kill enemy
         
         else if player collides with enemy's head
             play stomp sound
-            koopa troopa goes into his shell
+            kill enemy
        
         else if player collides with enemy's body
              kill player
